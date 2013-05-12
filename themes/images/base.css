@@ -1,0 +1,915 @@
+HTML {
+	BACKGROUND: #fff; COLOR: #000
+}
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+PRE {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+CODE {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+LEGEND {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+BLOCKQUOTE {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TH {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+ADDRESS {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+CAPTION {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+CITE {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+CODE {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+DFN {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+EM {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+STRONG {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+TH {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+VAR {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+H1 {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%
+}
+H2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%
+}
+H3 {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%
+}
+H4 {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%
+}
+H5 {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%
+}
+H6 {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%
+}
+INPUT {
+	FONT-FAMILY: inherit
+}
+TEXTAREA {
+	FONT-FAMILY: inherit
+}
+SELECT {
+	FONT-FAMILY: inherit
+}
+INPUT {
+	FONT-SIZE: 100%
+}
+TEXTAREA {
+	FONT-SIZE: 100%
+}
+SELECT {
+	FONT-SIZE: 100%
+}
+A {
+	COLOR: #006699; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+.h3 {
+	FONT-WEIGHT: bold; COLOR: #1e407d; PADDING-TOP: 20px
+}
+.font_bold {
+	FONT-WEIGHT: bold
+}
+.orange {
+	COLOR: #ff6600
+}
+.blue {
+	COLOR: #2165a4
+}
+.gray {
+	COLOR: #b4b4b4
+}
+.font16 {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #ff6600
+}
+.green {
+	COLOR: #75ae12
+}
+.input_full {
+	OVERFLOW: hidden; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis
+}
+.nav_body {
+	FONT-SIZE: 12px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/nav_body.gif); MARGIN-LEFT: auto; WIDTH: 970px; MARGIN-RIGHT: auto; BACKGROUND-REPEAT: repeat-x; HEIGHT: 96px
+}
+.nav_logo {
+	PADDING-LEFT: 15px; FLOAT: left; PADDING-TOP: 10px
+}
+.nav_1 {
+	PADDING-LEFT: 20px; MARGIN: 18px 10px 0px; WIDTH: 600px; PADDING-TOP: 1px
+}
+.nav_1_bg {
+	
+}
+.nav_1_bg LI {
+	FLOAT: left
+}
+.menu_on {
+	PADDING-RIGHT: 2px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 9px; FONT-WEIGHT: bold; FONT-SIZE: 14px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu_on_left.gif); PADDING-BOTTOM: 0px; COLOR: #38608e; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 40px
+}
+.menu_on SPAN {
+	PADDING-RIGHT: 16px; BACKGROUND-POSITION: right 50%; DISPLAY: block; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu_on_right.gif); PADDING-BOTTOM: 12px; MARGIN: -1px 0px 0px; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat; _margin: 0px
+}
+.menu {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/nav_1_bg.gif); PADDING-BOTTOM: 10px; PADDING-TOP: 8px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 20px
+}
+.menu UL LI {
+	MARGIN-TOP: -8px
+}
+.menu UL LI IMG {
+	MARGIN-TOP: -5px
+}
+.menu UL LI A {
+	CLEAR: both; PADDING-RIGHT: 15px; DISPLAY: block; PADDING-LEFT: 15px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #38608e; PADDING-TOP: 15px; TEXT-DECORATION: none
+}
+.menu UL LI A:hover {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 15px; DISPLAY: block; PADDING-LEFT: 15px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu_a_hover.gif); BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 5px; COLOR: #ff6600; PADDING-TOP: 15px; BACKGROUND-REPEAT: repeat-x; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none
+}
+* + .menu_on {
+	PADDING-RIGHT: 2px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 15px; FONT-WEIGHT: bold; FONT-SIZE: 14px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu_on_left.png); PADDING-BOTTOM: 0px; MARGIN-LEFT: -10px; COLOR: #38608e; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 40px
+}
+* + .menu_on SPAN {
+	PADDING-RIGHT: 25px; DISPLAY: block; PADDING-LEFT: 15px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/menu_on_right.png) no-repeat right 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; HEIGHT: 40px
+}
+.pad10 {
+	PADDING-TOP: 10px
+}
+.menutiao {
+	BACKGROUND-POSITION: 50% top; DISPLAY: block; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/nav_1_ge.gif); WIDTH: 2px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 34px
+}
+.menu_2 {
+	PADDING-RIGHT: 0px; MARGIN-TOP: -3px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+* + .menu_2 {
+	PADDING-RIGHT: 0px; MARGIN-TOP: -3px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.menu_2 UL LI {
+	FLOAT: left
+}
+.menutiao2 {
+	BACKGROUND-POSITION: 50% top; DISPLAY: block; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/nav_2_ge.gif); MARGIN: 0px; WIDTH: 2px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 28px
+}
+.menu_2 UL LI A {
+	PADDING-RIGHT: 15px; DISPLAY: block; PADDING-LEFT: 5px; FONT-SIZE: 12px; PADDING-BOTTOM: 3px; MARGIN: 0px 0px 0px 5px; COLOR: #113e75; PADDING-TOP: 7px; TEXT-DECORATION: none
+}
+.menu_2 UL LI A SPAN {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; PADDING-BOTTOM: 0px; MARGIN: 0px -5px 0px 0px; PADDING-TOP: 10px
+}
+.menu_2 UL LI A:hover {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: left 50%; DISPLAY: block; PADDING-LEFT: 5px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu2_a_hover_left.gif); PADDING-BOTTOM: 0px; COLOR: #ff6600; PADDING-TOP: 1px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.menu_2 UL LI A:hover SPAN {
+	PADDING-RIGHT: 11px; BACKGROUND-POSITION: right 50%; DISPLAY: block; PADDING-LEFT: 6px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu2_a_hover_right.gif); PADDING-BOTTOM: 5px; PADDING-TOP: 7px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.menu_2_tit {
+	MARGIN-RIGHT: -10px
+}
+.menu_2_on {
+	PADDING-RIGHT: 2px; BACKGROUND-POSITION: left 50%; DISPLAY: block; PADDING-LEFT: 7px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu2_a_left.gif); PADDING-BOTTOM: 2px; MARGIN: 0px 0px 0px 5px; COLOR: #ffffff; PADDING-TOP: 2px; BACKGROUND-REPEAT: no-repeat
+}
+.menu_2_on SPAN {
+	PADDING-RIGHT: 12px; BACKGROUND-POSITION: right 50%; DISPLAY: block; PADDING-LEFT: 6px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/menu2_a_right.gif); PADDING-BOTTOM: 4px; MARGIN: 0px 5px 0px 0px; PADDING-TOP: 6px; BACKGROUND-REPEAT: no-repeat
+}
+.nav_name {
+	MARGIN-TOP: -60px; FLOAT: right; OVERFLOW: hidden; WIDTH: 130px; COLOR: #396dae; MARGIN-RIGHT: 0px; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; TEXT-ALIGN: right
+}
+.c_body {
+	FONT-SIZE: 12px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/c_body.gif); OVERFLOW: hidden; COLOR: #595959; BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #ffffff
+}
+.c_body_width {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/c_body.gif); MARGIN: 0px auto; WIDTH: 960px; BACKGROUND-REPEAT: repeat-x
+}
+.c_nav {
+	PADDING-LEFT: 20px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+.search_body {
+	BORDER-RIGHT: #7c9ecb 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #7c9ecb 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN: 0px; BORDER-LEFT: #7c9ecb 1px solid; WIDTH: 946px; PADDING-TOP: 1px; BORDER-BOTTOM: #7c9ecb 0px solid; HEIGHT: 34px; BACKGROUND-COLOR: #ffffff
+}
+.search_body_in {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/search_bg.gif); WIDTH: 100%; BACKGROUND-REPEAT: repeat-x
+}
+.search_body_img {
+	MARGIN-LEFT: 15px
+}
+.search_body_in TD {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; PADDING-BOTTOM: 2px; PADDING-TOP: 4px
+}
+.search_body2 {
+	BORDER-RIGHT: #7c9ecb 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #7c9ecb 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; MARGIN-LEFT: auto; BORDER-LEFT: #7c9ecb 1px solid; WIDTH: 100%; MARGIN-RIGHT: auto; PADDING-TOP: 1px; BORDER-BOTTOM: #7c9ecb 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.search_body_in2 {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/search_bg.gif); WIDTH: 100%; BACKGROUND-REPEAT: repeat-x
+}
+.search_body_img2 {
+	MARGIN-LEFT: 15px
+}
+.search_body_in2 TD {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px
+}
+.search_report {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; TEXT-ALIGN: left
+}
+.search_report_in2 TD {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px
+}
+.button01 A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button01.gif); PADDING-BOTTOM: 0px; WIDTH: 70px; COLOR: #564032; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 22px; TEXT-ALIGN: center
+}
+.button01 A:hover {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button01_hover.gif); COLOR: #ff6600
+}
+.button02 A {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button01.gif); PADDING-BOTTOM: 0px; MARGIN-LEFT: 35px; WIDTH: 70px; COLOR: #564032; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 22px; TEXT-ALIGN: center
+}
+.button02 A:hover {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button01_hover.gif); COLOR: #ff6600
+}
+.cent_border {
+	BORDER-RIGHT: #7c9ecb 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #7c9ecb 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN: 0px auto; BORDER-LEFT: #7c9ecb 1px solid; WIDTH: 960px; PADDING-TOP: 1px; BORDER-BOTTOM: #7c9ecb 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.cent_title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/cent_title_bg.gif); MARGIN-BOTTOM: -20px; PADDING-BOTTOM: 4px; OVERFLOW: hidden; WIDTH: 100%; COLOR: #1c4471; PADDING-TOP: 0px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 52px
+}
+HTML * .cent_title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/cent_title_bg.gif); PADDING-BOTTOM: 4px; WIDTH: 100%; COLOR: #1c4471; PADDING-TOP: 0px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 52px
+}
+* HTML .cent_title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/cent_title_bg.gif); MARGIN-BOTTOM: -20px; PADDING-BOTTOM: 4px; WIDTH: 100%; COLOR: #1c4471; PADDING-TOP: 0px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 52px
+}
+.cent_title DIV {
+	PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 8px; MARGIN-RIGHT: 10px; PADDING-TOP: 6px
+}
+.cent_title IMG {
+	PADDING-TOP: 4px
+}
+.cent_list_left {
+	BORDER-RIGHT: #fff 1px solid; WIDTH: 7px; BACKGROUND-COLOR: #cccccc
+}
+.cent_toolbar {
+	PADDING-RIGHT: 15px; PADDING-TOP: 3px; HEIGHT: 20px; BACKGROUND-COLOR: #f4f4f4; TEXT-ALIGN: right
+}
+.cent_toolbar A {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 2px; MARGIN: 0px 3px; WORD-BREAK: keep-all; PADDING-TOP: 0px; HEIGHT: 24px
+}
+.cent_toolbar A:hover {
+	
+}
+.cent_body {
+	OVERFLOW: hidden
+}
+.button04 A {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button03_left.gif); PADDING-BOTTOM: 4px; COLOR: #1a69c1; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center
+}
+.button04 A SPAN {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button03_right.gif); PADDING-BOTTOM: 4px; PADDING-TOP: 6px; BACKGROUND-REPEAT: no-repeat
+}
+.button04 A:hover {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button01_hover_left.gif); PADDING-BOTTOM: 4px; COLOR: #ff6600; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat
+}
+.button04 A:hover SPAN {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button01_hover_right.gif); COLOR: #ff6600
+}
+.button04_g A {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button03_left.gif); PADDING-BOTTOM: 4px; COLOR: #bdbdbd; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center
+}
+.button04_g A SPAN {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button03_right.gif); PADDING-BOTTOM: 4px; PADDING-TOP: 6px; BACKGROUND-REPEAT: no-repeat
+}
+.button04_foot {
+	FLOAT: left; MARGIN-LEFT: 20px; HEIGHT: 22px
+}
+.set_left {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/set_left_bg.gif); PADDING-BOTTOM: 15px; WIDTH: 139px; PADDING-TOP: 15px; BACKGROUND-REPEAT: repeat-y
+}
+.set_left_on {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 10px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/set_left_hover.gif); MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 4px; MARGIN-LEFT: 6px; WIDTH: 133px; PADDING-TOP: 10px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 28px
+}
+.set_left_off {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 10px; MARGIN-BOTTOM: -9px; PADDING-BOTTOM: 4px; MARGIN-LEFT: 6px; WIDTH: 133px; PADDING-TOP: 10px; HEIGHT: 28px
+}
+.set_left_ge {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/set_left_ge.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 139px; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 2px
+}
+.set_left_on2 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; PADDING-BOTTOM: 4px; MARGIN-LEFT: 10px; WIDTH: 133px; COLOR: #ff6600; PADDING-TOP: 8px; HEIGHT: 28px
+}
+.set_left_off2 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; PADDING-BOTTOM: 4px; MARGIN-LEFT: 10px; WIDTH: 133px; PADDING-TOP: 8px; HEIGHT: 18px
+}
+.set_right_tree {
+	WIDTH: 180px
+}
+.set_right_tree LI {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.set_right_tree_on {
+	BACKGROUND-COLOR: #e4f9fc
+}
+.list_foot {
+	BORDER-TOP: #cccccc 1px solid; BACKGROUND-COLOR: #eaeaea
+}
+.page {
+	MARGIN-TOP: 5px; FLOAT: right
+}
+.index_body_bg_1 {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/index_body_bg.gif); PADDING-TOP: 8px; BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.index_body_bg {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/index_body_bg2.gif); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #ffffff
+}
+.index_tit_bg {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/index_tit_bg.gif); BACKGROUND-REPEAT: repeat-x
+}
+.index_listtable_01 TD {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; BORDER-BOTTOM: #e5e5e5 1px solid; HEIGHT: 26px
+}
+.index_imp_txt {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px
+}
+.page_copyright {
+	COLOR: #9e9e9e; LINE-HEIGHT: 20px
+}
+.index_cmhc_td {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; COLOR: #797979; LINE-HEIGHT: 22px; PADDING-TOP: 10px
+}
+.index_dk_text {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 8px; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; PADDING-TOP: 5px
+}
+.index_dk_font_bg {
+	COLOR: #ffffff; BACKGROUND-COLOR: #456cae
+}
+.index_dk_tit_bg1 {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/index_tit_bg1.gif); BACKGROUND-REPEAT: repeat-x
+}
+.page_foot {
+	BORDER-TOP: #888888 1px solid; MARGIN-TOP: 10px; FONT-SIZE: 12px; MARGIN-LEFT: auto; WIDTH: 970px; COLOR: #888888; LINE-HEIGHT: 20px; MARGIN-RIGHT: auto; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+.button05 A SPAN {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 5px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_right.gif); PADDING-BOTTOM: 5px; LINE-HEIGHT: 25px; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.button05 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; MARGIN: 6px 0px 0px; PADDING-TOP: 4px; HEIGHT: 30px
+}
+.button05 A {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_left.gif); PADDING-BOTTOM: 5px; COLOR: #1a69c1; LINE-HEIGHT: 25px; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+HTML * .button05 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; MARGIN: 6px 10px 0px; PADDING-TOP: 4px; HEIGHT: 30px
+}
+HTML * .button05 A {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_left.gif); PADDING-BOTTOM: 5px; COLOR: #1a69c1; LINE-HEIGHT: 25px; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+HTML * .button05 A SPAN {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_right.gif); PADDING-BOTTOM: 5px; LINE-HEIGHT: 25px; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.button05 A:hover {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_hover_left.gif); PADDING-BOTTOM: 5px; COLOR: #ff6600; LINE-HEIGHT: 25px; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.button05 A:hover SPAN {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_hover_right.gif); COLOR: #ff6600; LINE-HEIGHT: 25px; TEXT-DECORATION: none
+}
+HTML * .button05 SPAN IMG {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 2px 0px 0px; PADDING-TOP: 3px
+}
+* HTML .button05 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; MARGIN: 6px 0px 0px; PADDING-TOP: 4px; HEIGHT: 30px
+}
+* HTML .button05 A {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_left.gif); PADDING-BOTTOM: 5px; COLOR: #1a69c1; LINE-HEIGHT: 25px; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+* HTML .button05 A SPAN {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_right.gif); PADDING-BOTTOM: 5px; LINE-HEIGHT: 25px; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+* HTML .button05 A:hover {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_hover_left.gif); PADDING-BOTTOM: 5px; COLOR: #ff6600; LINE-HEIGHT: 25px; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+* HTML .button05 A:hover SPAN {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_hover_right.gif); COLOR: #ff6600; LINE-HEIGHT: 25px; TEXT-DECORATION: none
+}
+* HTML .button05 SPAN IMG {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 2px; MARGIN: -2px 0px 0px; PADDING-TOP: 3px
+}
+.button06 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-TOP: 4px
+}
+.button06 A {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_left.gif); PADDING-BOTTOM: 5px; COLOR: #1a69c1; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.button06 A SPAN {
+	PADDING-RIGHT: 10px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_right.gif); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.button06 A:hover {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left 50%; PADDING-LEFT: 4px; BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_hover_left.gif); PADDING-BOTTOM: 5px; COLOR: #ff6600; PADDING-TOP: 5px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.button06 A:hover SPAN {
+	BACKGROUND-IMAGE: url(https://image.alisoft.com/fi/image/index/button05_hover_right.gif); COLOR: #ff6600; TEXT-DECORATION: none
+}
+.button06 SPAN IMG {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 2px 0px 0px; PADDING-TOP: 1px
+}
+* HTML .add {
+	PADDING-RIGHT: 10px; MARGIN-BOTTOM: -13px
+}
+HTML * .add {
+	PADDING-RIGHT: 10px; MARGIN-BOTTOM: -9px; PADDING-TOP: 0px
+}
+* HTML .height_cs {
+	PADDING-RIGHT: 10px; MARGIN-BOTTOM: -13px
+}
+HTML * .height_cs {
+	PADDING-RIGHT: 10px; MARGIN-BOTTOM: -9px; PADDING-TOP: 0px
+}
+.cmhc_borderline {
+	BORDER-BOTTOM: #cccccc 1px solid
+}
+.cmhc_borderline01 {
+	FONT-WEIGHT: bold
+}
+.cmhc_borderline02 {
+	FONT-WEIGHT: bold; BORDER-BOTTOM: #cccccc 1px solid
+}
+.cmhc_borderline OL {
+	LIST-STYLE-POSITION: outside; LINE-HEIGHT: 25px
+}
+.orange01 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff6600
+}
+.cmhc_zk {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; PADDING-TOP: 0px
+}
+.flash_link {
+	PADDING-RIGHT: 10px; MARGIN-TOP: -147px; DISPLAY: block; PADDING-LEFT: 0px; Z-INDEX: 1; PADDING-BOTTOM: 0px; MARGIN-LEFT: -1px; PADDING-TOP: 20px
+}
+.detail_tips {
+	BORDER-RIGHT: #8f8f8f 1px solid; PADDING-RIGHT: 12px; BORDER-TOP: #8f8f8f 1px solid; PADDING-LEFT: 12px; FONT-SIZE: 12px; PADDING-BOTTOM: 12px; BORDER-LEFT: #8f8f8f 1px solid; COLOR: #265ab3; LINE-HEIGHT: 20px; PADDING-TOP: 12px; BORDER-BOTTOM: #8f8f8f 1px solid; BACKGROUND-COLOR: #fff7ec
+}
+.div_backup {
+	FLOAT: left; WIDTH: 800px; COLOR: #707070
+}
+.div_backup UL {
+	PADDING-RIGHT: 40px; DISPLAY: block; PADDING-LEFT: 40px; FLOAT: left; PADDING-BOTTOM: 20px; MARGIN: 0px; WIDTH: 310px; PADDING-TOP: 20px; HEIGHT: 200px
+}
+.div_backup LI {
+	PADDING-RIGHT: 10px; DISPLAY: block; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; MARGIN: 0px; WIDTH: 310px; LINE-HEIGHT: 25px; PADDING-TOP: 10px; LIST-STYLE-TYPE: none
+}
+.div_backup_border {
+	BORDER-TOP: #7c9ecb 1px solid
+}
+.div_backup_tips {
+	BORDER-RIGHT: #d0dcee 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #d0dcee 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #d0dcee 1px solid; COLOR: #4280cc; LINE-HEIGHT: 25px; PADDING-TOP: 10px; BORDER-BOTTOM: #d0dcee 1px solid; BACKGROUND-COLOR: #f5f5f6
+}
+.text_lbt {
+	PADDING-RIGHT: 50px; PADDING-LEFT: 50px; PADDING-BOTTOM: 30px; COLOR: #396dae; LINE-HEIGHT: 30px; PADDING-TOP: 30px
+}
+#loginBody {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/login/login_bigbg.gif) #b0c7e1 repeat-x; BORDER-BOTTOM: #fff 1px solid; HEIGHT: 100%
+}
+#loginFoot {
+	BACKGROUND: #000000; TEXT-ALIGN: center
+}
+#copyright {
+	MARGIN: 0px auto; FONT: 0.7em/300% Verdana; COLOR: #ddd
+}
+#loginForm {
+	
+}
+#loginForm TABLE {
+	FONT: 14px 'ËÎÌו'; COLOR: #fff
+}
+#loginForm LABEL {
+	PADDING-LEFT: 3px
+}
+#loginForm INPUT {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; PADDING-LEFT: 2px; FONT: 14px 'ËÎÌו'; BORDER-LEFT: #000 1px solid; BORDER-BOTTOM: #000 1px solid; HEIGHT: 22px
+}
+#loginForm INPUT:focus {
+	BORDER-RIGHT: #fe8101 1px solid; BORDER-TOP: #fe8101 1px solid; BORDER-LEFT: #fe8101 1px solid; BORDER-BOTTOM: #fe8101 1px solid
+}
+#loginForm BUTTON {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 222px; BORDER-TOP-STYLE: none; PADDING-TOP: 0px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.login_tips {
+	BORDER-RIGHT: #ebebeb 1px solid; BORDER-TOP: #ebebeb 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #ebebeb 1px solid; WIDTH: 270px; COLOR: #e9e9e9; BORDER-BOTTOM: #ebebeb 1px solid; BACKGROUND-COLOR: #3088c9
+}
+.login_tips TH {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; PADDING-BOTTOM: 5px; COLOR: #ffffff; PADDING-TOP: 5px; BACKGROUND-COLOR: #005595; TEXT-ALIGN: left
+}
+.login_tips TD {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; PADDING-TOP: 10px
+}
+.login_tipst {
+	FONT-WEIGHT: bold; COLOR: #ffffff
+}
+.signin {
+	FONT-SIZE: 12px
+}
+.signin TD {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px
+}
+.page_id {
+	PADDING-LEFT: 300px
+}
+#d1 A {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; DISPLAY: block; BACKGROUND: #666; FILTER: alpha(opacity=70); FLOAT: left; MARGIN: 2px; BORDER-LEFT: #ffffff 1px solid; WIDTH: 20px; COLOR: #fff; PADDING-TOP: 3px; BORDER-BOTTOM: #ffffff 1px solid; HEIGHT: 20px; TEXT-ALIGN: center; TEXT-DECORATION: none; opacity: .4
+}
+#d1 A:hover {
+	BACKGROUND: #000
+}
+#containImg {
+	MARGIN-LEFT: 40px
+}
+.login_news {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; MARGIN: 0px; WIDTH: 230px; COLOR: #ffffff; PADDING-TOP: 12px; HEIGHT: 164px; TEXT-ALIGN: left
+}
+.login_news A {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.login_news A:hover {
+	COLOR: #ff6600
+}
+.login_news IMG {
+	MARGIN-RIGHT: 0px
+}
+.login_news_tit {
+	
+}
+.login_news UL {
+	MARGIN-TOP: 7px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 2px
+}
+.login_news LI {
+	MARGIN-BOTTOM: 4px; COLOR: #d7f0ff; LINE-HEIGHT: 15px; LIST-STYLE-TYPE: none
+}
+.newsmore {
+	PADDING-LEFT: 180px
+}
+.Message {
+	BORDER-RIGHT: #ffcb99 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ffcb99 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 0px 0px 5px; BORDER-LEFT: #ffcb99 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #ffcb99 1px solid; BACKGROUND-COLOR: #fff8ee
+}
+.Message .MessageContent {
+	FONT-SIZE: 12px; FLOAT: left
+}
+.Message .Close {
+	FLOAT: right
+}
+.arrowgreen {
+	BORDER-RIGHT: #7c9ecb 1px; BORDER-TOP: #7c9ecb 1px; BORDER-LEFT: #7c9ecb 1px; WIDTH: 139px; BORDER-BOTTOM: #7c9ecb 1px; border-size: 1px
+}
+.arrowgreen UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: -4px 0px 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.arrowgreen LI A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 20px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/nav_arrow.gif) 100% 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 29px; PADDING-TOP: 0px; HEIGHT: 29px; TEXT-DECORATION: none
+}
+.arrowgreen LI A:link {
+	COLOR: #5e85b2
+}
+.arrowgreen LI A:visited {
+	COLOR: #5e85b2
+}
+.arrowgreen LI A:hover {
+	BACKGROUND-POSITION: 100% -30px; COLOR: #ff7200
+}
+.arrowgreen LI A.selected {
+	BACKGROUND-POSITION: 100% -60px; COLOR: #ff7200
+}
+.left_menu_bg {
+	BORDER-RIGHT: #7c9ecb 1px solid; BACKGROUND-COLOR: #f0f3f8
+}
+.cs_dh {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/cs_daohang2.gif) no-repeat; PADDING-BOTTOM: 0px; MARGIN-LEFT: 70px; WIDTH: 660px; PADDING-TOP: 0px; HEIGHT: 130px
+}
+.cs_dh UL {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.cs_dh LI {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.cs_dh LI SPAN {
+	MARGIN: -23px 0px 0px
+}
+.cs_dh LI A {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 10px; PADDING-BOTTOM: 20px; WIDTH: 100px; COLOR: #5e84b0; PADDING-TOP: 30px; HEIGHT: 100px; TEXT-DECORATION: none
+}
+.cs_dh LI A:link {
+	COLOR: #5e84b0; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #5e84b0; TEXT-DECORATION: none
+}
+.cs_dh LI A:hover {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/cs_button_hover.gif) no-repeat; COLOR: #e36421; TEXT-DECORATION: none
+}
+.cs_dh_ul1 {
+	FLOAT: left; WIDTH: 160px; TEXT-ALIGN: right
+}
+.cs_dh_ul2 {
+	FLOAT: left; WIDTH: 220px; TEXT-ALIGN: right
+}
+.cs_dh_ul3 {
+	FLOAT: left; WIDTH: 265px; TEXT-ALIGN: right
+}
+.alipay_bd {
+	MARGIN: 20px 0px; WIDTH: 920px; COLOR: #000
+}
+.alipay_bd UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; MARGIN: 50px 10px 0px 20px; PADDING-TOP: 0px; HEIGHT: 270px
+}
+.alipay_bd UL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 430px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.alipay_bd_left {
+	FLOAT: left; MARGIN-LEFT: 30px
+}
+.alipay_bd_right {
+	FLOAT: left
+}
+.alipay_bd_logo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; HEIGHT: 70px
+}
+.alipay_bd_sgin {
+	BORDER-RIGHT: #cccccc 1px solid
+}
+.alipay_bd_tx {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; HEIGHT: 25px
+}
+.alipay_bd_cont {
+	PADDING-RIGHT: 25px; MARGIN-TOP: 75px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; PADDING-TOP: 0px
+}
+.alipay_cx {
+	BORDER-TOP: #cccccc 1px dotted; MARGIN: -110px 0px 0px 30px; WIDTH: 900px; TEXT-ALIGN: center
+}
+.alipay_cx IMG {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 25px; PADDING-TOP: 25px
+}
+.alipay_input {
+	BORDER-RIGHT: #a3a8a1 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #a3a8a1 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 13px; PADDING-BOTTOM: 0px; BORDER-LEFT: #a3a8a1 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #a3a8a1 1px solid
+}
+.alipay_input_view {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 5px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 5px; BORDER-BOTTOM: #7f9db9 1px solid; BORDER-RIGHT-WIDTH: 0px
+}
+.bd_button2 A {
+	DISPLAY: block; BACKGROUND: url(https://image.alisoft.com/fi/image/index/icon_alipay_button2.gif) no-repeat; MARGIN: 0px 100px 0px 0px; WIDTH: 120px; HEIGHT: 40px
+}
+.bd_button2 A:link {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/icon_alipay_button2.gif) no-repeat
+}
+.bd_button2 A:hover {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/icon_alipay_button2_hover.gif) no-repeat
+}
+.bd_button1 A {
+	DISPLAY: block; BACKGROUND: url(https://image.alisoft.com/fi/image/index/icon_alipay_button1.gif) no-repeat; MARGIN: 0px 100px 0px 0px; WIDTH: 120px; HEIGHT: 40px
+}
+.bd_button1 A:link {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/icon_alipay_button1.gif) no-repeat
+}
+.bd_button1 A:hover {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/icon_alipay_button1_hover.gif) no-repeat
+}
+.alipay_trade_tip {
+	BORDER-RIGHT: #ffbf81 1px solid; BORDER-TOP: #ffbf81 1px solid; MARGIN: 0px 30px; BORDER-LEFT: #ffbf81 1px solid; COLOR: #cd6f18; LINE-HEIGHT: 26px; BORDER-BOTTOM: #ffbf81 1px solid; HEIGHT: 26px; BACKGROUND-COLOR: #feffbd
+}
+.alipay_trade_info {
+	MARGIN: 10px 30px
+}
+.alipay_trade_info A:link {
+	FONT-SIZE: 12px; MARGIN: 0px 5px; COLOR: #18659d; TEXT-DECORATION: underline
+}
+.alipay_trade_info A:visited {
+	FONT-SIZE: 12px; MARGIN: 0px 5px; COLOR: #18659d; TEXT-DECORATION: underline
+}
+.alipay_trade_info A:hover {
+	COLOR: #cd6f18
+}
+.alipay_trade_img {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/alipay_trade_bg.jpg) no-repeat; MARGIN: 0px auto; WIDTH: 566px; HEIGHT: 304px
+}
+.alipay_trade_img1 {
+	MARGIN-TOP: 90px; MARGIN-LEFT: 200px
+}
+.titlediv {
+	MARGIN: 10px 30px; WIDTH: 55%
+}
+.titlediv IMG {
+	FLOAT: left; MARGIN-RIGHT: 30px
+}
+.titlediv A:link {
+	FONT-SIZE: 12px; MARGIN: 0px 5px; COLOR: #18659d; TEXT-DECORATION: underline
+}
+.titlediv A:visited {
+	FONT-SIZE: 12px; MARGIN: 0px 5px; COLOR: #18659d; TEXT-DECORATION: underline
+}
+.titlediv A:hover {
+	COLOR: #cd6f18
+}
+.titlediv SPAN {
+	MARGIN-TOP: 15px; FLOAT: left
+}
+.maintitle {
+	MARGIN: 10px; WIDTH: 900px; HEIGHT: 30px; BACKGROUND-COLOR: #ffffff
+}
+.maintitle .th1 {
+	PADDING-RIGHT: 40px; BORDER-TOP: #bdcede 1px solid; PADDING-LEFT: 40px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; COLOR: #616d7b; PADDING-TOP: 0px; BORDER-BOTTOM: #bdcede 1px solid; BACKGROUND-COLOR: #e7eef6
+}
+.mainlist {
+	MARGIN: auto; WIDTH: 910px; COLOR: #333; LINE-HEIGHT: 30px
+}
+.th2 {
+	BORDER-RIGHT: #bdcede 1px solid
+}
+.th3 {
+	BORDER-LEFT: #bdcede 1px solid
+}
+.maintitle TABLE TD {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 40px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: #a1a1a1 1px dashed; HEIGHT: 30px
+}
+.mainbutton {
+	BORDER-RIGHT: #acada8 1px solid; PADDING-RIGHT: 15px; BORDER-TOP: #acada8 1px solid; PADDING-LEFT: 15px; PADDING-BOTTOM: 3px; BORDER-LEFT: #acada8 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #acada8 1px solid; BACKGROUND-COLOR: #f4f4f4
+}
+.qmcl {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 900px; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+.qmcl_pic1 {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/zjb_icon6.gif) no-repeat center 50%; FLOAT: left; WIDTH: 300px; HEIGHT: 150px
+}
+.qmcl_pic2 {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/zjb_icon7.gif) no-repeat center 50%; FLOAT: left; WIDTH: 300px; HEIGHT: 150px; TEXT-ALIGN: center
+}
+.qmcl_pic3 {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/zjb_icon8.gif) no-repeat center 50%; FLOAT: left; WIDTH: 300px; HEIGHT: 150px
+}
+.qmcl_pic4 {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/zjb_icon8.gif) no-repeat center 50%; FLOAT: left; WIDTH: 300px; HEIGHT: 150px; TEXT-ALIGN: center
+}
+.qmcl_pic5 {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/zjb_icon9.gif) no-repeat center 50%; FLOAT: left; WIDTH: 300px; HEIGHT: 150px; TEXT-ALIGN: center
+}
+.qmcl_cont1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/cont_arrow.gif) no-repeat 130px 0px; PADDING-BOTTOM: 0px; WIDTH: 900px; PADDING-TOP: 30px
+}
+.qmcl_cont4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/cont_arrow.gif) no-repeat 730px 0px; PADDING-BOTTOM: 0px; WIDTH: 900px; PADDING-TOP: 30px
+}
+.qmcl_cont5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/cont_arrow.gif) no-repeat 500px 0px; PADDING-BOTTOM: 0px; WIDTH: 900px; PADDING-TOP: 30px
+}
+.qmcl_cont2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/cont_arrow.gif) no-repeat 360px 0px; PADDING-BOTTOM: 0px; WIDTH: 900px; PADDING-TOP: 30px
+}
+.qmcl_cont3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(https://image.alisoft.com/fi/image/index/cont_arrow.gif) no-repeat 430px 0px; PADDING-BOTTOM: 0px; WIDTH: 900px; PADDING-TOP: 30px
+}
+.qmcl_title {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 30px; PADDING-BOTTOM: 10px; LINE-HEIGHT: 25px; PADDING-TOP: 10px
+}
+.qmcl_main {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 30px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; PADDING-TOP: 0px
+}
+.qmcl_notice {
+	BORDER-RIGHT: #ffc07c 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ffc07c 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; MARGIN: 10px 20px; BORDER-LEFT: #ffc07c 1px solid; WIDTH: 845px; PADDING-TOP: 5px; BORDER-BOTTOM: #ffc07c 1px solid; BACKGROUND-COLOR: #ffffbd
+}
+.qmcl_cont_li {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 30px; FLOAT: left; PADDING-BOTTOM: 10px; WIDTH: 300px; PADDING-TOP: 10px
+}
+.qmcl_cont_ul {
+	BORDER-RIGHT: #b4cae9 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #b4cae9 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #b4cae9 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #b4cae9 1px solid; HEIGHT: 130px; BACKGROUND-COLOR: #ebf2f8
+}
+A.mya1:link {
+	WIDTH: 450px; COLOR: #40759e; TEXT-DECORATION: none
+}
+A.mya1:visited {
+	WIDTH: 450px; COLOR: #40759e; TEXT-DECORATION: none
+}
+A.mya1:hover {
+	WIDTH: 450px; COLOR: #ff8a00; TEXT-DECORATION: underline
+}
+.classN1 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: #eaf5fb; PADDING-BOTTOM: 10px; WIDTH: 932px; PADDING-TOP: 10px; BORDER-BOTTOM: #006798 1px dotted; HEIGHT: 45px
+}
+.classN2 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; WIDTH: 932px; PADDING-TOP: 10px; BORDER-BOTTOM: #006798 1px dotted; HEIGHT: 45px
+}
+.classN3 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; WIDTH: 932px; PADDING-TOP: 10px; BORDER-BOTTOM: #006798 1px dotted; HEIGHT: 45px; BACKGROUND-COLOR: #f7fbfd
+}
+.top_robot {
+	DISPLAY: block; FLOAT: left
+}
+.top_switch {
+	DISPLAY: block; BACKGROUND: url(https://image.alisoft.com/fi/image/index/top_switch.gif) no-repeat 0px 0px; FLOAT: left; MARGIN: 0px 0px 0px 3px; WIDTH: 114px; HEIGHT: 23px
+}
+.top_switch A {
+	PADDING-RIGHT: 7px; DISPLAY: block; PADDING-LEFT: 12px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 6px
+}
+.top_help {
+	DISPLAY: block; BACKGROUND: url(https://image.alisoft.com/fi/image/index/top_help.gif) no-repeat 0px 0px; FLOAT: left; MARGIN: 0px 0px 0px 4px; WIDTH: 56px; HEIGHT: 23px
+}
+.top_cancel {
+	DISPLAY: block; BACKGROUND: url(https://image.alisoft.com/fi/image/index/top_help.gif) no-repeat 0px 0px; FLOAT: left; MARGIN: 0px 0px 0px 4px; WIDTH: 56px; HEIGHT: 23px
+}
+.top_cancel {
+	BACKGROUND: url(https://image.alisoft.com/fi/image/index/top_cancel.gif) no-repeat 0px 0px
+}
+.top_help A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 26px; PADDING-BOTTOM: 0px; WIDTH: 30px; PADDING-TOP: 6px; HEIGHT: 15px
+}
+.top_cancel A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 26px; PADDING-BOTTOM: 0px; WIDTH: 30px; PADDING-TOP: 6px; HEIGHT: 15px
+}
+.top_cancel A {
+	COLOR: #ff7937
+}
+.right {
+	FLOAT: right
+}
+.ls_title {
+	FONT-WEIGHT: bold; FLOAT: left; PADDING-TOP: 5px
+}

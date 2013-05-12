@@ -1,0 +1,51 @@
+BODY {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+TH {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+LI {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 150%; FONT-FAMILY: Arial
+}
+INPUT {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial
+}
+radio {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial
+}
+SELECT {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial
+}
+TEXTAREA {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial
+}
+A:link {
+	COLOR: black; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: black; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: black; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #008000; TEXT-DECORATION: underline
+}
+.menu {
+	FONT-SIZE: 9pt; COLOR: #ffff00; FONT-FAMILY: Arial
+}
+A.menu:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.menu:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.menu:active {
+	COLOR: #cccccc; TEXT-DECORATION: underline
+}
+A.menu:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Message.php" server="192.168.1.118/crm41/" local="129871635780000000" remote="129871635600000000" />
+<file name="Queue.php" server="192.168.1.118/crm41/" local="129871566100000000" remote="129871008000000000" />
+<file name="postgresql.sql" server="192.168.1.118/crm41/" local="128949610240000000" remote="129871566000000000" />
+<file name="queue_sqlite.sql" server="192.168.1.118/crm41/" local="129096765000000000" remote="129871566000000000" />
+<file name="sqlsrv.sql" server="192.168.1.118/crm41/" local="129334051900000000" remote="129871566000000000" />
+<file name="mysql.sql" server="192.168.1.118/crm41/" local="129488752600000000" remote="129871566000000000" />
+</dwsync>

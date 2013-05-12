@@ -1,0 +1,161 @@
+/* ######### CSS for Shade Tabs. Remove if not using ######### */
+
+.shadetabs{
+padding: 5px 0 6px 0;
+margin-left: 0;
+margin-top: 1px;
+margin-bottom: 0;
+font: bold 12px Verdana;
+height:15px;
+list-style-type: none;
+text-align: left; /*set to left, center, or right to align the menu as desired*/
+
+}
+
+.shadetabs li{
+display: inline;
+margin: 0;
+}
+
+.shadetabs li a{
+position: relative;
+border-left:1px solid #dedede;
+border-top:1px solid #e0dddd;
+border-right:1px solid #e0dddd;
+
+padding-left:10px;
+padding-right:10px;
+padding-top:5px;
+padding-bottom:5px;
+width:100px;
+background: #FFF ;
+cursor:pointer;
+color: black;
+top:1px;
+font-weight:normal;
+-webkit-border-top-right-radius: 5px;
+-webkit-border-top-left-radius: 5px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+}
+
+.shadetabs li a:visited{
+color: #2d2b2b;
+}
+
+.shadetabs li a:hover{
+text-decoration: underline;
+color: #2d2b2b;
+}
+
+.shadetabs li a.selected{ /*selected main tab style */
+position: relative;
+border-left:1px solid #e0dddd;
+border-top:1px solid #e0dddd;
+border-right:1px solid #e0dddd;
+padding-left:10px;
+padding-right:10px;
+padding-bottom:5px;
+padding-top:5px;
+/*background-color:#dedede;*/
+background:#d9dde6 url(/themes/softed/images/light-bg.png) bottom repeat-x;
+font-weight:bold;
+color: black;
+top: 1px;
+}
+
+
+
+
+.shadetabs li a.selected:hover{ /*selected main tab style */
+text-decoration: none;
+}
+
+
+/* ######### CSS for Inverted Modern Bricks II Tabs. Remove if not using ######### */
+
+.modernbricksmenu2{
+padding: 0;
+width: 362px;
+border-top: 5px solid #D25A0B; /*Brown color theme*/ 
+background: transparent;
+voice-family: "\"}\"";
+voice-family: inherit;
+}
+
+.modernbricksmenu2 ul{
+margin:0;
+margin-left: 10px; /*margin between first menu item and left browser edge*/
+padding: 0;
+list-style: none;
+}
+
+.modernbricksmenu2 li{
+display: inline;
+margin: 0 2px 0 0;
+padding: 0;
+text-transform:uppercase;
+}
+
+.modernbricksmenu2 a{
+float: left;
+display: block;
+font: bold 11px Arial;
+color: white;
+text-decoration: none;
+margin: 0 1px 0 0; /*Margin between each menu item*/
+padding: 5px 10px;
+background-color: black; /*Brown color theme*/ 
+border-top: 1px solid white;
+}
+
+.modernbricksmenu2 a:hover{
+background-color: #D25A0B; /*Brown color theme*/ 
+color: white;
+}
+
+.modernbricksmenu2 a.selected{ /*currently selected tab*/
+background-color: #D25A0B; /*Brown color theme*/ 
+color: white;
+border-color: #D25A0B; /*Brown color theme*/ 
+}
+
+/* ######### CSS for Indented CSS Tabs. Remove if not using ######### */
+
+
+.indentmenu{
+font: bold 13px Arial;
+width: 100%; /*leave this value as is in most cases*/
+}
+
+.indentmenu ul{
+margin: 0;
+padding: 0;
+float: left;
+/* width: 80%; width of menu*/
+border-top: 1px solid darkred; /*darkred border*/
+background: black url(indentbg.gif) center center repeat-x;
+}
+
+.indentmenu ul li{
+display: inline;
+}
+
+.indentmenu ul li a{
+float: left;
+color: black; /*text color*/
+padding: 3px 11px;
+text-decoration: none;
+border-right: 1px solid darkred; /*darkred divider between menu items*/
+}
+
+.indentmenu ul li a:visited{
+color: black;
+}
+
+.indentmenu ul li a.selected{
+color: black !important;
+padding-top: 4px; /*shift text down 1px*/
+padding-bottom: 2px;
+background: black url(indentbg2.gif) center center repeat-x;
+}

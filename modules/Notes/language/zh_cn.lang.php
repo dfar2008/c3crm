@@ -1,0 +1,30 @@
+<?php
+$mod_strings = array (
+  'LBL_MODULE_NAME' => '联系记录',
+  'LBL_MODULE_TITLE' => '联系记录: 首页',
+  'LBL_SEARCH_FORM_TITLE' => '查找联系记录',
+  'ERR_DELETE_RECORD' => '必须指定记录编号才能删除客户.',
+  'LBL_NOTE_INFORMATION' => '基本信息',
+  'LBL_CUSTOM_INFORMATION' => '自定义信息',
+  'Subject' => '主题',
+  'Created Time' => '记录时间',
+  'Modified Time' => '修改时间',
+  'Attachment' => '附件',
+  'Note' => '內容',
+  'File' => '文件',
+  'LBL_ALL' => '所有',
+  'Note Title' => '主题',
+  'Title' => '主题',
+  'Note Type' => '联系类型',
+  'Type' => '联系类型',
+  'Address' => '地址',
+  'Assigned To' => '负责人',  
+  'Account Name' => '客户',
+  'Contact Date' => '下次联系日期',
+  'smcreator' => '创建人',
+  'rating' => '客户状态',
+  'LBL_CONTENT_INFORMATION' => '内容信息',
+  'LBL_SYSTEM_INFORMATION' => '系统信息',
+
+);
+?>

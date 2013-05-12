@@ -1,0 +1,15 @@
+.reportTitle {
+	FONT-SIZE: 14px; WIDTH: 100%; COLOR: #104c78; LINE-HEIGHT: 30px; TEXT-ALIGN: center
+}
+.reportTable {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; BORDER-COLLAPSE: collapse
+}
+.reportTable TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BORDER-LEFT: #cccccc 1px solid; LINE-HEIGHT: 150%
+}
+.reportTable TH {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BORDER-LEFT: #cccccc 1px solid; LINE-HEIGHT: 150%
+}
+.reportTable .thead {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; BACKGROUND: url(images/bar.gif) repeat-x left center; BORDER-LEFT: #cccccc 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #cccccc 1px solid
+}

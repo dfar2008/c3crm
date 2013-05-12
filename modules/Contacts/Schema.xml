@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<schema version="0.2">
+<table name="ec_contacts">
+<field name="contactsid" type="I" size="19">
+			<key />
+			<default value="0" />
+</field>
+<field name="description" type="X" />
+<field name="contactname" type="C" size="250" />
+
+<field name="contactsex" type="C" size="10" />
+<field name="contacttitle" type="C" size="30" />
+<field name="contactmobile" type="C" size="30" />
+<field name="contactemail" type="C" size="30" />
+<field name="contactphone" type="C" size="30" />
+<field name="contactfax" type="C" size="30" />
+<field name="contactqq" type="C" size="30" />
+<field name="contactmsn" type="C" size="30" />
+<field name="contactww" type="C" size="30" />
+<field name="contactwb" type="C" size="30" />
+<field name="smcreatorid" type="I" size="19"><default value="0" /></field>
+<field name="smownerid" type="I" size="19"><default value="0" /></field>
+<field name="modifiedby" type="I" size="19"><default value="0" /></field>
+<field name="groupid" type="I" size="19"><default value="0" /></field>
+<field name="description" type="X" />
+<field name="createdtime" type="T"></field>
+<field name="modifiedtime" type="T"></field>
+<field name="deleted" type="I" size="1"><default value="0" /></field>
+<field name="approved" type="I" size="1"><default value="0" /></field>
+<field name="approvedby" type="I" size="19"><default value="0" /></field>
+<index name="contacts_contactname_idx">
+		<col>contactname</col>
+	</index>
+</table>
+</schema>

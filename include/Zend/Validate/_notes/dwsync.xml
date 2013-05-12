@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Isbn.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="NotEmpty.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Ip.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="InArray.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Callback.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Between.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Alpha.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Hostname.php" server="192.168.1.118/crm41/" local="129871569780000000" remote="129871569600000000" />
+<file name="Date.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Alnum.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="StringLength.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Hex.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Exception.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Identical.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Barcode.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Regex.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Iban.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="LessThan.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="CreditCard.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="GreaterThan.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="PostCode.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Ccnum.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Int.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="EmailAddress.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Digits.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Float.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+<file name="Interface.php" server="192.168.1.118/crm41/" local="129434739240000000" remote="129871568400000000" />
+<file name="Abstract.php" server="192.168.1.118/crm41/" local="129871568540000000" remote="129871568400000000" />
+</dwsync>

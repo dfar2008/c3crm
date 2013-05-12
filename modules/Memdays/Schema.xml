@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<schema version="0.2">
+<table name="ec_memdays">
+<field name="memdaysid" type="I" size="19">
+			<key />
+			<default value="0" />
+</field>
+<field name="accountid" type="I" size="19">
+<field name="description" type="X" />
+<field name="memdayname" type="C" size="250" />
+<field name="memday946" type="C" size="250" />
+<field name="contact_id" type="I" size="19" />
+<field name="accountid" type="I" size="19" />
+<field name="memday938" type="C" size="255" />
+<field name="memday940" type="C" size="255" />
+<field name="memday1004" type="C" size="255" />
+<field name="smcreatorid" type="I" size="19"><default value="0" /></field>
+<field name="smownerid" type="I" size="19"><default value="0" /></field>
+<field name="modifiedby" type="I" size="19"><default value="0" /></field>
+<field name="groupid" type="I" size="19"><default value="0" /></field>
+<field name="description" type="X" />
+<field name="createdtime" type="T"></field>
+<field name="modifiedtime" type="T"></field>
+<field name="deleted" type="I" size="1"><default value="0" /></field>
+<field name="approved" type="I" size="1"><default value="0" /></field>
+<field name="approvedby" type="I" size="19"><default value="0" /></field>
+<index name="memdays_memdayname_idx">
+		<col>memdayname</col>
+	</index>
+	<opt platform="mysql">Type=InnoDB</opt>
+</table>
+<table name="ec_memdays" alter="true">
+	<constraint>ADD CONSTRAINT fk_1_ec_memdays FOREIGN KEY (memdaysid) REFERENCES ec_crmentity(crmid) ON DELETE CASCADE</constraint>
+	<opt>Type=InnoDB</opt>
+	<data>
+	</data>
+</table>
+</schema>

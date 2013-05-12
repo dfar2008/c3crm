@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<schema version="0.2">
+<table name="ec_qunfatmps">
+		<field name="qunfatmpsid" type="I" size="19">
+			<key />
+			<default value="0" />
+		</field>
+		<field name="qunfatmpname" type="C" size="250">
+			<notnull />
+		</field>
+		<field name="accountid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="contact_id" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="potentialid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="salesorderid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="vendorid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="purchaseorderid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="total" type="N" size="11.2" />
+        <field name="smcreatorid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="smownerid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="modifiedby" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="groupid" type="I" size="19">
+			<default value="0" />
+		</field>
+		<field name="description" type="X" />
+		<field name="createdtime" type="T">
+		</field>
+		<field name="modifiedtime" type="T">
+		</field>
+		<field name="deleted" type="I" size="1">
+			<default value="0" />
+		</field>
+		<field name="approved" type="I" size="1">
+			<default value="0" />
+		</field>
+		<field name="approvedby" type="I" size="19">
+			<default value="0" />
+		</field>
+		
+		<index name="qunfatmps_qunfatmpname_idx">
+			<col>qunfatmpname</col>
+		</index>
+		<index name="qunfatmps_qunfatmpsid_idx">
+			<col>qunfatmpsid</col>
+		</index>
+		<opt platform="mysql">Type=InnoDB</opt>
+	</table>
+	<table name="ec_qunfatmps" alter="true">
+		<constraint>ADD CONSTRAINT fk_1_ec_qunfatmps FOREIGN KEY (qunfatmpsid) REFERENCES ec_crmentity(crmid) ON DELETE CASCADE</constraint>
+		<opt>Type=InnoDB</opt>
+		<data>
+		</data>
+	</table>
+</schema>

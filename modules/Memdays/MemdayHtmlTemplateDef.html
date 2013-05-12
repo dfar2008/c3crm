@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>[var.MODULE_LABEL]打印</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="themes/images/style_cn.css" type=text/css rel=stylesheet>
+<STYLE>
+TABLE.print {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; BORDER-COLLAPSE: collapse
+}
+TABLE.print TD {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 14px; BORDER-LEFT: #000000 1px solid; LINE-HEIGHT: 20px; BORDER-BOTTOM: #000000 1px solid; TEXT-ALIGN: left
+}
+TABLE.print .right {
+	TEXT-ALIGN: right
+}
+.init_font {
+	FONT-SIZE: 14px
+}
+</STYLE>
+<META content="MSHTML 6.00.6000.16735" name=GENERATOR></HEAD>
+<BODY>
+<br/>
+<TABLE cellSpacing=2 cellPadding=0 width="97%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle height=45>
+      <H3><img src="[var.COMPANY_LOGO_PATH]" border="0">[var.COMPANY_NAME]</H3>
+    </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=2 cellPadding=0 width="97%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle height=45>
+      <H3>[var.MODULE_LABEL]</H3><BR>
+      <HR align=center width="90%" noShade SIZE=1>
+    </TD></TR></TBODY></TABLE><BR>
+<DIV class=init_font id=zoom>&nbsp;&nbsp;公司信息： 
+<TABLE class=print id=table_1 cellSpacing=0 cellPadding=0 width="97%" 
+align=center border=0>
+  <TBODY>
+  <TR>
+	<TD width="18%">联系人:</TD>
+    <TD width="32%">[var.USER_NAME]</TD>
+    <TD width="18%">Email:</TD>
+    <TD width="32%">[var.USER_EMAIL]</TD>
+  </TR>
+  <TR>
+    <TD width="18%">电话:</TD>
+    <TD width="32%">[var.COMPANY_PHONE]</TD>
+    <TD width="18%">传真:</TD>
+    <TD width="32%">[var.COMPANY_FAX]</TD>
+  </TR>
+  
+  <TR>
+    <TD>地址:</TD>
+    <TD>[var.COMPANY_ADDRESS]</TD>
+	<TD>网站:</TD>
+    <TD>[var.COMPANY_WEBSITE]</TD>
+  </TR>
+  <TR><TD colSpan=4>&nbsp;</TD></TR>
+</table>
+  &nbsp;&nbsp;客户信息：
+<TABLE class=print id=table_1 cellSpacing=0 cellPadding=0 width="97%" 
+align=center border=0>
+  <TR>
+    <TD width="18%">单位:</TD>
+    <TD width="32%">[var.ACCOUNT_NAME]</TD>
+    <TD width="18%">E-mail:</TD>
+    <TD width="32%">[var.CONTACT_EMAIL]</TD>
+  </TR>
+  <TR>
+    <TD width="18%">联系人:</TD>
+    <TD width="32%">[var.CONTACT_NAME]</TD>
+    <TD width="18%">电话:</TD>
+    <TD width="32%">[var.CONTACT_PHONE]</TD>
+  </TR>
+  <TR><TD colSpan=4>&nbsp;</TD></TR>
+  <TR><TD>主题:</TD><TD colSpan=3>[var.MEMDAYNAME]</TD></TR>
+  <TR><TD>描述:</TD><TD colSpan=3>[var.DESCRIPTION]</TD></TR>
+  </TBODY></TABLE>
+</DIV>
+<script language="javascript">
+window.print();
+</script>
+</BODY>
+</HTML>
