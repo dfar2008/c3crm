@@ -427,7 +427,7 @@ class SalesOrder extends CRMEntity {
 		$fieldlabellist = getProductFieldLabelList("SalesOrder");
 		$fieldnamelist = getProductFieldList("SalesOrder");
 
-		$output .= '<table width="100%"  border="0" align="center" cellpadding="5" cellspacing="0" class="crmTable" id="proTab">
+		$output .= '<table  class="table table-bordered table-hover table-condensedforev dvtable" id="proTab">
 		   <tr valign="top">
 			<td colspan="50" class="dvInnerHeader"><b>'.$app_strings['LBL_PRODUCT_DETAILS'].'</b></td>
 		   </tr>
@@ -481,7 +481,7 @@ class SalesOrder extends CRMEntity {
 		$output .= '</table>';
 
 		//Display the total, adjustment, S&H details
-		$output .= '<table width="100%" border="0" cellspacing="0" cellpadding="5" class="crmTable">';
+		$output .= '<table  class="table table-bordered table-hover table-condensedforev dvtable" style="margin-top:5px;">';
  
 		$grandTotal = ($netTotal != '')?$netTotal:'0.00';
 		$grandTotal = convertFromDollar($grandTotal,1);

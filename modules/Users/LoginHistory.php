@@ -1,5 +1,4 @@
 <?php
-include_once('config.php');
 require_once('include/logging.php');
 require_once('include/logging.php');
 require_once('include/ListView/ListView.php');
@@ -127,6 +126,7 @@ class LoginHistory {
 	*/
 	function user_login(&$usname,&$usip,&$intime)
 	{
+
 		$login_id = $this->db->getUniqueID('ec_loginhistory');
 		$query = "Insert into ec_loginhistory (login_id,user_name, user_ip, logout_time, login_time, status) values ('".$login_id."','$usname','$usip','',NOW(),'Signed in')";
 		$result = $this->db->query($query);

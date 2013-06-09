@@ -47,6 +47,7 @@ if($nick==''){
 $timer->stop();  
 $timemessage .="获取淘宝账号信息用时: <font color=red>".$timer->spent()."</font><br>";
 $timer->start(); 
+
 //获取淘宝订单总数
 $resultcount_arr = getTaobaoOrderCount($rooturl,$session,$appKey,$appSecret,$start_created,$end_created);
 if(!empty($resultcount_arr['msg'])){
@@ -109,6 +110,7 @@ $taobaoorders = array();
 
 //获取淘宝订单信息
 $taobaoorders_page = getTaobaoOrderInfo($rooturl,$session,$appKey,$appSecret,$page_no,$page_size,$start_created,$end_created);
+
 $timer->stop();  
 $timemessage .="获取淘宝订单详细数据用时: <font color=red>".$timer->spent()."</font><br>";
 $timer->start(); 

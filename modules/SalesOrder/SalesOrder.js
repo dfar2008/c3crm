@@ -23,7 +23,18 @@ function set_return_formname_specific(formname, product_id, product_name) {
 
 function selectProductRows(form)
 {
-	window.open("index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable","productWin","width=740,height=565,resizable=1,scrollbars=1,status=1,top=150,left=200");	
+	//window.open("index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable","productWin","width=740,height=565,resizable=1,scrollbars=1,status=1,top=150,left=200");	
+	$("#status").prop("display","inline");
+	$.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:"index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable",
+		   success: function(msg){   
+		   	 $("#status").prop("display","none");
+		   	 $("#selectProductRows").html(msg); 
+		   }  
+	}); 
+	$('#selectProductRows').modal('show');
 }
 
 function UpdateIDString()
@@ -239,11 +250,11 @@ function addProductRow(productrow)
     i = i + 1;
     coli = row.insertCell(i);
 	coli.className = "crmTableRow small";
-	temp = '<table width="100%" cellpadding="0" cellpadding="5"><tr><td style="padding:5px;" id="productTotal'+count+'" align="right">0.00</td></tr>';
+	temp = '<table class="table table-bordered " ><tr><td style="padding:5px;" id="productTotal'+count+'" align="right">0.00</td></tr>';
 	temp += '</table>';
 	temp += '<span style="display:none;font-size:12px;" id="netPrice'+count+'" ><b>&nbsp;</b></span>';
 	coli.innerHTML = temp;
-}
+} 
 
 
 //This function is used to validate the Inventory modules 
