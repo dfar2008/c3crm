@@ -75,11 +75,13 @@ function export_all($type)
 	$order_by = "";
 
 	$query = $focus->create_export_query($order_by,$where);
+
 	if(isset($_SESSION['export_where']) && $_SESSION['export_where']!='' && $search_type == 'includesearch')
 	{
 		$where = $_SESSION['export_where'];
 		$query .= ' and  ('.$where.') ';
 	}
+
 	if(($search_type == 'withoutsearch' || $search_type == 'includesearch') && $export_data == 'selecteddata')
 	{
 		$idstring = str_replace(";",",",$_REQUEST['idstring']);
@@ -97,6 +99,7 @@ function export_all($type)
 			$query = $oCustomView->getExportModifiedCvListQuery($viewname,$query,$type,false);//getModifiedCvListQuery
 		}
 	}
+	
 	
 
 	if(isset($_SESSION['nav_start']) && $_SESSION['nav_start'] != '' && $export_data == 'currentpage')

@@ -12,6 +12,7 @@ require_once('include/utils/addon_utils.php'); //new
 function is_admin($user) {
 	global $log;
 	global $adb;
+	//changed by dingjianting on 2007-11-05 for php5.2.x
 	$log->debug("Entering is_admin() method ...");
 	if(!$_SESSION['crm_is_admin']) {
 		return false;
@@ -1138,12 +1139,12 @@ function getParentTabName($parenttabid)
 
 
 function getParentTabFromModule($module)
-{
+{	
 	global $log;
 	$log->debug("Entering getParentTabName() method ...");
 	$tabid = getTabid($module);
 	$parent_tabname = "";
-	$key = "parenttabrellist";
+	$key = "parenttabrellist"; 
 	$resultant_array = getSqlCacheData($key);
 	if(!$resultant_array) {
 		global $adb;
@@ -1161,13 +1162,17 @@ function getParentTabFromModule($module)
 		}
 		setSqlCacheData($key,$resultant_array);
 	}
+
 	//echo "tabid:".$tabid."<br>";
 	if($tabid == 16) $tabid = 9;//event -> calendar
 	if(isset($resultant_array[$tabid])) {		 
 		$parent_tabid = $resultant_array[$tabid];
 		$parent_tabname = getParentTabName($parent_tabid);
 	}
-	$log->debug("Exiting getParentTabName method ...");
+	if($module == 'Settings'){
+		$parent_tabname = "Settings";
+	}
+	$log->debug("Exiting getParentTabName method ..."); 
 	return $parent_tabname;
 }
 
@@ -2715,6 +2720,34 @@ function doAlipayInfo($out_trade_no,$trade_no,$total_fee){
 		
 		$adb->query("delete from ec_systemchargetmps where userid=$userid");	
 	}
+}
+
+/**
+ * 通过模块名取到当前模块的表名、编号名、id名
+ */
+function getModTabName($modname) {
+	global $log;
+	$log->debug("Entering getModTabName({$modname}) method ...");
+	$key = "getModTabName_{$modname}";
+	$entityname = getSqlCacheData($key);
+	if(!$entityname) {
+		global $adb;
+		$entityname = array();
+		$query = "select tabid,tablename,fieldname,entityidfield 
+					from ec_entityname where modulename = '{$modname}' ";
+		$result = $adb->query($query);
+		$tabid = $adb->query_result($result,0,"tabid");
+		$tablename = $adb->query_result($result,0,"tablename");
+		$fieldname = $adb->query_result($result,0,"fieldname");
+		$entityidfield = $adb->query_result($result,0,"entityidfield");
+		$entityname['tabid'] = $tabid;
+		$entityname['tablename'] = $tablename;
+		$entityname['fieldname'] = $fieldname;
+		$entityname['entityidfield'] = $entityidfield;
+		setSqlCacheData($key,$entityname);
+	}
+	$log->debug("Exiting getModTabName method ...");
+	return $entityname;
 }
 
 ?>

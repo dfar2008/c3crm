@@ -10,13 +10,15 @@ else if (document.layers || (!document.all && document.getElementById))
 
 	var browser_nn6=true
 
-function getObj(n,d) {
 
+function getObj(n,d) {
+	
   var p,i,x; 
 
   if(!d)
 
       d=document;
+
    
    if(n != undefined)
    {
@@ -27,22 +29,34 @@ function getObj(n,d) {
 	   }
    }
 
+
+
   if(!(x=d[n])&&d.all)
 
       x=d.all[n];
+
+ 
 
   for(i=0;!x&&i<d.forms.length;i++)
 
       x=d.forms[i][n];
 
+ 
+
   for(i=0;!x&&d.layers&&i<d.layers.length;i++)
 
       x=getObj(n,d.layers[i].document);
 
+ 
+
   if(!x && d.getElementById)
 
       x=d.getElementById(n);
+
+
+
   return x;
+
 }
 
 function getOpenerObj(n) {
@@ -894,12 +908,160 @@ function formValidate() {
 	return true
 }
 
-function quickEditFormValidate(quickeditfield,quick_fieldname,quick_fieldlabel,quick_fielddatatype) {
+function quickEditFormValidate_OLD(quickeditfield,quick_fieldname,quick_fieldlabel,quick_fielddatatype) {
 	for (var i=0; i<quick_fieldname.length; i++) {
 		if(quick_fieldname[i] != quickeditfield) continue;
 		if(getObj("quickedit_value_"+quick_fieldname[i]) != null)
 		{
 			var type=quick_fielddatatype[i].split("~")
+				if (type[1]=="M") {
+					if (!emptyCheck("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],getObj("quickedit_value_"+quick_fieldname[i]).type))
+				    { 
+						//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+						return false;
+					}
+				}
+
+			switch (type[0]) {
+				case "O"  :break;
+				case "V"  :break;
+				case "C"  :break;
+				case "DT" :
+					if (getObj("quickedit_value_"+quick_fieldname[i]) != null && getObj("quickedit_value_"+quick_fieldname[i]).value.replace(/^\s+/g, '').replace(/\s+$/g, '').length!=0)
+					{	 
+						if (type[1]=="M")
+							if (!emptyCheck(type[2],quick_fieldlabel[i],getObj(type[2]).type)) {
+							    //getObj("quickedit_value_"+quick_fieldname[i]).focus();
+								return false;
+						    }
+
+									if(typeof(type[3])=="undefined") var currdatechk="OTH"
+									else var currdatechk=type[3]
+
+										if (!dateTimeValidate("quickedit_value_"+quick_fieldname[i],type[2],quick_fieldlabel[i],currdatechk)) {
+											//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+											return false;
+										}
+												if (type[4]) {
+													if (!dateTimeComparison("quickedit_value_"+quick_fieldname[i],type[2],quick_fieldlabel[i],type[5],type[6],type[4])) {
+														//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+														return false;
+													}
+
+												}
+					}		
+				break;
+				case "D"  :
+					if (getObj("quickedit_value_"+quick_fieldname[i]) != null && getObj("quickedit_value_"+quick_fieldname[i]).value.replace(/^\s+/g, '').replace(/\s+$/g, '').length!=0)
+					{	
+						if(typeof(type[2])=="undefined") var currdatechk="OTH"
+						else var currdatechk=type[2]
+
+							if (!dateValidate("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],currdatechk)) {
+								//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+								return false;
+							}
+									if (type[3]) {
+										if (!dateComparison("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],type[4],type[5],type[3])) {
+											//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+											return false;
+										}
+									}
+					}	
+				break;
+				case "T"  :
+					if (getObj("quickedit_value_"+quick_fieldname[i]) != null && getObj("quickedit_value_"+quick_fieldname[i]).value.replace(/^\s+/g, '').replace(/\s+$/g, '').length!=0)
+					{	 
+						if(typeof(type[2])=="undefined") var currtimechk="OTH"
+						else var currtimechk=type[2]
+
+							if (!timeValidate("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],currtimechk)) {
+								//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+								return false;
+							}
+									if (type[3]) {
+										if (!timeComparison("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],type[4],type[5],type[3])) {
+											//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+											return false;
+										}
+									}
+					}
+				break;
+				case "I"  :
+					if (getObj("quickedit_value_"+quick_fieldname[i]) != null && getObj("quickedit_value_"+quick_fieldname[i]).value.replace(/^\s+/g, '').replace(/\s+$/g, '').length!=0)
+					{	
+						if (getObj("quickedit_value_"+quick_fieldname[i]).value.length!=0)
+						{
+							if (!intValidate("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i])) {
+								//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+								return false;
+							}
+									if (type[2]) {
+										if (!numConstComp("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],type[2],type[3])) {
+											//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+											return false;
+										}
+									}
+						}
+					}
+				break;
+				case "N"  :
+					case "NN" :
+					if (getObj("quickedit_value_"+quick_fieldname[i]) != null && getObj("quickedit_value_"+quick_fieldname[i]).value.replace(/^\s+/g, '').replace(/\s+$/g, '').length!=0)
+					{
+						if (getObj("quickedit_value_"+quick_fieldname[i]).value.length!=0)
+						{
+							if (typeof(type[2])=="undefined") var numformat="any"
+							else var numformat=type[2]
+
+								if (type[0]=="NN") {
+
+									if (!numValidate("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],numformat,true)) {
+										//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+										return false;
+									}
+								} else {
+									if (!numValidate("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],numformat)){
+										//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+										return false;
+									}
+								}
+							if (type[3]) {
+								if (!numConstComp("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],type[3],type[4])){
+										//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+										return false;
+								}
+							}
+						}
+					}
+				break;
+				case "E"  :
+					if (getObj("quickedit_value_"+quick_fieldname[i]) != null && getObj("quickedit_value_"+quick_fieldname[i]).value.replace(/^\s+/g, '').replace(/\s+$/g, '').length!=0)
+					{
+						if (getObj("quickedit_value_"+quick_fieldname[i]).value.length!=0)
+						{
+							var etype = "EMAIL"
+								if (!patternValidate("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],etype)) {
+										//getObj("quickedit_value_"+quick_fieldname[i]).focus();
+										return false;
+								}
+						}
+					}
+				break;
+			}
+		}
+	}
+	return true
+}
+
+function quickEditFormValidate(quickeditfield,quick_fieldname,quick_fieldlabel,quick_fielddatatype) {
+
+	for (var i=0; i<quick_fieldname.length; i++) {
+		if(quick_fieldname[i] != quickeditfield) continue;
+		if(getObj("quickedit_value_"+quick_fieldname[i]) != null)
+		{	
+			var type=quick_fielddatatype[i].split("~");
+			
 				if (type[1]=="M") {
 					if (!emptyCheck("quickedit_value_"+quick_fieldname[i],quick_fieldlabel[i],getObj("quickedit_value_"+quick_fieldname[i]).type))
 				    { 
@@ -1587,25 +1749,25 @@ function fnvsh(obj,Lay){
     tagName.style.visibility = 'visible';
 }
 
-function fnvshobj(obj,Lay){
-    var tagName = document.getElementById(Lay);
+function fnvshobj(obj,Lay){ 
+    var tagName = $('#'+Lay);
 	if(typeof(tagName) == 'undefined') {
 		return;
 	}
     var leftSide = findPosX(obj);
     var topSide = findPosY(obj);
-    var maxW = tagName.style.width;
-    var widthM = maxW.substring(0,maxW.length-2);
+    var maxW = tagName.width(); 
+    var widthM = maxW.substring(0,maxW-2);
     var getVal = eval(leftSide) + eval(widthM);
     if(getVal  > document.body.clientWidth ){
         leftSide = eval(leftSide) - eval(widthM);
-        tagName.style.left = leftSide + 34 + 'px';
+        tagName.css({"left":leftSide + 34 + 'px'});
     }
     else
-        tagName.style.left= leftSide + 'px';
-    tagName.style.top= topSide + 'px';
-    tagName.style.display = 'block';
-    tagName.style.visibility = "visible";
+       tagName.css({"left":leftSide + 'px'});
+    tagName.css({"top":topSide + 'px'});
+    tagName.css('display','block');
+    tagName.css('visibility','visible'); 
 }
 
 function posLay(obj,Lay){
@@ -2497,7 +2659,7 @@ function ActivityReminderRegisterCallback(timeout) {
 function confirmdelete(url)
 {
 		if(confirm(alert_arr.SURE_TO_DELETE))
-		{
+		{	
 				window.location.href=url;
 		}
 }
@@ -3068,31 +3230,32 @@ function showhide_dept_userselect(deptId,imgId)
 	}
 }
 
+
 function getTableViewForFenzu(setype,url,theelement,viewname){
-	var classmethods=$$('.tablink');
-	for(var i=0;i<classmethods.length;i++){
-	   classmethods[i].removeClassName('cus_markbai');
-       classmethods[i].addClassName('cus_markhui');
+
+	$('viewname').value = viewname;
+	var classmethods=$('#tablink ul');
+	var classnum = classmethods.children('li').length;
+	for(var i=1;i<classnum;i++){ 
+	   classmethods.children('li:eq('+i+')').removeClass('active');
 	}
-	$(theelement).addClassName('cus_markbai');
-    $(theelement).removeClassName('cus_markhui');
-	//getListViewEntries_js(setype,url);
+	$(theelement).parent().addClass('active');
+
 	getAccountInfoToSend(setype,viewname);
 }
 function getAccountInfoToSend(setype,viewname){	
-		  $("status").style.display="inline";
-            new Ajax.Request(
-                    'index.php',
-                    {queue: {position: 'end', scope: 'command'},
-                        method: 'post',
-                        postBody:"module="+setype+"&action="+setype+"Ajax&file=getAccountToSend&viewname="+viewname,
-                        onComplete: function(response) {
-                                $("status").style.display="none";
-                                $('receiveaccountinfo').update(response.responseText);
-								$("viewname").value=viewname;
-                        }
-                 }
-            );
+
+	$("#status").css("display","inline");
+	$.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:"index.php?module="+setype+"&action="+setype+"Ajax&file=getAccountToSend&viewname="+viewname,
+		   success: function(msg){   
+		   	 $("#status").css("display","none");
+		   	 $("#receiveaccountinfo").html(msg); 
+		   	 $("#viewname").val(viewname);
+		   }  
+	});
 }
   //函数名：fucCheckLength  
   //功能介绍：检查字符串的长度  
@@ -3149,7 +3312,6 @@ function SendMessToAll(setype){
 		}else{
 			sendtimeurl = '&sendtime='+sendtime;	
 		}
-		
 			
 			document.getElementById('savebutton').disabled = "disabled";
 			
@@ -3230,49 +3392,62 @@ function SendMailToAll(setype,sjid,ke){
 			document.getElementById('receiveaccountinfo').value ='';
 			document.getElementById('receiveaccountinfo').focus();
 			return false;
-		} 
-		var from_name = $("from_name").value;
-		var from_email = $("from_email").value;
-		var interval = $("interval").value;
+		}  
 		document.getElementById('savebutton').disabled = "disabled";
-		$("status").style.display="inline";
-            new Ajax.Request(
-                    'index.php',
-                    {queue: {position: 'end', scope: 'command'},
-                        method: 'post',
-                        postBody:"module="+setype+"&action="+setype+"Ajax&file=SendMailToAll&subject="+subject+"&mailcontent="+mailcontent+"&receiveaccountinfo="+receiveaccountinfo+"&sjid="+sjid+"&from_name="+from_name+"&from_email="+from_email+"&interval="+interval,
-                        onComplete: function(response) {
-                                $("status").style.display="none";
-								result = response.responseText;  
-								if(result.indexOf('SUCCESS') != -1){
-									alert("邮件已成功放入发送队列，请耐心等候。");
-									window.location.reload();
-								}else{
-									document.getElementById('savebutton').disabled = "";
-									alert("邮件放入发送队列失败："+result);
-								}
-                        }
-                 }
-            );
+
+		$("#status").css('display','inline');
+	    $.ajax({  
+	       type: "GET",  
+	       //dataType:"Text",   
+	       url:"index.php?module="+setype+"&action="+setype+"Ajax&file=SendMailToAll&subject="+subject+"&mailcontent="+mailcontent+"&receiveaccountinfo="+receiveaccountinfo+"&sjid="+sjid,
+	       success: function(msg){   
+	         $("#status").css('display','none');
+	         	if(msg.indexOf('SUCCESS') != -1){
+					alert("邮件已成功放入发送队列，请耐心等候。");
+					window.location.reload();
+				}else{
+					document.getElementById('savebutton').disabled = "";
+					alert("邮件放入发送队列失败："+msg);
+				}
+	       }
+	     });
+
+			// $("status").style.display="inline";
+   //          new Ajax.Request(
+   //                  'index.php',
+   //                  {queue: {position: 'end', scope: 'command'},
+   //                      method: 'post',
+   //                      postBody:"module="+setype+"&action="+setype+"Ajax&file=SendMailToAll&subject="+subject+"&mailcontent="+mailcontent+"&receiveaccountinfo="+receiveaccountinfo+"&sjid="+sjid,
+   //                      onComplete: function(response) {
+   //                              $("status").style.display="none";
+			// 					result = response.responseText;  
+			// 					if(result.indexOf('SUCCESS') != -1){
+			// 						alert("邮件已成功放入发送队列，请耐心等候。");
+			// 						window.location.reload();
+			// 					}else{
+			// 						document.getElementById('savebutton').disabled = "";
+			// 						alert("邮件放入发送队列失败："+result);
+			// 					}
+   //                      }
+   //               }
+   //          );
 	}
 	if(ke ==''){
 		fninvsh('qunfamail');	
 	}
 	
-}
+}   
 
 
 function getTabView(setype,url,theelement,viewname){
     $('viewname').value = viewname;
-	var classmethods=$$('.tablink');
-	for(var i=0;i<classmethods.length;i++){
-	   classmethods[i].removeClassName('cus_markbai');
-       classmethods[i].addClassName('cus_markhui');
+	var classmethods=$('#tablink ul');
+	var classnum = classmethods.children('li').length;
+	for(var i=1;i<classnum;i++){ 
+	   classmethods.children('li:eq('+i+')').removeClass('active');
 	}
-	$(theelement).addClassName('cus_markbai');
-    $(theelement).removeClassName('cus_markhui');
+	$(theelement).parent().addClass('active');
 	getListViewEntries_js(setype,url);
-
 	
 }
 
@@ -3283,16 +3458,16 @@ function getTabViewNew(record,theelement) {
 	if(setype == ''){
 		setype = "Noteinfo";
 	}
-	var classmethods=$$('.tablink');
+	var classmethods=$('.tablink');
 
 	for(var i=0;i<classmethods.length;i++){
 
-	   classmethods[i].removeClassName('selected');
+	   classmethods[i].removeClass('selected');
 
 	}
 	tableview_theelement = document.getElementById(setype);
 		
-	$(tableview_theelement).addClassName('selected');
+	$(tableview_theelement).addClass('selected');
 	
 	module = $("modulename").value;
 	
@@ -3319,14 +3494,14 @@ function getTabViewNew(record,theelement) {
 					temprecordid = 'row_'+recordago;
 				  if($(temprecordid) == null || $(temprecordid) == "null" || $(temprecordid) == undefined){
 				  }else{
-					  $(temprecordid).removeClassName('lvtColDataHover');
-					  $(temprecordid).addClassName('lvtColData');
+					  $(temprecordid).removeClass('lvtColDataHover');
+					  $(temprecordid).addClass('lvtColData');
 					}
 				}
 				$("recordid").value = record;
 
-				$("row_"+record).removeClassName('lvtColData');
-				$("row_"+record).addClassName('lvtColDataHover');
+				$("row_"+record).removeClass('lvtColData');
+				$("row_"+record).addClass('lvtColDataHover');
 				$("tabviewContent").update(response.responseText);	
 	
 			}
@@ -3336,7 +3511,7 @@ function getTabViewNew(record,theelement) {
 }
 function getTabViewNewClear() {
 	
-	setype = $("tabview").value;
+	setype = $("#tabview").val();
 
 	if(setype != ''){
 		
@@ -3371,18 +3546,18 @@ function getTabViewForList(setype,theelement) {
 
 	urlstring='';
 
-	var classmethods=$$('.tablink');
+	var classmethods=$('.tablink');
 
 	for(var i=0;i<classmethods.length;i++){
 
-	   classmethods[i].removeClassName('selected');
+	   classmethods[i].removeClass('selected');
 
 	}
 	if(theelement == '' ){
 		theelement = document.getElementById(setype);
 	}
 	
-	$(theelement).addClassName('selected');
+	$(theelement).addClass('selected');
 	module = $("modulename").value;
 	record = $("recordid").value;
 	
@@ -3417,14 +3592,14 @@ function getTabViewForList(setype,theelement) {
 
 
 function editView(setype,category) {
-    var viewid = $('viewname').value;
+    var viewid = $('#viewname').val();
 	var url = "index.php?module=" + setype +"&action=CustomView&record=" + viewid +"&parenttab="+category;
 	window.location.href = url;
 }
 
 
 function deleteView(setype,category) {
-	var viewid = $('viewname').value;
+	var viewid = $('#viewname').val();
 	var url ="index.php?module=CustomView&dmodule=" + setype +"&action=Delete&record=" + viewid +"&parenttab="+category;
 	if(confirm(alert_arr.SURE_TO_DELETE))
 	{
@@ -3434,7 +3609,7 @@ function deleteView(setype,category) {
 }
 function editFenzu(setype,category) {
 	
-	viewid = $("viewname").value;
+	viewid = $("#viewname").val();
 
 	var url = "index.php?module=" + setype +"&action=Fenzu&record=" + viewid +"&parenttab="+category;
 
@@ -3442,7 +3617,7 @@ function editFenzu(setype,category) {
 }
 function deleteFenzu(setype,category) {
 	
-	viewid = $("viewname").value;
+	viewid = $("#viewname").val();
 
 	var url ="index.php?module=Fenzu&dmodule=" + setype +"&action=Delete&record=" + viewid +"&parenttab="+category;
 	if(confirm(alert_arr.SURE_TO_DELETE))
@@ -3454,67 +3629,77 @@ function deleteFenzu(setype,category) {
 
 function SearchAccountVal(){
     var obj={};
-    var el=$('account_search_val');
+    var el=$('#account_search_val');
     if(el){
-        obj.searchval=el.value;
+        obj.searchval=el.val();
     }
-    var querystr=$H(obj).toQueryString();
-    $("status").style.display="block";
-    new Ajax.Request(
-              'index.php',
-            {queue: {position: 'end', scope: 'command'},
-                method: 'post',
-                postBody:"module=Accounts&action=AccountsAjax&file=getAccountSearch&"+querystr,
-                onComplete: function(response) {
-                        $("status").style.display="none";
-//                            var respobj=JSON.parse(response.responseText);
-                        $('SelCustomer_popview').update(response.responseText);
-                        $('SelCustomer_popview').show(); 
-                        try {
-                           Position.clone($('account_search_val'), 'SelCustomer_popview', {setHeight:false,setWidth:false,offsetLeft:0,offsetTop:18});
-                        } catch (e) {
-                           Position.clone($('account_search_val'), 'SelCustomer_popview', {setHeight:false,setWidth:false,offsetLeft:0,offsetTop:18});
-                        }
-                        
-                         
-                }
-         }
-    );
+    //var querystr=$H(obj).toQueryString();
+    var querystr = $.param(obj); 
+    $("#status").css('display','inline');
+
+    $.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:'index.php?module=Accounts&action=AccountsAjax&file=getAccountSearch&'+querystr,
+		   success: function(msg){   
+		   	 $("#status").css("display","none");
+	            $('#SelCustomer_popview').html(msg);
+	            $('#SelCustomer_popview').show(); 
+
+	            $('#SelCustomer_popview').css({ 
+					position: 'absolute', 
+					top: $('#account_search_val').offset().top + 23 + 'px', 
+					left: $('#account_search_val').offset().left + 'px' 
+				}); 
+		   }  
+	});
 }
 
 function chooseAccountFromLink(linkel){
-    var accountid=$(linkel).getAttribute('cu_id');
-    var accountname=$(linkel).innerHTML;
-    document.EditView.account_name.value=accountname;
-    document.EditView.account_id.value=accountid;
-    $('SelCustomer_popview').hide();
-    if($(document.EditView.contact_id)){
+    var accountid=$(linkel).attr('cu_id');
+    var accountname=$(linkel).html();
+    $("input[name=account_name]").val(accountname);
+    $("input[name=account_id]").val(accountid);
+    $('#SelCustomer_popview').hide();
+    if($("#contact_id")){
         updateContactOpts();
     }
 }
 
 function updateContactOpts(){
     var obj={}
-    if(!$(document.EditView.contact_id)) return;
-    obj.accountid=document.EditView.account_id.value;
-    obj.contactid=$F(document.EditView.contact_id);
-    var querystr=$H(obj).toQueryString();
-    $("status").style.display="block";
-    new Ajax.Request(
-              'index.php',
-            {queue: {position: 'end', scope: 'command'},
-                method: 'post',
-                postBody:"module=Contacts&action=ContactsAjax&file=getContactOptions&"+querystr,
-                onComplete: function(response) {
-                        $("status").style.display="none";
-//                            var respobj=JSON.parse(response.responseText);
-                        $(document.EditView.contact_id).update(response.responseText);
-                        
-                        
-                         
-                }
-         }
-    );
+    if(!$("input[name=contact_id]")) return;
+    obj.accountid=$("input[name=account_id]").val();
+    obj.contactid=$("#contact_id").val();
+    var querystr=$.param(obj); 
+    $("status").css('display','block');
+    $.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:'index.php?module=Contacts&action=ContactsAjax&file=getContactOptions&'+querystr,
+		   success: function(msg){   
+		   	 $("#status").css("display","none");
+	            $('#SelCustomer_popview').html(msg);
+	            $('#SelCustomer_popview').show(); 
+
+	            $('#SelCustomer_popview').css({ 
+					position: 'absolute', 
+					top: $('#account_search_val').offset().top + 23 + 'px', 
+					left: $('#account_search_val').offset().left + 'px' 
+				}); 
+		   }  
+	});
+    // new Ajax.Request(
+    //           'index.php',
+    //         {queue: {position: 'end', scope: 'command'},
+    //             method: 'post',
+    //             postBody:"module=Contacts&action=ContactsAjax&file=getContactOptions&"+querystr,
+    //             onComplete: function(response) {
+    //                     $("status").style.display="none";
+    //                     $('#contact_id').html(msg);
+    //             }
+    //      }
+    // );
 }
 
 
@@ -4724,33 +4909,31 @@ function positionCalendar(inputObj)
 function initCalendar()
 {
 	if(MSIE){
-		iframeObj = document.createElement('IFRAME');
-		iframeObj.style.filter = 'alpha(opacity=0)';
-		iframeObj.style.position = 'absolute';
-		iframeObj.border='0px';
-		iframeObj.style.border = '0px';
-		iframeObj.style.backgroundColor = '#FF0000';
+		iframeObj = $("<iframe style='z-index:999999'></iframe>").appendTo(document.body);
+		iframeObj.css('filter','alpha(opacity=0)');
+		iframeObj.css('position','absolute'); 
+		iframeObj.attr('border','0');
+		iframeObj.css('border','0px'); 
+		iframeObj.css('backgroundColor','#FF0000'); 
 		//// fix for EI frame problem on time dropdowns 09/30/2006
-		iframeObj2 = document.createElement('IFRAME');
-		iframeObj2.style.position = 'absolute';
-		iframeObj2.border='0px';
-		iframeObj2.style.border = '0px';
-		iframeObj2.style.height = '1px';
-		iframeObj2.style.width = '1px';
+		iframeObj2 = $("<iframe style='z-index:999999'></iframe>").appendTo(document.body);
+		iframeObj2.css('position','absolute'); 
+		iframeObj2.css('border','0px'); 
+		iframeObj2.attr('border','0');
+		iframeObj2.css('height','1px'); 
+		iframeObj2.css('width','1px'); 
+
 		//// fix for EI frame problem on time dropdowns 09/30/2006
 		// Added fixed for HTTPS
-		iframeObj2.src = 'blank.html';
-		iframeObj.src = 'blank.html';
-		document.body.appendChild(iframeObj2);  // gfb move this down AFTER the .src is set
-		document.body.appendChild(iframeObj);
+		iframeObj2.attr("src","blank.html");
+		iframeObj.attr("src","blank.html");;
 	}
 
-	calendarDiv = document.createElement('DIV');
-	calendarDiv.id = 'calendarDiv';
-	calendarDiv.style.zIndex = 1000;
+	calendarDiv = $("<div/>").appendTo(document.body);
+	calendarDiv.attr('id','calendarDiv');
+	calendarDiv.css('zIndex','1000');
 	slideCalendarSelectBox();
 
-	document.body.appendChild(calendarDiv);
 	writeBottomBar();
 	writeTopBar();
 
@@ -4792,8 +4975,8 @@ function calendarSortItems(a,b)
 }
 
 
-function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput)
-{
+function displayCalendar_old(inputFieldID,buttonObj,displayTime,timeInput)
+{	
     var format = "yyyy-mm-dd";
 	if(displayTime) {
 		calendarDisplayTime=true;
@@ -4802,13 +4985,12 @@ function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput)
 	} else { 
 		calendarDisplayTime = false;
 	}
-	var inputField = document.getElementById(inputFieldID);
+	var inputField = $("#"+inputFieldID);
 	
-	
-	if(inputField.value.length>6){ //dates must have at least 6 digits...
-       if(!inputField.value.match(/^[0-9]*?$/gi)){
+	if(inputField.val().length>6){ //dates must have at least 6 digits...
+       if(!inputField.val().match(/^[0-9]*?$/gi)){
        	
-			var items = inputField.value.split(/[^0-9]/gi);
+			var items = inputField.val().split(/[^0-9]/gi);
 			var positionArray = new Object();
 			positionArray.m = format.indexOf('mm');
 			if(positionArray.m==-1)positionArray.m = format.indexOf('m');
@@ -4825,21 +5007,21 @@ function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput)
 			var propertyLength = [4,2,2,2,2];
 			for(var i=0;i<elements.length;i++) {
 				if(positionArray[elements[i]]>=0) {
-					window[properties[i]] = inputField.value.substr(positionArray[elements[i]],propertyLength[i])/1;
+					window[properties[i]] = inputField.val().substr(positionArray[elements[i]],propertyLength[i])/1;
 				}					
 			}			
 			currentMonth--;
 		}else{
 			var monthPos = format.indexOf('mm');
-			currentMonth = inputField.value.substr(monthPos,2)/1 -1;
+			currentMonth = inputField.val().substr(monthPos,2)/1 -1;
 			var yearPos = format.indexOf('yyyy');
-			currentYear = inputField.value.substr(yearPos,4);
+			currentYear = inputField.val().substr(yearPos,4);
 			var dayPos = format.indexOf('dd');
-			tmpDay = inputField.value.substr(dayPos,2);
+			tmpDay = inputField.val().substr(dayPos,2);
 
 			var hourPos = format.indexOf('hh');
 			if(hourPos>=0){
-				tmpHour = inputField.value.substr(hourPos,2);
+				tmpHour = inputField.val().substr(hourPos,2);
 				currentHour = tmpHour;
 				if(currentHour.length==1) currentHour = '0'
 			}else{
@@ -4847,7 +5029,7 @@ function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput)
 			}
 			var minutePos = format.indexOf('ii');
 			if(minutePos>=0){
-				tmpMinute = inputField.value.substr(minutePos,2);
+				tmpMinute = inputField.val().substr(minutePos,2);
 				currentMinute = tmpMinute;
 			}else{
 				currentMinute = '00';
@@ -4864,12 +5046,10 @@ function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput)
 
 	inputYear = currentYear;
 	inputMonth = currentMonth;
-
-
 	if(!calendarDiv){
 		initCalendar();
 	}else{
-		if(calendarDiv.style.display=='block'){
+		if(calendarDiv.css('display') =='block'){
 			closeCalendar();
 			return false;
 		}
@@ -4881,15 +5061,15 @@ function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput)
 	returnFormat = format;
 	returnDateTo = inputField;
 	positionCalendar(buttonObj);
-	calendarDiv.style.visibility = 'visible';
-	calendarDiv.style.display = 'block';
+	calendarDiv.css('visibility','visible');
+	calendarDiv.css('display','block');
 	if(iframeObj){
-		iframeObj.style.display = '';
-		iframeObj.style.height = '140px';
-		iframeObj.style.width = '195px';
-				iframeObj2.style.display = '';
-		iframeObj2.style.height = '140px';
-		iframeObj2.style.width = '195px';
+		iframeObj.css('display','');
+		iframeObj.css('height','140px');
+		iframeObj.css('width','195px');
+		iframeObj2.css('display','');
+		iframeObj2.css('height','140px');
+		iframeObj2.css('width','195px');
 	}
 
 	setTimeProperties();
@@ -4967,7 +5147,7 @@ function goback(){
 }
 
 
-function openAdvanceDialogs(module){
+function openAdvanceDialogs_old(module){
 var winsa = null;
 if(!winsa){
 	winsa = new Window({maximizable:false,minimizable:false,className:"mac_os_x", title:"高级搜索",width:"600px",height:"360px",destroyOnClose: false, recenterAuto:false});
@@ -4997,6 +5177,19 @@ if(width!=0&&height!=0){
 }, 0.5);
 }
 }
+function openAdvanceDialogs(module){
+	$("#status").prop("display","inline");
+	$.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:"index.php?module=Relsettings&action=RelsettingsAjax&file=AdvanceSearch&modulename="+module,
+		   success: function(msg){   
+		   	 $("#status").prop("display","none");
+		   	 $("#gaojisearch").html(msg); 
+		   }  
+	}); 
+	$('#gaojisearch').modal('show');
+}
 function showhide()
 {
 	if(winsa){
@@ -5021,3 +5214,25 @@ function winhide(){
 /***********************************
 calendar end on 2011-12-05
 */
+
+
+
+
+function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput){ alert(inputFieldID);
+	$('#'+inputFieldID).datepicker();
+}
+
+function BrowerAcct(popuptype){
+
+	$("#status").prop("display","inline");
+	$.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:"index.php?module=Accounts&action=Popup&popuptype="+popuptype+"&form=TasksEditView&form_submit=false",
+		   success: function(msg){   
+		   	 $("#status").prop("display","none");
+		   	 $("#searchallacct").html(msg); 
+		   }  
+	}); 
+	$('#searchallacct').modal('show');
+}

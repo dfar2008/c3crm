@@ -48,7 +48,7 @@ function getviewId()
 	}
 	return viewid;
 }
-function massDelete(module)
+function massDelete_old(module)
 {       
 		var select_options  =  document.getElementsByName('selected_id');
 		var x = select_options.length;
@@ -78,7 +78,7 @@ function massDelete(module)
 		if(confirm(alert_arr.DELETE))
 		{
 
-			$("status").style.display="inline";
+			$("#status").prop("display","inline");
 			new Ajax.Request(
           	  	      'index.php',
 			      	{queue: {position: 'end', scope: 'command'},
@@ -100,6 +100,8 @@ function massDelete(module)
 		}
 
 }
+
+
 
 function massExport(module)
 {
@@ -137,7 +139,7 @@ function massExport(module)
 
 function showNewCustomView(selectView,module)
 {
-	$("status").style.display="inline";
+	$("#status").prop("display","inline");
 	var oldSelectView = document.massdelete.viewname.value;
 	switchClass("view_" + oldSelectView,"off");
 	document.massdelete.viewname.value = selectView;
@@ -170,7 +172,7 @@ function showDefaultCustomView(selectView,module)
 
 function showDefaultViewScope(viewscope,module)
 {
-	$("status").style.display="inline";
+	$("#status").prop("display","inline");
 	var viewscopeValue = viewscope.options[viewscope.options.selectedIndex].value;
 	var viewName =$('viewname').value;
 	new Ajax.Request(
@@ -201,31 +203,22 @@ function showCalendarViewScope(viewscope,module)
 }
 
 
-function getListViewEntries_js(module,url)
+function getListViewEntries_js(module,purl)
 {	
-	$("status").style.display="inline";
-	if($('search_url').value!='')
-                urlstring = $('search_url').value;
+	$("#status").prop("display","inline");
+	if($('#search_url').val() !='')
+                urlstring = $('#search_url').val() ;
 	else
 		urlstring = ''; 
-	
-        new Ajax.Request(
-        	'index.php',
-                {queue: {position: 'end', scope: 'command'},
-                	method: 'post',
-                        postBody:"module="+module+"&action="+module+"Ajax&file=ListView&ajax=true&"+url+urlstring,
-			onComplete: function(response) {
-                        	$("status").style.display="none";
-                                result = response.responseText.split('&#&#&#');
-                                $("ListViewContents").innerHTML= result[2];
-								//window.location.reload();
-                                if(result[1] != '')
-                                        alert(result[1]);
-                                result[2].evalScripts();
-								
-                  	}
-                }
-        );
+	$.ajax({  
+               type: "GET",  
+               //dataType:"Text",   
+               url:"index.php?module="+module+"&action="+module+"Ajax&file=ListView&ajax=true&"+purl+urlstring,  
+               success: function(msg){   
+               	 $("#ListViewContents").html(msg); 
+               		$("#status").prop("display","none");
+               }  
+        });     
 }
 
 function getListViewWithPageNo(module,pageElement)
@@ -264,7 +257,7 @@ function getColumnCollectInf(module,url)
         );
 }
 // QuickEdit Feature
-function quick_edit(obj,divid,module) {
+function quick_edit_old(obj,divid,module) {
 	var select_options  =  document.getElementsByName('selected_id');
 	var x = select_options.length;
 	idstring = "";
@@ -292,8 +285,8 @@ function quick_edit(obj,divid,module) {
 	}
 
 }
-function quick_edit_formload(idstring,module) {
-	$("status").style.display="inline";
+function quick_edit_formload_old(idstring,module) {
+	$("#status").prop("display","inline");
 	new Ajax.Request(
 		'index.php',
 		{queue: {position: 'end', scope: 'command'},
@@ -328,7 +321,7 @@ function quick_edit_formload(idstring,module) {
 		}
 	);
 }
-function quick_edit_fieldchange(selectBox) {
+function quick_edit_fieldchange_old(selectBox) {
 	var oldSelectedIndex = selectBox.oldSelectedIndex;
 	var selectedIndex = selectBox.selectedIndex;
 
@@ -344,7 +337,7 @@ function quick_edit_fieldchange(selectBox) {
 
 	selectBox.oldSelectedIndex = selectedIndex;
 }
-function ajax_quick_edit() {
+function ajax_quick_edit_old() {
 	$("status").style.display = "inline";
 
 	//var quickeditform = $("quickedit_form");
@@ -385,7 +378,6 @@ function ajax_quick_edit() {
 		$("status").style.display = "none";
 		return false;
 	}
-	quickeditvalue = removeHTMLTag(quickeditvalue);
 
 	var urlstring =
 		"module="+encodeURIComponent(module)+"&action="+encodeURIComponent(module+'Ajax')+
@@ -416,3 +408,236 @@ function ajax_quick_edit() {
 }
 
 // END
+
+
+
+function massDelete(module)
+{       
+		var viewid =getviewId();
+		idstring = "";
+
+		$("input[name=selected_id]").each(function(){ 
+		   if($(this).prop("checked")==true){
+		   	 idstring += $(this).prop("value")+";";
+		   }
+		})
+		
+		if (idstring  != '')
+        {
+            document.getElementById('idlist').value=idstring;
+        }
+        else
+        {
+            alert(alert_arr.SELECT);
+            return false;
+        } 
+		
+		if(confirm(alert_arr.DELETE))
+		{
+
+			$("#status").prop("display","inline");
+
+			$.ajax({  
+               type: "GET",  
+               //dataType:"Text",   
+               url:"index.php?module=Users&action=massdelete&return_module="+module+"&viewname="+viewid+"&idlist="+idstring, 
+               success: function(msg){   
+               	 $("#status").prop("display","none");
+               	 $("#ListViewContents").html(msg); 
+               }  
+      		});   
+		}
+		else
+		{
+			return false;
+		}
+}
+
+function quick_edit(obj,divid,module) {
+	idstring = "";
+
+	$("input[name=selected_id]").each(function(){ 
+	   if($(this).prop("checked")==true){
+	   	 idstring += $(this).prop("value")+";";
+	   }
+	})
+
+	if (idstring  != '')
+	{
+		document.getElementById('idlist').value=idstring;
+
+		quick_edit_formload(idstring,module);
+		
+		$('#quickedit_form_div').modal('show');
+	}
+	else
+	{
+		alert(alert_arr.SELECT);
+		return false;
+	} 
+}
+
+function quick_edit_formload(idstring,module) {
+	$("#status").prop("display","inline");
+	$.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:"index.php?module="+encodeURIComponent(module)+"&action="+encodeURIComponent(module+'Ajax')+"&file=QuickEdit&mode=ajax",
+		   success: function(msg){   
+		   	 $("#status").prop("display","none");
+		   	 $("#quickedit_form_div").html(msg); 
+		   	 $("input[name=quickedit_recordids]").val(idstring);
+		   	 $("input[name=quickedit_module]").val(module);
+		   }  
+	});   
+}
+function quick_edit_fieldchange(selectBox) {
+	var oldSelectedIndex = selectBox.oldSelectedIndex;
+	var selectedIndex = selectBox.selectedIndex;
+
+	if($('#quickedit_field'+oldSelectedIndex)) $('#quickedit_field'+oldSelectedIndex).css('display','none');
+	if($('#quickedit_field'+selectedIndex)) $('#quickedit_field'+selectedIndex).css('display','block');
+
+	selectBox.oldSelectedIndex = selectedIndex;
+}
+
+function ajax_quick_edit() {
+
+	$("#status").css('display','inline');
+
+	var module = $("input[name=quickedit_module]").val();
+	var idstring = $("input[name=quickedit_recordids]").val();
+
+	var viewid = getviewId();
+	var searchurl = $('#search_url').val();
+	
+	var quickeditfield = $("select[name=quickedit_field]").val();
+	var quickeditvalue = "";
+
+	quickeditvalue = $('#quickedit_value_'+quickeditfield).val(); 
+	
+	if(!quickEditFormValidate(quickeditfield,quick_fieldname,quick_fieldlabel,quick_fielddatatype)) {
+		$("#status").css('display','none');
+		return false;
+	}
+
+	var urlstring ="index.php?"+
+		"module="+encodeURIComponent(module)+"&action="+encodeURIComponent(module+'Ajax')+
+		"&return_module="+encodeURIComponent(module)+
+		"&mode=ajax&file=QuickEditSave&viewname=" + viewid +
+		"&quickedit_field=" + encodeURIComponent(quickeditfield) +
+		"&quickedit_value=" + encodeURIComponent(quickeditvalue) +
+	   	"&idlist=" + idstring + searchurl;
+
+	//fninvsh("quickedit");
+	$('#quickedit_form_div').modal('hide');
+	
+	$.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:urlstring,
+		   success: function(msg){   
+		   	 $("#status").css("display","none");
+		   	 $("#ListViewContents").html(msg); 
+		   }  
+	});
+}
+
+
+function clearSearchResult(module,searchtype){
+    $("#status").css('display','inline');
+
+	if(searchtype =='advSearch'){
+		$('#gaojisearch').modal('hide');
+	}
+	if(searchtype =='BasicSearch'){
+		$("input[name=search_text]").val('');
+		$("select[name=search_field]").val('');
+	}
+	$.ajax({  
+		   type: "GET",  
+		   //dataType:"Text",   
+		   url:'index.php?module='+module+'&action='+module+'Ajax&ajax=true&file=index&clearquery=true',
+		   success: function(msg){   
+		   	 $("#status").css("display","none");
+		   	 $("#ListViewContents").html(msg); 
+		   }  
+	});
+}
+
+
+function setLeftAssort(module){
+	$.ajax({  
+       type: "GET",  
+       //dataType:"Text",   
+       url:'index.php?module=Home&action=HomeAjax&file=sortviewBindAjax&sortview=view_assort&modname='+module,
+       success: function(rest){ 
+          if(rest == "error"){
+            right_column_assort_d = "none";         
+          }else{
+            var treedivobj = "right_column_assort";
+            var treeproj = eval('('+ rest +')')?eval('('+ rest +')'):JSON.parse(rest);
+            right_column_assort_d = new dTree('right_column_assort_d');       
+            var urlstring = '';var url='';
+            for(var i=0;i<treeproj.length;i++){
+               right_column_assort_d.add(treeproj[i].treeid,treeproj[i].treeparent,treeproj[i].treename,
+                  "javascript:sortviewtree_click('"+module+"','"+treeproj[i].click+"');",
+                    treeproj[i].treename,"_self");  
+            }
+          }
+          document.getElementById(treedivobj).innerHTML = right_column_assort_d;
+       }  
+    });
+}
+function setLeftArea(module){
+	$.ajax({  
+       type: "GET",  
+       //dataType:"Text",   
+       url:'index.php?module=Home&action=HomeAjax&file=sortviewBindAjax&sortview=view_area&modname='+module,
+       success: function(rest){ 
+          if(rest == "error"){
+            right_column_area_d = "none";         
+          }else{
+            var treedivobj = "right_column_area";
+            var treeproj = eval('('+ rest +')')?eval('('+ rest +')'):JSON.parse(rest);
+            right_column_area_d = new dTree('right_column_area_d');       
+            var urlstring = '';var url='';
+            for(var i=0;i<treeproj.length;i++){
+               right_column_area_d.add(treeproj[i].treeid,treeproj[i].treeparent,treeproj[i].treename,
+                  "javascript:sortviewtree_click('"+module+"','"+treeproj[i].click+"');",
+                    treeproj[i].treename,"_self");  
+            }
+   // 			for(var i=0;i<treeproj.length;i++){
+			// 		var currObj = "user_"+treeproj[i].treeid;
+			// 		var treeid = treeproj[i].treeid;
+			// 		var parenttreeproj = treeproj[i].treeparent;		
+					
+			// 			right_column_area_d.add(treeproj[i].treeid,treeproj[i].treeparent,treeproj[i].treename,
+			// 				"javascript:sortviewtree_click('"+module+"','"+treeproj[i].click+"');",
+			// 					treeproj[i].treename,"_self");
+			// }
+          }
+          document.getElementById(treedivobj).innerHTML = right_column_area_d;
+       }  
+    });
+}
+
+
+
+function sortviewtree_click(module,urlstring){
+  if(urlstring != ''){
+    urlstring += '&searchtype=BasicSearch&type=others&';
+    var findurlstr = $("#search_url").val();
+    urlstring = findurlstr + '&' + urlstring ;
+    $("#status").css('display','inline');
+    $.ajax({  
+       type: "GET",  
+       //dataType:"Text",   
+       url:'index.php?module='+module+'&action='+module+'Ajax&ajax=true&+'+urlstring+'query=true&file=Popup',
+       success: function(msg){   
+         $("#status").css('display','none');
+         $("#ListViewContents").html(msg);
+       }
+     });
+  }
+}

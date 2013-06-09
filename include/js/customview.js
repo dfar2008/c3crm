@@ -38,10 +38,9 @@ function splitValues() {
 
 function validate() {
 	var nummaxlength = 255;
-    var fieldtype = document.getElementById('selectedfieldtype').value;
+        var fieldtype = document.getElementById('selectedfieldtype').value;
 	var mode = document.getElementById('cfedit_mode').value;
-	var fieldtype = "text";
-     if(fieldtype == "" && mode != 'edit')
+        if(fieldtype == "" && mode != 'edit')
 	{
 		alert(alert_arr.FIELD_TYPE_NOT_SELECTED);
 		return false;
@@ -123,11 +122,8 @@ var picklistObj=getObj("fldPickList")
                 } else return false
         }
 }
-//changed by xiaoyang on 2012-9-18
-//var fieldValueArr=new Array('Text','Number','Percent','Currency','Date','Email','Phone','Picklist','URL','Checkbox','TextArea','MultiSelectCombo','QQ','Msn','Trade','Yahoo','Skype','Account','Contact');
-//var fieldTypeArr=new Array('text','number','percent','currency','date','email','phone','picklist','url','checkbox','textarea','multiselectcombo','qq','msn','trade','yahoo','skype','account','contact');
-var fieldValueArr=new Array('Text','Number','Percent','Date','Email','Phone','Picklist','URL','Checkbox','TextArea','MultiSelectCombo','QQ','Msn','Trade','Yahoo','Skype','Account','Contact');
-var fieldTypeArr=new Array('text','number','percent','date','email','phone','picklist','url','checkbox','textarea','multiselectcombo','qq','msn','trade','yahoo','skype','account','contact');
+var fieldValueArr=new Array('Text','Number','Percent','Currency','Date','Email','Phone','Picklist','URL','Checkbox','TextArea','MultiSelectCombo','QQ','Msn','Trade','Yahoo','Skype','Account','Contact');
+var fieldTypeArr=new Array('text','number','percent','currency','date','email','phone','picklist','url','checkbox','textarea','multiselectcombo','qq','msn','trade','yahoo','skype','account','contact');
 var currFieldIdx=0,totFieldType;
 var focusFieldType;
 
@@ -172,8 +168,8 @@ function setVisible() {
 }
 
 function selFieldType(id,scrollLayer,bool) {
-	currFieldIdx=id
-	var type=fieldTypeArr[id]
+        currFieldIdx=id
+        var type=fieldTypeArr[id]
 	var lengthLayer=getObj("lengthdetails");
 	var decimalLayer=getObj("decimaldetails");
 	var pickListLayer=getObj("picklist");
@@ -194,7 +190,9 @@ function selFieldType(id,scrollLayer,bool) {
                 decimalLayer.style.visibility="hidden"
                 pickListLayer.style.visibility="visible"
         }
-		getObj("fieldType").value = fieldValueArr[id];
+
+
+        parent.getObj("fieldType").value = fieldValueArr[id];
 }
 
 function srchFieldType(ev) {

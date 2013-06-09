@@ -234,9 +234,9 @@ $app_strings = array (
   'Sales Order' => '订单',
   'LBL_LIST_OF' => '之',
   'NTC_DELETE_CONFIRMATION'=>'确认删除?',
-
-  'LBL_VIEW' => '视图:',
-  'LBL_HOME_COUNT' => '数量'
+  'LBL_SHOWING'=>'显示 ',
+  'Category' =>'分类',
+  'LBL_NONE_INCLUDED'=>'无相关信息'
 
 );
 $app_list_strings = array (

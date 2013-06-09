@@ -297,9 +297,9 @@ function getListViewEntries($focus, $module,$list_result,$navigation_array,$rela
 			$edit_link = getListViewEditLink($module,$entity_id,$relatedlist,$varreturnset,$list_result,$list_result_count);
 			$del_link = getListViewDeleteLink($module,$entity_id,$relatedlist,$varreturnset);
 		
-			$links_info .= "<a href=\"$edit_link\"> &nbsp;".$app_strings["LNK_EDIT"]." </a> ";
+			$links_info .= "<a href=\"$edit_link\" title=\"".$app_strings["LNK_EDIT"]."\"> &nbsp;<i class=\"cus-pencil\"></i> </a> ";//".$app_strings["LNK_EDIT"]."
 			if($del_link != '')
-			$links_info .=	" | <a href='javascript:confirmdelete(\"$del_link\")'> ".$app_strings["LNK_DELETE"]." </a>";
+			$links_info .=	" | <a href='javascript:confirmdelete(\"$del_link\")'> <img src=\"themes/bootcss/img/del.gif\" border=0 title=\"".$app_strings["LNK_DELETE"]."\"> </a>";//".."
 			$list_header[] = $links_info;
 		}
 		
@@ -738,7 +738,7 @@ function getListQuery($module,$where='',$isSearchAll=false)
 {	
 	global $log;
 	$log->debug("Entering getListQuery() method ...");
-	$tab_id = getTabid($module);
+		$tab_id = getTabid($module);
 		if($module == "Accounts")
 		{	
 			//Query modified to sort by assigned to
@@ -783,6 +783,7 @@ function getListQuery($module,$where='',$isSearchAll=false)
 				WHERE ec_salesorder.deleted = 0";
 			
 		}
+
 		elseif($module == "Users")
 		{
 			$query = "select id,user_name,roleid,first_name,last_name,email1,phone_mobile,phone_work,is_admin,status from ec_users inner join ec_user2role on ec_user2role.userid=ec_users.id where deleted=0 ";
@@ -835,58 +836,9 @@ function getTableHeaderNavigation($navigation_array, $url_qry,$module='',$action
 	global $app_strings,$list_max_entries_per_page;
 	$theme_path="themes/".$theme."/";
 	$image_path=$theme_path."images/";
-	//$output = '<td style="padding-right:20px">';
 	$output = '';
-
-	/*    //commented due to usablity conflict -- Philip
-	$output .= '<a href="index.php?module='.$module.'&action='.$action_val.$url_qry.'&start=1&viewname='.$viewid.'&allflag='.$navigation_array['allflag'].'" >'.$navigation_array['allflag'].'</a>&nbsp;';
-	*/
-	if(($navigation_array['prev']) != 0)
-	{
-		$output .= '<a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start=1\');" title="'.$app_strings['LBL_FIRST'].'"><img src="'.$image_path.'start.gif" border="0" align="absmiddle"></a>&nbsp;';
-		$output .= '<a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$navigation_array['prev'].'\');" title="'.$app_strings['LBL_PREVIOUS'].'"><img src="'.$image_path.'previous.gif" border="0" align="absmiddle"></a>&nbsp;';
-	}
-	else
-	{
-		$output .= '<img src="'.$image_path.'start_disabled.gif" border="0" align="absmiddle" title="'.$app_strings['LBL_FIRST'].'">&nbsp;';
-		$output .= '<img src="'.$image_path.'previous_disabled.gif" border="0" align="absmiddle" title="'.$app_strings['LBL_PREVIOUS'].'">&nbsp;';
-	}
-	for ($i=$navigation_array['first'];$i<=$navigation_array['end'];$i++){
-		if ($navigation_array['current']==$i){
-			$output .='<b>'.$i.'</b>&nbsp;';
-		}
-		else{
-			$output .= '<a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$i.'\');" >'.$i.'</a>&nbsp;';
-		}
-	}
-	if(($navigation_array['next']) !=0)
-	{
-		$output .= '<a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$navigation_array['next'].'\');" title="'.$app_strings['LBL_NEXT'].'"><img src="'.$image_path.'next.gif" border="0" align="absmiddle"></a>&nbsp;';
-		$output .= '<a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$navigation_array['verylast'].'\');" title="'.$app_strings['LBL_LAST'].'"><img src="'.$image_path.'end.gif" border="0" align="absmiddle"></a>&nbsp;';
-	}
-	else
-	{
-		$output .= '<img src="'.$image_path.'next_disabled.gif" border="0" align="absmiddle" title="'.$app_strings['LBL_NEXT'].'">&nbsp;';
-		$output .= '<img src="'.$image_path.'end_disabled.gif" border="0" align="absmiddle" title="'.$app_strings['LBL_LAST'].'">&nbsp;';
-	}
-	/*
-	$output .= '&nbsp;<select name="listviewpage" id="listviewpage" class="small" onchange="getListViewWithPageNo(\''.$module.'\',this)">';
-	for ($i=1;$i<=$navigation_array['verylast'];$i++){
-		if ($navigation_array['current'] != $i){
-			$output .= '<option value="'.$i.'">'.$app_strings['LBL_PAGENO'].$i.$app_strings['LBL_PAGE'].'</option>';
-		} else {
-			$output .= '<option selected value="'.$i.'">'.$app_strings['LBL_PAGENO'].$i.$app_strings['LBL_PAGE'].'</option>';
-		}
-	}
-	$output .= '</select>';
-	*/
-	if($navigation_array['first'] == '') {
-		//$output = '<td style="padding-right:20px">';
-		$output = '';
-	}
-	//when isShow , show pagesize dropdown list on list page on 2010-11-25
 	if($isShow) {
-		$output .= '&nbsp;&nbsp;&nbsp;&nbsp;'.$app_strings['LBL_PAGESIZE'].'&nbsp;<select name="listpagesize" id="listpagesize" class="small" onchange="getListViewWithPageSize(\''.$module.'\',this)">';
+		$output .= '<select name="listpagesize" id="listpagesize" class="pull-right" style="height:20px;width:55px;" onchange="getListViewWithPageSize(\''.$module.'\',this)">';
 		$pagesize_array = array(10,15,20,30,40,50,100,200);
 		foreach ($pagesize_array as $pagesize) {
 			if ($pagesize != $list_max_entries_per_page){
@@ -896,7 +848,60 @@ function getTableHeaderNavigation($navigation_array, $url_qry,$module='',$action
 			}
 		}
 		$output .= '</select>';
+		$output .= '<small class="pull-right" style="color:#999999;">&nbsp;&nbsp;'.$app_strings['LBL_PAGESIZE'].'&nbsp;&nbsp;</small>';
 	}
+
+	
+	if($navigation_array['first'] != '') {
+		//$output = '<td style="padding-right:20px">';
+		$output .= '<ul class="pull-right">';
+
+		/*    //commented due to usablity conflict -- Philip
+		$output .= '<a href="index.php?module='.$module.'&action='.$action_val.$url_qry.'&start=1&viewname='.$viewid.'&allflag='.$navigation_array['allflag'].'" >'.$navigation_array['allflag'].'</a>&nbsp;';
+		*/
+		if(($navigation_array['prev']) != 0)
+		{
+			$output .= '<li><a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start=1\');" title="'.$app_strings['LBL_FIRST'].'"><<</a></li>';
+			$output .= '<li><a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$navigation_array['prev'].'\');" title="'.$app_strings['LBL_PREVIOUS'].'"><</a></li>';
+		}
+		else
+		{
+			$output .= '<li><a href="javascript:void(0);" style="font-size:14px;"><<</a></li>';
+			$output .= '<li><a href="javascript:void(0);" style="font-size:14px;"><</a></li>';
+		}
+		for ($i=$navigation_array['first'];$i<=$navigation_array['end'];$i++){
+			if ($navigation_array['current']==$i){
+				$output .='<li><a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$i.'\');" ><b><font color=red>'.$i.'</font></b></a></li>';
+			}
+			else{
+				$output .= '<li><a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$i.'\');" >'.$i.'</a></li>';
+			}
+		}
+		if(($navigation_array['next']) !=0)
+		{
+			$output .= '<li><a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$navigation_array['next'].'\');" title="'.$app_strings['LBL_NEXT'].'">></a></li>';
+			$output .= '<li><a href="javascript:;" onClick="getListViewEntries_js(\''.$module.'\',\'start='.$navigation_array['verylast'].'\');" title="'.$app_strings['LBL_LAST'].'">>></a></li>';
+		}
+		else
+		{
+			$output .= '<li><a href="javascript:void(0);" style="font-size:14px;">></a></li>';
+			$output .= '<li><a href="javascript:void(0);" style="font-size:14px;">>></a></li>';
+		}
+		/*
+		$output .= '&nbsp;<select name="listviewpage" id="listviewpage" class="small" onchange="getListViewWithPageNo(\''.$module.'\',this)">';
+		for ($i=1;$i<=$navigation_array['verylast'];$i++){
+			if ($navigation_array['current'] != $i){
+				$output .= '<option value="'.$i.'">'.$app_strings['LBL_PAGENO'].$i.$app_strings['LBL_PAGE'].'</option>';
+			} else {
+				$output .= '<option selected value="'.$i.'">'.$app_strings['LBL_PAGENO'].$i.$app_strings['LBL_PAGE'].'</option>';
+			}
+		}
+		$output .= '</select>';
+		*/
+		$output .= '</ul>';
+	}
+	//when isShow , show pagesize dropdown list on list page on 2010-11-25
+	
 	//$output .= '</td>';
 	$log->debug("Exiting getTableHeaderNavigation method ...");
 
