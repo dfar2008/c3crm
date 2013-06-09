@@ -31,6 +31,14 @@ if(isset($_REQUEST['isDuplicate']) && $_REQUEST['isDuplicate'] == 'true')
 }
 $theme_path="themes/".$theme."/";
 $image_path=$theme_path."images/";
+
+
+$qunfatmpname = $focus->column_fields['qunfatmpname'];
+$description = $focus->column_fields['description'];
+$smarty->assign("qunfatmpname",$qunfatmpname);
+$smarty->assign("description",$description);
+
+
 $disp_view = getView($focus->mode);
 if($disp_view == 'edit_view')
 	//$smarty->assign("BLOCKS",getBlocks($currentModule,$disp_view,$focus->mode,$focus->column_fields));

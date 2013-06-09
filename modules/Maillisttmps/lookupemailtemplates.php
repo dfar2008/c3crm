@@ -1,7 +1,6 @@
 <?php
 
 
-
 require_once('include/database/PearDatabase.php');
 require_once('include/utils/utils.php');
 
@@ -12,17 +11,17 @@ global $current_user;
 
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en">
-<head>
-  <title><?php echo $mod_strings['LBL_LIST_FORM_TITLE']; ?></title>
-  <link type="text/css" rel="stylesheet" href="<?php echo $theme_path ?>/style.css"/>
-</head>
-<body>
-            <form action="index.php">
-	    
-             <input type="hidden" name="module" value="Users">
-		<table style="background-color: rgb(204, 204, 204);" class="small" border="0" cellpadding="5" cellspacing="1" width="100%">
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h3>选择 邮件模板</h3>
+</div>
+<div class="modal-body">
+
+  <form action="index.php">
+
+   <input type="hidden" name="module" value="Users">
+
+		<table class="table table-bordered table-hover table-condensed table-striped">
 		<tr align="left">
 		<th width="35%" class="lvtCol"><b><?php echo $mod_strings['Maillisttmp Name']; ?></b></th>
                 <th width="65%" class="lvtCol"><b><?php echo $mod_strings['Description']; ?></b></td>
@@ -43,11 +42,35 @@ foreach($result as $temprow)
 }
 ?>
 </table>
-</body>
+</div>
+<div id="returnMsg"></div>
 <script>
 function submittemplate(templateid)
 {
-	window.document.location.href = 'index.php?module=Maillists&action=MaillistsAjax&file=TemplateMerge&templateid='+templateid;
+  var url = 'index.php?module=Maillists&action=MaillistsAjax&file=TemplateMerge&templateid='+templateid;
+  $("#status").prop("display","inline");
+  $.ajax({  
+       type: "GET",  
+       //dataType:"Text",   
+       url:url,
+       success: function(msg){   
+         $("#status").prop("display","none");
+         $("#returnMsg").html(msg); 
+
+        subject =  document.frmrepstr.subject.value;
+        repstr =  document.frmrepstr.repstr.value;
+
+        $("#subject").val(subject);
+        if(KE != undefined) {
+          KE.html("mailcontent",repstr);
+        } else {
+          $('#mailcontent').val(repstr);
+        }
+
+       }  
+  }); 
+  $('#selecttmpdiv').modal('hide');
+
 }
 </script>
 </html>
