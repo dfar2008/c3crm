@@ -54,6 +54,7 @@ $delimiter = ',';
 $max_lines = 3;
 
 $has_header = 0;
+
 if ( isset($_REQUEST['has_header']))
 {
 	$has_header = 1;

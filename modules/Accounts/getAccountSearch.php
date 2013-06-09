@@ -32,7 +32,7 @@ foreach($result as $row)
   <div id="AjaxPopView_Title">查询条件:<?php echo $searchval;?></div>
   </td>
   <td valign="middle" >
-  <a id="popviewclose" href="javascript:;" onclick="$('SelCustomer_popview').hide();">
+  <a id="popviewclose" href="javascript:;" onclick="$('#SelCustomer_popview').hide();">
   <img border="0" src="themes/softed/images/close.gif"></a></td></tr>
   <tr bgcolor="white"><td style="line-height: 15pt;" colspan="2">
   <div id="AjaxPopView_cont">

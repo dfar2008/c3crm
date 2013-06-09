@@ -1,4 +1,18 @@
 <?php
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Public License Version 1.1.2
+ * ("License"); You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at http://www.sugarcrm.com/SPL
+ * Software distributed under the License is distributed on an  "AS IS"  basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+ * the specific language governing rights and limitations under the License.
+ * The Original Code is:  SugarCRM Open Source
+ * The Initial Developer of the Original Code is SugarCRM, Inc.
+ * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.;
+ * All Rights Reserved.
+ * Contributor(s): ______________________________________.
+ ********************************************************************************/
+
 require_once('include/CRMSmarty.php');
 require_once("data/Tracker.php");
 require_once('modules/Accounts/Accounts.php');
@@ -17,7 +31,6 @@ global $theme;
 
 $category = getParentTab();
 $currentModule = "Accounts";
-
 
 // focus_list is the means of passing data to a ListView.
 global $focus_list;
@@ -80,10 +93,46 @@ if(isset($_REQUEST['query']) && $_REQUEST['query'] == 'true')
 	$searchopts=getSearchConditions();
 	//changed by chengliang on 2012-04-17
 	$_SESSION['LiveViewSearch'][$currentModule]=array($viewid,$where,$ustring,$searchopts);
-}else{
-	$_SESSION['LiveViewSearch'][$currentModule]= array();
 }
+elseif(isset($_SESSION['LiveViewSearch'][$currentModule]))
+{
+	if($viewid!=$_SESSION['LiveViewSearch'][$currentModule][0]){
+		unset($_SESSION['LiveViewSearch'][$currentModule]);
+	}else{
+		$where=$_SESSION['LiveViewSearch'][$currentModule][1];
+		$url_string .="&query=true".$_SESSION['LiveViewSearch'][$currentModule][2];
+		$searchopts=$_SESSION['LiveViewSearch'][$currentModule][3];
+		if($searchopts['searchtype']=='BasicSearch')
+		{
+			$smarty->assign("BASICSEARCH",'true');
+			if($searchopts['type']!="alpbt"){
+				$smarty->assign("BASICSEARCHVALUE",$searchopts['search_text']);
+				$smarty->assign("BASICSEARCHFIELD",$searchopts['search_field']);
+			}else{
+				$alpbtselectedvalue=$searchopts['search_text'];
+			}
+		}else{
+			$smarty->assign("ADVSEARCH",'true');
+			$smarty->assign("SEARCHMATCHTYPE",$searchopts['matchtype']);
 
+			$searchcons=$searchopts['conditions'];
+			$searchconshtml=array();
+			foreach($searchcons as $eachcon)
+			{
+				$column=$eachcon[0];
+				$searchop=$eachcon[1];
+				$searchval=$eachcon[2];
+
+				$columnhtml = getAdvSearchfields($currentModule,$column);
+				$searchophtml = getcriteria_options($searchop);
+
+				$searchconshtml[]=array($columnhtml,$searchophtml,$searchval);
+			}
+			$smarty->assign("SEARCHCONSHTML",$searchconshtml);
+
+		}
+	}
+}
 global $current_user;
 //added by xiaoyang on 2012-9-18
 if(is_admin($current_user)) {
@@ -113,8 +162,10 @@ if($viewid != "0")
 	$query = getListQuery("Accounts");
 }
 
-//<<<<<<<<customview>>>>>>>>>
 
+$sortview = $focus->getSortView('Accounts');
+$smarty->assign("sortview", $sortview);
+//<<<<<<<<customview>>>>>>>>>
 
 
 if(isset($where) && $where != '')
@@ -136,6 +187,7 @@ $view_script = "<script language='javascript'>
 	}
 	set_selected();
 	</script>";
+
 
 
 //echo $query;
@@ -177,6 +229,7 @@ if ($start_rec == 0)
 	$limit_start_rec = 0;
 else
 	$limit_start_rec = $start_rec -1;
+
 $list_result = $adb->limitQuery2($query,$limit_start_rec,$list_max_entries_per_page,$query_order_by,$sorder);
 //echo $query;
 $record_string= $app_strings['LBL_SHOWING']." " .$start_rec." - ".$end_rec." " .$app_strings['LBL_LIST_OF'] ." ".$noofrows;
@@ -185,11 +238,14 @@ $record_string= $app_strings['LBL_SHOWING']." " .$start_rec." - ".$end_rec." " .
 if($viewid !='')
 $url_string .= "&viewname=".$viewid;
 
+ 
 $listview_header = getListViewHeader($focus,"Accounts",$url_string,$sorder,$order_by,"",$oCustomView);
 $smarty->assign("LISTHEADER", $listview_header);
 
 $listview_header_search=getSearchListHeaderValues($focus,"Accounts",$url_string,$sorder,$order_by,"",$oCustomView);
 $smarty->assign("SEARCHLISTHEADER", $listview_header_search);
+
+ 
 $listview_entries = getListViewEntries($focus,"Accounts",$list_result,$navigation_array,"","","EditView","Delete",$oCustomView);
 $smarty->assign("LISTENTITY", $listview_entries);
 $smarty->assign("SELECT_SCRIPT", $view_script);
@@ -204,6 +260,9 @@ $smarty->assign("NAVIGATION", $navigationOutput);
 $smarty->assign("RECORD_COUNTS", $record_string);
 $smarty->assign("RECORD", $_REQUEST['record']);
 
+$_SESSION[$currentModule.'_listquery'] = $query;
+
+$smarty->assign("tabview", $tabview);
 
 
 if(isset($_REQUEST['ajax']) && $_REQUEST['ajax'] != '')

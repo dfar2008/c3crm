@@ -19,7 +19,7 @@
  * All Rights Reserved.
  * Contributor(s): ______________________________________..
  ********************************************************************************/
-redirect("main.php");
+redirect("index.php");
 /*require_once('include/home.php');
 require_once('include/CRMSmarty.php');
 require_once('include/database/PearDatabase.php');

@@ -74,7 +74,7 @@ class CustomView extends CRMEntity{
 		global $current_user;
 		
 		if(isset($_REQUEST['viewname']) == false)
-		{
+		{ 
 			if (isset($_SESSION['lvs'][$module]["viewname"]) && $_SESSION['lvs'][$module]["viewname"]!='')
 			{
 				$viewid = $_SESSION['lvs'][$module]["viewname"];
@@ -1067,7 +1067,7 @@ class CustomView extends CRMEntity{
 			$sSQL = "select ec_cvcolumnlist.* from ec_cvcolumnlist";
 			$sSQL .= " inner join ec_customview on ec_customview.cvid = ec_cvcolumnlist.cvid";
 			$sSQL .= " where ec_customview.cvid =".$cvid." order by ec_cvcolumnlist.columnindex";
-
+			
 			$result = $adb->getList($sSQL);
 			foreach($result as $columnrow)
 			{
@@ -1091,7 +1091,7 @@ class CustomView extends CRMEntity{
 	  *
 	  */
 	function getCvColumnListSQL($cvid)
-	{
+	{	
 		$columnslist = $this->getColumnsListByCvidWithCollect($cvid);
 		
 		if(isset($columnslist))
@@ -1940,9 +1940,9 @@ class CustomView extends CRMEntity{
 
 		$ec_crmentity = $entityArr["tablename"];
 		$entityidfield = $entityArr["entityidfield"];
-		$crmid = $ec_crmentity.".".$entityidfield;
+		$crmid = $ec_crmentity.".".$entityidfield; 
 		if(!$is_popup) {
-			$fieldquery = $this->getCvColumnListSQL($viewid);
+			$fieldquery = $this->getCvColumnListSQL($viewid); 
 			
 			if($viewid != "" && $listquery != "" && $fieldquery != "")
 			{

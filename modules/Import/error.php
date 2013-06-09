@@ -41,7 +41,7 @@ function show_error_import($message)
 	$image_path=$theme_path."images/";
 
 	
-	print_r($message);die;
+
 	$log->info("Upload Error");
 
 	$smarty =  new CRMSmarty;
@@ -80,7 +80,7 @@ function show_error_import2($message)
 
 	$image_path=$theme_path."images/";
 
-	print_r("222222");die;
+	
 
 	$log->info("Upload Error");
 

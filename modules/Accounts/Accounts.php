@@ -566,6 +566,70 @@ class Accounts extends CRMEntity {
 		}
 	}
 
+	function getSortView($modname){ 
+		global $adb;
+		$entityname = getModTabName($modname);
+		
+		$query = "select fieldid,columnname,fieldlabel from ec_field where 
+					tabid = {$entityname['tabid']} and uitype in (15,16,111) ";
+		$result = $adb->getList($query);
+		$numrows = $adb->num_rows($result);
+		$treeproj = array();
+		$tree["treeid"] = 'tree';
+		$tree["treename"] = $app_strings["Category"];
+		$tree["click"] = '';
+		$tree["treeparent"] = '-1';
+		$treeproj[] = $tree;
+		if($numrows > 0){
+			$mod_strings = return_specified_module_language("zh_cn",$modname);
+
+			for($i=0;$i<$numrows;$i++){
+				$fieldid = $adb->query_result($result,$i,"fieldid");
+				$columnname = $adb->query_result($result,$i,"columnname");
+				$fieldlabel = $adb->query_result($result,$i,"fieldlabel");
+				if($app_strings[$fieldlabel]){
+					$fieldtitle = $app_strings[$fieldlabel];
+				}else if($mod_strings[$fieldlabel]){
+					$fieldtitle = $mod_strings[$fieldlabel];
+				}else{
+					$fieldtitle = $fieldlabel;
+				}
+				$tree = array();
+				$tree["treeid"] = $fieldid;
+				$tree["treename"] = $fieldtitle;
+				$tree["click"] = '';
+				$tree["treeparent"] = 'tree';
+				$treeproj[] = $tree;
+				if($columnname == 'account_type'){
+					$colname = "accounttype";
+				}else{
+					$colname = $columnname;
+				}
+				$picksql = "select colvalue from ec_picklist where colname = '{$colname}' order by sequence ";
+				$pickresult = $adb->getList($picksql);
+				$pickrows = $adb->num_rows($pickresult); 
+				if($pickrows && $pickrows > 0){
+					for($j=0;$j<$pickrows;$j++){
+						$colvalue = $adb->query_result($pickresult,$j,"colvalue");
+						$tree = array();
+						$tree["treeid"] = $colvalue;
+						$tree["treename"] = $colvalue;
+						$tree["click"] = "search_field={$entityname['tablename']}.{$columnname}&
+											search_text={$colvalue}&sortview={$sortview}";
+						$tree["treeparent"] = $fieldid;
+						$treeproj[] = $tree;
+					}
+				}
+			}
+		}
+		require_once("include/Zend/Json.php");
+		$json = new Zend_Json();
+		$jsontree = $json->encode($treeproj);
+		return $jsontree;
+	}
+
+
+
 }
 
 ?>
