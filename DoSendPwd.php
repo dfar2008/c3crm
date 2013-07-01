@@ -3,15 +3,14 @@ require_once('config.php');
 require_once('modules/Users/Users.php');
 require_once('include/logging.php');
 require_once('include/utils/UserInfoUtil.php');
-require_once('dosendmail.php');
 global $adb;
-$user_email = $_REQUEST['user_email'];
+$user_name = $_REQUEST['user_name'];
 
-$query = "SELECT id FROM ec_users WHERE deleted=0 and email1 ='".$user_email."'";
+$query = "SELECT id FROM ec_users WHERE deleted=0 and user_name ='".$user_name."'";
 $row = $adb->getFirstLine($query);
 if(empty($row))
 {
-	echo 'Email:',$user_email,'不存在!';
+	echo 'Email:',$user_name,'不存在!';
 	die;
 }
 else
@@ -46,48 +45,20 @@ else
 	//change pwd to new pwd
 	$query = "UPDATE ec_users SET user_password='$new_password', user_hash='$user_hash' where id='$id'";
 	$adb->query($query);
-	/*
+	
 	$mail = new SaeMail();
 	$subject = "找回密码";
 	$content = "尊敬的用户,您好,易客CRM已经收到您的找回密码请求,现已将您的密码重置为:".$pass.",请重新登录后修改.";
 	global $log;
 	$log->info($content);
-	$sql="select * from ec_systems where server_type = 'email' and smownerid='$id'";
-	$server_row = $adb->getFirstLine($sql);
-	if(empty($server_row))
-	{
-		$from_email = "saecrm_noreply@sina.com";
-		$pwd = "c3crm321";
-		$server_name ="smtp.sina.com";
-		$server_port = "25";
-	}else{
-		$from_email = $server_row['from_email'];
-		$pwd = $server_row['server_password'];
-		$server_name = $server_row['server'];
-		$server_port = $server_row['server_port'];
-	}
-	
+	$from_email = "saecrm_noreply@sina.com";
+	$pwd = "c3crm321";
+	$server_name ="smtp.sina.com";
+	$server_port = "25";
 
-	$ret = $mail->quickSend( $user_email , $subject , $content , $from_email , $pwd ,$server_name , $server_port);
+	$ret = $mail->quickSend( $user_name , $subject , $content , $from_email , $pwd ,$server_name , $server_port);
 	if ($ret === false)
 	{	$errMsg = $mail->errmsg();
-		echo '发送失败'.$pass;
-		die;
-	}else{
-		echo '发送成功';
-		die;
-	}*/
-	//change pwd to new pwd
-	
-	$subject = "找回密码";
-	$content = "尊敬的用户,您好,易客CRM已经收到您的找回密码请求,现已将您的密码重置为:".$pass.",请重新登录后修改.";
-	global $log;
-	$log->info($content);
-	$msg = send_webmail($user_email,$last_name,'','',$subject,$content,'',$id); 
-
-	if(!empty($msg))
-	{
-		echo '发送失败'.$msg;
 		die;
 	}else{
 		echo '发送成功';

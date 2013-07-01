@@ -1,129 +1,53 @@
-{*<!--
-/*********************************************************************************
-  ** The contents of this file are subject to the vtiger CRM Public License Version 1.0
-   * ("License"); You may not use this file except in compliance with the License
-   * The Original Code is:  vtiger CRM Open Source
-   * The Initial Developer of the Original Code is vtiger.
-   * Portions created by vtiger are Copyright (C) vtiger.
-   * All Rights Reserved.
-  *
- ********************************************************************************/
--->*}
+<!--	dree	-->
+<LINK href="themes/bootcss/css/Setting.css" type="text/css" rel=stylesheet>
+<div class="container-fluid" style="height:602px;">
+	   <!--Dashboad-->
+	<div class="container-fluid" style="height:602px;">
+		<div class="row-fluid">
+			<div class="span2" style="margin-left:-10px;">
+				<div class="accordion" id="settingion1" style="overflow:auto;height:580px;">
+					{include file='Relsettings/SettingLeft.tpl'}
+				</div>
+			</div>
 
-	{include file="Buttons_List1.tpl"}
+			<div class="span10" style="margin-left:10px;">
+				<!--	Setting		-->
+				<div class="row-fluid box" style="height:602px;">
+					<div class="tab-header">
+						{$RELSETHEAD}
+					</div>
+					  <div class="padded" style="overflow:auto;height:520px;">
 
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="98%">
-<tbody>
-<tr>
-  <td class="showPanelBg" style="padding: 10px;" valign="top" width="100%">
-	<br>
-	<div align=center>
-	<table border=0 cellspacing=0 cellpadding=20 width=95% class="settingsUI">
-	 <tr>
-		<td>
-			<!--All Icons table -->
-			<table border=0 cellspacing=0 cellpadding=0 width=100%>
-			<tr>
-				<td class="settingsTabHeader">
-					{$MOD.LBL_USER_MANAGEMENT}	
-				</td>
-			</tr>
-			<tr>
-				<td class="settingsIconDisplay small">
-                    <table border=0 cellspacing=0 cellpadding=10 width=100%>
-                    <tr>
-                    <td class="settingsIconDisplay small">						
-						                    
-                       <table border=0 cellspacing=0 cellpadding=10 width=100%>
-                         <tr>    
-                            <td class="settingsIconDisplay small">
-                                <table border=0 cellspacing=0 cellpadding=10 width=100%>
-                                    <tr>
-                                     
-                                
-                                        
-                    
-                                        <td width=10% valign=top>
-                                        <!-- icon 17-->
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=EmailConfig&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}ogmailserver.gif" alt="{$MOD.LBL_MAIL_SERVER_SETTINGS}" title="{$MOD.LBL_MAIL_SERVER_SETTINGS}"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=EmailConfig&parenttab=Settings">{$MOD.LBL_MAIL_SERVER_SETTINGS}</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>
-                    					
-                                       
-                                        
-                                        
-                                        <td  valign=top width=10%>
-                                        <!-- icon 17-->
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=EditPwd&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}set-IcoTwoTabConfig.gif" alt="{$MOD.LBL_EDIT_PASSWORD}" title="{$MOD.LBL_EDIT_PASSWORD}"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=EditPwd&parenttab=Settings">{$MOD.LBL_EDIT_PASSWORD}</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>
-                                        
-                                          <td  valign=top width=10%>
-                                        <!-- icon 17-->
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=EditMoreInfo&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}ico-users.gif" alt="{$MOD.LBL_EDIT_MORE_INFO}" title="{$MOD.LBL_EDIT_MORE_INFO}"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=EditMoreInfo&parenttab=Settings">{$MOD.LBL_EDIT_MORE_INFO}</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>
-                                        
-                                     
-                                
-										
-
-						<td  valign=top width=10%>
-                                        
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=SmsLogs&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}picklist.gif" alt="{$MOD.LBL_SMS_LOGS}" title="{$MOD.LBL_SMS_LOGS}"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=SmsLogs&parenttab=Settings">{$MOD.LBL_SMS_LOGS}</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>  
-                                    
-                                        
-                                        
-                                            
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-					</td>
-                    </tr>
-                    </table>	
-                 </td>
-             </tr>
-             </table>
-             
-         </td>
-     </tr>
-     </table>
-     </div>
-    </td>
-  </tr>
-</tbody>
-</table>
-
-
+							<form action="index.php" method="post" name="relsetform" id="relsetform">
+								<input type="hidden" name="module" value="Relsettings">
+								<input type="hidden" name="action">
+								<input type="hidden" name="parenttab" value="Settings">
+								<input type="hidden" name="relset" value="{$RELSET}">
+								<input type="hidden" name="relsetmode" value="{$RELSETMODE}">
+								<input type="hidden" name="issubmit" value="1">
+								{if $RELSET == 'EmailConfig'}
+									{include file='Relsettings/EmailConfig.tpl'}
+								{elseif $RELSET == 'MessageConfig'}
+									{include file='Relsettings/MessageConfig.tpl'}
+								{elseif $RELSET == 'MemdayConfig'}
+									{include file='Relsettings/MemdayConfig.tpl'}
+								{elseif $RELSET == 'EditPwd'}
+									{include file='Relsettings/EditPwd.tpl'}
+								{elseif $RELSET == 'EditMoreInfo'}
+									{include file='Relsettings/EditMoreInfo.tpl'}
+								{elseif $RELSET == 'MailLogs'}
+									{include file='Relsettings/MailLogs.tpl'}
+								{elseif $RELSET == 'Taobaozushou'}
+									{include file='Relsettings/Taobaozushou.tpl'}
+								{elseif $RELSET == 'SmsAccount'}
+									{include file='Relsettings/SmsAccount.tpl'}
+								{/if}
+							</form>
+					  </div>
+				</div>
+					
+				</div>
+				<!--	/Setting	-->
+			</div>
+	</div></div>
+</div>

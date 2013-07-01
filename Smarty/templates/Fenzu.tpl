@@ -99,240 +99,266 @@ function mandatoryCheck()
 <input type="hidden" name="return_module" value="{$RETURN_MODULE}">
 <input type="hidden" name="record" value="{$FenzuID}">
 <input type="hidden" name="return_action" value="{$RETURN_ACTION}">
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="98%" >
- <tbody><tr>
-  <td class="showPanelBg" valign="top" width="100%">
-  <div class="small" style="padding: 5px;">
-<span class="lvtHeaderText"><a class="hdrLink" href="index.php?action=ListView&module={$MODULE}&parenttab={$CATEGORY}">{$APP.$CURRENTMODULE}</a> &gt; {if $CUSTOMVIEWID eq ''}{$MOD.New_Custom_View}{else}编辑分组{/if}</span> <br>
-<hr noshade="noshade" size="1">
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="dvtContentSpace">
-             <tbody><tr>
-              <td align="left" valign="top">
-<table width="100%"  border="0" cellspacing="0" cellpadding="5">
-<tr>
-		 <td class="detailedViewHeader"><strong>{$MOD.Details}</strong></td>
-		</tr>
-		<tr>
-		<td>
-                <table width="100%"  border="0" cellspacing="0" cellpadding="5">
-		<tr>
-		 <td class="dvtCellInfo" align="right" width="10%"><span class="style1">*</span>{$MOD.LBL_VIEW_NAME} </td>
-		 <td class="dvtCellInfo" width="25%" >
-		  <input class="detailedViewTextBox" type="text" name='viewName' value="{$VIEWNAME}" onfocus="this.className='detailedViewTextBoxOn'" onblur="this.className='detailedViewTextBox'"/>
-		 </td>
-		 <td class="dvtCellInfo" width="75%">
-		  
-            	{$publichtml}
-           
-		 </td>
-		 
-		</tr>
-		</table>
-		</td></tr>
-        
-			
-		{*section name=SelectColumn start=1 loop=4 step=1}
-		{/section*}
-		<tr>
-		  <td class="detailedViewHeader">
-		    <b>设置过滤条件</b>
-		    </td>
-		  </tr>
-		<tr><td>
-		<table align="left" border="0" cellpadding="0" cellspacing="0" width="95%">
-		<tbody><tr>
-		 <td>
-		  
-		 </td>
-	        </tr>
-		<tr>
-		 <td align="left" valign="top">
-		  <div id="mnuTab">
-		     <table width="100%" cellspacing="0" cellpadding="5" class="dvtContentSpace">
-		     <tr><td class="dvtCellInfo">{$MOD.LBL_AF_HDR1}<br />
-			1)当时间段为自定义时，开始日期和结束日期将为指定的日期，例如2010-10-10。<br />
-			2)当时间段为非自定义时，开始日期和结束日期将为动态的日期，例如选择本周时，开始日期和结束日期将分别为本周的周一和周末，而不是固定的日期。<br />
-            3)<font color="#FF0000">生日字段只需确认月和日即可。</font>
-		       </td></tr>
-                      <tr><td>
-			<table width="75%" border="0" cellpadding="5" cellspacing="0" align="left">
-			  <tr><td colspan="2" class="detailedViewHeader"><b>{$MOD.Simple_Time_Filter}</b></td></tr>
-			  <tr>
-			     <td width="50%" align="right" class="dvtCellLabel">{$MOD.LBL_Select_a_Column} :</td>
-			     <td width="50%" class="dvtCellInfo">
-				<select name="stdDateFilterField" class="select">
-				{foreach item=stdfilter from=$STDFILTERCOLUMNS}
-					<option {$stdfilter.selected} value={$stdfilter.value}>{$stdfilter.text}</option>	
-				{/foreach}
-                                </select>
-			  </tr>
-			  <tr>
-			     <td align="right" class="dvtCellLabel">{$MOD.Select_Duration} :</td>
-			     <td class="dvtCellInfo">
-			        <select name="stdDateFilter" class="select" onchange='showDateRange(this.options[this.selectedIndex].value )'>
-				{foreach item=duration from=$STDFILTERCRITERIA}
-					<option {$duration.selected} value={$duration.value}>{$duration.text}</option>
-				{/foreach}
-				</select>
-			     </td>
-			  </tr>
-			  <tr>
-			     <td align="right" class="dvtCellLabel">{$MOD.Start_Date} :</td>
-			     <td width="25%" align=left class="dvtCellInfo">
-			     <input name="startdate" id="jscal_field_date_start" type="text" size="10" class="textField" value="{$STARTDATE}">
-			     <img src="{$IMAGE_PATH}calendar.gif" id="jscal_trigger_date_start" onclick="javascript:displayCalendar('jscal_field_date_start',this)">
-			     </td>
-	            	  </tr>
-			  <tr>
-			     <td align="right" class="dvtCellLabel">{$MOD.End_Date} :</td> 
-  			     <td width="25%" align=left class="dvtCellInfo">
-			     <input name="enddate" id="jscal_field_date_end" type="text" size="10" class="textField" value="{$ENDDATE}">
-			     <img src="{$IMAGE_PATH}calendar.gif" id="jscal_trigger_date_end" onclick="javascript:displayCalendar('jscal_field_date_end',this)">
-			     </td>
-			  </tr>
-			</table>
-		      </td></tr>
-		      <tr><td>&nbsp;</td></tr>
-	            </table>
-		   </div>
-		   <div id="mnuTab">
-		      <table width="100%" cellspacing="0" cellpadding="5" class="dvtContentSpace">
-		       <tr><td class="dvtCellInfo">{$MOD.LBL_AF_HDR1}<br />
-			1){$MOD.LBL_AF_HDR2}<br />
-			2){$MOD.LBL_AF_HDR3}
-		       </td></tr>
-		       <tr><td>
-			<table width="75%" border="0" cellpadding="5" cellspacing="0" align="left">
-			  <tr><td class="detailedViewHeader"><b>{$MOD.LBL_RULE}</b></td></tr>
-			  
-			  <tr class="dvtCellLabel">
-			  <td><select name="fcol1" id="fcol1" onchange="updatefOptions(this, 'fop1');">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=filteroption key=label from=$BLOCK1}
-				<optgroup label="{$label}" class=\"select\" style=\"border:none\">
-				{foreach item=text from=$filteroption}
-				  <option {$text.selected} value={$text.value}>{$text.text}</option>
-				{/foreach}
-			      {/foreach}
-			      </select> &nbsp; <select name="fop1" id="fop1">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=criteria from=$FOPTION1}
-				<option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
-			      {/foreach}
-			      </select>&nbsp; <input name="fval1" id="fval1" type="text" size=30 maxlength=80 value="{$VALUE1}">
-			    &nbsp;{$MOD.LBL_AND}</td>
-			</tr>
-			<tr class="dvtCellInfo">
-			  <td><select name="fcol2" id="fcol2" onchange="updatefOptions(this, 'fop2');">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=filteroption key=label from=$BLOCK2}
-				<optgroup label="{$label}" class=\"select\" style=\"border:none\">
-				{foreach item=text from=$filteroption}
-				  <option {$text.selected} value={$text.value}>{$text.text}</option>
-				{/foreach}
-			      {/foreach}
-			      </select> &nbsp; <select name="fop2" id="fop2">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=criteria from=$FOPTION2}
-				<option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
-			      {/foreach}
-			      </select>&nbsp; <input name="fval2" id="fval2" type="text" size=30 maxlength=80 value="{$VALUE2}">
-			    &nbsp;{$MOD.LBL_AND}</td>
-			</tr>
-			<tr class="dvtCellLabel">
-			  <td><select name="fcol3" id="fcol3" onchange="updatefOptions(this, 'fop3');">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=filteroption key=label from=$BLOCK3}
-				<optgroup label="{$label}" class=\"select\" style=\"border:none\">
-				{foreach item=text from=$filteroption}
-				  <option {$text.selected} value={$text.value}>{$text.text}</option>
-				{/foreach}
-			      {/foreach}
-			      </select> &nbsp; <select name="fop3" id="fop3">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=criteria from=$FOPTION3}
-				<option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
-			      {/foreach}
-			      </select>&nbsp; <input name="fval3" id="fval3" type="text" size=30 maxlength=80 value="{$VALUE3}">
-			    &nbsp;{$MOD.LBL_AND}</td>
-			</tr>
-			<tr class="dvtCellInfo">
-			  <td><select name="fcol4" id="fcol4" onchange="updatefOptions(this, 'fop4');">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=filteroption key=label from=$BLOCK4}
-				<optgroup label="{$label}" class=\"select\" style=\"border:none\">
-				{foreach item=text from=$filteroption}
-				  <option {$text.selected} value={$text.value}>{$text.text}</option>
-				{/foreach}
-			      {/foreach}
-			      </select> &nbsp; <select name="fop4" id="fop4">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=criteria from=$FOPTION4}
-				<option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
-			      {/foreach}
-			      </select>&nbsp; <input name="fval4" id="fval4" type="text" size=30 maxlength=80 value="{$VALUE4}">
-			    &nbsp;{$MOD.LBL_AND}</td>
-			</tr>
-			<tr class="dvtCellLabel">
-			  <td><select name="fcol5" id="fcol5" onchange="updatefOptions(this, 'fop5');">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=filteroption key=label from=$BLOCK5}
-				<optgroup label="{$label}" class=\"select\" style=\"border:none\">
-				{foreach item=text from=$filteroption}
-				  <option {$text.selected} value={$text.value}>{$text.text}</option>
-				{/foreach}
-			      {/foreach}
-			      </select> &nbsp; <select name="fop5" id="fop5">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=criteria from=$FOPTION5}
-				<option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
-			      {/foreach}
-			      </select>&nbsp; <input name="fval5" id="fval5" type="text" size=30 maxlength=80 value="{$VALUE5}">
-			    &nbsp;</td>
-			</tr>
 
-			  {*section name=advancedFilter start=1 loop=6 step=1}
-			  <tr class="{cycle values="dvtCellInfo,dvtCellLabel"}">
-			    <td align="left" width="33%">
-			      <select name="fcol{$smarty.section.advancedFilter.index}" id="fcol{$smarty.section.advancedFilter.index}" onchange="updatefOptions(this, 'fop{$smarty.section.advancedFilter.index}')"; class="detailedViewTextBox">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=filteroption key=label from=$BLOCK}
-				<optgroup label="{$label}" class=\"select\" style=\"border:none\">
-				{foreach item=text from=$filteroption}
-				  <option {$text.selected} value={$text.value}>{$text.text}</option>
-				{/foreach}
-			      {/foreach}
-			      </select>
-			    </td>
-			    <td align="left" width="33%">
-			      <select name="fcol{$smarty.section.advancedFilter.index}" id="fcol{$smarty.section.advancedFilter.index}" class="detailedViewTextBox">
-			      <option value="">{$MOD.LBL_NONE}</option>
-			      {foreach item=criteria from=$FOPTION}
-				<option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
-			      {/foreach}
-			      </select>
-			    </td>
-			    <td width="34%" nowrap><input name="txt" value="" class="detailedViewTextBox" type="text"  onfocus="this.className='detailedViewTextBoxOn'" onblur="this.className='detailedViewTextBox'"/>&nbsp;And</td>
-			  </tr>
-			  {/section*}
-			  </table>
-	  </td></tr></table></div></td></tr></table>
-	  </td></tr>
-	  <tr><td style="padding: 5px;">
-		<div align="center">
-		  <input title="{$APP.LBL_SAVE_BUTTON_LABEL} [Alt+S]" accesskey="S" class="crmbutton small save"  name="button2" value="{$APP.LBL_SAVE_BUTTON_LABEL}" style="width: 70px;" type="submit" onClick="return checkDuplicate();"/>
-		  <input title="{$APP.LBL_CANCEL_BUTTON_LABEL} [Alt+X]" accesskey="X" class="crmbutton small cancel" name="button2" onclick='goback()' value="{$APP.LBL_CANCEL_BUTTON_LABEL}" style="width: 70px;" type="button" />
-		</div>
-	  </td></tr>
-	  <tr><td>&nbsp;</td></tr>
-	  </table>
-	 </td></tr>
-       <tr><td>&nbsp;</td></tr>
-     </table>
-   </div>
-  </td>
-  </tr>
-  </table>
+<div class="container-fluid">
+<div style="margin-left:0px;margin-right:10px;">
+  <ul class="breadcrumb" style="margin-bottom:10px;">
+    <li>
+      <a class="hdrLink" href="index.php?action=ListView&module={$MODULE}&parenttab={$CATEGORY}">{$APP.$MODULE}</a> <span class="divider">/</span>
+    </li>
+    <li class="active"><a class="hdrLink" href="index.php?action=ListView&module={$MODULE}&parenttab={$CATEGORY}">{$APP.$CURRENTMODULE}</a> &gt; {if $FenzuID eq ''}{$MOD.New_Custom_View}{else}编辑分组{/if}</li>
+  </ul>
+</div>
+<div style="margin-left:0px;margin-right:10px;">
+     <table class="table table-bordered table-condensed table-striped"> 
+         <tbody>
+          <tr>  
+            <td><i class="cus-bullet_purple"></i><b>{$MOD.Details}</b></td>
+          </tr>
+          <tr>  
+            <td>
+              <table class="table table-bordered table-hover table-condensed"> 
+                <tbody>
+                  <tr >
+                    <td style="background-color:#fff;" width="10%" align="right">
+                      <font color=red>*</font>{$MOD.LBL_VIEW_NAME}</td>
+                    <td style="background-color:#fff;" width="20%">
+                      <input type="text" name='viewName' value="{$VIEWNAME}" />
+                    </td> 
+                    <td style="background-color:#fff;">
+                    
+                          
+                          {$publichtml}
+                    </td>
+                  </tr>
+                </tbody>  
+              </table>
+            </td>
+          </tr>
+         
+         
+          <tr>  
+            <td><i class="cus-bullet_purple"></i><b>设置过滤条件</b></td>
+          </tr>
+          <tr>  
+            <td>
+              <div class="tabbable tabs-left" style="margin-bottom: 18px;">
+                <ul class="nav nav-tabs">
+                  <li class="active" ><a href="#tab1" data-toggle="tab" >基本条件</a></li>
+                  <li><a href="#tab2" data-toggle="tab">高级条件</a></li>
+                </ul> 
+                <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+                  <div class="tab-pane active" id="tab1">
+                    <div class="well" style="margin-bottom:10px;">
+                      <b>{$MOD.LBL_AF_HDR1}</b><br>
+                      1)当时间段为自定义时，开始日期和结束日期将为指定的日期，例如2010-10-10。<br>
+                      2)当时间段为非自定义时，开始日期和结束日期将为动态的日期，例如选择本周时，开始日期和结束日期将分别为本周的周一和周末，而不是固定的日期。
+                      3)<font color="#FF0000">生日字段只需确认月和日即可。</font>
+                    </div>
+                    <table class="table table-bordered table-hover table-condensed"> 
+                      <tbody>
+                        <tr>
+                          <td colspan=2>
+                              <b>{$MOD.Simple_Time_Filter}</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                             {$MOD.LBL_Select_a_Column} :
+                          </td>
+                          <td>
+                            <select name="stdDateFilterField" class="select">
+                              {foreach item=stdfilter from=$STDFILTERCOLUMNS}
+                                <option {$stdfilter.selected} value={$stdfilter.value}>{$stdfilter.text}</option> 
+                              {/foreach}
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                             {$MOD.Select_Duration} :
+                          </td>
+                          <td>
+                            <select name="stdDateFilter" class="select" onchange='showDateRange(this.options[this.selectedIndex].value )'>
+                              {foreach item=duration from=$STDFILTERCRITERIA}
+                                <option {$duration.selected} value={$duration.value}>{$duration.text}</option>
+                              {/foreach}
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            {$MOD.Start_Date} :
+                          </td>
+                          <td>
+                            <input name="startdate" id="jscal_field_date_start" type="text" size="10" class="textField" value="{$STARTDATE}">
+                            <img src="{$IMAGE_PATH}calendar.gif" id="jscal_trigger_date_start" onclick="javascript:displayCalendar('jscal_field_date_start',this)">
+                          </td>
+                         </tr>
+                         <tr>
+                          <td>
+                            {$MOD.End_Date} :
+                          </td>
+                          <td>
+                            <input name="enddate" id="jscal_field_date_end" type="text" size="10" class="textField" value="{$ENDDATE}">
+                           <img src="{$IMAGE_PATH}calendar.gif" id="jscal_trigger_date_end" onclick="javascript:displayCalendar('jscal_field_date_end',this)">
+                          </td>
+                         </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="tab-pane" id="tab2">
+                   <div class="well" style="margin-bottom:10px;">
+                    <b>{$MOD.LBL_AF_HDR1}</b><br />
+                    1){$MOD.LBL_AF_HDR2}<br />
+                    2){$MOD.LBL_AF_HDR3}
+                   </div>
+                   <table class="table table-bordered table-hover table-condensed"> 
+                    <tbody>
+                      <tr>
+                        <td colspan=3><b>{$MOD.LBL_RULE}</b></td>
+                      </tr>
+                      <tr>
+                        <td width="20%">
+                          <select name="fcol1" id="fcol1" onchange="updatefOptions(this, 'fop1');">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=filteroption key=label from=$BLOCK1}
+                            <optgroup label="{$label}" class=\"select\" style=\"border:none\">
+                              {foreach item=text from=$filteroption}
+                                <option {$text.selected} value={$text.value}>{$text.text}</option>
+                              {/foreach}
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td width="20%">
+                          <select name="fop1" id="fop1">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=criteria from=$FOPTION1}
+                            <option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td>
+                           <input name="fval1" id="fval1" type="text" size=30 maxlength=80 value="{$VALUE1}">
+                           &nbsp;{$MOD.LBL_AND}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="20%">
+                          <select name="fcol2" id="fcol2" onchange="updatefOptions(this, 'fop2');">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=filteroption key=label from=$BLOCK2}
+                            <optgroup label="{$label}" class=\"select\" style=\"border:none\">
+                              {foreach item=text from=$filteroption}
+                                <option {$text.selected} value={$text.value}>{$text.text}</option>
+                              {/foreach}
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td width="20%">
+                          <select name="fop2" id="fop2">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=criteria from=$FOPTION2}
+                              <option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
+                            {/foreach}
+                            </select>
+                        </td>
+                        <td>
+                          <input name="fval2" id="fval2" type="text" size=30 maxlength=80 value="{$VALUE2}">
+                          &nbsp;{$MOD.LBL_AND}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="20%">
+                          <select name="fcol3" id="fcol3" onchange="updatefOptions(this, 'fop3');">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=filteroption key=label from=$BLOCK3}
+                            <optgroup label="{$label}" class=\"select\" style=\"border:none\">
+                              {foreach item=text from=$filteroption}
+                                <option {$text.selected} value={$text.value}>{$text.text}</option>
+                              {/foreach}
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td width="20%">
+                          <select name="fop3" id="fop3">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=criteria from=$FOPTION3}
+                              <option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td>
+                          <input name="fval3" id="fval3" type="text" size=30 maxlength=80 value="{$VALUE3}">
+                          &nbsp;{$MOD.LBL_AND}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="20%">
+                          <select name="fcol4" id="fcol4" onchange="updatefOptions(this, 'fop4');">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=filteroption key=label from=$BLOCK4}
+                            <optgroup label="{$label}" class=\"select\" style=\"border:none\">
+                              {foreach item=text from=$filteroption}
+                                <option {$text.selected} value={$text.value}>{$text.text}</option>
+                              {/foreach}
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td width="20%">
+                          <select name="fop4" id="fop4">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=criteria from=$FOPTION4}
+                             <option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td>
+                          <input name="fval4" id="fval4" type="text" size=30 maxlength=80 value="{$VALUE4}">
+                          &nbsp;{$MOD.LBL_AND}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="20%">
+                          <select name="fcol5" id="fcol5" onchange="updatefOptions(this, 'fop5');">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=filteroption key=label from=$BLOCK5}
+                            <optgroup label="{$label}" class=\"select\" style=\"border:none\">
+                              {foreach item=text from=$filteroption}
+                                <option {$text.selected} value={$text.value}>{$text.text}</option>
+                              {/foreach}
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td width="20%">
+                          <select name="fop5" id="fop5">
+                            <option value="">{$MOD.LBL_NONE}</option>
+                            {foreach item=criteria from=$FOPTION5}
+                              <option {$criteria.selected} value={$criteria.value}>{$criteria.text}</option>
+                            {/foreach}
+                          </select>
+                        </td>
+                        <td>
+                          <input name="fval5" id="fval5" type="text" size=30 maxlength=80 value="{$VALUE5}">
+                        </td>
+                      </tr>
+                    </tbody>
+                   </table>
+                  </div>
+                </div>
+              </div> <!-- /tabbable -->
+            </td>
+          </tr>
+          <tr>
+            <td align="center">
+               <input title="{$APP.LBL_SAVE_BUTTON_LABEL} [Alt+S]" accesskey="S" class="btn btn-success"  name="button2" value="{$APP.LBL_SAVE_BUTTON_LABEL}"  type="submit" onClick="return checkDuplicate();"/>
+               <input title="{$APP.LBL_CANCEL_BUTTON_LABEL} [Alt+X]" accesskey="X" class="btn btn-warning" name="button2" onclick='goback()' value="{$APP.LBL_CANCEL_BUTTON_LABEL}"  type="button" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+</div>
 </form>
 {$STDFILTER_JAVASCRIPT}
 {$JAVASCRIPT}

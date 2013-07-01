@@ -9,7 +9,13 @@
   *
  ********************************************************************************/
 -->*}
-
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h3>批量修改</h3>
+</div>
+<div class="modal-body">
+<input type="hidden" name="quickedit_recordids">
+<input type="hidden" name="quickedit_module">
 <table border=0 cellspacing=0 cellpadding=5 width=95% align=center> 
 	<tr>
 		<td class=small >		
@@ -55,6 +61,11 @@
 		</td>
 	</tr>
 </table>
+</div>
+<div class="modal-footer">
+	<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <button class="btn btn-primary" onClick="ajax_quick_edit()">保存</button>
+</div>
 
 <script type="text/javascript" id="quickedit_javascript">
         var quick_fieldname = new Array({$VALIDATION_DATA_FIELDNAME});

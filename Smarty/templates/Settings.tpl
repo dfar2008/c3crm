@@ -1,157 +1,41 @@
-{*<!--
-/*********************************************************************************
-  ** The contents of this file are subject to the vtiger CRM Public License Version 1.0
-   * ("License"); You may not use this file except in compliance with the License
-   * The Original Code is:  vtiger CRM Open Source
-   * The Initial Developer of the Original Code is vtiger.
-   * Portions created by vtiger are Copyright (C) vtiger.
-   * All Rights Reserved.
-  *
- ********************************************************************************/
--->*}
+<!--	dree	-->
+<LINK href="themes/bootcss/css/Setting.css" type="text/css" rel=stylesheet>
+<div class="container-fluid" style="height:602px;">
+	   <!--Dashboad-->
+	<div class="container-fluid" style="height:602px;">
+		<div class="row-fluid">
+			<div class="span2" style="margin-left:-10px;">
+				<div class="accordion" id="settingion1" style="overflow:auto;height:580px;">
+					{include file='Settings/SettingLeft.tpl'}
+				</div>
+			</div>
 
-	{include file="Buttons_List1.tpl"}
+			<div class="span10" style="margin-left:10px;">
+				<!--	Setting		-->
+				<div class="row-fluid box" style="height:602px;">
+					<div class="tab-header">
+						{$RELSETHEAD}
+					</div>
+					  <div class="padded" style="overflow:auto;height:520px;">
 
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="98%">
-<tbody><tr>
-	<td class="showPanelBg" style="padding: 10px;" valign="top" width="100%">
-	<br>
-	<div align=center>
-	<table border=0 cellspacing=0 cellpadding=20 width=90% class="settingsUI">
-	<tr>
-		<td>
-			<!--All Icons table -->
-			<table border=0 cellspacing=0 cellpadding=0 width=100%>
-			<tr>
-
-				<td class="settingsTabHeader">
-				<!-- Users & Access Management -->
-					{$MOD.LBL_USER_MANAGEMENT}	
-				</td>
-			</tr>
-			<tr>
-				<td class="settingsIconDisplay small">
-				<!-- Icons for Users & Access Management -->
-				
-				<table border=0 cellspacing=0 cellpadding=10 width=100%>
-
-			
-			<tr>
-				<td class="settingsIconDisplay small">
-				<!-- Icons for Users & Access Management -->
-				
-				<table border=0 cellspacing=0 cellpadding=10 width=100%>
-				<tr>
-				        
-					<td width=12.5% valign=top>
-					<!-- empty-->
-						<table border=0 cellspacing=0 cellpadding=5 width=100%>
-						<tr>
-
-							<td  valign=top><a href="index.php?module=Settings&action=CustomBlockList&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}blocklist.gif" alt="{$MOD.LBL_BLOCK_EDITOR}" title="{$MOD.LBL_BLOCK_EDITOR}"></a></td>
-						</tr>
-						<tr>
-							<td class=big valign=top><a href="index.php?module=Settings&action=CustomBlockList&parenttab=Settings">{$MOD.LBL_BLOCK_EDITOR}</a></td>
-						</tr>
-						
-						</table>
-					</td>
-					<td width=12.5% valign=top>
-					<!-- icon 9-->
-						<table border=0 cellspacing=0 cellpadding=5 width=100%>
-						<tr>
-							<td  valign=top><a href="index.php?module=Settings&action=CustomFieldList&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}custom.gif" alt="{$MOD.LBL_CUSTOM_FIELDS}" title="{$MOD.LBL_CUSTOM_FIELDS}"></a></td>
-						</tr>
-						<tr>
-							<td class=big valign=top><a href="index.php?module=Settings&action=CustomFieldList&parenttab=Settings">{$MOD.LBL_CUSTOM_FIELDS}</a></td>
-						</tr>
-						
-						</table>
-					</td>
-					<td width=12.5% valign=top>
-					<!-- icon 10-->
-						<table border=0 cellspacing=0 cellpadding=5 width=100%>
-						<tr>
-
-							<td  valign=top><a href="index.php?module=Settings&action=PickList&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}picklist.gif" alt="{$MOD.LBL_PICKLIST_EDITOR}" title="{$MOD.LBL_PICKLIST_EDITOR}"></a></td>
-						</tr>
-						<tr>
-							<td class=big valign=top><a href="index.php?module=Settings&action=PickList&parenttab=Settings">{$MOD.LBL_PICKLIST_EDITOR}</a></td>
-						</tr>
-						
-						</table>
-					</td>
-                    
-                    <td width=12.5% valign=top>
-					<!-- icon 10-->
-						<table border=0 cellspacing=0 cellpadding=5 width=100%>
-						<tr>
-
-							<td  valign=top><a href="index.php?module=Settings&action=SmsUser&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}picklist.gif" alt="{$MOD.LBL_SMS_USER}" title="{$MOD.LBL_SMS_USER}"></a></td>
-						</tr>
-						<tr>
-							<td class=big valign=top><a href="index.php?module=Settings&action=SmsUser&parenttab=Settings">{$MOD.LBL_SMS_USER}</a></td>
-						</tr>
-						
-						</table>
-					</td>
-                    
-                    
+							<form action="index.php" method="post" name="settingform" id="settingform">
+								<input type="hidden" name="module" value="Settings">
+								<input type="hidden" name="action">
+								<input type="hidden" name="parenttab" value="Settings">
+								<input type="hidden" name="settype" value="{$SETTYPE}">
+								<input type="hidden" name="settingmode" value="{$SETTINGMODE}">
+								<input type="hidden" name="issubmit" value="1">
+								{if $SETTYPE == 'SmsUser'}
+									{include file='Settings/SmsUser.tpl'}
+								{elseif $SETTYPE == 'CustomBlockList'}
+									{include file='Settings/CustomBlockList.tpl'}
+								{/if}
+							</form>
+					  </div>
+				</div>
 					
-				</tr>
-                <tr>
-					
-                    		<td width=12.5% valign=top>
-						<!-- empty-->
-							<table border=0 cellspacing=0 cellpadding=5 width=100%>
-							<tr>
-
-								<td  valign=top><a href="index.php?module=Settings&action=LayoutList&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}layout.gif" alt="{$MOD.LBL_LAYOUT_EDITOR}" title="{$MOD.LBL_LAYOUT_EDITOR}"></a></td>
-							</tr>
-							<tr>
-								<td class=big valign=top><a href="index.php?module=Settings&action=LayoutList&parenttab=Settings">{$MOD.LBL_LAYOUT_EDITOR}</a></td>
-							</tr>
-							
-							</table>
-					</td>
-					
-					<!-- icon 6 -->
-					<td width=12.5% valign=top>
-						<table border=0 cellspacing=0 cellpadding=5 width=100%>
-						<tr>
-							<td  valign=top><a href="index.php?module=Users&action=DefaultFieldPermissions&parenttab=Settings"><img src="{$IMAGE_PATH}orgshar.gif" alt="Fields to be shown" width="48" height="48" border=0 title="Fields to be shown"></a></td>
-						</tr>
-						<tr>
-							<td class=big valign=top><a href="index.php?module=Users&action=DefaultFieldPermissions&parenttab=Settings">{$MOD.LBL_FIELDS_ACCESS}</a></td>
-						</tr>
-						
-						</table>
-					</td>
-
-				
-				 <td  valign=top  >
-				<!-- icon 17-->
-				    <table border=0 cellspacing=0 cellpadding=5 width=100%>
-				    <tr>
-					<td  valign=top><a href="index.php?module=Relsettings&action=SmsAccount&parenttab=Settings"><img border=0 src="{$IMAGE_PATH}picklist.gif" alt="{$MOD.LBL_DUANXINZHANGHAOSHEZHI}" title="{$MOD.LBL_DUANXINZHANGHAOSHEZHI}"></a></td>
-				    </tr>
-				    <tr>
-					<td class=big valign=top><a href="index.php?module=Relsettings&action=SmsAccount&parenttab=Settings">{$MOD.LBL_DUANXINZHANGHAOSHEZHI}</a></td>
-				    </tr>
-	    
-				    </table>
-				</td>
-				<td  valign=top>&nbsp;</td>
-			</tr>
-
-			
-			
-			</table>	
-	</div>
-	</td>        
-   </tr>
-</tbody></table>
-</td>
-</tr></table>
-
-
+				</div>
+				<!--	/Setting	-->
+			</div>
+	</div></div>
+</div>

@@ -1,141 +1,94 @@
-<?php /* Smarty version 2.6.18, created on 2013-05-10 11:30:13
+<?php /* Smarty version 2.6.18, created on 2013-07-01 16:22:22
          compiled from Relsettings/Settings.tpl */ ?>
-
-	<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "Buttons_List1.tpl", 'smarty_include_vars' => array()));
+<!--	dree	-->
+<LINK href="themes/bootcss/css/Setting.css" type="text/css" rel=stylesheet>
+<div class="container-fluid" style="height:602px;">
+	   <!--Dashboad-->
+	<div class="container-fluid" style="height:602px;">
+		<div class="row-fluid">
+			<div class="span2" style="margin-left:-10px;">
+				<div class="accordion" id="settingion1" style="overflow:auto;height:580px;">
+					<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/SettingLeft.tpl', 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+				</div>
+			</div>
 
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="98%">
-<tbody>
-<tr>
-  <td class="showPanelBg" style="padding: 10px;" valign="top" width="100%">
-	<br>
-	<div align=center>
-	<table border=0 cellspacing=0 cellpadding=20 width=95% class="settingsUI">
-	 <tr>
-		<td>
-			<!--All Icons table -->
-			<table border=0 cellspacing=0 cellpadding=0 width=100%>
-			<tr>
-				<td class="settingsTabHeader">
-					<?php echo $this->_tpl_vars['MOD']['LBL_USER_MANAGEMENT']; ?>
-	
-				</td>
-			</tr>
-			<tr>
-				<td class="settingsIconDisplay small">
-                    <table border=0 cellspacing=0 cellpadding=10 width=100%>
-                    <tr>
-                    <td class="settingsIconDisplay small">						
-						                    
-                       <table border=0 cellspacing=0 cellpadding=10 width=100%>
-                         <tr>    
-                            <td class="settingsIconDisplay small">
-                                <table border=0 cellspacing=0 cellpadding=10 width=100%>
-                                    <tr>
-                                     
-                                
-                                        
-                    
-                                        <td width=10% valign=top>
-                                        <!-- icon 17-->
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=EmailConfig&parenttab=Settings"><img border=0 src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
-ogmailserver.gif" alt="<?php echo $this->_tpl_vars['MOD']['LBL_MAIL_SERVER_SETTINGS']; ?>
-" title="<?php echo $this->_tpl_vars['MOD']['LBL_MAIL_SERVER_SETTINGS']; ?>
-"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=EmailConfig&parenttab=Settings"><?php echo $this->_tpl_vars['MOD']['LBL_MAIL_SERVER_SETTINGS']; ?>
-</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>
-                    					
-                                       
-                                        
-                                        
-                                        <td  valign=top width=10%>
-                                        <!-- icon 17-->
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=EditPwd&parenttab=Settings"><img border=0 src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
-set-IcoTwoTabConfig.gif" alt="<?php echo $this->_tpl_vars['MOD']['LBL_EDIT_PASSWORD']; ?>
-" title="<?php echo $this->_tpl_vars['MOD']['LBL_EDIT_PASSWORD']; ?>
-"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=EditPwd&parenttab=Settings"><?php echo $this->_tpl_vars['MOD']['LBL_EDIT_PASSWORD']; ?>
-</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>
-                                        
-                                          <td  valign=top width=10%>
-                                        <!-- icon 17-->
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=EditMoreInfo&parenttab=Settings"><img border=0 src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
-ico-users.gif" alt="<?php echo $this->_tpl_vars['MOD']['LBL_EDIT_MORE_INFO']; ?>
-" title="<?php echo $this->_tpl_vars['MOD']['LBL_EDIT_MORE_INFO']; ?>
-"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=EditMoreInfo&parenttab=Settings"><?php echo $this->_tpl_vars['MOD']['LBL_EDIT_MORE_INFO']; ?>
-</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>
-                                        
-                                     
-                                
-										
+			<div class="span10" style="margin-left:10px;">
+				<!--	Setting		-->
+				<div class="row-fluid box" style="height:602px;">
+					<div class="tab-header">
+						<?php echo $this->_tpl_vars['RELSETHEAD']; ?>
 
-						<td  valign=top width=10%>
-                                        
-                                            <table border=0 cellspacing=0 cellpadding=5 width=100%>
-                                            <tr>
-                                                <td  valign=top><a href="index.php?module=Relsettings&action=SmsLogs&parenttab=Settings"><img border=0 src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
-picklist.gif" alt="<?php echo $this->_tpl_vars['MOD']['LBL_SMS_LOGS']; ?>
-" title="<?php echo $this->_tpl_vars['MOD']['LBL_SMS_LOGS']; ?>
-"></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class=big valign=top><a href="index.php?module=Relsettings&action=SmsLogs&parenttab=Settings"><?php echo $this->_tpl_vars['MOD']['LBL_SMS_LOGS']; ?>
-</a></td>
-                                            </tr>
-                    
-                                            </table>
-                                        </td>  
-                                    
-                                        
-                                        
-                                            
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-					</td>
-                    </tr>
-                    </table>	
-                 </td>
-             </tr>
-             </table>
-             
-         </td>
-     </tr>
-     </table>
-     </div>
-    </td>
-  </tr>
-</tbody>
-</table>
+					</div>
+					  <div class="padded" style="overflow:auto;height:520px;">
 
-
+							<form action="index.php" method="post" name="relsetform" id="relsetform">
+								<input type="hidden" name="module" value="Relsettings">
+								<input type="hidden" name="action">
+								<input type="hidden" name="parenttab" value="Settings">
+								<input type="hidden" name="relset" value="<?php echo $this->_tpl_vars['RELSET']; ?>
+">
+								<input type="hidden" name="relsetmode" value="<?php echo $this->_tpl_vars['RELSETMODE']; ?>
+">
+								<input type="hidden" name="issubmit" value="1">
+								<?php if ($this->_tpl_vars['RELSET'] == 'EmailConfig'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/EmailConfig.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php elseif ($this->_tpl_vars['RELSET'] == 'MessageConfig'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/MessageConfig.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php elseif ($this->_tpl_vars['RELSET'] == 'MemdayConfig'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/MemdayConfig.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php elseif ($this->_tpl_vars['RELSET'] == 'EditPwd'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/EditPwd.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php elseif ($this->_tpl_vars['RELSET'] == 'EditMoreInfo'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/EditMoreInfo.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php elseif ($this->_tpl_vars['RELSET'] == 'MailLogs'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/MailLogs.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php elseif ($this->_tpl_vars['RELSET'] == 'Taobaozushou'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/Taobaozushou.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php elseif ($this->_tpl_vars['RELSET'] == 'SmsAccount'): ?>
+									<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'Relsettings/SmsAccount.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+								<?php endif; ?>
+							</form>
+					  </div>
+				</div>
+					
+				</div>
+				<!--	/Setting	-->
+			</div>
+	</div></div>
+</div>

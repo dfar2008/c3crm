@@ -2,7 +2,7 @@
 
 <tr><td colspan="4" align="left">
 
-<table width="100%"  border="0" align="left" cellpadding="5" cellspacing="0" class="crmTable" id="proTab">
+<table  class="table table-bordered table-hover table-condensedforev dvtable" id="proTab">
    <tr>
 	<td colspan="20" class="dvInnerHeader1">
 		<b>{$APP.LBL_PRODUCT_DETAILS}</b>
@@ -60,14 +60,14 @@
 	</td>
      
 	<td class="crmTableRow small lineOnTop" align="left">
-		<input id="{$comment}" name="{$comment}" class=small style="width:150px" value="{$data.$comment}">
+		<input id="{$comment}" name="{$comment}" style="width:150px" type="text" value="{$data.$comment}">
 	</td>
 	<span style="display:none" id="netPrice{$row_no}"><b>{$data.$netPrice}</b></span>
 	
 
 	
 	<td class="crmTableRow small lineOnTop" align="right">
-		<table width="100%" cellpadding="1" cellspacing="0">
+		<table class="table table-bordered " >
 		   <tr>
 			<td id="productTotal{$row_no}" align="right" style="font-size:12px;">{$data.$productTotal}</td>
 		   </tr>
@@ -81,17 +81,17 @@
 </td>
 </tr>
 <tr><td colspan="9">
-<table width="100%"  border="0" align="right" cellpadding="5" cellspacing="0" class="crmTable">
+<table  class="table table-bordered table-hover table-condensedforev dvtable">
    <tr valign="top">
 	<td class="crmTableRow big lineOnTop" style="border-right:1px #dadada;" align="right" width="90%"><b>{$APP.LBL_GRAND_TOTAL}</b></td>
 	<td id="grandTotal" name="grandTotal" class="crmTableRow big lineOnTop" align="right" width="10%">{$FINAL.grandTotal}</td>
    </tr>
 </table>
-<table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" >
+<table  class="table table-bordered table-hover table-condensedforev dvtable"  style="margin-top:5px;">
    <!-- Add Product Button -->
    <tr>
 	<td colspan="3">
-	<input type="button" name="Button" class="crmbutton small create" value="{$APP.LBL_ADD_PRODUCT}" onclick="selectProductRows(this.form);" />
+	<input type="button" name="Button" class="btn btn-primary btn-small" value="{$APP.LBL_ADD_PRODUCT}" onclick="selectProductRows(this.form);" />
 	</td>
 	<td id="netTotal" style="display:none">0.00</td>
    </tr>

@@ -11,11 +11,11 @@ include('ecversion.php');
       db_name
 */
 
-$dbconfig['db_server'] = 'localhost';
+$dbconfig['db_server'] = '192.168.1.118';
 $dbconfig['db_port'] = ':3306';
 $dbconfig['db_username'] = 'root';
 $dbconfig['db_password'] = '';
-$dbconfig['db_name'] = 'ecustomer';
+$dbconfig['db_name'] = 'freecrm';
 $dbconfig['db_type'] = 'mysql';
 $dbconfig['db_status'] = 'true';
 
@@ -28,7 +28,7 @@ $host_name = $dbconfig['db_hostname'];
 $site_URL = 'http://localhost/';
 
 // root directory path
-$root_directory = 'D:\xampp\htdocs/';
+$root_directory = 'D:\CRMONE\home\crmfree\git\c3crm/';
 
 // cache direcory path
 $cache_dir = 'cache/';

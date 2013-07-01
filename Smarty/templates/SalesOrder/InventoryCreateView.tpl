@@ -1,120 +1,70 @@
-
-
-{*<!-- module header -->*}
 <script type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
-{include file='Buttons_List_create.tpl'}
 
 {*<!-- Contents -->*}
-<table border=0 cellspacing=0 cellpadding=0 width=98% align=center>
-   <tr>
+{include file='EditViewHidden.tpl'}
 
-	<td class="showPanelBg" valign=top width=100%>
-	     {*<!-- PUBLIC CONTENTS STARTS-->*}
-		{include file='EditViewHidden.tpl'}
-	     <div class="small" style="padding:0px">
-
-		{*<!-- Account details tabs -->*}
-		<table border=0 cellspacing=0 cellpadding=0 width=100% align=center>
-		   <tr>
-			<td>
-				<table border=0 cellspacing=0 cellpadding=3 width=100% class="small">
-				   <tr>
-					<td class="dvtTabCache" style="width:10px" nowrap>&nbsp;</td>					
-				   <tr>
-				</table>
-			</td>
-		   </tr>
-		   <tr>
-			<td valign=top align=left >
-
-			    {foreach item=blockInfo key=divName from=$BLOCKS}
-			    <!-- Basic and More Information Tab Opened -->
-			    <div id="{$divName}">
-
-				<table border=0 cellspacing=0 cellpadding=3 width=100% class="dvtContentSpace">
-				   <tr>
-					<!--this td is to display the entity details -->
-					<td align=left>
-					<!-- content cache -->
-
-						<table border=0 cellspacing=0 cellpadding=0 width=100%>
-						   <tr>
-							<td id ="autocom"></td>
-						   </tr>
-						   <tr>
-							<td style="padding-left:10px;padding-right:10px">
-							<!-- General details -->
-								<table border=0 cellspacing=0 cellpadding=0 width=100% class="small">
-									 <tr>
-									<td  colspan=4 style="padding:5px">
-									   <div align="center">
-										<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{$APP.LBL_SAVE_BUTTON_KEY}" class="crmbutton small save" onclick="this.form.action.value='Save'; return validateInventory('{$MODULE}')" type="button" name="button" value="  {$APP.LBL_SAVE_BUTTON_LABEL}  " style="width:70px" >
-										<input title="{$APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{$APP.LBL_CANCEL_BUTTON_KEY}" class="crmbutton small cancel" onclick="goback()" type="button" name="button" value="  {$APP.LBL_CANCEL_BUTTON_LABEL}  " style="width:70px">
-									   </div>
-									</td>
-								   </tr>
-
-								   {foreach key=header item=data from=$blockInfo}
-                                   <tr><td style="height:10px;"></td></tr>
-								   <tr>									
-						         	<td colspan=4 class="detailedViewHeader">
-                                         <b>{$header}</b>
-									</td>
-								   </tr>
-                               
-								   <!-- Here we should include the uitype handlings-->
-								   {include file="DisplayFields.tpl"}
-
-								  
-								   {/foreach}
-                                 <tr><td style="height:10px;"></td></tr>
-									{if $AVAILABLE_PRODUCTS eq true}
-										{include file="SalesOrder/ProductDetailsEditView.tpl"}
-									{else}
-										{include file="SalesOrder/ProductDetails.tpl"}
-									{/if}
-
-								   <tr>
-									<td  colspan=4 style="padding:5px">
-									   <div align="center">
-										<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{$APP.LBL_SAVE_BUTTON_KEY}" class="crmbutton small save" onclick="this.form.action.value='Save'; return validateInventory('{$MODULE}')" type="button" name="button" value="  {$APP.LBL_SAVE_BUTTON_LABEL}  " style="width:70px" >
-										<input title="{$APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{$APP.LBL_CANCEL_BUTTON_KEY}" class="crmbutton small cancel" onclick="goback()" type="button" name="button" value="  {$APP.LBL_CANCEL_BUTTON_LABEL}  " style="width:70px">
-									   </div>
-									</td>
-								   </tr>
-								</table>
-								<!-- General details - end -->
-							</td>
-						   </tr>
-						</table>
-					</td>
-				   </tr>
-				</table>
-							
-			    </div>
-			    {/foreach}
-			</td>
-		   </tr>
-		</table>
-	 </div>
-	</td>
-       </tr>
-</table>
+<!-- center start -->
+     <div class="container-fluid" style="height:608px;">
+        <div class="row-fluid">
+          
+          <div class="span12" style="margin-left:0px;">
+             <div  class="pull-left" style="margin-bottom:5px;" >
+                  <button class="btn btn-small btn-primary" style="margin-top:2px;" onclick="goback();">
+                    <i class="icon-arrow-left icon-white"></i>取消</button>
+              </div>
+              <div class="pull-right" style="margin-bottom:5px;" >
+                  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';return validateInventory('{$MODULE}')" name="savebutton">
+                    <i class="icon-ok icon-white"></i> 保存 </button>
+                 
+             </div>
+             <div class="clearfix"></div>
+              <div class="accordion"  style="margin-top:0px;margin-bottom:0px;overflow:auto;height:550px;">
+              	{foreach item=blockInfo key=divName from=$BLOCKS}
+	              	{foreach key=header item=data from=$blockInfo}
+	                  <div class="accordion-group">
+	                     <div class="accordion-heading">
+	                      <a class="accordion-toggle" data-toggle="collapse"  href="#detailOne">
+	                        {$header}
+	                      </a>
+	                    </div>
+	                    <div id="detailOne" class="accordion-body collapse in">
+	                      <div class="accordion-inner">
+	                          <table class="table table-bordered table-hover table-condensedforev dvtable">
+	                           <tbody>
+	                            {include file="DisplayFields.tpl"}
+	                           </tbody>
+	                          </table>
+	                     </div>
+	                   </div>
+	                  </div>
+	                  {/foreach}
+	                   <table class="table table-bordered  table-condensedforev dvtable">
+	                    <tbody>
+          				{if $AVAILABLE_PRODUCTS eq true}
+							{include file="SalesOrder/ProductDetailsEditView.tpl"}
+						{else}
+							{include file="SalesOrder/ProductDetails.tpl"}
+						{/if}
+						 </tbody>
+	                   </table>
+                  {/foreach}
+              </div>
+              
+            
+          </div>
+        </div>
+     </div>
+     <!-- center end -->
 </form>
 
-<script>
-
-
-
+<script>	
         var fieldname = new Array({$VALIDATION_DATA_FIELDNAME})
-
         var fieldlabel = new Array({$VALIDATION_DATA_FIELDLABEL})
-
         var fielddatatype = new Array({$VALIDATION_DATA_FIELDDATATYPE})
-	if(getObj("subject") != undefined && getObj("subject").value == "") {ldelim}
+		if(getObj("subject") != undefined && getObj("subject").value == "") {ldelim}
 	        getObj("subject").value = "{$APP.AUTO_GEN_CODE}";
 			getObj("subject").setAttribute("readOnly","true");
-	{rdelim}
-
+		{rdelim}	
 
 </script>
+ 

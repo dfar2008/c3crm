@@ -20,14 +20,12 @@
 					     </tr>
 						<tr style="height:25px">
 						{foreach name="fieldlist" item=entries key=id from=$detail}						        
-							<td class="dvtCellLabel" align=left>
-							<div >
+							<td class="dvtCellLabel" align=left>							
 							#{$entries.sequence}&nbsp;
 							{if $entries.typeofdata eq "true"}
 								<font color="red">*</font>
 							{/if}
-							{$entries.fieldlabel}&nbsp;&nbsp;{$entries.tool}
-							</div></td>
+							{$entries.fieldlabel}&nbsp;&nbsp;{$entries.tool}</td>
 							{if $entries.no%2 == 0}
 							        {if $entries.no != $smarty.foreach.fieldlist.total}
 								</tr><tr style="height:25px">

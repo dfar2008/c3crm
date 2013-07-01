@@ -1,1 +1,0 @@
-<?php exit;?>1368156610a:5:{s:5:"tabid";s:2:"35";s:10:"modulename";s:9:"Qunfatmps";s:9:"tablename";s:12:"ec_qunfatmps";s:9:"fieldname";s:12:"qunfatmpname";s:13:"entityidfield";s:11:"qunfatmpsid";}

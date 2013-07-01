@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+       
+        <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+        
+        
+        
+        <title>易客 CRM</title>
+		<script type="text/javascript">
+		function LoginUser() {
+		   alert("login");
+			var enteredUsername = "demo@c3crm.cn";//test account
+			var enteredPassword = "demo";
+			
+			$.getJSON('http://crm123.sinaapp.com/rest.php?callback=?', {
+				method: "login",
+				input_type: "JSON",
+				response_type: "JSON",
+				rest_data: '[{"password":"' + enteredPassword + '","user_name":"' + enteredUsername + '"},"C3CRM",{"name":"language","value":"en_US"}]'
+			},
+			function(data) {
+			    alert(data);
+				if (data !== "") {
+					if(data == "Login failed"){
+						alert("登录失败");
+					}else{
+						alert("ok");
+					}
+				}else{
+					alert('An unexpected error occurred logging in.');
+				}
+			});
+		}
+		LoginUser();
+		</script>
+    </head>
+    <body>
+    </body>
+</html>

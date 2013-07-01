@@ -1,1 +1,0 @@
-<?php exit;?>1368156610s:311:"<option value=\'ec_qunfatmps.qunfatmpname\'>模板名称</option><option value=\'ec_qunfatmps.smownerid\'>负责人</option><option value=\'ec_qunfatmps.createdtime\'>创建时间</option><option value=\'ec_qunfatmps.modifiedtime\'>修改时间</option><option value=\'ec_qunfatmps.description\'>内容</option>";

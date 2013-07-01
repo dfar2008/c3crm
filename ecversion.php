@@ -10,5 +10,5 @@
  ********************************************************************************/
 $patch_version = '';
 $modified_database = '';
-$ec_current_version = '2.0.3';
+$ec_current_version = '2.5';
 ?>

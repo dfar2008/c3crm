@@ -40,15 +40,15 @@
 			<div id="quickedit_field{$fldcount}" uitype="{$uitype}" style="display: none;">
 				{if $uitype eq 2}
 					<font color="red">*</font>
-					<input type="text" name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+					<input type="text" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 				{elseif $uitype eq 3}<!-- Non Editable field, only configured value will be loaded -->
-					<input readonly type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" id ="{$fldname}" {if $MODE eq 'edit'} value="{$fldvalue}" {else} value="{$inv_no}" {/if} class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+					<input readonly type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" id ="{$fldname}" {if $MODE eq 'edit'} value="{$fldvalue}" {else} value="{$inv_no}" {/if} class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 				{elseif $uitype eq 11 || $uitype eq 1 || $uitype eq 13 || $uitype eq 7 || $uitype eq 9}
 					{if $fldname eq 'tickersymbol' && $MODULE eq 'Accounts'}
-						<input type="text" name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" id ="{$fldname}" value="{$fldvalue}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn';" onBlur="this.className='detailedViewTextBox';{if $fldname eq 'tickersymbol' && $MODULE eq 'Accounts'}sensex_info(){/if}">
+						<input type="text" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" id ="{$fldname}" value="{$fldvalue}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn';" onBlur="this.className='detailedViewTextBox';{if $fldname eq 'tickersymbol' && $MODULE eq 'Accounts'}sensex_info(){/if}">
 						<span id="vtbusy_info" style="display:none;"><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 					{else}
-						<input type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" id ="{$fldname}" value="{$fldvalue}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+						<input type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" id ="{$fldname}" value="{$fldvalue}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 				{/if}
 				{elseif $uitype eq 19 || $uitype eq 20}
 					<!-- In Add Comment are we should not display anything -->
@@ -58,7 +58,7 @@
 					{if $uitype eq 20}
 						<font color="red">*</font>
 					{/if}
-					<textarea class="detailedViewTextBox" tabindex="{$vt_tab}" onFocus="this.className='detailedViewTextBoxOn'" name="quickedit_value_{$fldname}"  onBlur="this.className='detailedViewTextBox'" cols="90" rows="8">{$fldvalue}</textarea>
+					<textarea class="detailedViewTextBox" tabindex="{$vt_tab}" onFocus="this.className='detailedViewTextBoxOn'" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}"  onBlur="this.className='detailedViewTextBox'" cols="90" rows="8">{$fldvalue}</textarea>
 					{if $fldlabel eq $MOD.Solution}
 						<input type = "hidden" name="helpdesk_solution" value = '{$fldvalue}'>
 					{/if}
@@ -66,12 +66,12 @@
 					{if $uitype eq 24}
 						<font color="red">*</font>
 					{/if}
-					<textarea value="{$fldvalue}" name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'" rows=2>{$fldvalue}</textarea>
+					<textarea value="{$fldvalue}" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'" rows=2>{$fldvalue}</textarea>
 				{elseif $uitype eq 15 || $uitype eq 16 || $uitype eq 111} <!-- uitype 111 added for noneditable existing picklist values - ahmed -->
 					{if $uitype eq 16}
 						<font color="red">*</font>
 					{/if}
-					<select name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
+					<select name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
 					{foreach item=arr from=$fldvalue}
 						{foreach key=sel_value item=value from=$arr}
 							<option value="{$sel_value}">                                                
@@ -142,7 +142,7 @@
 				{elseif $uitype eq 77}
 					<select name="assigned_user_id1" tabindex="{$vt_tab}" class="small">
 				{else}
-					<select name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
+					<select name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
 				{/if}
 
 				{foreach key=key_one item=arr from=$fldvalue}
@@ -157,60 +157,60 @@
 				{else}
 					{assign var='popuptype' value = 'specific_contact_account_address'}
 				{/if}
-				<input readonly name="account_name" style="border:1px solid #bababa;" type="text" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img tabindex="{$vt_tab}" src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype={$popuptype}&form=TasksEditView&form_submit=false","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.account_id.value=''; this.form.account_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input readonly name="account_name" style="border:1px solid #bababa;" type="text" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img tabindex="{$vt_tab}" src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype={$popuptype}&form=TasksEditView&form_submit=false","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.account_id.value=''; this.form.account_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 			{elseif $uitype eq 50}
 				<font color="red">*</font>
-				<input readonly name="account_name" type="text" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype=specific&form=TasksEditView&form_submit=false","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input readonly name="account_name" type="text" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype=specific&form=TasksEditView&form_submit=false","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>
 			{elseif $uitype eq 73}
 				<font color="red">*</font>
-				<input readonly name="account_name" id = "single_accountid" type="text" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype=specific_account_address&form=TasksEditView&form_submit=false","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input readonly name="account_name" id = "single_accountid" type="text" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype=specific_account_address&form=TasksEditView&form_submit=false","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>
 			{elseif $uitype eq 75 || $uitype eq 81}
 				{if $uitype eq 81}
 					<font color="red">*</font>
 					{assign var="pop_type" value="specific_vendor_address"}
 					{else}{assign var="pop_type" value="specific"}
 				{/if}
-				<input name="vendor_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Vendors&action=Popup&html=Popup_picker&popuptype={$pop_type}&form=EditView","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input name="vendor_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Vendors&action=Popup&html=Popup_picker&popuptype={$pop_type}&form=EditView","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>
 				{if $uitype eq 75}
 					&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.vendor_id.value='';this.form.vendor_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 				{/if}
 			{elseif $uitype eq 57}
-				<input name="contact_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectContact("false","general",document.EditView)' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.contact_id.value=''; this.form.contact_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input name="contact_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectContact("false","general",document.EditView)' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.contact_id.value=''; this.form.contact_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 		
 			{elseif $uitype eq 58}
-				<input name="campaignname" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Campaigns&action=Popup&html=Popup_picker&popuptype=specific_campaign&form=EditView","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.campaignid.value=''; this.form.campaignname.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input name="campaignname" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Campaigns&action=Popup&html=Popup_picker&popuptype=specific_campaign&form=EditView","test","width=640,height=602,resizable=0,scrollbars=0");' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.campaignid.value=''; this.form.campaignname.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 			{elseif $uitype eq 80}
-				<input name="salesorder_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectSalesOrder();' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.salesorder_id.value=''; this.form.salesorder_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input name="salesorder_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectSalesOrder();' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.salesorder_id.value=''; this.form.salesorder_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 			{elseif $uitype eq 78}
-				<input name="quote_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectQuote()' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.quote_id.value=''; this.form.quote_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input name="quote_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectQuote()' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" tabindex="{$vt_tab}" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.quote_id.value=''; this.form.quote_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 			{elseif $uitype eq 76}			
-				<input name="potential_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img tabindex="{$vt_tab}" src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectPotential()' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.potential_id.value=''; this.form.potential_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
+				<input name="potential_name" readonly type="text" style="border:1px solid #bababa;" value="{$fldvalue}"><input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">&nbsp;<img tabindex="{$vt_tab}" src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='selectPotential()' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.potential_id.value=''; this.form.potential_name.value='';return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 			{elseif $uitype eq 17}
 				&nbsp;&nbsp;http://
-				<input style="width:74%;" class = 'detailedViewTextBoxOn' type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" style="border:1px solid #bababa;" size="27" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" onkeyup="validateUrl('{$fldname}');" value="{$fldvalue}">
+				<input style="width:74%;" class = 'detailedViewTextBoxOn' type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" style="border:1px solid #bababa;" size="27" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" onkeyup="validateUrl('{$fldname}');" value="{$fldvalue}">
 			{elseif $uitype eq 85}
-	            <img src="{$IMAGE_PATH}skype.gif" alt="Skype" title="Skype" LANGUAGE=javascript align="absmiddle"></img><input type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" style="border:1px solid #bababa;" size="27" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="{$fldvalue}">
+	            <img src="{$IMAGE_PATH}skype.gif" alt="Skype" title="Skype" LANGUAGE=javascript align="absmiddle"></img><input type="text" tabindex="{$vt_tab}" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" style="border:1px solid #bababa;" size="27" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="{$fldvalue}">
 			{elseif $uitype eq 71 || $uitype eq 72}
 				{if $uitype eq 72}
 					<font color="red">*</font>
 				{/if}
-				<input name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="text" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'"  value="{$fldvalue}">
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="text" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'"  value="{$fldvalue}">
 			{elseif $uitype eq 56}
 				{if $fldname eq 'notime' && $ACTIVITY_MODE eq 'Events'}
 					{if $fldvalue eq 1}
-							<input name="quickedit_value_{$fldname}" type="checkbox" tabindex="{$vt_tab}" onclick="toggleTime()" checked>
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="checkbox" tabindex="{$vt_tab}" onclick="toggleTime()" checked>
 					{else}
-							<input name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox" onclick="toggleTime()" >
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox" onclick="toggleTime()" >
 					{/if}
 					<!-- For Portal Information we need a hidden field existing_portal with the current portal value -->
 					{elseif $fldname eq 'portal'}
 						<input type="hidden" name="existing_portal" value="{$fldvalue}">
-						<input name="quickedit_value_{$fldname}" type="checkbox" tabindex="{$vt_tab}" {if $fldvalue eq 1}checked{/if}>
+						<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="checkbox" tabindex="{$vt_tab}" {if $fldvalue eq 1}checked{/if}>
 				{else}
 					{if $fldvalue eq 1}
-							<input name="quickedit_value_{$fldname}" type="checkbox" tabindex="{$vt_tab}" checked>
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="checkbox" tabindex="{$vt_tab}" checked>
 					{else}
-							<input name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox" {if ( $PROD_MODE eq 'create' &&  $fldname|substr:0:3 neq 'cf_') ||( $fldname|substr:0:3 neq 'cf_' && $PRICE_BOOK_MODE eq 'create' ) || $USER_MODE eq 'create'}checked{/if}>
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox" {if ( $PROD_MODE eq 'create' &&  $fldname|substr:0:3 neq 'cf_') ||( $fldname|substr:0:3 neq 'cf_' && $PRICE_BOOK_MODE eq 'create' ) || $USER_MODE eq 'create'}checked{/if}>
 					{/if}
 				{/if}
 			{elseif $uitype eq 23 || $uitype eq 5 || $uitype eq 6}
@@ -219,7 +219,7 @@
 					{assign var=time_val value="$time_value"}
 				{/foreach}
 
-				<input name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" id="jscal_field_{$fldname}" type="text" style="border:1px solid #bababa;" size="11" maxlength="10" value="{$date_val}">
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" id="jscal_field_{$fldname}" type="text" style="border:1px solid #bababa;" size="11" maxlength="10" value="{$date_val}">
 				<img src="{$IMAGE_PATH}calendar.gif" id="jscal_trigger_{$fldname}" onclick="javascript:displayCalendar('jscal_field_{$fldname}',this)">
 
 				{if $uitype eq 6}
@@ -235,7 +235,7 @@
 				
 
 		{elseif $uitype eq 63}
-				<input name="quickedit_value_{$fldname}" type="text" size="2" value="{$fldvalue}" tabindex="{$vt_tab}" >&nbsp;
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="text" size="2" value="{$fldvalue}" tabindex="{$vt_tab}" >&nbsp;
 				<select name="duration_minutes" tabindex="{$vt_tab}" class="small">
 					{foreach key=labelval item=selectval from=$secondvalue}
 						<option value="{$labelval}" {$selectval}>{$labelval}</option>
@@ -248,13 +248,13 @@
 						<option value="{$fldlabel_combo[combo]}" {$fldlabel_sel[combo]}>{$fldlabel[combo]}</option>
 					{/section}
 				</select>
-				<input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">
 				<input name="parent_name" readonly id = "parentid" type="text" style="border:1px solid #bababa;" value="{$fldvalue}">
 				&nbsp;<img src="{$IMAGE_PATH}select.gif" tabindex="{$vt_tab}" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module="+ document.EditView.parent_type.value +"&action=Popup&html=Popup_picker&form=HelpDeskEditView","test","width=640,height=602,resizable=0,scrollbars=0,top=150,left=200");' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.parent_id.value=''; this.form.parent_name.value=''; return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 
 		{elseif $uitype eq 357}
 			To:&nbsp;
-				<input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">
 				<textarea readonly name="parent_name" cols="70" rows="2">{$fldvalue}</textarea>&nbsp;
 				<select name="parent_type" class="small">
 					{foreach key=labelval item=selectval from=$fldlabel}
@@ -267,7 +267,7 @@
 			BCC:&nbsp;
 				<input name="bccmail" type="text" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'"  value="">
 		{elseif $uitype eq 59}
-				<input name="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$secondvalue}">
 				<input name="product_name" readonly type="text" value="{$fldvalue}">&nbsp;<img tabindex="{$vt_tab}" src="{$IMAGE_PATH}select.gif" alt="{$APP.LBL_SELECT}" title="{$APP.LBL_SELECT}" LANGUAGE=javascript onclick='return window.open("index.php?module=Products&action=Popup&html=Popup_picker&form=HelpDeskEditView&popuptype=specific","test","width=640,height=602,resizable=0,scrollbars=0,top=150,left=200");' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<input type="image" src="{$IMAGE_PATH}clear_field.gif" alt="{$APP.LBL_CLEAR}" title="{$APP.LBL_CLEAR}" LANGUAGE=javascript onClick="this.form.product_id.value=''; this.form.product_name.value=''; return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 
 		{elseif $uitype eq 55 || $uitype eq 255} 
@@ -285,11 +285,11 @@
 				{/foreach}
 			</select>
 			{/if}
-			<input type="text" name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'" style="width: 65%;" value= "{$secondvalue}" >
+			<input type="text" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'" style="width: 65%;" value= "{$secondvalue}" >
 
 		{elseif $uitype eq 22}
 				<font color="red">*</font>
-				<textarea name="quickedit_value_{$fldname}" cols="30" tabindex="{$vt_tab}" rows="2">{$fldvalue}</textarea>
+				<textarea name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" cols="30" tabindex="{$vt_tab}" rows="2">{$fldvalue}</textarea>
 
 		{elseif $uitype eq 69}
 				{if $MODULE eq 'Products'}
@@ -316,7 +316,7 @@
 						multi_selector.addElement( document.getElementById( 'my_file_element' ) );
 					</script>
 				{else}
-					<input name="quickedit_value_{$fldname}"  type="file" value="{$maindata[3].0.name}" tabindex="{$vt_tab}" onchange="validateFilename(this);" />
+					<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}"  type="file" value="{$maindata[3].0.name}" tabindex="{$vt_tab}" onchange="validateFilename(this);" />
 					<input name="{$fldname}_hidden"  type="hidden" value="{$maindata[3].0.name}" />
 					<input type="hidden" name="id" value=""/>
 					{ if $maindata[3].0.name != "" && $DUPLICATE neq 'true'}
@@ -327,22 +327,22 @@
 				{/if}
 
 		{elseif $uitype eq 61}
-				<input name="quickedit_value_{$fldname}"  type="file" value="{$secondvalue}" tabindex="{$vt_tab}" onchange="validateFilename(this)"/>
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}"  type="file" value="{$secondvalue}" tabindex="{$vt_tab}" onchange="validateFilename(this)"/>
 				<input type="hidden" name="{$fldname}_hidden" value="{$secondvalue}"/>
 				<input type="hidden" name="id" value=""/>{$fldvalue}
 		{elseif $uitype eq 156}
 				{if $fldvalue eq 'on'}
 						{if ($secondvalue eq 1 && $CURRENT_USERID != $smarty.request.record) || ($MODE == 'create')}
-							<input name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox" checked>
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox" checked>
 						{else}
-							<input name="quickedit_value_{$fldname}" type="hidden" value="on">
-							<input name="quickedit_value_{$fldname}" disabled tabindex="{$vt_tab}" type="checkbox" checked>
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="on">
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" disabled tabindex="{$vt_tab}" type="checkbox" checked>
 						{/if}	
 				{else}
 						{if ($secondvalue eq 1 && $CURRENT_USERID != $smarty.request.record) || ($MODE == 'create')}
-							<input name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox">
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" type="checkbox">
 						{else}
-							<input name="quickedit_value_{$fldname}" disabled tabindex="{$vt_tab}" type="checkbox">
+							<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" disabled tabindex="{$vt_tab}" type="checkbox">
 						{/if}	
 				{/if}
 		{elseif $uitype eq 98}<!-- Role Selection Popup -->		
@@ -356,12 +356,12 @@
 			<input name="user_role" id="user_role" value="{$fldvalue}" type="hidden">
 		{elseif $uitype eq 104}<!-- Mandatory Email Fields -->			
 			 <font color="red">*</font>
-			<input type="text" name="quickedit_value_{$fldname}" id ="{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+			<input type="text" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" id ="{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 			{elseif $uitype eq 115}<!-- for Status field Disabled for nonadmin -->
 			   {if $secondvalue eq 1 && $CURRENT_USERID != $smarty.request.record}
-			   	<select id="user_status" name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
+			   	<select id="user_status" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
 			   {else}
-			   	<select id="user_status" disabled name="quickedit_value_{$fldname}" class="small">
+			   	<select id="user_status" disabled name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" class="small">
 			   {/if} 
 				{foreach item=arr from=$fldvalue}
                                         <option value="{$arr[1]}" {$arr[2]} >
@@ -371,23 +371,23 @@
 			   </select>
 			{elseif $uitype eq 105}
 				{if $MODE eq 'edit' && $IMAGENAME neq ''}
-					<input name="quickedit_value_{$fldname}"  type="file" value="{$maindata[3].0.name}" tabindex="{$vt_tab}" onchange="validateFilename(this);" />[{$IMAGENAME}]<br>{$APP.LBL_IMG_FORMATS}
+					<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}"  type="file" value="{$maindata[3].0.name}" tabindex="{$vt_tab}" onchange="validateFilename(this);" />[{$IMAGENAME}]<br>{$APP.LBL_IMG_FORMATS}
 					<input name="quickedit_value_{$fldname}_hidden"  type="hidden" value="{$maindata[3].0.name}" />
 				{else}
-					<input name="quickedit_value_{$fldname}"  type="file" value="{$maindata[3].0.name}" tabindex="{$vt_tab}" onchange="validateFilename(this);" /><br>{$APP.LBL_IMG_FORMATS}
+					<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}"  type="file" value="{$maindata[3].0.name}" tabindex="{$vt_tab}" onchange="validateFilename(this);" /><br>{$APP.LBL_IMG_FORMATS}
 					<input name="quickedit_value_{$fldname}_hidden"  type="hidden" value="{$maindata[3].0.name}" />
 				{/if}
 					<input type="hidden" name="id" value=""/>
 					{$maindata[3].0.name}
 			{elseif $uitype eq 103}
-				<input type="text" name="quickedit_value_{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+				<input type="text" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 			{elseif $uitype eq 101}<!-- for reportsto field USERS POPUP -->
 				<input readonly name='reports_to_name' class="small" type="text" value='{$fldvalue}' tabindex="{$vt_tab}" ><input name='reports_to_id' type="hidden" value='{$secondvalue}'>&nbsp;<input title="Change [Alt+C]" accessKey="C" type="button" class="small" value='{$UMOD.LBL_CHANGE}' name=btn1 LANGUAGE=javascript onclick='return window.open("index.php?module=Users&action=Popup&form=UsersEditView&form_submit=false","test","width=640,height=603,resizable=0,scrollbars=0");'>
 			{elseif $uitype eq 116}<!-- for currency in users details-->	
 			   {if $secondvalue eq 1}
-			   	<select name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
+			   	<select name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
 			   {else}
-			   	<select disabled name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
+			   	<select disabled name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" class="small">
 			   {/if} 
 
 				{foreach item=arr key=uivalueid from=$fldvalue}
@@ -403,21 +403,21 @@
 			   </select>
 			<!-- code added to pass Currency field value, if Disabled for nonadmin -->
 			{if $curr_stat neq ''}
-				<input name="quickedit_value_{$fldname}" type="hidden" value="{$curr_stat}">
+				<input name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" type="hidden" value="{$curr_stat}">
 			{/if}
 			<!--code ends -->
 			{elseif $uitype eq 106}
 				<font color="red">*</font>
 				{if $MODE eq 'edit'}
-				<input type="text" readonly name="quickedit_value_{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+				<input type="text" readonly name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 				{else}
-				<input type="text" name="quickedit_value_{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+				<input type="text" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" value="{$fldvalue}" tabindex="{$vt_tab}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 				{/if}
 			{elseif $uitype eq 99}
 				{if $MODE eq 'create'}
 					<font color="red">*</font>
 
-					<input type="password" name="quickedit_value_{$fldname}" tabindex="{$vt_tab}" value="{$fldvalue}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+					<input type="password" name="quickedit_value_{$fldname}" id="quickedit_value_{$fldname}" tabindex="{$vt_tab}" value="{$fldvalue}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
 				{/if}
 		{elseif $uitype eq 30}
 				{assign var=check value=$secondvalue[0]}

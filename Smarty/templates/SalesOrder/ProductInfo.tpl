@@ -20,7 +20,7 @@ function fnHidePopDiv(obj){ldelim}
 
 <tr><td colspan="4" align="left">
 
-<table width="100%"  border="0" align="center" cellpadding="5" cellspacing="0" class="crmTable" id="proTab">
+<table class="table table-bordered table-hover table-condensedforev dvtable" id="proTab">
    <tr>
 	<td colspan="20" class="dvInnerHeader">
 		<b>{$APP.LBL_PRODUCT_DETAILS}</b>
@@ -84,7 +84,7 @@ function fnHidePopDiv(obj){ldelim}
 
 	
 	<td class="crmTableRow small lineOnTop" align="right">
-		<table width="100%" cellpadding="5" cellspacing="0">
+		<table class="table table-bordered">
 		   <tr>
 			<td id="productTotal{$row_no}" align="right">{$data.$productTotal}</td>
 		   </tr>
@@ -98,9 +98,7 @@ function fnHidePopDiv(obj){ldelim}
 
 
 
-<table width="100%"  border="0" align="center" cellpadding="5" cellspacing="0" class="crmTable">
-  
-
+<table class="table table-bordered table-hover table-condensedforev dvtable">
 <!--
 All these details are stored in the first element in the array with the index name as final_details 
 so we will get that array, parse that array and fill the details
@@ -120,7 +118,7 @@ so we will get that array, parse that array and fill the details
 	        <!-- Popup Discount DIV -->
 		<div class="discountUI" id="discount_div_final">
 			<input type="hidden" id="discount_type_final" name="discount_type_final" value="{$FINAL.discount_type_final}">
-			<table width="100%" border="0" cellpadding="5" cellspacing="0" class="small">
+			<table class="table table-bordered table-hover table-condensedforev dvtable">
 			   <tr style="cursor:move;">
 				<td id="discount_div_title_final" nowrap align="left" ></td>
 				<td align="right"><img src="{$IMAGE_PATH}close.gif" border="0" onClick="fnHidePopDiv('discount_div_final')" style="cursor:pointer;"></td>

@@ -1,1 +1,0 @@
-<?php exit;?>1358414557a:4:{s:10:"columnname";s:58:"ec_account:contact_date:contact_date:Accounts_contact_date";s:9:"stdfilter";s:8:"thisweek";s:9:"startdate";s:10:"2013-01-13";s:7:"enddate";s:10:"2013-01-19";}

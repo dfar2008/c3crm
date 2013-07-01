@@ -9,7 +9,7 @@ $query_string = "module=SfaDesktops&action=index";
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML style="OVERFLOW: hidden">
 <HEAD>
-    <TITLE>易客CRM开源免费版</TITLE>
+    <TITLE>易客CRM销售助理</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=utf-8">
 <STYLE type='text/css'>
 * {
@@ -40,9 +40,7 @@ documentElement.scrollTop
 <LINK href="include/mainresource/style.css" type=text/css rel=stylesheet>
 <script language="JavaScript" type="text/javascript" src="include/js/general.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/json.js"></script>
-<script src="include/scriptaculous/prototype.js" type="text/javascript" language="javascript"></script>
-<script src="include/scriptaculous/scriptaculous.js" type="text/javascript" language="javascript"></script>
-<script src="include/scriptaculous/dom-drag.js" type="text/javascript" language="javascript"></script>
+<script language="javascript" type="text/javascript" src="include/scriptaculous/prototypeall.js"></script>
 <META content="MSHTML 6.00.6000.17092" name=GENERATOR>
 </HEAD>
 <BODY style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; PADDING-TOP: 0px">

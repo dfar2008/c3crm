@@ -1,1 +1,0 @@
-<?php exit;?>1368156571a:10:{s:5:"title";s:1:"2";s:9:"accountid";s:2:"51";s:8:"notetype";s:2:"15";s:12:"contact_date";s:1:"5";s:11:"notecontent";s:2:"19";s:11:"createdtime";s:2:"70";s:12:"modifiedtime";s:2:"70";s:6:"rating";s:2:"15";s:9:"smownerid";s:2:"53";s:11:"smcreatorid";s:4:"1004";}

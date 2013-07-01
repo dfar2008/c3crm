@@ -1,4 +1,78 @@
+{*<!--
+/*********************************************************************************
+** The contents of this file are subject to the vtiger CRM Public License Version 1.0
+ * ("License"); You may not use this file except in compliance with the License
+ * The Original Code is:  vtiger CRM Open Source
+ * The Initial Developer of the Original Code is vtiger.
+ * Portions created by vtiger are Copyright (C) vtiger.
+ * All Rights Reserved.
+*
+ ********************************************************************************/
+-->*}
+
 <link href="swfupload/css/default2.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="swfupload/js/swfupload.js"></script>
+<script type="text/javascript" src="swfupload/js/swfupload.queue.js"></script>
+<script type="text/javascript" src="swfupload/js/fileprogress.js"></script>
+<script type="text/javascript" src="swfupload/js/handlers.js"></script>
+<script type="text/javascript">
+
+{literal}
+var swfu;
+
+window.onload = function() {
+	swfu = new SWFUpload({
+		// Backend Settings
+		upload_url: "modules/Import/upload.php",	// Relative to the SWF file (or you can use absolute paths)
+		post_params: {"PHPSESSID" : ""},
+
+		
+		// File Upload Settings
+		file_size_limit : "2048",	// 2MB
+		file_types : "*.csv",
+		file_types_description : "All Files",
+		file_upload_limit : 1,
+		file_queue_limit : 0,
+
+		// Event Handler Settings (all my handlers are in the Handler.js file)
+		file_dialog_start_handler : fileDialogStart,
+		file_queued_handler : fileQueued,
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		upload_start_handler : uploadStart,
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadSuccess,
+		upload_complete_handler : uploadComplete,
+
+		// Button Settings
+		button_image_url : "swfupload/images/XPButtonUploadText_61x21.png",
+		button_placeholder_id : "spanButtonPlaceholder1",
+		button_width: 61,
+		button_height: 22,
+		
+		// Flash Settings
+		flash_url : "swfupload/swf/swfupload.swf",
+		
+
+		custom_settings : {
+			progressTarget : "fsUploadProgress1",
+			cancelButtonId : "btnCancel1"
+		},
+		
+		// Debug Settings
+		debug: false
+	});
+
+	
+
+}
+
+ {/literal}
+</script>
+
+
+<!-- header - level 2 tabs -->
 {include file='Buttons_List.tpl'}	
 
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="98%" class="small">
@@ -40,15 +114,28 @@
                     <a href="c3crm.csv"><font color=red size="+1"><b>>>下载样例</b></font></a>
                     </td>
 					<td align="left" valign="middle" >
-						<input type="file" name="userfile"  size="40"   class=small/>
-                       
+						<!--<input type="file" name="userfile1"  size="40"   class=small/>&nbsp;-->
+                       <div align="left" style="padding-left:10px;">
+						<div class="fieldset flash"  >
+							<span class="legend">{$MOD.LBL_FILE_ORDERLIST}(Max:2MB)</span>
+                            <input type="text" id="txtFileName" disabled="true" style="border: solid 1px; background-color: #FFFFFF; vertical-align:top;width:250px;margin-left:5px;"/>
+							<span id="spanButtonPlaceholder1"></span>
+                            <div id="fsUploadProgress1"></div>
+                            <div align="left" style="padding-left:10px;padding-top:10px;">
+                            <input type="button" value="开始上传" id="btnSubmit" onclick="doSubmit(swfu);" disabled="disabled" style="margin-left: -5px; height: 22px; font-size: 10pt;" />
+							<input id="btnCancel1" type="button" value="取消上传" onclick="cancelQueue(swfu);" disabled="disabled" style="margin-left: 2px; height: 22px; font-size: 10pt;" />
+							<br />
+						</div>
+						</div>
+						
+					</div>
 				   </tr>
 				    <tr >
 						<td  align="left" style="padding-left:40px;" class="reportCreateBottom">
-                        &nbsp;
+                        <input type="button" class="crmbutton small edit" value="  刷 新  "  onclick="window.location.reload();"/>
                         </td>
                         <td  align="right" style="padding-right:40px;" class="reportCreateBottom">
-							<input title="{$MOD.LBL_NEXT}" accessKey="" class="crmButton small save" type="submit" name="button" value="   开始导入 &rsaquo; "  onclick="this.form.action.value='Import';this.form.step.value='2';">
+							<input title="{$MOD.LBL_NEXT}" accessKey="" class="crmButton small save" type="button" name="button" value="   开始导入 &rsaquo; "  onclick="this.form.action.value='Import';this.form.step.value='2'; checkFilename();">
 						</td>
 				   </tr>				</form>
 				 </table>
@@ -62,3 +149,16 @@
    </tr>
 </table>
 <br>
+<script>
+{literal}
+	function checkFilename(){
+		var filename = document.getElementById("filename").value;
+		if(filename == ''){
+			alert("文件还未上传...");
+			return false;
+		}else{
+			document.Import.submit();
+		}
+	}
+{/literal}
+</script>

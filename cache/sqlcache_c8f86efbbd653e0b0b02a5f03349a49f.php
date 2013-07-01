@@ -1,1 +1,0 @@
-<?php exit;?>1368156570a:5:{s:5:"tabid";s:1:"8";s:10:"modulename";s:5:"Notes";s:9:"tablename";s:8:"ec_notes";s:9:"fieldname";s:5:"title";s:13:"entityidfield";s:7:"notesid";}

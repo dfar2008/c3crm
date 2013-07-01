@@ -1,1 +1,0 @@
-<?php exit;?>1368156608a:5:{s:5:"tabid";s:2:"36";s:10:"modulename";s:12:"Maillisttmps";s:9:"tablename";s:15:"ec_maillisttmps";s:9:"fieldname";s:15:"maillisttmpname";s:13:"entityidfield";s:14:"maillisttmpsid";}

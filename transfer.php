@@ -63,5 +63,5 @@ $_SESSION['appSecret'] = $appSecret;
 
 $_SESSION['authenticated_user_language'] = 'zh_cn';
 
-header("Location: main.php");
+header("Location: index.php");
 ?>

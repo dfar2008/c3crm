@@ -290,7 +290,7 @@ else
 
 if(isset($_REQUEST['query']) && $_REQUEST['query'] == 'true')
 {
-	list($where, $ustring) = explode("#@@#",getWhereCondition($currentModule));
+	list($where, $ustring) = split("#@@#",getWhereCondition($currentModule));
 	$url_string .="&query=true".$ustring;
 }
 

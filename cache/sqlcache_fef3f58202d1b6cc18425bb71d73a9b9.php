@@ -1,1 +1,0 @@
-<?php exit;?>1368156600a:9:{s:11:"description";s:0:"";s:11:"productname";s:0:"";s:11:"productcode";s:0:"";s:10:"detail_url";s:0:"";s:5:"price";s:0:"";s:11:"createdtime";s:0:"";s:12:"modifiedtime";s:0:"";s:16:"assigned_user_id";s:0:"";s:11:"smcreatorid";s:0:"";}

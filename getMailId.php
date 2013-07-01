@@ -4,7 +4,7 @@
 	global $adb;
 	
 	$mailid = $_REQUEST['mailid'];
-	$adb->query("UPDATE `ec_maillogs` SET `isread` = '1' WHERE `id` ={$mailid}");
+	$adb->query("UPDATE `ec_maillogs` SET `read` = '1' WHERE `id` ={$mailid}");
 	
 	$query = "select maillistsid from ec_maillists where mailids like '%$mailid,%' "; 
 	$row = $adb->getFirstLine($query);

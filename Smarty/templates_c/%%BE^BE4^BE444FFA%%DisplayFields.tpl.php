@@ -1,15 +1,11 @@
-<?php /* Smarty version 2.6.18, created on 2013-01-17 18:29:02
+<?php /* Smarty version 2.6.18, created on 2013-07-01 16:19:54
          compiled from DisplayFields.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'DisplayFields.tpl', 59, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'DisplayFields.tpl', 55, false),)), $this); ?>
 <?php $_from = $this->_tpl_vars['data']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['label'] => $this->_tpl_vars['subdata']):
 ?>
-	<?php if ($this->_tpl_vars['header'] == 'Product Details'): ?>
-		<tr>
-	<?php else: ?>
-		<tr style="height:25px">
-	<?php endif; ?>
+	<tr>
 	<?php $_from = $this->_tpl_vars['subdata']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['mainlabel'] => $this->_tpl_vars['maindata']):
 ?>
@@ -37,34 +33,34 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'D
 		<?php endif; ?>
 
 		<?php if ($this->_tpl_vars['uitype'] == 2): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id="<?php echo $this->_tpl_vars['fldname']; ?>
 " value="<?php echo $this->_tpl_vars['fldvalue']; ?>
-" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+" >
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 11 || $this->_tpl_vars['uitype'] == 1 || $this->_tpl_vars['uitype'] == 13 || $this->_tpl_vars['uitype'] == 7 || $this->_tpl_vars['uitype'] == 9): ?>
-			<td width="20%" class="dvtCellLabel" align="right"><?php echo $this->_tpl_vars['required']; ?>
+			<td class="dvt"><?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 </td>
-			<td width="30%" align="left" class="dvtCellInfo"><input<?php echo $this->_tpl_vars['disable']; ?>
+			<td class="dvn"><input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
 " value="<?php echo $this->_tpl_vars['fldvalue']; ?>
-" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'"></td>
+" ></td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 10): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  readonly name="<?php echo $this->_tpl_vars['thirdvalue']; ?>
 " type="text" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
@@ -88,7 +84,7 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			<?php if ($this->_tpl_vars['fldlabel'] == $this->_tpl_vars['MOD']['LBL_ADD_COMMENT']): ?>
 				<?php $this->assign('fldvalue', ""); ?>
 			<?php endif; ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 
 				<?php echo $this->_tpl_vars['fldlabel']; ?>
@@ -97,38 +93,38 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			<td colspan=3>
             <?php if ($this->_tpl_vars['MODULE'] == 'Maillisttmps' || $this->_tpl_vars['MODULE'] == 'Qunfatmps'): ?>
 				<textarea<?php echo $this->_tpl_vars['disable']; ?>
- class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'" name="<?php echo $this->_tpl_vars['fldname']; ?>
-"  onBlur="this.className='detailedViewTextBox'" cols="90" style="height:200px;" ><?php echo ((is_array($_tmp=$this->_tpl_vars['fldvalue'])) ? $this->_run_mod_handler('escape', true, $_tmp) : smarty_modifier_escape($_tmp)); ?>
+ class="detailedViewTextBox"  name="<?php echo $this->_tpl_vars['fldname']; ?>
+"   style="width:900px;height:50px;" ><?php echo ((is_array($_tmp=$this->_tpl_vars['fldvalue'])) ? $this->_run_mod_handler('escape', true, $_tmp) : smarty_modifier_escape($_tmp)); ?>
 </textarea>
                 <?php else: ?>
                 <textarea<?php echo $this->_tpl_vars['disable']; ?>
- class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'" name="<?php echo $this->_tpl_vars['fldname']; ?>
-"  onBlur="this.className='detailedViewTextBox'" cols="90" rows="8"><?php echo ((is_array($_tmp=$this->_tpl_vars['fldvalue'])) ? $this->_run_mod_handler('escape', true, $_tmp) : smarty_modifier_escape($_tmp)); ?>
+ class="detailedViewTextBox"  name="<?php echo $this->_tpl_vars['fldname']; ?>
+"   style="width:900px;height:50px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['fldvalue'])) ? $this->_run_mod_handler('escape', true, $_tmp) : smarty_modifier_escape($_tmp)); ?>
 </textarea>
                 <?php endif; ?>
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 21 || $this->_tpl_vars['uitype'] == 24): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 
 				<?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<textarea<?php echo $this->_tpl_vars['disable']; ?>
  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 " name="<?php echo $this->_tpl_vars['fldname']; ?>
-" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'" rows=2><?php echo ((is_array($_tmp=$this->_tpl_vars['fldvalue'])) ? $this->_run_mod_handler('escape', true, $_tmp) : smarty_modifier_escape($_tmp)); ?>
+" style="width:350px;height:50px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['fldvalue'])) ? $this->_run_mod_handler('escape', true, $_tmp) : smarty_modifier_escape($_tmp)); ?>
 </textarea>
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 15 || $this->_tpl_vars['uitype'] == 16 || $this->_tpl_vars['uitype'] == 111): ?> <!-- uitype 111 added for noneditable existing picklist values - ahmed -->
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 
 				<?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 			   <select<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 " class="small">
@@ -149,13 +145,13 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			   </select>
 			</td>
         <?php elseif ($this->_tpl_vars['uitype'] == 155): ?> <!-- uitype 111 added for noneditable existing picklist values - ahmed -->
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 
 				<?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 			   <select<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 " class="small">
@@ -172,13 +168,13 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			   </select>
 			</td>
         <?php elseif ($this->_tpl_vars['uitype'] == 1021 || $this->_tpl_vars['uitype'] == 1022 || $this->_tpl_vars['uitype'] == 1023): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 
 				<?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 			   <select<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id="<?php echo $this->_tpl_vars['fldname']; ?>
@@ -201,12 +197,12 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			   </select>
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 33): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 			   <select<?php echo $this->_tpl_vars['disable']; ?>
  MULTIPLE name="<?php echo $this->_tpl_vars['fldname']; ?>
 []" size="4" style="width:160px;" class="small">
@@ -226,12 +222,12 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 53): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">	
+			<td class="dvn">	
 				<select<?php echo $this->_tpl_vars['disable']; ?>
  name="assigned_user_id" class="small">
 					<?php $_from = $this->_tpl_vars['fldvalue']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
@@ -249,12 +245,12 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 				</select>				
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 54): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">				
+			<td class="dvn">				
 				<select<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 " class="small">
@@ -273,12 +269,12 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 				</select>
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 52 || $this->_tpl_vars['uitype'] == 77): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<?php if ($this->_tpl_vars['uitype'] == 52): ?>
 					<select<?php echo $this->_tpl_vars['disable']; ?>
  name="assigned_user_id" class="small">
@@ -321,24 +317,22 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			<?php else: ?>
 				<?php $this->assign('popuptype', 'specific_contact_account_address'); ?>
 			<?php endif; ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
- readonly name="account_name" class="detailedViewTextBox"  type="text" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
-"><input<?php echo $this->_tpl_vars['disable']; ?>
+ readonly name="account_name" type="text" style="width:300px;" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" >
+				<input<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 " type="hidden" value="<?php echo $this->_tpl_vars['secondvalue']; ?>
 ">
-                <br>①直接查客户: <input style='border: 1px solid rgb(186, 186, 186);' id='account_search_val' name='account_search_val' type="text">&nbsp;<input type='button' value='查' onclick='SearchAccountVal();'>
-                <br>②浏览选客户: <img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
-select.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_SELECT']; ?>
-" title="<?php echo $this->_tpl_vars['APP']['LBL_SELECT']; ?>
-" LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype=<?php echo $this->_tpl_vars['popuptype']; ?>
-&form=TasksEditView&form_submit=false","test","width=700,height=602,resizable=1,scrollbars=1");' align="absmiddle" style='cursor:hand;cursor:pointer'>&nbsp;<img<?php echo $this->_tpl_vars['disable']; ?>
+                <br>①直接查客户: <input style='border: 1px solid rgb(186, 186, 186);' id='account_search_val' name='account_search_val' type="text" >&nbsp;<i class="cus-zoom" onclick='SearchAccountVal();'></i>
+                <br>②浏览选客户: <i class="cus-zoom" onclick="BrowerAcct('<?php echo $this->_tpl_vars['popuptype']; ?>
+');" style='cursor:hand;cursor:pointer'></i>&nbsp;<img<?php echo $this->_tpl_vars['disable']; ?>
   src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL']; ?>
 " title="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL']; ?>
@@ -346,12 +340,12 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 50): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  readonly name="account_name" class="detailedViewTextBox"  type="text" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 "><input<?php echo $this->_tpl_vars['disable']; ?>
@@ -365,12 +359,12 @@ select.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_SELECT']; ?>
 " LANGUAGE=javascript onclick='return window.open("index.php?module=Accounts&action=Popup&popuptype=specific&form=TasksEditView&form_submit=false","test","width=700,height=602,resizable=1,scrollbars=1");' align="absmiddle" style='cursor:hand;cursor:pointer'>
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 73): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  readonly class="detailedViewTextBox" name="account_name" type="text" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 "><input<?php echo $this->_tpl_vars['disable']; ?>
@@ -385,13 +379,13 @@ select.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_SELECT']; ?>
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 57): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
 			
-				<td width="30%" align="left" class="dvtCellInfo">
+				<td class="dvn">
                   <select<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 "  id="<?php echo $this->_tpl_vars['fldname']; ?>
@@ -402,12 +396,12 @@ select.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_SELECT']; ?>
                 </td>
 	
 		<?php elseif ($this->_tpl_vars['uitype'] == 80): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  name="salesorder_name" readonly type="text"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 "><input<?php echo $this->_tpl_vars['disable']; ?>
@@ -424,12 +418,12 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 76): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  name="potential_name" readonly type="text"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 "><input<?php echo $this->_tpl_vars['disable']; ?>
@@ -446,121 +440,134 @@ clear_field.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR_BUTTON_LABEL
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 17): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
-" class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" class="detailedViewTextBox"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 ">
 				
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 85): ?>
-                        <td width="20%" class="dvtCellLabel" align="right">
+                        <td class="dvt">
                                 <?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
                         </td>
-                        <td width="30%" align="left" class="dvtCellInfo">
+                        <td class="dvn">
                                 <img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 skype.gif" align="absmiddle"></img>
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
-" class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" class="detailedViewTextBox"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 ">
 				
                         </td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 86): ?>
-                        <td width="20%" class="dvtCellLabel" align="right">
+                        <td class="dvt">
                                 <?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
                         </td>
-                        <td width="30%" align="left" class="dvtCellInfo">
+                        <td class="dvn">
                                 <img border="0" src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 qq.gif"  align="absmiddle">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
-" class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" class="detailedViewTextBox"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 ">
                         </td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 87): ?>
-                        <td width="20%" class="dvtCellLabel" align="right">
+                        <td class="dvt">
                                 <?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
                         </td>
-                        <td width="30%" align="left" class="dvtCellInfo">
+                        <td class="dvn">
                                 <img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 msn.jpg" align="absmiddle"></img>
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
-" class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" class="detailedViewTextBox"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 ">
                         </td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 88): ?>
-                        <td width="20%" class="dvtCellLabel" align="right">
+                        <td class="dvt">
                                 <?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
                         </td>
-                        <td width="30%" align="left" class="dvtCellInfo">
+                        <td class="dvn">
                                 <img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 trade.jpg" align="absmiddle">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
-" class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" class="detailedViewTextBox"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 ">
                         </td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 89): ?>
-                        <td width="20%" class="dvtCellLabel" align="right">
+                        <td class="dvt">
                                 <?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
                         </td>
-                        <td width="30%" align="left" class="dvtCellInfo">
+                        <td class="dvn">
                                 <img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 yahoo.gif" align="absmiddle">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
-" class="detailedViewTextBox" onFocus="this.className='detailedViewTextBoxOn'"onBlur="this.className='detailedViewTextBox'" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" class="detailedViewTextBox"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 ">
                         </td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 71 || $this->_tpl_vars['uitype'] == 72): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
-" type="text" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" type="text"     value="<?php echo $this->_tpl_vars['fldvalue']; ?>
 ">
 			</td>
 
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 5): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
-				
-
-				<input<?php echo $this->_tpl_vars['disable']; ?>
+			<td class="dvn">
+				<div class="input-append date" id="jscal_field_<?php echo $this->_tpl_vars['fldname']; ?>
+"  data-date="<?php echo $this->_tpl_vars['fldvalue']; ?>
+" data-date-format="yyyy-mm-dd">
+                  <input <?php echo $this->_tpl_vars['disable']; ?>
+ type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
+"  value="<?php echo $this->_tpl_vars['fldvalue']; ?>
+"  style="width:100px;">
+                  <span class="add-on"><i class="cus-date"></i></span>
+                </div> 
+                <script>
+	                $(function(){ 
+				      $("#jscal_field_<?php echo $this->_tpl_vars['fldname']; ?>
+").datepicker();
+				    }); 
+				</script>
+			<!-- 	<input<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id="jscal_field_<?php echo $this->_tpl_vars['fldname']; ?>
 " type="text"  size="11" maxlength="10" value="<?php echo $this->_tpl_vars['fldvalue']; ?>
@@ -568,17 +575,17 @@ yahoo.gif" align="absmiddle">
 				<img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 calendar.gif" id="jscal_trigger_<?php echo $this->_tpl_vars['fldname']; ?>
 " onclick="javascript:displayCalendar('jscal_field_<?php echo $this->_tpl_vars['fldname']; ?>
-',this)">
+',this)">  -->
 
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 22): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<textarea<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 " cols="30" rows="2"><?php echo $this->_tpl_vars['fldvalue']; ?>
@@ -586,12 +593,12 @@ calendar.gif" id="jscal_trigger_<?php echo $this->_tpl_vars['fldname']; ?>
 			</td>
 
 		<?php elseif ($this->_tpl_vars['uitype'] == 61): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td colspan="3" width="30%" align="left" class="dvtCellInfo">
+			<td colspan="3" class="dvn">
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  name="<?php echo $this->_tpl_vars['fldname']; ?>
 "  type="file" value="<?php echo $this->_tpl_vars['secondvalue']; ?>
@@ -601,19 +608,19 @@ calendar.gif" id="jscal_trigger_<?php echo $this->_tpl_vars['fldname']; ?>
 
 			</td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 104): ?><!-- Mandatory Email Fields -->			
-			 <td width="20%" class="dvtCellLabel" align="right">
+			 <td class="dvt">
 			 <?php echo $this->_tpl_vars['required']; ?>
 
 			 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			 </td>
-    			<td width="30%" align="left" class="dvtCellInfo"><input<?php echo $this->_tpl_vars['disable']; ?>
+    			<td class="dvn"><input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " id ="<?php echo $this->_tpl_vars['fldname']; ?>
 " value="<?php echo $this->_tpl_vars['fldvalue']; ?>
-" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'"></td>
+"   ></td>
 		<?php elseif ($this->_tpl_vars['uitype'] == 103): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
@@ -622,27 +629,27 @@ calendar.gif" id="jscal_trigger_<?php echo $this->_tpl_vars['fldname']; ?>
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " value="<?php echo $this->_tpl_vars['fldvalue']; ?>
-" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+"   >
 			</td>	
 			
 			
 		<?php elseif ($this->_tpl_vars['uitype'] == 106): ?>
-			<td width="20%" class="dvtCellLabel" align="right">
+			<td class="dvt">
 				<?php echo $this->_tpl_vars['required']; ?>
 <?php echo $this->_tpl_vars['fldlabel']; ?>
 
 			</td>
-			<td width="30%" align="left" class="dvtCellInfo">
+			<td class="dvn">
 				<?php if ($this->_tpl_vars['MODE'] == 'edit'): ?>
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" readonly name="<?php echo $this->_tpl_vars['fldname']; ?>
 " value="<?php echo $this->_tpl_vars['fldvalue']; ?>
-" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+"   >
 				<?php else: ?>
 				<input<?php echo $this->_tpl_vars['disable']; ?>
  type="text" name="<?php echo $this->_tpl_vars['fldname']; ?>
 " value="<?php echo $this->_tpl_vars['fldvalue']; ?>
-" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn'" onBlur="this.className='detailedViewTextBox'">
+"   >
 				<?php endif; ?>
 			</td>
 

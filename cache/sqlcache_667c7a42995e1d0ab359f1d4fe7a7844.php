@@ -1,1 +1,0 @@
-<?php exit;?>1368156608s:329:"<option value=\'ec_maillisttmps.maillisttmpname\'>模板名称</option><option value=\'ec_maillisttmps.smownerid\'>负责人</option><option value=\'ec_maillisttmps.createdtime\'>创建时间</option><option value=\'ec_maillisttmps.modifiedtime\'>修改时间</option><option value=\'ec_maillisttmps.description\'>内容</option>";

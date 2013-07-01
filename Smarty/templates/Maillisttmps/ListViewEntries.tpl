@@ -9,11 +9,10 @@
   *
  ********************************************************************************/
 -->*}
-{if $smarty.request.ajax neq ''}
-&#&#&#{$ERROR}&#&#&#
-{/if}
 
-<form name="massdelete" method="POST" action="index.php">
+<div id="quickedit_form_div" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<div id="gaojisearch" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px;margin-left:-380px;"></div>
+
      <input name='search_url' id="search_url" type='hidden' value='{$SEARCH_URL}'>
      <input name="idlist" id="idlist" type="hidden">
      <input name="action" id="action" type="hidden">
@@ -22,70 +21,71 @@
      <input name="change_owner" type="hidden">
      <input name="change_status" type="hidden">
      <input name="allids" type="hidden" value="{$ALLIDS}">
-				<!-- List View Master Holder starts -->
-				<table border=0 cellspacing=1 cellpadding=0 width=100% class="lvtBg">
-				<tr>
-				<td>
-				<!-- List View's Buttons and Filters starts -->
-		        <table border=0 cellspacing=0 cellpadding=2 width=100% class="small">
-			    <tr>
-				<!-- Buttons -->
-				<td style="padding-right:20px" align="left" nowrap>
-							
-				<input class="crmbutton small delete" type="button" value=" {$APP.LBL_DELETE_BUTTON} " onclick="return massDelete('{$MODULE}')"/>
-				 
-                </td>
-				<!-- Page Navigation -->
-				<td nowrap width="100%" align="right" valign="middle">
-					<table border=0 cellspacing=0 cellpadding=0 class="small">
-					     <tr><td style="padding-right:5px">{$RECORD_COUNTS}&nbsp;&nbsp;&nbsp;&nbsp;{$NAVIGATION}</td></tr>
-					</table>
-				</td>
-			
-					
-       		    </tr>
-			</table>
-			<!-- List View's Buttons and Filters ends -->
-			
-			<div  >
-			<table border=0 cellspacing=1 cellpadding=3 width=100% class="lvt small">
-			<!-- Table Headers -->
-			<tr>
-            <td class="lvtCol"><input type="checkbox"  name="selectall" onClick=toggleSelect(this.checked,"selected_id")></td>
-				 {foreach name="listviewforeach" item=header from=$LISTHEADER}
- 			<td class="lvtCol">{$header}</td>
-				{/foreach}
-			</tr>
-			<!-- Table Contents -->
-			{foreach item=entity key=entity_id from=$LISTENTITY}
-			<tr bgcolor=white onMouseOver="this.className='lvtColDataHover'" onMouseOut="this.className='lvtColData'" id="row_{$entity_id}">
-			<td width="2%"><input type="checkbox" NAME="selected_id" value= '{$entity_id}' onClick=toggleSelectAll(this.name,"selectall")></td>
-			{foreach item=data from=$entity}	
-			<td>{$data}</td>
-	        {/foreach}
-			</tr>
-			{foreachelse}
-			<tr><td style="background-color:#efefef;height:340px" align="center" colspan="{$smarty.foreach.listviewforeach.iteration+1}">
-			<div style="border: 3px solid rgb(153, 153, 153); background-color: rgb(255, 255, 255); width: 45%; position: relative; z-index: 0.1;">
-										
-				<table border="0" cellpadding="5" cellspacing="0" width="98%">
-				<tr>
-					<td rowspan="2" width="25%"><img src="{$IMAGE_PATH}empty.jpg" height="60" width="61"></td>
-					<td style="border-bottom: 1px solid rgb(204, 204, 204);" nowrap="nowrap" width="75%"><span class="genHeaderSmall">
-					{$APP.LBL_FOUND}
-					</span></td>
-				</tr>
-				
-				</table> 
-					
-				</div>					
-				</td></tr>	
-			{/foreach}
-                
-			 </table>
-		       </td>
-		   </tr>
-	    </table>
+
+<div style="margin-top:0px;margin-bottom:0px;overflow:auto;height:470px;">
+   <table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+      <tr>  
+          <th align="left" width="35">
+            <input type="checkbox" name="selectedAll" id="selectedAll" />
+          </th>
+         {foreach name="listviewforeach" item=header from=$LISTHEADER}
+             <th align="left" nowrap="nowrap">{$header}</th>
+         {/foreach}
+      </tr>
+     </thead>
+     <tbody>
+       {foreach item=entity key=entity_id from=$LISTENTITY}
+       <tr id="row_{$entity_id}"> 
+          <td>
+            <input type="checkbox" name="selected_id"  id="selected_id_{$entity_id}" value="{$entity_id}" />
+          </td>
+         {foreach item=data from=$entity} 
+         	 <td >{$data}</td>
+         {/foreach}
+        </tr>  
+       {foreachelse}
+        <tr> 
+          <td colspan="{$smarty.foreach.listviewforeach.iteration+1}">{$APP.LBL_FOUND}</td>
+        </tr> 
+       {/foreach}
+
+    </tbody>
+  </table>
+  </div>
+  <div style="margin-top:0px;margin-bottom:0px;">
+  <table class="table table-bordered table-hover table-condensed"><tbody>
+    <tr>
+    <td colspan="15" style="margin:0px;vertical-align: center;" >
+      <div class="span7 pull-left" style="margin-top:8px;">
         
-			 </div>
-   </form>	
+      </div>
+      
+        <div class="span5" style="margin-top:8px;">
+        <div class="pagination pagination-mini pagination-right" style="margin:0px;">
+          <small style="color:#999999;">{$RECORD_COUNTS}&nbsp;</small>
+          {$NAVIGATION}
+        </div>
+      </div>
+    </td>
+    </tr>
+    </tbody>
+      </table>
+  </div> 
+
+
+<script language="JavaScript" type="text/javascript">
+{literal}
+$(function() {
+    //全选 | 反全选
+   $("#selectedAll").click(function() { 
+        $('input[name="selected_id"]').prop("checked",this.checked);
+    });
+    var $selected_id = $("input[name='selected_id']"); 
+    $selected_id.click(function(){
+        $("#selectedAll").prop("checked",$selected_id.length == $selected_id.filter(":checked").length.length ? true : false);
+    });
+
+});
+{/literal}
+</script>

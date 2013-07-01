@@ -1,5 +1,9 @@
 
-<div id="advSearch">
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h3>高级搜索</h3>
+</div>
+<div id="advSearch" class="modal-body">
 <form name="advSearch" action="index.php" onsubmit="return false;">
 <input type="hidden" name="searchtype" value="advance">
 <input type="hidden" name="module" value="{$MODULE}">
@@ -19,7 +23,7 @@
 					{/if}
 			</tr>
 		</table>
-		<table cellpadding="2" cellspacing="0" width="98%" align="center" class="searchUIAdv2 small" border=0>
+		<table cellpadding="2" cellspacing="0" 	="98%" align="center" class="searchUIAdv2 small" border=0>
 			<tr>
 				<td align="center" class="small" width=90%>
 				<div id="fixed" style="position:relative;width:98%;height:300px;padding:0px; overflow:auto;border:1px solid #CCCCCC;background-color:#ffffff" class="small">
@@ -32,29 +36,29 @@
 							   {foreach from=$SEARCHCONSHTML  item=cons name=foo}
 							     <tr  >
 								<td width="31%">
-								<select name="Fields{$smarty.foreach.foo.index}" class="detailedViewTextBox">
+								<select name="Fields{$smarty.foreach.foo.index}" class="detailedViewTextBox" >
 								{$cons.0}
 								</select>
 								</td>
 								<td width="32%">
-								<select name="Condition{$smarty.foreach.foo.index}" class="detailedViewTextBox">
+								<select name="Condition{$smarty.foreach.foo.index}" class="detailedViewTextBox" >
 									{$cons.1}
 								</select>
 								</td>
 								<td width="32%">
-								<input type="text" name="Srch_value{$smarty.foreach.foo.index}" value="{$cons.2}" class="detailedViewTextBox">
+								<input type="text" name="Srch_value{$smarty.foreach.foo.index}" value="{$cons.2}" class="detailedViewTextBox"> 
 								</td>
 							        </tr>
 							     {/foreach}
 							{else}
 							     <tr  >
 								<td width="31%">
-								<select name="Fields0" class="detailedViewTextBox">
+								<select name="Fields0" class="detailedViewTextBox" >
 								{$FIELDNAMES}
 								</select>
 								</td>
 								<td width="32%">
-								<select name="Condition0" class="detailedViewTextBox">
+								<select name="Condition0" class="detailedViewTextBox" >
 									{$CRITERIA}
 								</select>
 								</td>
@@ -72,19 +76,16 @@
 				</td>
 			</tr>
 		</table>
-			
-		<table border=0 cellspacing=0 cellpadding=5 width=98% class="searchUIAdv3 small" align="center">
-		<tr>
-			<td align=left width=40%>
-						<input type="button" name="more" value=" {$APP.LBL_MORE_BUTTON} " onClick="fnAddSrch('{$FIELDNAMES}','{$CRITERIA}')" class="crmbuttom small edit" >
-						<input name="button" type="button" value=" {$APP.LBL_FEWER_BUTTON} " onclick="delRow()" class="crmbuttom small edit" >
-			</td>
-			<td align=left class="small">
-			 <input type="button" class="crmbutton small create" value=" {$APP.LBL_SEARCH_NOW_BUTTON} " onClick="totalnoofrows();callSearch('Advanced');">
-			 <input type="button" class="crmbutton small edit" value=" {$APP.LBL_SEARCH_CLEAR} " onClick="clearSearchResult('{$MODULE}','advSearch');">
-			</td>
-            
-		</tr>
-	</table>
+		
     </form>
 </div>	
+<div class="modal-footer">
+	<div class="pull-left">
+		<button class="btn btn-success" onClick="fnAddSrch('{$FIELDNAMES}','{$CRITERIA}')">{$APP.LBL_MORE_BUTTON}</button>
+		<button class="btn btn-success" onclick="delRow()">{$APP.LBL_FEWER_BUTTON}</button>
+	</div>
+	<div class="pull-right">
+	 <button class="btn btn-primary" onClick="totalnoofrows();callSearch('Advanced');">立即查找</button>
+	 <button class="btn" onclick="clearSearchResult('{$MODULE}','advSearch');" data-dismiss="modal" aria-hidden="true">取消查找</button>	
+	</div>
+</div>

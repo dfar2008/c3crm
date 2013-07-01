@@ -1,1 +1,0 @@
-<?php exit;?>1368156604a:8:{s:7:"subject";s:0:"";s:12:"maillistname";s:0:"";s:9:"accountid";s:0:"";s:9:"from_name";s:0:"";s:11:"createdtime";s:0:"";s:12:"modifiedtime";s:0:"";s:11:"description";s:0:"";s:11:"mailcontent";s:0:"";}

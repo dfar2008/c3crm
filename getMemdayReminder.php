@@ -149,7 +149,7 @@ if($num_rows > 0){
 									$currenttime = date("Y-m-d H:i:s");
 									
 									$maillogsid = $adb->getUniqueID("ec_maillogs");
-									$imghtml = '<img src="http://".$_SERVER['HTTP_HOST']."/getMailId.php?mailid='.$maillogsid.'"  border=0 width="1" height="1" />';
+									$imghtml = '<img src="http://crm123.sinaapp.com/getMailId.php?mailid='.$maillogsid.'"  border=0 width="1" height="1" />';
 									$content = $content.$imghtml;
 									
 									//失败回调地址
@@ -180,7 +180,7 @@ if($num_rows > 0){
 									$currenttime = date("Y-m-d H:i:s");
 									
 									$maillogsid = $adb->getUniqueID("ec_maillogs");
-									$imghtml = '<img src="http://".$_SERVER['HTTP_HOST']."/getMailId.php?mailid='.$maillogsid.'"  border=0 width="1" height="1" />';
+									$imghtml = '<img src="http://crm123.sinaapp.com/getMailId.php?mailid='.$maillogsid.'"  border=0 width="1" height="1" />';
 									$content = $content.$imghtml;
 									
 									//失败回调地址

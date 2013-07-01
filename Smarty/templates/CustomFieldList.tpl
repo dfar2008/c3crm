@@ -59,7 +59,7 @@ function makeFieldSelected(oField,fieldid)
 	}
 	oField.className = 'customMnuSelected';	
 	gselected_fieldtype = oField.id;	
-	selFieldType(fieldid);
+	selFieldType(fieldid)
 	document.getElementById('selectedfieldtype').value = fieldid;
 }
 function CustomFieldMapping()
@@ -77,7 +77,7 @@ var gselected_fieldtype = '';
         <td class="showPanelBg" style="padding: 10px;" valign="top" width="100%">
 
 	<div align=center>
-			{include file='SetMenu.tpl'} 
+			{include file='SetMenu.tpl'}
 			<!-- DISPLAY -->
 			{if $MODE neq 'edit'}
 			<b><font color=red>{$DUPLICATE_ERROR} </font></b>

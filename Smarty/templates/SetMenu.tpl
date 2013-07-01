@@ -44,19 +44,20 @@
 		{else}
 		<tr><td class="settingsTabList" nowrap><a href="index.php?module=Settings&action=LayoutList&parenttab=Settings">{$MOD.LBL_LAYOUT_EDITOR}</a></td></tr>
 		{/if}
+
+		{if  $smarty.request.action eq 'CustomTabList'}
+		<tr><td class="settingsTabSelected" nowrap><a href="index.php?module=Settings&action=CustomTabList&parenttab=Settings">{$MOD.LBL_TAB_EDITOR}</a></td></tr>
+		{else}
+		<tr><td class="settingsTabList" nowrap><a href="index.php?module=Settings&action=CustomTabList&parenttab=Settings">{$MOD.LBL_TAB_EDITOR}</a></td></tr>
+		{/if}
 		{if $smarty.request.action eq 'DefaultFieldPermissions' || $smarty.request.action eq 'UpdateDefaultFieldLevelAccess' || $smarty.request.action eq 'EditDefOrgFieldLevelAccess' }
 		<tr><td class="settingsTabSelected" nowrap><a href="index.php?module=Users&action=DefaultFieldPermissions&parenttab=Settings">{$MOD.LBL_FIELDS_ACCESS}</a></td></tr>
 		{else}
 		<tr><td class="settingsTabList" nowrap><a href="index.php?module=Users&action=DefaultFieldPermissions&parenttab=Settings">{$MOD.LBL_FIELDS_ACCESS}</a></td></tr>
 		{/if}
 		
-		{if $smarty.request.action eq 'SmsAccount'}
-		<tr><td class="settingsTabSelected" nowrap><a 
-		href="index.php?module=	Relsettings&action=SmsAccount&parenttab=Settings">{$MOD.LBL_DUANXINZHANGHAOSHEZHI}</a></td></tr>
-		{else}
-		<tr><td class="settingsTabList" nowrap><a 
-		href="index.php?module=	Relsettings&action=SmsAccount&parenttab=Settings">{$MOD.LBL_DUANXINZHANGHAOSHEZHI}</a></td></tr>
-		{/if}
+
+	
 	
 
 		

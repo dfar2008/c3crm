@@ -1,1 +1,0 @@
-<?php exit;?>1368156599a:5:{s:5:"tabid";s:2:"22";s:10:"modulename";s:10:"SalesOrder";s:9:"tablename";s:13:"ec_salesorder";s:9:"fieldname";s:7:"subject";s:13:"entityidfield";s:12:"salesorderid";}

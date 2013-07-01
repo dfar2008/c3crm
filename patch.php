@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 define('IN_CRMONE', true);
 $root_directory = dirname(__FILE__)."/";
 require($root_directory.'/include/init.php');
@@ -315,81 +316,7 @@ foreach($rows as $row){
 }
 
 **/
-//客户 增加 smownerid  smcreatorid字段 
-/* 
-$tabid = getTabid("Accounts");
-$blockid = get_block_id($tabid);
-//$fieldid = $adb->getUniqueID("ec_field");
-//$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smownerid','ec_account',1,'53','assigned_user_id','Assigned To',1,0,0,100,3,1,1,'V~M',1,null,'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smcreatorid','ec_account',1,'1004','smcreatorid','smcreator', 1, 0, 0, 100,4,1, 1, 'V~M', 1, NULL, 'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
 
-//联系记录 增加 smownerid  smcreatorid字段 
-$tabid = getTabid("Notes");
-$blockid = get_block_id($tabid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smownerid','ec_notes',1,'53','assigned_user_id','Assigned To',1,0,0,100,3,23,1,'V~M',1,null,'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smcreatorid','ec_notes',1,'1004','smcreatorid','smcreator', 1, 0, 0, 100,4,23, 1, 'V~M', 1, NULL, 'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-
-//订单 增加 smownerid  smcreatorid字段 
-$tabid = getTabid("SalesOrder");
-$blockid = get_block_id($tabid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smownerid','ec_salesorder',1,'53','assigned_user_id','Assigned To',1,0,0,100,3,71,1,'V~M',1,null,'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smcreatorid','ec_salesorder',1,'1004','smcreatorid','smcreator', 1, 0, 0, 100,4,71, 1, 'V~M', 1, NULL, 'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-
-//产品 增加 smownerid  smcreatorid字段 
-$tabid = getTabid("Products");
-$blockid = get_block_id($tabid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smownerid','ec_products',1,'53','assigned_user_id','Assigned To',1,0,0,100,3,41,1,'V~M',1,null,'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smcreatorid','ec_products',1,'1004','smcreatorid','smcreator', 1, 0, 0, 100,4,41, 1, 'V~M', 1, NULL, 'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-
-//其他联系人 增加 smownerid  smcreatorid字段 
-$tabid = getTabid("Contacts");
-$blockid = get_block_id($tabid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smownerid','ec_contacts',1,'53','assigned_user_id','Assigned To',1,0,0,100,3,121,1,'V~M',1,null,'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smcreatorid','ec_contacts',1,'1004','smcreatorid','smcreator', 1, 0, 0, 100,4,121, 1, 'V~M', 1, NULL, 'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-*/
-
-$tabid = getTabid("Maillisttmps");
-$blockid = get_block_id($tabid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smownerid',' ec_maillisttmps',1,'53','assigned_user_id','Assigned To',1,0,0,100,3,".$blockid.",1,'V~M',1,null,'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
-
-$tabid = getTabid("Qunfatmps");
-$blockid = get_block_id($tabid);
-$fieldid = $adb->getUniqueID("ec_field");
-$query = "insert into ec_field values (".$tabid.",".$fieldid.",'smownerid','  ec_qunfatmps',1,'53','assigned_user_id','Assigned To',1,0,0,100,3,".$blockid.",1,'V~M',1,null,'BAS')";
-$adb->query($query);
-insertModuleProfile2field2($tabid,$fieldid);
 
 /**
  * 给表添加字段

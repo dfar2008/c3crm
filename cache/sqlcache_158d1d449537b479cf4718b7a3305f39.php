@@ -1,1 +1,0 @@
-<?php exit;?>1368156608a:5:{s:15:"maillisttmpname";s:0:"";s:11:"createdtime";s:0:"";s:12:"modifiedtime";s:0:"";s:11:"description";s:0:"";s:16:"assigned_user_id";s:0:"";}

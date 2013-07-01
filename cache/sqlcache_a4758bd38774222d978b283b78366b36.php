@@ -1,1 +1,0 @@
-<?php exit;?>1368156582a:15:{i:0;s:9:"accountid";i:1;s:10:"contact_id";i:2;s:9:"contactid";i:3;s:10:"product_id";i:4;s:10:"campaignid";i:5;s:8:"vendorid";i:6;s:9:"vendor_id";i:7;s:7:"quoteid";i:8;s:12:"salesorderid";i:9;s:15:"purchaseorderid";i:10;s:9:"invoiceid";i:11;s:11:"potentialid";i:12;s:13:"sfadesktopsid";i:13;s:9:"memdaysid";i:14;s:10:"contactsid";}

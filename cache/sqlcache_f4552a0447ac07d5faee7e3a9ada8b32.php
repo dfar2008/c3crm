@@ -1,1 +1,0 @@
-<?php exit;?>1368156574a:5:{s:5:"tabid";s:2:"48";s:10:"modulename";s:7:"Memdays";s:9:"tablename";s:10:"ec_memdays";s:9:"fieldname";s:10:"memdayname";s:13:"entityidfield";s:9:"memdaysid";}

@@ -20,7 +20,6 @@ function getLayoutList(customField)
 			postBody: 'module=Settings&action=SettingsAjax&file=LayoutList&fld_module='+modulename+'&parenttab=Settings&ajax=true',
 			onComplete: function(response) {ldelim}
 				$("cfList").innerHTML=response.responseText;
-				initLayoutList();
 			{rdelim}
 		{rdelim}
 	);	
@@ -136,7 +135,7 @@ function validate_layout() {
 				</tbody>
 				</table>
 				<div id="cfList">
-                             {include file="Settings/LayoutEntries.tpl"}
+                                {include file="Settings/LayoutEntries.tpl"}
                 </div>	
 			<table border="0" cellpadding="5" cellspacing="0" width="100%">
 			<tr>
