@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../js/highcharts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        parent.$('iframe').height('256');
+    </script>
+</head>
+<body style="overflow:hidden">
+    <div id="container">
+    </div>
+    <script type="text/javascript">
+//<![CDATA[
+        var chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                height: 220
+            },
+            title: {
+                text: ''
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true,
+                    shadow: false
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                     {
+                         name: 'Referral',
+                         y: 67.6,
+                         color: '#058DC7',
+                         shadow: false
+                     },
+                     {
+                         name: 'Organic',
+                         y: 23.2,
+                         sliced: true,
+                         selected: true,
+                         color: '#50B432',
+                         shadow: false
+                     },
+                     {
+                         name: 'Direct',
+                         y: 9.2,
+                         color: '#ED561B',
+                         shadow: false
+                     }
+                ]
+            }]
+        });
+//]]>
+    </script>
+</body>
+</html>

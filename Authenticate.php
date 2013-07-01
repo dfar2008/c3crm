@@ -1,9 +1,10 @@
 <?php
-session_start();
+session_start(); 
 unset($_SESSION['nick']); 
 unset($_SESSION['authenticated_user_id']); 
 unset($_SESSION['app_unique_key']); 
 unset($_SESSION['topsession']);
+
 require_once('config.php');
 require_once('modules/Users/Users.php');
 require_once('include/logging.php');
@@ -11,15 +12,7 @@ require_once('include/logging.php');
 global $mod_strings;
 global $app_strings;
 
-//$query = "SELECT count(*) as num FROM ec_users WHERE deleted=0";
-//$result = $adb->query($query);
-//$num =  $adb->query_result($result,0,"num");
-//
-//if($num >= 6)
-//{
-//	redirect("Login.php?login_error=".rawurlencode("超过最大用户数5"));
-//	die;
-//}
+
 $focus = new Users();
 
 // Add in defensive code here.
@@ -67,7 +60,7 @@ if($focus->is_authenticated()) {
 
 	$_SESSION['authenticated_user_theme'] = $authenticated_user_theme;
 	$_SESSION['authenticated_user_language'] = $authenticated_user_language;
-    redirect("main.php");
+    redirect("index.php?module=SfaDesktops&action=ListView"); 
 } else {
 	$_SESSION['login_user_name'] = $focus->column_fields["user_name"];
 	$_SESSION['login_password'] = $user_password;

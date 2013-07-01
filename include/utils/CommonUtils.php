@@ -1081,22 +1081,21 @@ function getHeaderArray()
 	$resultant_array = getSqlCacheData($key);
 	if(!$resultant_array) {
 		$resultant_array = Array();
-		$query = 'select name,tablabel,parenttab_label,ec_tab.tabid from ec_parenttabrel inner join ec_tab on ec_parenttabrel.tabid = ec_tab.tabid inner join ec_parenttab on ec_parenttabrel.parenttabid = ec_parenttab.parenttabid order by ec_parenttab.sequence, ec_parenttabrel.sequence';
+		$query = 'select name,tablabel,tabid from ec_tab order by tabsequence';
 		$result = $adb->query($query);
 		for($i=0;$i<$adb->num_rows($result);$i++)
 		{
-			$parenttabname = $adb->query_result($result,$i,'parenttab_label');
 			$modulename = $adb->query_result($result,$i,'name');
 			$tablabel = $adb->query_result($result,$i,'tablabel');
 			$tabid = $adb->query_result($result,$i,'tabid');
-			$resultant_array[$parenttabname][] = Array($modulename);			
+			$resultant_array[] = $modulename;			
 		}
 		setSqlCacheData($key,$resultant_array);
 	}
 	
 	if(is_admin($current_user)){  
-		$resultant_array['Settings'][] = Array('Settings');
-		$resultant_array['Settings'][] = Array('Caches');		
+		$resultant_array[] = 'Settings';
+		$resultant_array[] = 'Caches';		
 	}
 	return $resultant_array;
 }

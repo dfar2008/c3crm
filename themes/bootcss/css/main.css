@@ -1,0 +1,106 @@
+/* Dashboard */
+
+#columns .column {
+    float: left;
+    width: 33.3%;
+ /* Min-height: */
+    min-height: 400px;
+    height: auto !important;
+}
+
+#columns #widget1 .widget {
+    margin-right: 10px;
+}
+
+#columns #widget2 .widget {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#columns #widget3 .widget {
+    margin-left: 10px;
+}
+
+#columns .widget {
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+    position: relative;
+    border: 1px solid #DDDDDD;
+}
+
+#columns .widget .widget-head {
+    overflow: hidden;
+    background-color: #F0F0F0;
+    width: 100%;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+#columns .widget .widget-head span {
+    color: #0088CC;
+    text-shadow: #fff 0 1px;
+    font-size: 15px;
+    line-height: 25px;
+    padding-left: 5px;
+    white-space: nowrap;
+    float: left;
+}
+
+#columns .widget .widget-content {
+    padding: 0px;
+    line-height: 18px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#columns .widget .widget-iframe {
+    width: 100%;
+    height: 180px;
+    border: none;
+}
+
+.widget-head a.remove {
+    float: right;
+    display: inline;
+    background: url("../img/buttons.png") no-repeat -20px 0;
+    width: 12px;
+    height: 12px;
+    margin: 6px 1px 4px 0;
+    text-indent: -9999em;
+    outline: none;
+}
+
+.widget-head a.edit {
+    float: right;
+    display: inline;
+    background: url("../img/buttons.png") no-repeat -3px 0;
+    width: 12px;
+    height: 12px;
+    text-indent: -9999em;
+    margin: 6px 6px 4px 4px;
+    outline: none;
+}
+
+.widget-head a.collapse {
+    float: left;
+    display: inline;
+    background: url("../img/buttons.png") no-repeat -48px 0;
+    width: 12px;
+    height: 12px;
+    text-indent: -9999em;
+    margin: 6px -3px 4px 7px;
+    outline: none;
+}
+
+.widget-placeholder {
+    border: 2px dashed #777;
+    margin: 18px 8px 0px 8px;
+}
+
+.collapsed .widget-head a.collapse {
+    background-position: -34px 0;
+}
+
+.collapsed .widget-content {
+    display: none !important;
+}
+/* End Dashboard */

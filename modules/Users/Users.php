@@ -22,7 +22,7 @@ class Users {
  	var $record_module;
 
 
-	var $tab_name = Array('ec_users','ec_attachments');	
+	var $tab_name = Array('ec_users');	
 	var $tab_name_index = Array('ec_users'=>'id');
 	var $column_fields = Array('user_name'=>'','is_admin' =>'','user_password'=>'','confirm_password'=>'',
 	'last_name' =>'',
@@ -224,58 +224,32 @@ class Users {
 	 * @return true if the user is authenticated, false otherwise
 	 */
 	function doLogin($user_password) {
-		global $AUTHCFG;
 		$usr_name = $this->column_fields["user_name"];
-
-		switch (strtoupper($AUTHCFG['authType'])) {
-			case 'LDAP':
-				$this->log->debug("Using LDAP authentication");
-				require_once('modules/Users/authTypes/LDAP.php');
-				$result = ldapAuthenticate($this->column_fields["user_name"], $user_password);
-				if ($result == NULL) {
-					return false;
-				} else {
-					return true;
-				}
-				break;
-
-			case 'AD':
-				$this->log->debug("Using Active Directory authentication");
-				require_once('modules/Users/authTypes/adLDAP.php');
-				$adldap = new adLDAP();
-				if ($adldap->authenticate($this->column_fields["user_name"],$user_password)) {
-					return true;
-				} else {
-					return false;
-				}
-				break;
-
-			default:
-				$this->log->debug("Using integrated/SQL authentication");
-				$encrypted_password = $this->encrypt_password($user_password);
-				$query = "SELECT id,is_admin from $this->table_name where deleted=0 and user_name='$usr_name' AND user_password='$encrypted_password'";
-				$result = $this->db->query($query);
-				$noofrows = $this->db->num_rows($result);
-				if ($noofrows > 0) {
-					$id = $this->db->query_result($result,0,"id");
-					//*changed by xiaoyang on 2012-09-14  start
-					if($this->db->query_result($result,0,"is_admin") == "on")
-					{
-						$_SESSION['crm_is_admin'] = true;
-					}
-					else
-					{
-						$_SESSION['crm_is_admin'] = false;
-					}
-					//*end
-					$this->log->debug("Using integrated/SQL authentication id:".$id);
-					return true;
-				} else {
-					$this->log->debug("Using integrated/SQL authentication NO Record");
-					return false;
-				}
-				break;
+		
+		$this->log->debug("Using integrated/SQL authentication");
+		$encrypted_password = $this->encrypt_password($user_password);
+		$query = "SELECT id,is_admin from $this->table_name where deleted=0 and user_name='$usr_name' AND user_password='$encrypted_password'";
+		$result = $this->db->query($query);
+		$noofrows = $this->db->num_rows($result);
+		if ($noofrows > 0) {
+			$id = $this->db->query_result($result,0,"id");
+			//*changed by xiaoyang on 2012-09-14  start
+			if($this->db->query_result($result,0,"is_admin") == "on")
+			{
+				$_SESSION['crm_is_admin'] = true;
+			}
+			else
+			{
+				$_SESSION['crm_is_admin'] = false;
+			}
+			//*end
+			$this->log->debug("Using integrated/SQL authentication id:".$id);
+			return true;
+		} else {
+			$this->log->debug("Using integrated/SQL authentication NO Record");
+			return false;
 		}
+				
 		return false;
 	}
 
