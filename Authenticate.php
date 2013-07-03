@@ -60,7 +60,7 @@ if($focus->is_authenticated()) {
 
 	$_SESSION['authenticated_user_theme'] = $authenticated_user_theme;
 	$_SESSION['authenticated_user_language'] = $authenticated_user_language;
-    redirect("index.php?module=SfaDesktops&action=ListView"); 
+    redirect("index.php?module=Home&action=index"); 
 } else {
 	$_SESSION['login_user_name'] = $focus->column_fields["user_name"];
 	$_SESSION['login_password'] = $user_password;
