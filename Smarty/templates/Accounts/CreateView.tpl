@@ -13,10 +13,10 @@
 <input type="hidden" name="return_viewname" value="{$RETURN_VIEWNAME}">
 
 <!-- center start -->
-     <div class="container-fluid" style="height:608px;">
+     <div class="container-fluid">
         <div class="row-fluid">
           <div class="span2">
-              <div class="accordion" id="accordion2" style="margin-top:0px;margin-bottom:0px;overflow-y:scroll;height:550px;">
+              <div class="accordion" id="accordion2" style="margin-top:0px;margin-bottom:0px;">
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse"  href="#collapseOne">
@@ -45,15 +45,15 @@
                  
              </div>
              <div class="clearfix"></div>
-              <div class="accordion"  style="margin-top:0px;margin-bottom:0px;overflow-y:scroll;height:550px;width:1200px;">
-              	{foreach key=header item=data from=$BASBLOCKS}
+              <div class="accordion"  style="margin-top:0px;margin-bottom:0px;">
+              	{foreach key=header item=data name=listviewforeach from=$BASBLOCKS}
                   <div class="accordion-group">
                      <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse"  href="#detailOne">
+                      <a class="accordion-toggle" data-toggle="collapse"  href="#detail_{$smarty.foreach.listviewforeach.iteration}">
                         {$header}
                       </a>
                     </div>
-                    <div id="detailOne" class="accordion-body collapse in">
+                    <div id="detail_{$smarty.foreach.listviewforeach.iteration}" class="accordion-body collapse in">
                       <div class="accordion-inner">
                           <table class="table table-bordered table-hover table-condensedforev dvtable">
                            <tbody>

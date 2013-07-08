@@ -1,10 +1,10 @@
 <script type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
 
  <!-- center start -->
- <div class="container-fluid" style="height:606px;">
+ <div class="container-fluid">
     <div class="row-fluid">
       <div class="span2">
-           <div class="accordion" id="accordion2" style="margin-top:0px;margin-bottom:0px;overflow:auto;height:550px;">
+           <div class="accordion" id="accordion2" style="margin-top:0px;margin-bottom:0px;">
             {include file="$MODULE/DetailLeft.tpl"}
 
          </div>
@@ -26,7 +26,7 @@
                 <i class="icon-trash icon-white"></i>删除</button>
          </div>
          <div class="clearfix"></div>
-          <div class="accordion"  style="margin-top:0px;margin-bottom:0px;overflow:auto;height:580px;">
+          <div class="accordion"  style="margin-top:0px;margin-bottom:0px;">
           {foreach key=header item=detail name=listviewforeach from=$BLOCKS}
                 <div class="accordion-group">
                    <div class="accordion-heading">

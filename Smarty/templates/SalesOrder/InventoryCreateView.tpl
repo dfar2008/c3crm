@@ -4,7 +4,7 @@
 {include file='EditViewHidden.tpl'}
 
 <!-- center start -->
-     <div class="container-fluid" style="height:608px;">
+     <div class="container-fluid">
         <div class="row-fluid">
           
           <div class="span12" style="margin-left:0px;">
@@ -18,16 +18,16 @@
                  
              </div>
              <div class="clearfix"></div>
-              <div class="accordion"  style="margin-top:0px;margin-bottom:0px;overflow:auto;height:550px;">
-              	{foreach item=blockInfo key=divName from=$BLOCKS}
+              <div class="accordion"  style="margin-top:0px;margin-bottom:0px;">
+              	{foreach item=blockInfo key=divName name=listviewforeach from=$BLOCKS}
 	              	{foreach key=header item=data from=$blockInfo}
 	                  <div class="accordion-group">
 	                     <div class="accordion-heading">
-	                      <a class="accordion-toggle" data-toggle="collapse"  href="#detailOne">
+	                      <a class="accordion-toggle" data-toggle="collapse"  href="#detail_{$smarty.foreach.listviewforeach.iteration}">
 	                        {$header}
 	                      </a>
 	                    </div>
-	                    <div id="detailOne" class="accordion-body collapse in">
+	                    <div id="detail_{$smarty.foreach.listviewforeach.iteration}" class="accordion-body collapse in">
 	                      <div class="accordion-inner">
 	                          <table class="table table-bordered table-hover table-condensedforev dvtable">
 	                           <tbody>
