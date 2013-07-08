@@ -1,15 +1,3 @@
-{*<!--
-/*********************************************************************************
-  ** The contents of this file are subject to the vtiger CRM Public License Version 1.0
-   * ("License"); You may not use this file except in compliance with the License
-   * The Original Code is:  vtiger CRM Open Source
-   * The Initial Developer of the Original Code is vtiger.
-   * Portions created by vtiger are Copyright (C) vtiger.
-   * All Rights Reserved.
-  *
- ********************************************************************************/
--->*}
-
 <div id="quickedit_form_div" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <div id="gaojisearch" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px;margin-left:-380px;"></div>
 
@@ -22,7 +10,7 @@
  <input name="change_status" type="hidden">
  <input name="allids" type="hidden" value="{$ALLIDS}">
 
-<div style="margin-top:0px;margin-bottom:0px;overflow:auto;height:470px;">
+<div style="margin-top:0px;margin-bottom:0px;overflow:">
    <table class="table table-bordered table-hover table-condensed table-striped">
     <thead>
       <tr>  

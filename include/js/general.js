@@ -1750,12 +1750,13 @@ function fnvsh(obj,Lay){
 }
 
 function fnvshobj(obj,Lay){ 
-    var tagName = $('#'+Lay);
+    var tagName = document.getElementById(Lay);
 	if(typeof(tagName) == 'undefined') {
 		return;
 	}
     var leftSide = findPosX(obj);
     var topSide = findPosY(obj);
+	alert(tagName);
     var maxW = tagName.width(); 
     var widthM = maxW.substring(0,maxW-2);
     var getVal = eval(leftSide) + eval(widthM);

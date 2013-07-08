@@ -69,10 +69,10 @@ function alphabetic(module,url,dataid)
 {rdelim}
 
 </script>
- <div class="container-fluid" style="height:606px;"> 
+ <div class="container-fluid"> 
       <div class="row-fluid">
         
-        <div class="span12" style="margin-left:0px;">
+        <div style="margin-left:0px;margin-right:10px">
              <div>
                 <div class="pull-left">
                   <form class="form-search pull-left" style="margin-bottom:5px;" name="basicSearch"  action="index.php" method="POST">

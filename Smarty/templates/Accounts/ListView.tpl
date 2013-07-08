@@ -69,29 +69,8 @@ function alphabetic(module,url,dataid)
 {rdelim}
 
 </script>
- <div class="container-fluid" style="height:600px;"> 
-      <div class="row-fluid">
-        <div class="span2" >
-		      <div class="accordion" id="accordion2" style="height:600px;overflow:auto;">
-			     <div class="accordion-group" >
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    <i class="cus-table"></i>&nbsp;<b>按分类</b>
-                  </a>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse in" >
-                  <div class="accordion-inner">
-                      <div id="right_column_assort" style="display:; padding:15px;" class="rightcolumnlink">
-                        <img src="themes/bootcss/img/vtbusy.gif" title="{$MOD.LBL_INITIALIZING}"/>
-                      </div>
-                  </div>
-                </div>
-          </div>          
-
-         </div>
-
-        </div>
-        <div class="span10" style="margin-left:10px;">
+ <div class="container-fluid"> 
+        <div style="margin-left:0px;margin-right:10px">
              <div>
                 <div class="pull-left">
                   <form class="form-search pull-left" style="margin-bottom:5px;" name="basicSearch"  action="index.php" method="POST">
@@ -179,14 +158,3 @@ function alphabetic(module,url,dataid)
       </div>
 
     </div>
-
-<script type="text/javascript">
-{literal}
-$(document).ready(function(){ 
-      setLeftAssort('Accounts');
-      setLeftArea('Accounts');
-});
-{/literal}
-</script>
-
- 

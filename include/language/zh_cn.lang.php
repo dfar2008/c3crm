@@ -243,7 +243,7 @@ $app_list_strings = array (
   'moduleList' =>
   array (
     'Home' => '首页',
-    'Contacts' => '其他联系人',
+    'Contacts' => '联系人',
     'Accounts' => '客户',
     'Notes' => '联系记录',
     'Products' => '产品',

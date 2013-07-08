@@ -43,16 +43,18 @@
               </div>
               <div class="span5" style="padding-top:10px;">
                   <div class="pull-right navbar topbar" style="margin-bottom:5px;">
-                    <ul class="nav" style="height:20px;">
-                          <li ><a href="index.php?module=Qunfas&action=index"><i class="cus-phone"></i>短信</a></li>
-                          <li ><a href="index.php?module=Relsettings&action=index"><i class="cus-cog"></i>&nbsp;设置</a></li>
+                    <ul class="nav" style="height:15px;">
+                          <li ><a href="index.php?module=Qunfas&action=index"><i class="cus-phone"></i>手机短信</a></li>
+                          <li ><a href="index.php?module=Relsettings&action=index"><i class="cus-cog"></i>&nbsp;个人设置</a></li>
+			  <li ><a href="index.php?module=Settings&action=index"><i class="cus-cog"></i>&nbsp;系统设置</a></li>
+			  <li ><a href="index.php?module=Caches&action=index"><i class="cus-cog"></i>&nbsp;清除缓存</a></li>
                           <li ><a href="Logout.php"><i class="icon-off"></i>&nbsp;退出</a></li>
                         </ul>                            
                   </div>
               </div>
       </div>
     </div>
-        <div class="navbar navbar-blue " style="position:static;margin-bottom:5px;">
+        <div class="navbar navbar-inverse " style="position:static;margin-bottom:5px;">
           <div class="navbar-inner">
             <div class="container">
               <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">

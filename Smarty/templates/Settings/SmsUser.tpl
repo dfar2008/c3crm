@@ -1,101 +1,67 @@
-{*<!--
-/*********************************************************************************
-  ** The contents of this file are subject to the vtiger CRM Public License Version 1.0
-   * ("License"); You may not use this file except in compliance with the License
-   * The Original Code is:  vtiger CRM Open Source
-   * The Initial Developer of the Original Code is vtiger.
-   * Portions created by vtiger are Copyright (C) vtiger.
-   * All Rights Reserved.
-  *
- ********************************************************************************/
--->*}
-<ul class="breadcrumb">
-	<li><a href="#">{$RELSETHEAD}</a> <span class="divider">/</span></li>
-	<li class="active"><a href="index.php?module=Settings&action=index&settype={$SETTYPE}&parenttab=Settings">{$SETTYPEARRAY[$SETTYPE]}</a> <span class="divider">/</span></li>
-	<li class="active">{$RELSETTITLE}</li>
-	<li class="pull-right">
-		<!-- <button type="button" class="btn btn-small btn-primary" style="margin-top:-2px;"
-			onclick="window.location.reload();">
-			<i class="icon-refresh icon-white"></i>刷新
-		</button> -->
-	</li>
-</ul>
-<!--	视图	-->
-<div>
-  <ul class="nav nav-pills" style="margin-bottom:5px;">
-	<li class="nav-header" style="padding-left:0px;padding-right:5px;">
-	  <i class="icon-th-list"></i>
-	</li>
-	<li class="active"><a href="#">所有</a></li>
-	<li><a href="#">未验证</a></li>
-	<li><a href="#">未购买过</a></li>
-	<li><a href="#">充值少于5次</a></li>
-	<li><a href="#">充值大于10次</a></li>
-	<li><a href="#">已到期</a></li>
-	<li><a href="#">今日到期</a></li>
-	<li><a href="#">一周内到期</a></li>
-	<li><a href="#">今日注册</a></li>
-	<li><a href="#">7天内注册</a></li>
-  </ul>
+<div class="container-fluid" style="height:602px;">
+	   <!--Dashboad-->
+	<div class="container-fluid" style="height:602px;">
+		<div class="row-fluid">
+			<div class="span2" style="margin-left:-10px;">
+				<div class="accordion" id="settingion1" style="overflow:auto;height:580px;">
+					{include file='Settings/SettingLeft.tpl'}
+				</div>
+			</div>
+
+			<div class="span10" style="margin-left:10px;">
+				<!--	Setting		-->
+				<div class="row-fluid box">
+					  <div class="padded">
+						<!--	搜索	-->
+						<table class="table table-condensed">
+							<tr>
+								<td>用户名/姓名/手机/Email：
+									<input type="text" value="{$user_name}" name="user_name"  size="18" style="border:1px solid #bababa;" tabindex="13"/>
+									<button type="submit" class="btn btn-small btn-success">
+										<i class="icon-search icon-white"></i>搜索
+									</button>
+								</td>
+							</tr>
+						</table>
+
+						<table class="table table-condensed table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>
+										<input type="checkbox"  name="selectall"   onClick=toggleSelect(this.checked,"selected_id")>
+									</th>
+									{$headerhtml}
+								</tr>
+							</thead>
+							<tbody style="text-align: center;">
+								{foreach item=entity key=entity_id from=$LISTENTITY}
+									<tr id="row_{$entity_id}">
+										<td width="2%">
+											<input type="checkbox" NAME="selected_id" value= '{$entity_id}' 
+											onClick=toggleSelectAll(this.name,"selectall")>
+										</td>
+										{foreach item=data from=$entity}
+											<td>{$data}</td>
+										{/foreach}
+									</tr>
+								{foreachelse}
+									<tr id="row_{$entity_id}">
+										<td colspan="{$countheader+1}" align="center">---&nbsp;无&nbsp;---</td>
+									</tr>
+								{/foreach}
+							</tbody>
+						</table>
+
+						<input type="hidden" value="{$order_url}" id="order_url"  name="order_url"/>
+						<input type="hidden" value="{$search_url}" id="search_url"  name="search_url"/>
+					</div>
+				</div>
+					
+				</div>
+				<!--	/Setting	-->
+			</div>
+	</div></div>
 </div>
-
-<!--	搜索	-->
-<table class="table table-condensed">
-	<tr>
-		<th>用户名</th>
-		<td>
-			<input type="text" value="{$user_name}" name="user_name"  size="18" style="border:1px solid #bababa;" tabindex="13"/>
-		</td>
-		<th>姓名</th>
-		<td>
-			<input type="text" value="{$last_name}" name="last_name"  size="13" style="border:1px solid #bababa;" tabindex="13"/>
-		</td>
-		<th>手机</th>
-		<td>
-			<input type="text" value="{$phone_mobile}" name="phone_mobile"  size="13" style="border:1px solid #bababa;" tabindex="13"/>
-		</td>
-		<th>Email</th>
-		<td>
-			<input type="text" value="{$email1}" name="email1"  size="13" style="border:1px solid #bababa;" tabindex="13"/>
-		</td>
-		<td>
-			<button type="submit" class="btn btn-small btn-success">
-				<i class="icon-search icon-white"></i>搜索
-			</button>
-		</td> 
-	</tr>
-</table>
-
-<table class="table table-condensed table-bordered table-hover">
-	<thead>
-		<tr>
-			<th>
-				<input type="checkbox"  name="selectall"   onClick=toggleSelect(this.checked,"selected_id")>
-			</th>
-			{$headerhtml}
-		</tr>
-	</thead>
-	<tbody style="text-align: center;">
-		{foreach item=entity key=entity_id from=$LISTENTITY}
-			<tr id="row_{$entity_id}">
-				<td width="2%">
-					<input type="checkbox" NAME="selected_id" value= '{$entity_id}' 
-					onClick=toggleSelectAll(this.name,"selectall")>
-				</td>
-				{foreach item=data from=$entity}
-					<td>{$data}</td>
-				{/foreach}
-			</tr>
-		{foreachelse}
-			<tr id="row_{$entity_id}">
-				<td colspan="{$countheader+1}" align="center">---&nbsp;无&nbsp;---</td>
-			</tr>
-		{/foreach}
-	</tbody>
-</table>
-
-<input type="hidden" value="{$order_url}" id="order_url"  name="order_url"/>
-<input type="hidden" value="{$search_url}" id="search_url"  name="search_url"/>
 <script>
 var type = "{$type}";
 {literal}

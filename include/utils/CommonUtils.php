@@ -1081,7 +1081,7 @@ function getHeaderArray()
 	$resultant_array = getSqlCacheData($key);
 	if(!$resultant_array) {
 		$resultant_array = Array();
-		$query = 'select name,tablabel,tabid from ec_tab order by tabsequence';
+		$query = 'select name,tablabel,tabid from ec_tab where tabid not in (29,35,36) order by tabsequence';
 		$result = $adb->query($query);
 		for($i=0;$i<$adb->num_rows($result);$i++)
 		{
@@ -1093,10 +1093,10 @@ function getHeaderArray()
 		setSqlCacheData($key,$resultant_array);
 	}
 	
-	if(is_admin($current_user)){  
-		$resultant_array[] = 'Settings';
-		$resultant_array[] = 'Caches';		
-	}
+//	if(is_admin($current_user)){  
+//		$resultant_array[] = 'Settings';
+//		$resultant_array[] = 'Caches';		
+//	}
 	return $resultant_array;
 }
 

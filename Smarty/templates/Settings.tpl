@@ -1,5 +1,3 @@
-<!--	dree	-->
-<LINK href="themes/bootcss/css/Setting.css" type="text/css" rel=stylesheet>
 <div class="container-fluid" style="height:602px;">
 	   <!--Dashboad-->
 	<div class="container-fluid" style="height:602px;">

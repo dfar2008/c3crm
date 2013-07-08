@@ -47,7 +47,7 @@
               </ul>
           </div>
 
-           <div id="ListViewContents" class="small" style="width:100%;position:relative;height:606px;overflow:auto;">
+           <div id="ListViewContents" class="small" style="width:100%;position:relative;">
             {include file="$MODULE/ListViewEntries.tpl"}
           </div>
 

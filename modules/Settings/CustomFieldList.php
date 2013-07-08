@@ -1,13 +1,4 @@
 <?php
-/*********************************************************************************
-** The contents of this file are subject to the vtiger CRM Public License Version 1.0
- * ("License"); You may not use this file except in compliance with the License
- * The Original Code is:  vtiger CRM Open Source
- * The Initial Developer of the Original Code is vtiger.
- * Portions created by vtiger are Copyright (C) vtiger.
- * All Rights Reserved.
-*
- ********************************************************************************/
 require_once('include/CRMSmarty.php');
 require_once('include/database/PearDatabase.php');
 require_once('include/CustomFieldUtil.php');
@@ -70,11 +61,17 @@ if(isset($_REQUEST["duplicate"]) && $_REQUEST["duplicate"] == "yes")
 if($_REQUEST['mode'] !='')
 	$mode = $_REQUEST['mode'];
 $smarty->assign("MODE", $mode);
+$relsethead = $app_strings['Settings'];
+$smarty->assign("RELSETHEAD", $relsethead);
+$smarty->assign("SETTYPE", "CustomFieldList");
+$smarty->assign("IMAGE_PATH",$image_path);
+$smarty->assign("APP", $app_strings);
+$smarty->assign("MOD", $mod_strings);
 
 if($_REQUEST['ajax'] != 'true')
-	$smarty->display('CustomFieldList.tpl');	
+	$smarty->display('Settings/CustomFieldList.tpl');	
 else
-	$smarty->display('CustomFieldEntries.tpl');
+	$smarty->display('Settings/CustomFieldEntries.tpl');
 
 	/**
 	* Function to get customfield entries

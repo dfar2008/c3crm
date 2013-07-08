@@ -69,28 +69,9 @@ function alphabetic(module,url,dataid)
 {rdelim}
 
 </script>
- <div class="container-fluid" style="height:606px;"> 
-      <div class="row-fluid">
-        <div class="span2" >
-          <div class="accordion" id="accordion2" style="overflow:auto;height:600px;">
-           <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    <i class="cus-table"></i>&nbsp;<b>分类</b>
-                  </a>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse in">
-                  <div class="accordion-inner">
-                     <ul class="nav nav-list">
-                          
-                        </ul>
-                  </div>
-                </div>
-          </div>
-         </div>
+ <div class="container-fluid"> 
 
-        </div>
-        <div class="span10" style="margin-left:10px;">
+        <div style="margin-left:0px;margin-right:10px">
              <div>
                 <div class="pull-left">
                   <form class="form-search pull-left" style="margin-bottom:5px;" name="basicSearch"  action="index.php" method="POST">

@@ -4,7 +4,7 @@
             <div class="container-fluid">
                <div class="row-fluid">
                   <div class="span5" >
-                     <span class="copyright">Copyright &copy; 2006 上海瑞策软件有限公司, all rights reserved.</span>
+                     <span class="copyright">Copyright &copy; 2013 <a href="http://www.c3crm.com" target="_blank">上海瑞策软件有限公司</a>, all rights reserved.</span>
                   </div>
                 <div>
             </div>

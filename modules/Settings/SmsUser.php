@@ -9,9 +9,6 @@ global $app_list_strings;
 global $current_user;
 global $list_max_entries_per_page;
 
-//Display the mail send status
-$smarty = new CRMSmarty();
-
 global $adb;
 global $theme;
 $theme_path="themes/".$theme."/";
@@ -51,27 +48,9 @@ $ordersql = $ordercol[$order_by];
 
 $user_name = $_REQUEST['user_name'];
 if(!empty($user_name)){
-	$where .=" and ec_users.user_name like '%".$user_name."%'";
+	$where .=" and (ec_users.user_name like '%".$user_name."%' or ec_users.last_name like '%".$user_name."%' or ec_users.phone_mobile like '%".$user_name."%' or ec_users.email1 like '%".$user_name."%') ";
 	$search_url .="&user_name=$user_name";
 	$smarty->assign("user_name", $user_name);
-}
-$last_name = $_REQUEST['last_name'];
-if(!empty($last_name)){
-	$where .=" and ec_users.last_name like '%".$last_name."%'";
-	$search_url .="&last_name=$last_name";
-	$smarty->assign("last_name", $last_name);
-}
-$phone_mobile = $_REQUEST['phone_mobile'];
-if(!empty($phone_mobile)){
-	$where .=" and ec_users.phone_mobile like '%".$phone_mobile."%'";
-	$search_url .="&phone_mobile=$phone_mobile";
-	$smarty->assign("phone_mobile", $phone_mobile);
-}
-$email1 = $_REQUEST['email1'];
-if(!empty($email1)){
-	$where .=" and ec_users.email1 like '%".$email1."%'";
-	$search_url .="&email1=$email1";
-	$smarty->assign("email1", $email1);
 }
 
 $today = date("Y-m-d");
@@ -179,9 +158,11 @@ $smarty->assign("RECORD_COUNTS", $record_string);
 $smarty->assign("search_url", $search_url);
 $smarty->assign("order_url", $order_url);
 
-
+$relsethead = $app_strings['Settings'];
+$smarty->assign("RELSETHEAD", $relsethead);
+$smarty->assign("SETTYPE", "SmsUser");
 $smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("APP", $app_strings);
-$smarty->assign("CMOD", $mod_strings);
+$smarty->assign("MOD", $mod_strings);
 $smarty->display("Settings/SmsUser.tpl");
 ?>
