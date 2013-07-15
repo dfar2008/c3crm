@@ -91,48 +91,13 @@ function set_return_address(account_id, account_name, bill_street, ship_street, 
 }
 //added to populate address
 function set_return_contact_address(account_id, account_name, bill_street, ship_street, bill_city, ship_city, bill_state, ship_state, bill_code, ship_code, bill_country, ship_country,bill_pobox,ship_pobox ) {
-        window.opener.document.EditView.account_name.value = account_name;
-        window.opener.document.EditView.account_id.value = account_id;
-		if(window.opener.document.EditView.mailingstreet != undefined) {
-			window.opener.document.EditView.mailingstreet.value = bill_street;
-		}
-		if(window.opener.document.EditView.otherstreet != undefined) {
-			window.opener.document.EditView.otherstreet.value = ship_street;
-		}
-		if(window.opener.document.EditView.mailingcity != undefined) {
-			window.opener.document.EditView.mailingcity.value = bill_city;
-		}
-		if(window.opener.document.EditView.othercity != undefined) {
-			window.opener.document.EditView.othercity.value = ship_city;
-		}
-		if(window.opener.document.EditView.mailingstate != undefined) {
-			window.opener.document.EditView.mailingstate.value = bill_state;
-		}
-		if(window.opener.document.EditView.otherstate != undefined) {
-			window.opener.document.EditView.otherstate.value = ship_state;
-		}
-		if(window.opener.document.EditView.mailingzip != undefined) {
-			window.opener.document.EditView.mailingzip.value = bill_code;
-		}
-		if(window.opener.document.EditView.otherzip != undefined) {
-			window.opener.document.EditView.otherzip.value = ship_code;
-		}
-		if(window.opener.document.EditView.mailingcountry != undefined) {
-			window.opener.document.EditView.mailingcountry.value = bill_country;
-		}
-		if(window.opener.document.EditView.othercountry != undefined) {
-			window.opener.document.EditView.othercountry.value = ship_country;
-		}
-		if(window.opener.document.EditView.mailingpobox != undefined) {
-			window.opener.document.EditView.mailingpobox.value = bill_pobox;
-		}
-		if(window.opener.document.EditView.otherpobox != undefined) {
-			window.opener.document.EditView.otherpobox.value = ship_pobox;
-		}
-		if(window.opener.updateContactOpts) window.opener.updateContactOpts();	
-		if(window.opener.setAccountInfo != undefined) {
-			window.opener.setAccountInfo(account_id);
-		}
+        document.EditView.account_name.value = account_name;
+        document.EditView.account_id.value = account_id;
+		$('#searchallacct').modal('hide');
+//		if(updateContactOpts) updateContactOpts();	
+//		if(setAccountInfo != undefined) {
+//			setAccountInfo(account_id);
+//		}
 
 
 }

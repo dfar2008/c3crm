@@ -1093,7 +1093,8 @@ class CustomView extends CRMEntity{
 	function getCvColumnListSQL($cvid)
 	{	
 		$columnslist = $this->getColumnsListByCvidWithCollect($cvid);
-		
+		$returnsql = "";
+		$sqllist = array();
 		if(isset($columnslist))
 		{
 			foreach($columnslist as $columnname=>$value)
@@ -1106,14 +1107,6 @@ class CustomView extends CRMEntity{
 
 					//Added For getting status for Activities -Jaguar
 					$sqllist_column = $list[0].".".$list[1];
-					if($this->customviewmodule == "Calendar")
-					{
-						if($list[1] == "status")
-						{
-							$sqllist_column = "case when (ec_activity.status not like '') then ec_activity.status else ec_activity.eventstatus end as activitystatus";
-						}
-					}
-
 					//Added for for assigned to sorting
 					if($list[1] == "smownerid")
 					{
@@ -1129,7 +1122,9 @@ class CustomView extends CRMEntity{
 					$this->list_fields_name[$fieldlabel] = $list[2];
 				}
 			}
-			$returnsql = implode(",",$sqllist);
+			if(is_array($sqllist)) {
+				$returnsql = implode(",",$sqllist);
+			}
 		}
 		return $returnsql;
 

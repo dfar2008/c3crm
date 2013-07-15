@@ -18,8 +18,6 @@
     <link href="themes/bootcss/css/cus-icons.css" rel="stylesheet">
     <link href="themes/bootcss/css/main.css" rel="stylesheet">
     <link href="themes/bootcss/css/datepicker.css" rel="stylesheet">
-
-    <link href="themes/images/dtree.css" type="text/css" rel=stylesheet>
       
     <script src="themes/bootcss/js/jquery-latest.js"></script>
     <script src="themes/bootcss/js/bootstrap.min.js"></script>
@@ -28,7 +26,6 @@
     <script src="themes/bootcss/js/script.js"></script>
     <script src="include/js/general.js"></script>
     <script src="include/js/zh_cn.lang.js"></script>
-    <script src="include/js/dtree.js"></script>
 
   </head>
   

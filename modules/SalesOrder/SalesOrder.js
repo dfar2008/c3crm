@@ -21,20 +21,22 @@ function set_return_formname_specific(formname, product_id, product_name) {
         window.opener.document.EditView1.purchaseorder_id.value = product_id;
 }
 
-function selectProductRows(form)
+function selectProductRows()
 {
 	//window.open("index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable","productWin","width=740,height=565,resizable=1,scrollbars=1,status=1,top=150,left=200");	
-	$("#status").prop("display","inline");
+	//$("#status").prop("display","inline");
 	$.ajax({  
 		   type: "GET",  
 		   //dataType:"Text",   
-		   url:"index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable",
-		   success: function(msg){   
-		   	 $("#status").prop("display","none");
-		   	 $("#selectProductRows").html(msg); 
+		   url:"index.php?module=Products&action=Popup&popuptype=inventory_prods&select=enable",
+		   success: function(msg){
+			 //alert(msg);
+		   	 //$("#status").prop("display","none");
+		   	 $("#searchallacct").html(msg); 
 		   }  
 	}); 
-	$('#selectProductRows').modal('show');
+	$('#searchallacct').modal('show');
+	//BrowerAcct("specific_contact_account_address");
 }
 
 function UpdateIDString()

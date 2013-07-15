@@ -1,12 +1,5 @@
 <form name="selectall" method="POST">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="small">
-	<tr>
-	{if $SELECT eq 'enable'}
-		<td style="padding-left:10px;" align="left"><input class="crmbutton small save" type="button" value="{$APP.LBL_ADD_ITEM} {$APP[$MODULE]}" onclick="javascript:addMultiProductRow('SalesOrder');"/></td>
-	{else}		
-		<td>&nbsp;</td>	
-	{/if}
-	</tr>
    	<tr>
 	    <td style="padding:5px;">
        		<input name="module" type="hidden" value="Products">
@@ -20,15 +13,15 @@
 		<input type="hidden" name="vendor_id" id="vendor_id" value="{$VENDOR_ID}">
 		<input name="search_field" type="hidden" value="{$SEARCH_FIELD}">
 		<input name="search_text" type="hidden" value="{$SEARCH_TEXT}">
-		<div style="overflow:auto;height:348px;">
-		<table style="background-color: rgb(204, 204, 204);" class="small" border="0" cellpadding="5" cellspacing="1" width="100%">
+		<div style="overflow:auto;height:300px;">
+		<table class="table table-bordered table-hover table-condensed table-striped">
 		<tbody>
 		<tr>
-			{if $SELECT eq 'enable'}
-				<td class="lvtCol" width="3%"><input type="checkbox" name="select_all" value="" onClick='javascript:toggleSelect(this.checked,"selected_id");UpdateIDString()'></td>
-            {/if}
+		{if $SELECT eq 'enable'}
+		    <td class="lvtCol" width="3%"><input type="checkbox" name="select_all" value="" onClick='javascript:toggleSelect(this.checked,"selected_id");UpdateIDString()'></td>
+                {/if}
 		    {foreach item=header from=$LISTHEADER}
-		        <td class="lvtCol">{$header}</td>
+			<td class="lvtCol">{$header}</td>
 		    {/foreach}
 		</tr>
 		{foreach key=entity_id item=entity from=$LISTENTITY}
@@ -43,13 +36,17 @@
                 {/foreach}
 	      	</tbody>
 	    	</table>
-			<div>
+		<div>
 	    </td>
 	</tr>
 
 </table>
-<table width="100%" border=0 cellspacing=0 cellpadding=0 class="small reportCreateBottom" >
-     <tr><td style="padding:5px" align="right">{$RECORD_COUNTS}&nbsp;&nbsp;&nbsp;&nbsp;{$NAVIGATION}</td></tr>
+<table width="100%" border=0 cellspacing=0 cellpadding=0>
+     <tr><td >
+     <div class="pagination pagination-mini pagination-right" style="margin:0px;">
+          <small style="color:#999999;">{$RECORD_COUNTS}&nbsp;</small>
+          {$NAVIGATION}
+        </div></td></tr>
 </table>
 </form>
 

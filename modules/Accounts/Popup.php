@@ -26,7 +26,6 @@ $popuptype = '';
 $popuptype = $_REQUEST["popuptype"];
 require_once("modules/Accounts/Accounts.php");
 $focus = new Accounts();
-$log = LoggerManager::getLogger('account_list');
 $smarty->assign("SINGLE_MOD",'Account');
 if(isset($_REQUEST['return_module']) && $_REQUEST['return_module'] !='')
 	$smarty->assign("RETURN_MODULE",$_REQUEST['return_module']);

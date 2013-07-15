@@ -1,14 +1,3 @@
-{*<!--
-/*********************************************************************************
-  ** The contents of this file are subject to the vtiger CRM Public License Version 1.0
-   * ("License"); You may not use this file except in compliance with the License
-   * The Original Code is:  vtiger CRM Open Source
-   * The Initial Developer of the Original Code is vtiger.
-   * Portions created by vtiger are Copyright (C) vtiger.
-   * All Rights Reserved.
-  *
- ********************************************************************************/
--->*}
 <form name="selectall" method="POST">
 <input name="module" type="hidden" value="{$RETURN_MODULE}">
 <input name="action" type="hidden" value="{$RETURN_ACTION}">
@@ -18,7 +7,7 @@
 <input name="popuptype" id="popup_type" type="hidden" value="{$POPUPTYPE}">
 <input name="idlist" type="hidden" value="">
 
-<div style="margin-top:0px;margin-bottom:0px;overflow:auto;height:470px;width:800;">
+<div style="margin-top:0px;margin-bottom:0px;">
    <table class="table table-bordered table-hover table-condensed table-striped">
     <thead>
       <tr>  

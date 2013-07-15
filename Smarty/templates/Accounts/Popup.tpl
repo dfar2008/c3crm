@@ -1,4 +1,5 @@
-
+<script language="JavaScript" type="text/javascript" src="include/js/search.js"></script>
+<script language="JavaScript" type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 <h3>查找客户</h3>
@@ -25,8 +26,6 @@
                         <input type="hidden" name="query" value="true">
                         <input type="hidden" name="select_enable" id="select_enable" value="{$SELECT}">
                         <input type="hidden" name="curr_row" id="curr_row" value="{$CURR_ROW}">
-                        <input type="hidden" name="fldname_pb" value="{$FIELDNAME}">
-                        <input type="hidden" name="productid_pb" value="{$PRODUCTID}">
                         <input name="popuptype" id="popup_type" type="hidden" value="{$POPUPTYPE}">
                         <input name="recordid" id="recordid" type="hidden" value="{$RECORDID}">
                         <input name="return_module" id="return_module" type="hidden" value="{$RETURN_MODULE}">
@@ -36,9 +35,7 @@
                       </td>
                       <td >
                         <button type="button" class="btn btn-small" onClick="callSearch('Basic');"><i class="icon-search"></i>&nbsp;{$APP.LBL_SEARCH_NOW_BUTTON}</button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                         <button class="btn btn-small btn-primary" style="margin-top:2px;" onClick="callCreateAccountDiv();">
-                         <i class="icon-plus icon-white"></i>新增</button>
+                       
                       </td>
                     </tr>
                      <tr>
@@ -89,3 +86,113 @@
   <div class="pull-right"></div>
   <div class="clear"></div>
 </div>
+<script>
+var gPopupAlphaSearchUrl = '';
+function callSearch(searchtype)
+{ldelim}
+    for(i=1;i<=26;i++)
+    {ldelim}
+        var data_td_id = 'alpha_'+ eval(i);
+        getObj(data_td_id).className = 'searchAlph';
+    {rdelim}
+    gPopupAlphaSearchUrl = '';
+    search_fld_val= document.basicSearch.search_field[document.basicSearch.search_field.selectedIndex].value;
+    search_txt_val=document.basicSearch.search_text.value;
+    var urlstring = '';
+    if(searchtype == 'Basic')
+    {ldelim}
+	urlstring = 'search_field='+search_fld_val+'&searchtype=BasicSearch&search_text='+search_txt_val;
+    {rdelim}
+	popuptype = $('popup_type').value;
+	urlstring += '&popuptype='+popuptype;
+	urlstring = urlstring +'&query=true&file=Popup&module={$MODULE}&action={$MODULE}Ajax&ajax=true';
+	urlstring +=gethiddenelements();
+	$.ajax({ldelim}  
+		   type: "GET",  
+		   url:'index.php?'+urlstring,
+		   success: function(msg){ldelim}   
+		   	 $("#ListViewContents").html(msg); 
+		   {rdelim}  
+	{rdelim});
+{rdelim}	
+function alphabetic(module,url,dataid)
+{ldelim}
+    document.basicSearch.search_text.value = '';	
+    for(i=1;i<=26;i++)
+    {ldelim}
+	var data_td_id = 'alpha_'+ eval(i);
+	getObj(data_td_id).className = 'searchAlph';
+    {rdelim}
+    getObj(dataid).className = 'searchAlphselected';
+    gPopupAlphaSearchUrl = '&'+url;	
+    var urlstring ="module="+module+"&action="+module+"Ajax&file=Popup&ajax=true&"+url;
+    urlstring +=gethiddenelements();
+    $.ajax({ldelim}  
+		   type: "GET",  
+		   url:'index.php?'+urlstring,
+		   success: function(msg){ldelim}   
+		   	 $("#ListViewContents").html(msg); 
+		   {rdelim}  
+    {rdelim});    
+{rdelim}
+function gethiddenelements()
+{ldelim}
+	var urlstring='{$URLSTRING}'	
+	if(getObj('select_enable').value != '')
+		urlstring +='&select=enable';	
+	if(document.getElementById('curr_row').value != '')
+		urlstring +='&curr_row='+document.getElementById('curr_row').value;	
+	if(getObj('recordid').value != '')
+		urlstring +='&recordid='+getObj('recordid').value;	
+	var return_module = document.getElementById('return_module').value;
+	if(return_module != '')
+		urlstring += '&return_module='+return_module;
+	return urlstring;
+{rdelim}																								
+function getListViewEntries_js(module,url)
+{ldelim}
+	popuptype = document.getElementById('popup_type').value;
+        var urlstring ="module="+module+"&action="+module+"Ajax&file=Popup&ajax=true&"+url;
+    	urlstring +=gethiddenelements();
+	search_fld_val= document.basicSearch.search_field[document.basicSearch.search_field.selectedIndex].value;
+	search_txt_val=document.basicSearch.search_text.value;
+    	if(search_txt_val != '')
+		urlstring += '&query=true&search_field='+search_fld_val+'&searchtype=BasicSearch&search_text='+search_txt_val;
+	if(gPopupAlphaSearchUrl != '')
+		urlstring += gPopupAlphaSearchUrl;	
+	else
+		urlstring += '&popuptype='+popuptype;	
+	$.ajax({ldelim}  
+		   type: "GET",  
+		   url:'index.php?'+urlstring,
+		   success: function(msg){ldelim}
+		   	 $("#ListViewContents").html(msg); 
+		   {rdelim}  
+	{rdelim});
+{rdelim}
+
+function getListViewWithPageNo(module,pageElement)
+{ldelim}
+	//var pageno = document.getElementById('listviewpage').value;
+	var pageno = pageElement.options[pageElement.options.selectedIndex].value;
+	getListViewEntries_js(module,'start='+pageno);
+{rdelim}
+function getListViewWithPageSize(module,pageElement)
+{ldelim}
+	//var pageno = document.getElementById('listviewpage').value;
+	var pagesize = pageElement.options[pageElement.options.selectedIndex].value;
+	getListViewEntries_js(module,'pagesize='+pagesize);
+{rdelim}
+
+function getListViewSorted_js(module,url)
+{ldelim}
+        var urlstring ="module="+module+"&action="+module+"Ajax&file=Popup&ajax=true"+url;
+	$.ajax({ldelim}  
+		   type: "GET",  
+		   url:'index.php?'+urlstring,
+		   success: function(msg){ldelim}   
+		   	 $("#ListViewContents").html(msg); 
+		   {rdelim}  
+	{rdelim});
+{rdelim}
+</script>

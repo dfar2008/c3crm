@@ -5229,7 +5229,7 @@ function BrowerAcct(popuptype){
 	$.ajax({  
 		   type: "GET",  
 		   //dataType:"Text",   
-		   url:"index.php?module=Accounts&action=Popup&popuptype="+popuptype+"&form=TasksEditView&form_submit=false",
+		   url:"index.php?module=Accounts&action=Popup&popuptype="+popuptype+"&select=enable",
 		   success: function(msg){   
 		   	 $("#status").prop("display","none");
 		   	 $("#searchallacct").html(msg); 

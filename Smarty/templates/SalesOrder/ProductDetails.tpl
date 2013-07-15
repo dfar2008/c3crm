@@ -27,7 +27,7 @@
    <!-- Add Product Button -->
    <tr>
 	<td colspan="3">	
-	<input type="button" name="Button" class="btm btn-primary" value="{$APP.LBL_ADD_PRODUCT}" onclick="selectProductRows(this.form);" />
+	<input type="button" name="Button" class="btm btn-primary" value="{$APP.LBL_ADD_PRODUCT}" onclick="selectProductRows();" />
 	</td>
 	<td id="netTotal" style="display:none">0.00</td>
    </tr>
