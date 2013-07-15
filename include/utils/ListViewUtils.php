@@ -762,11 +762,8 @@ function getListQuery($module,$where='',$isSearchAll=false)
 		}
 		elseif($module == "Products")
 		{
-			//changed by dingjianting on 2007-1-12 for gloso project deleting contactid,related to fields
 			$query = "SELECT ec_products.productid as crmid, ec_products.*
 				FROM ec_products
-				LEFT JOIN ec_users
-					ON ec_users.id = ec_products.smownerid
 			    WHERE ec_products.deleted = 0";
 				
 		}

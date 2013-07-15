@@ -29,7 +29,7 @@ function selectProductRows(form)
 		   type: "GET",  
 		   //dataType:"Text",   
 		   url:"index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable",
-		   success: function(msg){   
+		   success: function(msg){
 		   	 $("#status").prop("display","none");
 		   	 $("#selectProductRows").html(msg); 
 		   }  
