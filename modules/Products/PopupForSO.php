@@ -168,14 +168,11 @@ if($viewid != '')
 $listview_header_search=getSearchListHeaderValues($focus,$currentModule,$url_string,$sorder,$order_by,$oCustomView);
 $smarty->assign("SEARCHLISTHEADER", $listview_header_search);
 
-
 $listview_header = getSearchListViewHeader($focus,$currentModule,$url_string,$sorder,$order_by,$oCustomView);
 $smarty->assign("LISTHEADER", $listview_header);
 
 
 $listview_entries = getSearchListViewEntries($focus,$currentModule,$list_result,$navigation_array,$oCustomView);
-
-$smarty->assign("LISTENTITY", $listview_entries);
 
 $navigationOutput = getTableHeaderNavigation($navigation_array, $url_string,$currentModule,"Popup",$viewid);
 $smarty->assign("NAVIGATION", $navigationOutput);
