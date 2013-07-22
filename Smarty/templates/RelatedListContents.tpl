@@ -22,7 +22,10 @@
 				
 			{elseif $header eq 'Contacts' }				
 				
-				<input title="{$APP.LBL_ADD_NEW} {$APP.Contact}" accessyKey="F" class="btn btn-small btn-primary" onclick="this.form.action.value='EditView';this.form.module.value='Contacts'" type="submit" name="button" value="{$APP.LBL_ADD_NEW} {$APP.Contact}">
+				<!--<input title="{$APP.LBL_ADD_NEW} {$APP.Contact}" accessyKey="F" class="btn btn-small btn-primary" onclick="this.form.action.value='EditView';this.form.module.value='Contacts'" type="submit" name="button" value="{$APP.LBL_ADD_NEW} {$APP.Contact}">-->
+				<button title="{$APP.LBL_ADD_NEW} {$APP.Contact}" accessyKey="F" class="btn btn-small btn-primary" type="button" onclick="editAccountRelInfo('index.php?module=Contacts&action=PopupEditView&return_action=CallRelatedList&return_id={$ID}&parenttab=Customer&moduletype=Contacts&return_module={$MODULE}')" name="button">
+					<i class="icon-plus icon-white"></i> {$APP.LBL_ADD_NEW} {$APP.Contact}
+				</button>
 
 			{elseif $header eq 'Attachments'}
 			        {if $MODULE neq 'Maillists'}
@@ -30,17 +33,24 @@
 						<input title="{$APP.LBL_ADD_NEW} {$APP.LBL_ATTACHMENT}" accessyKey="F" class="btn btn-small btn-primary" onclick="window.open('upload.php?return_action={$return_modname}&return_module={$MODULE}&return_id={$ID}','Attachments','width=500,height=300,resizable=1,scrollbars=1');" type="button" name="button" value="{$APP.LBL_ADD_NEW} {$APP.LBL_ATTACHMENT}">
 				{/if}
 			{elseif $header eq 'Notes'}
-				<input title="{$APP.LBL_ADD_NEW} {$APP.Note}" accessyKey="F" class="btn btn-small btn-primary" onclick="this.form.action.value='EditView'; this.form.return_action.value='{$return_modname}'; this.form.module.value='Notes'" type="submit" name="button" value="{$APP.LBL_ADD_NEW} {$APP.Note}">&nbsp;
+				<button title="{$APP.LBL_ADD_NEW} {$APP.Note}" accessyKey="F" class="btn btn-small btn-primary" onclick="editAccountRelInfo('index.php?module=Notes&action=PopupEditView&return_action=CallRelatedList&return_id={$ID}&parenttab=Customer&moduletype=Notes&return_module={$MODULE}')" type="button" name="button">
+					<i class="icon-plus icon-white"></i> {$APP.LBL_ADD_NEW} {$APP.Note}
+				</button>
+				<!--this.form.action.value='EditView'; this.form.return_action.value='{$return_modname}'; this.form.module.value='Notes'-->
 				<input type="hidden" name="fileid">
 			{elseif $header eq 'Sales Order'}				
-				<input title="{$APP.LBL_ADD_NEW} {$APP.SalesOrder}" accessyKey="F" class="btn btn-small btn-primary" onclick="this.form.action.value='EditView';this.form.module.value='SalesOrder'" type="submit" name="button" value="{$APP.LBL_ADD_NEW} {$APP.SalesOrder}">			
+				<button title="{$APP.LBL_ADD_NEW} {$APP.SalesOrder}" accessyKey="F" class="btn btn-small btn-primary" onclick="this.form.action.value='EditView';this.form.module.value='SalesOrder'" type="submit" name="button" >
+					<i class="icon-plus icon-white"></i> {$APP.LBL_ADD_NEW} {$APP.SalesOrder}
+				</button>
 			
 			{elseif $header eq 'ModuleComments'}
 				<input title="{$APP.LBL_ADD_NEW} {$APP.ModuleComments}" accessyKey="F" class="btn btn-small btn-primary" onclick="window.open('addComments.php?return_action={$return_modname}&return_module={$MODULE}&return_id={$ID}&crmid={$ID}','Comments','width=500,height=300');" type="button" name="button" value="{$APP.LBL_ADD_NEW} {$APP.ModuleComments}">
 			{elseif $header eq 'Memdays'}
 				{if $MODULE == 'Accounts'}
-					<input type="submit" value="{$APP.LBL_ADD_NEW} {$APP.Memdays}" class="btn btn-small btn-primary"
-							onclick="this.form.action.value='EditView';this.form.module.value='Memdays'"/>
+					<button type="button" class="btn btn-small btn-primary" onclick="editAccountRelInfo('index.php?module=Memdays&action=PopupEditView&moduletype=Memdays&parenttab=Customer&ajax=true&return_module={$MODULE}&return_action=CallRelatedList&return_id={$ID}')"/>
+						<i class="icon-plus icon-white"></i> {$APP.LBL_ADD_NEW} {$APP.Memdays}
+					</button>
+					<!-- openNewWindow();this.form.action.value='EditView';this.form.module.value='Memdays'   )-->
 				{/if}
             {elseif $header eq 'Qunfas'}
 				<input title=" 发送短信 " accessyKey="F" class="btn btn-small btn-primary" onclick="javascript:location.href='index.php?module=Qunfas&action=ListView&idstring={$ID}&modulename={$MODULE}'" type="button" name="button" value=" 发送短信 ">

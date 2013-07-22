@@ -132,5 +132,6 @@ $smarty->assign("search_url", $search_url);
 $smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("APP", $app_strings);
 $smarty->assign("CMOD", $mod_strings);
+$smarty->assign("SETTYPE","SmsTcManage");
 $smarty->display("Settings/SmsTcManage.tpl");
 ?>

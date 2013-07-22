@@ -22,7 +22,7 @@ function infValidate(){
 function saveNots(){	
 	var isValidate = formValidate();
 	if(isValidate){
-		var buttonsave = $$('.save');
+		var buttonsave = $('#savebutton');
 		var count = buttonsave.length;
 		for(var i=0;i<count;i++){
 			buttonsave[i].disabled = "disabled";

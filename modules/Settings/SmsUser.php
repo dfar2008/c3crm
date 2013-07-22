@@ -15,7 +15,7 @@ $theme_path="themes/".$theme."/";
 $image_path=$theme_path."images/";
 
 
-$listview_header =array("user_name"=>"帐号","is_admin"=>"管理员","last_name"=>"姓名","phone_mobile"=>"手机","email1"=>"Email","register_time"=>"创建时间","tools"=>"工具");
+$listview_header =array("user_name"=>"帐号","is_admin"=>"管理员","last_name"=>"姓名","phone_mobile"=>"手机","email1"=>"Email","register_time"=>"创建时间","status"=>"状态","tools"=>"工具");
 $smarty->assign("LISTHEADER", $listview_header);
 $smarty->assign("countheader", count($listview_header));
 
@@ -62,7 +62,7 @@ $lastweektime = date("Y-m-d H:i:s",strtotime("-1 week"));
 $nextweektime = date("Y-m-d H:i:s",strtotime("1 week"));
 
 $query = "select ec_users.id,ec_users.user_name,ec_users.last_name,ec_users.phone_mobile,
-			ec_users.email1,ec_users.register_time,is_admin		
+			ec_users.email1,ec_users.register_time,is_admin	,status	
 			from ec_users  
 			where ec_users.deleted =0 ";
 $query .=$where;			
@@ -101,6 +101,7 @@ if($nun_rows > 0){
 	foreach($result as $row) {		
 		$entries = array();
 		$id = $row['id'];
+        $status = $row['status'];
 		foreach($listview_header as $col=>$list){
 		   if($col =='is_admin'){
 			   if($row[$col] != "on") {
@@ -109,13 +110,23 @@ if($nun_rows > 0){
 				   $entries[] = "Yes";
 			   }
 		   } elseif($col =='tools'){
+               if($status=="Active"){
+                   $on_off =" &nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"onoffUser(".$id.",'off');\" title=\"禁用用户\"><font color=blue>禁用</font></a>&nbsp;&nbsp;";
+               }else{
+                   $on_off = "&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"onoffUser(".$id.",'on');\" title=\"启用用户\"><font color=blue>启用</font></a>&nbsp;&nbsp;";
+               }
 			    if($_SESSION['authenticated_user_id'] != $id) {
-					$entries[] = "<a href=\"index.php?module=Settings&action=EditMoreInfo&userid=".$id."\" title=\"编辑\"><font color=red>编辑</font></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"confirmDel(".$id.");\" title=\"禁用用户\"><font color=blue>禁用</font></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"deleteUser(this,".$id.");\" title=\" 删除用户\"><font color=blue>删除</font></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"index.php?module=Settings&action=SmsUserLogs&userid=".$id."\" title=\"日志\">日志</a>";
+					$entries[] = "<a href=\"index.php?module=Settings&action=EditMoreInfo&userid=".$id."\" title=\"编辑\"><font color=red>编辑</font></a>&nbsp;&nbsp;|".$on_off."|&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"confirmDel(".$id.");\" title=\" 删除用户\"><font color=blue>删除</font></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"index.php?module=Settings&action=SmsUserLogs&userid=".$id."\" title=\"日志\">日志</a>";
 				} else {
 					$entries[] = "&nbsp;";
 				}
 				
-			}else{
+			}elseif($col=="status"){
+                if($row[$col]=="Active")
+                    $entries[] = "启用";
+                else 
+                    $entries[] = "禁用";
+            }else{
 				$entries[] = $row[$col];
 			}
 		}

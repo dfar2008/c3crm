@@ -216,20 +216,19 @@ function check_duplicate_ajax()
 			return false;
 		}
 		var record = window.document.EditView.record.value;
-		new Ajax.Request(
-                'index.php',
-                {queue: {position: 'end', scope: 'command'},
-                        method: 'post',
-                        postBody: 'module=Products&action=ProductsAjax&file=Save&ajax=true&dup_check=true&productcode='+productcode+'&record='+record,
-                        onComplete: function(response) {
-							var result = trim(response.responseText);
-							if(result.indexOf('SUCCESS') > -1)
-										document.EditView.submit();
-							else
-										alert(result);
-						}
-                }
-        );
+		$.ajax({
+			type:'GET',
+			url:'index.php?module=Products&action=ProductsAjax&file=Save&ajax=true&dup_check=true&productcode='+productcode+'&record='+record,
+			success:function(msg){
+				var result = trim(msg);
+				if(result.indexOf('SUCCESS')>-1){
+					document.EditView.submit();
+				}else{
+					alert(result);
+				}
+			}
+			
+		});
 	} else {
 		document.EditView.submit();
 	}
@@ -237,28 +236,25 @@ function check_duplicate_ajax()
 }
 
 function clearSearchResult(module){
-    $("status").style.display="inline";
-    new Ajax.Request(
-		'index.php',
-		{queue: {position: 'end', scope: 'command'},
-			method: 'post',
-			postBody:'clearquery=true&file=index&module='+module+'&action='+module+'Ajax&ajax=true',
-			onComplete: function(response) {
-			        moveMe('searchAcc');
-				searchshowhide('searchAcc','advSearch');
-				for(i=1;i<=26;i++)
-				{
-					var data_td_id = 'alpha_'+ eval(i);
-					getObj(data_td_id).className = 'searchAlph';
-				}
-				$("status").style.display="none";
-                                result = response.responseText.split('&#&#&#');
-                                $("ListViewContents").innerHTML= result[2];
-                                result[2].evalScripts();
-                                if(result[1] != '')
-                                        alert(result[1]);
+    $("#status").css("display","inline");
+	$.ajax({
+		type:"get",
+		url:'index.php?clearquery=true&file=index&module='+module+'&action='+module+'Ajax&ajax=true',
+		success:function(msg){
+			//moveMe('searchAcc');
+			//searchshowhide('searchAcc','advSearch');
+			for(i=1;i<=26;i++){
+				var data_td_id = 'alpha_'+ eval(i);
+				//document.getElementById(data_td_id).className = 'searchAlph';
+				$("#"+data_td_id).addClass("searchAlph");
 			}
-	       }
-        );
+			$("#status").css("display","none");
+			msg = msg.split('&#&#&#');
+			$("#ListViewContents").html(msg[0]);
+			msg[0].evalScripts();
+			if(msg[1]!='')
+				alert(msg[1]);
+		}
+	});
 
 }

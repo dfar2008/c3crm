@@ -47,5 +47,11 @@ if(isset($_REQUEST['return_id']) && $_REQUEST['return_id'] != "") $return_id = $
 if($_REQUEST['return_viewname'] == '') $return_viewname='0';
 elseif($_REQUEST['return_viewname'] != '') $return_viewname=$_REQUEST['return_viewname'];
 
-header("Location: index.php?action=$return_action&module=$return_module&parenttab=$parenttab&record=$return_id&viewname=$return_viewname");
+if($return_action == "CallRelatedList"){
+    $return_action = "RelateLists";
+    header("Location: index.php?action=$return_action&module=$return_module&parenttab=$parenttab&record=$return_id&viewname=$return_viewname&moduletype=Notes");
+}else{
+    header("Location: index.php?action=$return_action&module=$return_module&parenttab=$parenttab&record=$return_id&viewname=$return_viewname");
+}
+
 ?>

@@ -8,9 +8,9 @@
 /* ----------------------------------------------- 
 	GLOBAL RESET 
    ----------------------------------------------- */
-
-/* remember to define focus styles! */
 :focus { outline: 0; }
+/* remember to define focus styles! 
+
 body {
 	line-height: 1;
 	color: black;
@@ -18,7 +18,7 @@ body {
 }
 ol, ul { 
 	list-style: none; 
-}
+}*/
 /* tables still need 'cellspacing="0"' in the markup */
 table {
 	border-collapse: separate;
@@ -39,7 +39,7 @@ blockquote, q {
    ----------------------------------------------- */
    
    
-/* -- Text Styles ------------------------------- */
+/* -- Text Styles ------------------------------- 
 html, 
 body {
 	margin: 0;
@@ -51,7 +51,7 @@ body {
 a { 
 	color: #385ea2; 
 	text-decoration: none; 
-}
+}*/
 a:hover { text-decoration: underline; }
 
 strong { font-weight: 700; }
@@ -81,14 +81,14 @@ p {
 	margin-top: .25em;
 	margin-bottom: .5em;
 }
-
+/*
 ul { padding: 4px 5px; }
 ul li { 
 	padding: 4px 5px; 
 	margin: 0 20px;
 	list-style:square; 
 }
-
+*/
 code {
 	display: block;
 	background:#edffb8 none repeat scroll 0%;

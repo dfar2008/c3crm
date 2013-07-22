@@ -366,3 +366,27 @@ input[type="text"], input[type="password"], input[type="datetime"], input[type="
 .layerPopupTransport {
   background-color:#D7E5EB;
 }
+
+a.customMnu {
+    background-position: left center;
+    background-repeat: no-repeat;
+    color: #000000;
+    display: block;
+	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom:5px;
+    text-decoration: none;
+    width: 155px;
+}
+.customMnuSelected {
+    background-color: #0099FF;
+    background-position: left center;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-top: 5px;
+    text-decoration: none;
+    width: 155px;
+}

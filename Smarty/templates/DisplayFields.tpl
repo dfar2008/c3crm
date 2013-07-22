@@ -71,15 +71,24 @@
 				{$fldlabel}
 			</td>
 			<td class="dvn">
-			   <select{$disable} name="{$fldname}" class="small">
+			   <select{$disable} name="{$fldname}" class="input-small">
 				{foreach item=arr from=$fldvalue}
 					{foreach key=sel_value item=value from=$arr}
 						<option value="{$sel_value}" {$value}>                                                
                                                         {$sel_value}
                                                 </option>
+												
 					{/foreach}
 				{/foreach}
 			   </select>
+			   {if $fldname=="memday940"}
+				<select name="memday942" class="input-mini">
+					<option>月</option>
+				</select>
+				<select name="memday944" class="input-mini">
+					<option>日</option>
+				</select>
+			   {/if}
 			</td>
         {elseif $uitype eq 155} <!-- uitype 111 added for noneditable existing picklist values - ahmed -->
 			<td class="dvt">

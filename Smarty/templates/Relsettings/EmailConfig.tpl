@@ -11,7 +11,7 @@
 		</button>
 		{else}
 			<button type="button" class="btn btn-small btn-primary" style="margin-top:-2px;"
-				onclick="this.form.relsetmode.value='edit';this.form.submit();">
+				onclick="this.form.relsetmode.value='edit';this.form.submit()">
 				<i class="icon-edit icon-white"></i>{$APP.LBL_EDIT_BUTTON}
 			</button>
 		{/if}
@@ -39,7 +39,7 @@
 		</tr><tr>
 			<th style="width:150px;">{$MOD.LBL_PASWRD}</th>
 			<td style="text-align:left;">
-				<input type="text" class="detailedViewTextBox small" value="{$PASSWORD}" name="server_password">
+				<input type="password" class="detailedViewTextBox small" value="{$PASSWORD}" name="server_password">
 			</td>
 		</tr><tr>
 			<th style="width:150px;">{$MOD.LBL_REQUIRES_AUTHENT}</th>

@@ -1,9 +1,10 @@
 <?php
 include("../../config.php");
-echo "upload_file_name.csv";
+//echo "upload_file_name.csv";
 global $tmp_dir, $root_directory;
 $upload_file_name = tempnam($root_directory.$tmp_dir, "upload.crm");
-echo "upload_file_name:".$upload_file_name;
+//echo "upload_file_name:".$upload_file_name;
+
 
 if (isset($_FILES["Filedata"]) && is_uploaded_file($_FILES["Filedata"]["tmp_name"]) && $_FILES["Filedata"]["error"] == 0) {
 	//上传文件赋值给$upload_file

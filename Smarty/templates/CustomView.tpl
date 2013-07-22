@@ -330,8 +330,19 @@ function mandatoryCheck()
                             {$MOD.Start_Date} :
                           </td>
                           <td>
-                            <input name="startdate" id="jscal_field_date_start" type="text" size="10" class="textField" value="{$STARTDATE}">
-                            <img src="{$IMAGE_PATH}calendar.gif" id="jscal_trigger_date_start" onclick="javascript:displayCalendar('jscal_field_date_start',this)">
+						  <div class="input-append date" data-date-format="yyyy-mm-dd" data-date="" id="jscal_field_date_start">
+							<input type="text" name="startdate"  value="{$STARTDATE}"style="width:180px">
+							<span class="add-on">
+								<i class="cus-date"></i>
+							</span>
+						  </div>
+						  <script>
+						  $(function(){ldelim}
+							$("#jscal_field_date_start").datepicker();
+							$("#jscal_field_date_end").datepicker();
+						  {rdelim});
+						  </script>
+                            
                           </td>
                          </tr>
                          <tr>
@@ -339,8 +350,12 @@ function mandatoryCheck()
                             {$MOD.End_Date} :
                           </td>
                           <td>
-                            <input name="enddate" id="jscal_field_date_end" type="text" size="10" class="textField" value="{$ENDDATE}">
-                           <img src="{$IMAGE_PATH}calendar.gif" id="jscal_trigger_date_end" onclick="javascript:displayCalendar('jscal_field_date_end',this)">
+						  <div class="input-append date" data-date-format="yyyy-mm-dd" data-date="" id="jscal_field_date_end">
+							<input type="text" name="enddate"  value="{$ENDDATE}"style="width:180px">
+							<span class="add-on">
+								<i class="cus-date"></i> <!-- change by ligangze 2013-08-20-->
+							</span>
+						  </div>
                           </td>
                          </tr>
                       </tbody>
@@ -488,10 +503,16 @@ function mandatoryCheck()
               </div> <!-- /tabbable -->
             </td>
           </tr>
-          <tr>
-            <td align="center">
-               <input title="{$APP.LBL_SAVE_BUTTON_LABEL} [Alt+S]" accesskey="S" class="btn btn-success"  name="button2" value="{$APP.LBL_SAVE_BUTTON_LABEL}"  type="submit" onClick="return checkDuplicate();"/>
-               <input title="{$APP.LBL_CANCEL_BUTTON_LABEL} [Alt+X]" accesskey="X" class="btn btn-warning" name="button2" onclick='goback()' value="{$APP.LBL_CANCEL_BUTTON_LABEL}"  type="button" />
+          <tr >
+            <td style="text-align:center">
+				<button title="{$APP.LBL_CANCEL_BUTTON_LABEL} [Alt+X]" accesskey="X" class="btn btn-primary btn-small" name="button2" onclick='goback()' type="button" >
+				<i class="icon-arrow-left icon-white"></i> {$APP.LBL_CANCEL_BUTTON_LABEL}
+			   </button>
+			   &nbsp;&nbsp; &nbsp;&nbsp;
+               <button title="{$APP.LBL_SAVE_BUTTON_LABEL} [Alt+S]" accesskey="S" class="btn btn-success btn-small"  name="button2" type="submit" onClick="return checkDuplicate();">
+				<i class="icon-ok icon-white"></i> {$APP.LBL_SAVE_BUTTON_LABEL}
+			   </button>
+               
             </td>
           </tr>
         </tbody>

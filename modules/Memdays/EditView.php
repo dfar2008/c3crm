@@ -26,6 +26,7 @@ if((!isset($is_disable_approve) || (isset($is_disable_approve) && !$is_disable_a
 		die;
 	}
 }
+
 $focus = new Memdays();
 $smarty = new CRMSmarty();
 if(isset($module_enable_product) && $module_enable_product) 
@@ -172,7 +173,7 @@ if(isset($module_enable_product) && $module_enable_product)
 	$smarty->assign("PRODUCTLABELLIST",$fieldlabellist);
 }
 if($focus->mode == 'edit')
-	$smarty->display("Memdays/EditView.tpl");
+    $smarty->display("Memdays/EditView.tpl");
 else
 	$smarty->display("Memdays/CreateView.tpl");
 

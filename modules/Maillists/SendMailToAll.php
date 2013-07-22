@@ -36,6 +36,7 @@ $mailcontent = stripslashes($mailcontent);
 //$from_name  = substr($mailfrom_arr[1],0,-1);
 //$interval  = substr($mailfrom_arr[2],0,-2);
 $from_name = $_REQUEST["from_name"];
+
 $from_email = $_REQUEST["from_email"];
 $interval = $_REQUEST["interval"];
 

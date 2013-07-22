@@ -1,5 +1,6 @@
 <?php
 session_start(); 
+header("Content-type:text/html;charset=utf-8");
 unset($_SESSION['nick']); 
 unset($_SESSION['authenticated_user_id']); 
 unset($_SESSION['app_unique_key']); 

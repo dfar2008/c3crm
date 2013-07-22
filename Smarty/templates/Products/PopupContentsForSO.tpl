@@ -19,7 +19,8 @@
 		<tr>
 		{if $SELECT eq 'enable'}
 		    <td class="lvtCol" width="3%"><input type="checkbox" name="select_all" value="" onClick='javascript:toggleSelect(this.checked,"selected_id");UpdateIDString()'></td>
-                {/if}
+        {/if}
+
 		    {foreach item=header from=$LISTHEADER}
 			<td class="lvtCol">{$header}</td>
 		    {/foreach}

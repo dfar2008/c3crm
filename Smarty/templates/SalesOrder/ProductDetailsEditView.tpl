@@ -91,7 +91,9 @@
    <!-- Add Product Button -->
    <tr>
 	<td colspan="3">
-	<input type="button" name="Button" class="btn btn-primary btn-small" value="{$APP.LBL_ADD_PRODUCT}" onclick="selectProductRows();" />
+	<button type="button" name="Button" class="btn btn-primary btn-small"  onclick="selectProductRows();" >
+		<i class="icon-plus icon-white"></i> {$APP.LBL_ADD_PRODUCT}
+	</button>
 	</td>
 	<td id="netTotal" style="display:none">0.00</td>
    </tr>

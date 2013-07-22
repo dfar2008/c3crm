@@ -61,6 +61,24 @@
       </table>
   </div> 
 
+ {if $LISTENTITY && count($LISTENTITY)!=0}
+ {php}
+	$urlstr1="";
+	foreach($_REQUEST as $key=>$value)
+	{
+		if($key!='module'&&$key!='action'&&$key!='file')
+		{
+			$urlstr1.="&$key=$value";
+		}
+
+	}
+	$this->assign('COLLECTURLSTR',$urlstr1);
+ {/php}
+ <div id="collectcolumntable">
+	<script>getColumnCollectInf('{$MODULE}','{$COLLECTURLSTR}');</script>
+</div>
+{/if}
+
 
 <script language="JavaScript" type="text/javascript">
 {literal}

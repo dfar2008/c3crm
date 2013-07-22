@@ -1,4 +1,29 @@
 <script type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
+<script type="text/javascript" src="modules/Memdays/Memday.js"></script>
+<script>
+	var curryear = "{$curryear}";
+		var currmonth = "{$currmonth}";
+		var currdays = "{$currdays}";
+
+	{literal}
+		function editAccountRelInfo(urlstring){
+			
+			$.ajax({
+				type:"GET",
+				url:urlstring,
+				success:function(msg){
+					$("#account_rel").html(msg);
+				}
+			});
+			$("#account_rel").modal("show");
+		}
+		function closeAccountRelInfo(){
+			$("#account_rel").modal("hide");
+		}
+	{/literal}
+</script>
+
+<div class="modal hide fade" id="account_rel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:850px;"></div>
 
  <!-- center start -->
  <div class="container-fluid" style="height:606px;">

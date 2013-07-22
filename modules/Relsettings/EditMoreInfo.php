@@ -86,5 +86,11 @@ $smarty->assign("APP", $app_strings);
 $smarty->assign("CMOD", $mod_strings);
 $smarty->assign("mode", $mode);
 
-$smarty->display("Relsettings/EditMoreInfo.tpl");
+$relsetmode = "view";
+if(isset($_REQUEST['relsetmode']) && $_REQUEST['relsetmode'] != ''){
+	$relsetmode = $_REQUEST['relsetmode'];
+}
+$smarty->assign("RELSETMODE", $relsetmode);
+
+//$smarty->display("Relsettings/EditMoreInfo.tpl");
 ?>

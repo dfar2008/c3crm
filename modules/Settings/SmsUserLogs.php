@@ -88,6 +88,7 @@ $navigationOutput = getTableHeaderNavigation($navigation_array, '',"Settings","S
 $smarty->assign("NAVIGATION", $navigationOutput);
 $smarty->assign("RECORD_COUNTS", $record_string);
 $smarty->assign("search_url", $search_url);
+$smarty->assign("SETTYPE", "SmsUserLogs");//added by ligangze
 $smarty->assign("MOD", return_module_language($current_language,'Settings'));
 $smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("APP", $app_strings);

@@ -22,13 +22,13 @@ if($_REQUEST['relset'] && !empty($_REQUEST['relset'])){
 }
 $relsetarray = array(
 			"EmailConfig"=>$mod_strings['LBL_MAIL_SERVER_SETTINGS'],
-			"MessageConfig"=>$mod_strings['LBL_SERVER_SETTINGS'],
+			//"MessageConfig"=>$mod_strings['LBL_SERVER_SETTINGS'],
 			"MemdayConfig"=>$mod_strings['LBL_MEMDAY_SETTING'],
 			"EditPwd"=>$mod_strings['LBL_EDIT_PASSWORD'],
 			"EditMoreInfo"=>$mod_strings['LBL_EDIT_MORE_INFO'],
 			"MailLogs"=>$mod_strings['LBL_MAIL_LOGS'],
 			//"Taobaozushou"=>$mod_strings['TAOBAOZUSHOU'],
-			"SmsAccount"=>$mod_strings['LBL_DUANXINZHANGHAOSHEZHI']
+			//"SmsAccount"=>$mod_strings['LBL_DUANXINZHANGHAOSHEZHI']
 	);
 $relsetkeyarr = array_keys($relsetarray);
 if(!empty($relset) && in_array($relset,$relsetkeyarr)){

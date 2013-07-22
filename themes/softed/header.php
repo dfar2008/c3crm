@@ -21,6 +21,7 @@ $smarty->assign("DATE", getDisplayDate(date("Y-m-d H:i")));
 $smarty->assign("CURRENT_USER", $current_user->user_name);
 $smarty->assign("CURRENT_USER_ID", $current_user->id);
 $smarty->assign("MODULELISTS",$app_list_strings['moduleList']);
+$smarty->assign("IS_ADMIN",$current_user->is_admin);
 
 $module_path="modules/".$currentModule."/";
 

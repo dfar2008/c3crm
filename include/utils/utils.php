@@ -1054,9 +1054,12 @@ function getUserId_Ol($username)
 	if(!$userIdList) {
 		global $adb;
 		$query = "select id,user_name from ec_users order by id";
-		$result = $adb->getList($query);			
+		$result = $adb->getList($query);
 		$userIdList = array();
-		foreach($pickListResult as $row) {
+		//foreach($pickListResult as $row) {
+       // var_dump($result."hello");
+        //exit();
+        foreach($result as $row){
 			$userIdList[$row['user_name']] = $row['id'];
 		}
 		setSqlCacheData($key,$userIdList);

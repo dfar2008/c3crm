@@ -72,8 +72,8 @@ function validate() {
                         return false
 
         }
-
-        if (decimalLayer.style.visibility=="visible") {
+        if (decimalLayer!=null && decimalLayer.style.visibility=="visible") {
+			
                 if (getObj("fldDecimal").value.replace(/^\s+/g, '').replace(/\s+$/g, '').length>0)
                         if (!intValidate("fldDecimal","Decimal"))
                                 return false
@@ -83,17 +83,21 @@ function validate() {
                 if (!numConstComp("fldDecimal","Decimal","LE",30))
                         return false
         }
+				if(getObj("fldDecimal")){
 	var decimallength = document.addtodb.fldDecimal.value;
+				}
         if(fieldtype == '1' || fieldtype == '2' || fieldtype == '3')
         {
                 if(decimallength == '')
                         decimallength = 0;
                 nummaxlength = 65 - (eval(decimallength) + 1);
         }
+		
         if (!numConstComp("fldLength",alert_arr.LENGTH,"LE",nummaxlength))
                 return false
 var picklistObj=getObj("fldPickList")
-        if (pickListLayer.style.visibility=="visible") {
+			
+        if (pickListLayer!=null && pickListLayer.style.visibility=="visible") {
                 if (emptyCheck("fldPickList","Picklist values"))        {
                         var pickListAry=new Array()
                         pickListAry=splitValues()
@@ -121,6 +125,7 @@ var picklistObj=getObj("fldPickList")
                         return true
                 } else return false
         }
+						
 }
 var fieldValueArr=new Array('Text','Number','Percent','Currency','Date','Email','Phone','Picklist','URL','Checkbox','TextArea','MultiSelectCombo','QQ','Msn','Trade','Yahoo','Skype','Account','Contact');
 var fieldTypeArr=new Array('text','number','percent','currency','date','email','phone','picklist','url','checkbox','textarea','multiselectcombo','qq','msn','trade','yahoo','skype','account','contact');

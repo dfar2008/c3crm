@@ -9,6 +9,76 @@
   *
  ********************************************************************************/
 -->*}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">
+			<div class="accordion" id="settingion1" style="overflow:auto;height:580px;">
+					{include file='Settings/SettingLeft.tpl'}
+			</div>
+		</div>
+		<!--content start-->
+		<div class="span10" style="margin-left:10px">
+			<div class="page-header" style="margin-top:-10px">
+				<h4 style="margin-bottom:-8px">
+					<img src="{$IMAGE_PATH}ico_mobile.gif" alt="Users" width="48" height="48" border=0 title="Users">{$MOD.LBL_SMS_TC_MANAGE}
+					<small>{$MOD.LBL_SMS_TC_MANAGE}</small>
+				</h4>
+			</div>
+			<div style="margin-top:-8px">
+				<div class="pull-left">
+					<button type="button"  name="button" class="btn btn-small btn-primary" onclick="CreateNewTc();"/>
+						<i class="icon-plus icon-white"></i> 新增套餐
+					</button>
+				</div>
+				<div class="pull-right">
+					<button type="button"  name="button" class="btn btn-small btn-inverse" onclick="window.location.reload();"/>
+						<i class="icon-refresh icon-white"></i> 刷新
+					</button>
+				</div>
+			</div><br><br>
+
+			<div>
+				 <table width=99% align="center" class="lvt small" >
+                       
+                       <tr>
+                            {$headerhtml}
+                        </tr>
+                        <!-- Table Contents -->
+                        {foreach item=entity key=entity_id from=$LISTENTITY}
+                        
+                           <tr bgcolor=white onMouseOver="this.className='lvtColDataHover'" onMouseOut="this.className='lvtColData'" id="row_{$entity_id}">
+                         
+                            {foreach item=data from=$entity}	
+                            <td nowrap="nowrap">{$data}</td>
+                            {/foreach}
+                          </tr>
+                         {foreachelse}
+                          <tr bgcolor=white onMouseOver="this.className='lvtColDataHover'" onMouseOut="this.className='lvtColData'" id="row_{$entity_id}">
+                            <td colspan="{$countheader}" align="center">---&nbsp;无&nbsp;---</td>
+                          </tr>
+                        {/foreach}
+                        <tr>
+                       <td nowrap width="100%" align="right" valign="middle" colspan="{$countheader}">
+                            <table border=0 cellspacing=0 cellpadding=0 class="small" width="100%" align="right">
+                                 <tr>
+                                 <td width="70%"><font color=red><b>注:</b></font>  <b><font color=blue>A</font> : 个人用户套餐 ; <font color=blue>B</font> : 企业用户套餐</b></td>
+                                 <td width="30%" style="padding-right:5px" align="right">{$RECORD_COUNTS}&nbsp;&nbsp;&nbsp;&nbsp;{$NAVIGATION}</td>
+                                 </tr>
+                            </table>
+                        </td>
+                        </tr>
+                    </table>
+				
+			</div>
+
+
+
+			 
+
+		</div>
+		<!--content end-->
+	</div>
+</div>
 <script language="JAVASCRIPT" type="text/javascript" src="include/js/smoothscroll.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/menu.js"></script>
 <style>

@@ -1,22 +1,21 @@
 function getListViewEntries_js(module,url)
 {
-	$("status").style.display="inline";
-	var querystr=$F('the_query_string');
-        new Ajax.Request(
-        	'index.php',
-                {queue: {position: 'end', scope: 'command'},
-                	method: 'post',
-                        postBody:"module=Home&action=HomeAjax&file=UnifiedSearch&ajax=true&selectedmodule="+module+"&"+url+"&query_string="+querystr,
-			onComplete: function(response) {
-                        	$("status").style.display="none";
-                                result = response.responseText.split('&#&#&#');
-                                $("searchlistview_"+module).innerHTML= result[2];
-                                if(result[1] != '')
-                                        alert(result[1]);
-                                result[2].evalScripts();
-                  	}
-                }
-        );
+	$("#status").css("display","inline");
+	var querystr=$('#the_query_string').val();
+	$.ajax({
+		type:"GET",
+		url:"index.php?module=Home&action=HomeAjax&file=UnifiedSearch&ajax=true&selectedmodule="+module+"&"+url+"&query_string="+querystr,
+		success:function(msg){
+			$("#status").css("display","none");
+			result = msg.split('&#&#&#');
+			$("#searchlistview_"+module).html(result[2]);
+			//if(result[1] != '')
+				//alert(result[1]);
+			//eval(result[2]);
+			//$("#searchlistview_"+module).html(msg);
+		}
+	});
+
 }
 
 function getListViewWithPageNo(module,pageElement)
@@ -26,3 +25,8 @@ function getListViewWithPageNo(module,pageElement)
 	getListViewEntries_js(module,'start='+pageno);
 }
 
+function getListViewWithPageSize(module,pageElement)
+{
+var pagesize = pageElement.options[pageElement.options.selectedIndex].value;
+getListViewEntries_js(module,'pagesize='+pagesize);
+} 

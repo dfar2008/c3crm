@@ -36,5 +36,5 @@ $smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("APP", $app_strings);
 $smarty->assign("CMOD", $mod_strings);
 
-$smarty->display("Relsettings/EditPwd.tpl");
+//$smarty->display("Relsettings/EditPwd.tpl");
 ?>

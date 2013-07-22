@@ -1,5 +1,5 @@
 <?php
-include('modules/Import/index.php');
+include('modules/Import/index2.php');
 
 ?>
 

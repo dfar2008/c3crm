@@ -24,18 +24,18 @@ function set_return_formname_specific(formname, product_id, product_name) {
 function selectProductRows()
 {
 	//window.open("index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable","productWin","width=740,height=565,resizable=1,scrollbars=1,status=1,top=150,left=200");	
-	//$("#status").prop("display","inline");
+	$("#status").prop("display","inline");
 	$.ajax({  
 		   type: "GET",  
 		   //dataType:"Text",   
-		   url:"index.php?module=Products&action=Popup&popuptype=inventory_prods&select=enable",
+		   url:"index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable",
 		   success: function(msg){
-			 //alert(msg);
-		   	 //$("#status").prop("display","none");
-		   	 $("#searchallacct").html(msg); 
+		   	 $("#status").prop("display","none");
+		   	 $("#selectProductRows").html(msg); 
+			 
 		   }  
 	}); 
-	$('#searchallacct').modal('show');
+	$('#selectProductRows').modal('show');
 	//BrowerAcct("specific_contact_account_address");
 }
 
@@ -114,13 +114,28 @@ function UpdateIDString()
 				}
 				if(!flag) {
 					var repeated = false;
-					var selectedProductsLength = opener.window.document.forms['EditView'].elements.length;
+//					var selectedProductsLength = opener.window.document.forms['EditView'].elements.length;
+//					for(var m=0;m<selectedProductsLength;m++) {
+//						if(opener.window.document.forms['EditView'].elements[m].name.indexOf('hdnProductId') > -1) {
+//							tmpProductID = opener.window.document.forms['EditView'].elements[m].name;
+//							tmpProductIndex = tmpProductID.substring(12);
+//							
+//							if(opener.window.document.forms['EditView'].elements["deleted"+tmpProductIndex].value == 0 && opener.window.document.forms['EditView'].elements[m].value == idvalue) {
+//								alert(alert_arr.PRODUCT_SELECTED);
+//								document.selectall.selected_id[i].checked = false;
+//								repeated = true;
+//								break;
+//							}
+//						}
+//					} 
+
+					var selectedProductsLength = window.document.forms['EditView'].elements.length;
 					for(var m=0;m<selectedProductsLength;m++) {
-						if(opener.window.document.forms['EditView'].elements[m].name.indexOf('hdnProductId') > -1) {
-							tmpProductID = opener.window.document.forms['EditView'].elements[m].name;
+						if(window.document.forms['EditView'].elements[m].name.indexOf('hdnProductId') > -1) {
+							tmpProductID = window.document.forms['EditView'].elements[m].name;
 							tmpProductIndex = tmpProductID.substring(12);
 							
-							if(opener.window.document.forms['EditView'].elements["deleted"+tmpProductIndex].value == 0 && opener.window.document.forms['EditView'].elements[m].value == idvalue) {
+							if(window.document.forms['EditView'].elements["deleted"+tmpProductIndex].value == 0 && window.document.forms['EditView'].elements[m].value == idvalue) {
 								alert(alert_arr.PRODUCT_SELECTED);
 								document.selectall.selected_id[i].checked = false;
 								repeated = true;
@@ -128,6 +143,8 @@ function UpdateIDString()
 							}
 						}
 					} 
+
+
 					if(!repeated) {
 						if(idstring != "") {
 							idstring = idstring + ";" + idvalue;
@@ -189,29 +206,30 @@ function addMultiProductRow(module)
 {   
 	UpdateIDString(); 
 	var idlist = document.selectall.idlist.value;
-	
-	new Ajax.Request(
-		  'index.php',
-		  {queue: {position: 'end', scope: 'command'},
-					method: 'post',
-					postBody:"module=Products&action=ProductsAjax&file=getProductsByModule&ajax=true&idlist="+ encodeURIComponent(idlist)+"&basemodule="+encodeURIComponent(module),
-					onComplete: function(response) {
-							result = response.responseText; 
-							productarr = JSON.parse(result);
-							for (var j = eval(productarr.length-1); j > -1; j--) {
-								addProductRow(productarr[j]);
-							}
-							window.close();
-							
-					}
-			 }
-    );
+
+	$.ajax({
+		type:"GET",
+		url:"index.php?module=Products&action=ProductsAjax&file=getProductsByModule&ajax=true&idlist="+ encodeURIComponent(idlist)+"&basemodule="+encodeURIComponent(module),
+		success:function(msg){
+			//productarr = JSON.parse(msg);
+			productarr = $.parseJSON(msg);
+			for (var j = eval(productarr.length-1); j > -1; j--) {
+				addProductRow(productarr[j]);
+			}
+			$("#selectProductRows").modal("hide");
+			calcTotal();
+			//window.close();
+
+		}
+	});
 }
 function addProductRow(productrow) 
 {
 	var fieldlist = productrow["fieldlist"];
-	var module = window.opener.document.EditView.module.value;
-	var tableName = window.opener.document.getElementById('proTab');
+	//var module = window.opener.document.EditView.module.value;
+	//var tableName = window.opener.document.getElementById('proTab');
+	var module = document.EditView.module.value;
+	var tableName = document.getElementById('proTab');
 	var prev = tableName.rows.length;
 	var count = eval(prev)-1;
 	var row = tableName.insertRow(prev);
@@ -236,7 +254,7 @@ function addProductRow(productrow)
 	i = i + 1;
 	coli = row.insertCell(i);		
 	coli.className = "crmTableRow small";
-	coli.innerHTML='<input id="qty'+count+'" name="qty'+count+'" type="text" class="small " style="width:50px" onfocus="this.className=\'detailedViewTextBoxOn\'" onBlur="FindDuplicate(); settotalnoofrows();calcTotal();" value=""/>';
+	coli.innerHTML='<input id="qty'+count+'" name="qty'+count+'" type="text" class="small " style="width:50px" onfocus="this.className=\'detailedViewTextBoxOn\'" onBlur="FindDuplicate(); settotalnoofrows();calcTotal();" value="1"/>';
 	i = i + 1;
     coli = row.insertCell(i);
 	//listprice
@@ -247,7 +265,7 @@ function addProductRow(productrow)
 	i = i + 1;
     coli = row.insertCell(i);
 	coli.className = "crmTableRow small";
-	coli.innerHTML='<input id="comment'+count+'" name="comment'+count+'" class=small style="width:150px">';
+	coli.innerHTML='<input type="text" id="comment'+count+'" name="comment'+count+'" class=small style="width:150px">';
 
     i = i + 1;
     coli = row.insertCell(i);

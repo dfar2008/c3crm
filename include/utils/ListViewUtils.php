@@ -1,7 +1,6 @@
 <?php
 require_once('include/database/PearDatabase.php');
 require_once('include/utils/CommonUtils.php'); //new
-
 function AlphabeticalSearch($module,$action,$fieldname,$query,$type,$popuptype='',$recordid='',$return_module='',$append_url='',$viewid='',$groupid='',$selectedval="")
 {
 	global $log;
@@ -71,8 +70,6 @@ function getListViewHeader($focus, $module,$sort_qry='',$sorder='',$order_by='',
 			$focus->list_fields_name = $oCv->list_fields_name;
 		}
 	}
-	
-
 	//modified for ec_customview 27/5 - $app_strings change to $mod_strings
 	foreach($focus->list_fields as $name=>$tableinfo)
 	{
@@ -232,6 +229,7 @@ function getNavigationValues($display, $noofrows, $limit)
 //parameter added for ec_customview $oCv 27/5
 function getListViewEntries($focus, $module,$list_result,$navigation_array,$relatedlist='',$returnset='',$edit_action='EditView',$del_action='Delete',$oCv='')
 {
+ 
 	global $log;
 	$log->debug("Entering getListViewEntries() method ...");
 	$tabname = getParentTab();
@@ -292,12 +290,18 @@ function getListViewEntries($focus, $module,$list_result,$navigation_array,$rela
 		else
 			$varreturnset = $returnset;
 		$links_info ='';
+
 		if($module !='Qunfas' && $module !='Maillists'){
 			//Added for Actions ie., edit and delete links in listview
 			$edit_link = getListViewEditLink($module,$entity_id,$relatedlist,$varreturnset,$list_result,$list_result_count);
 			$del_link = getListViewDeleteLink($module,$entity_id,$relatedlist,$varreturnset);
-		
+           
+            //added by ligangze 2013-08-06
+            if(($module=='Memdays'|| $module=='Contacts') && $relatedlist=='relatedlist'){
+                $links_info .= "<a href=\"#\" role=\"button\" data-toggle=\"modal\" onclick='editAccountRelInfo(\"$edit_link\")'>&nbsp;<i class=\"cus-pencil\"></i> </a>";
+            }else{
 			$links_info .= "<a href=\"$edit_link\" title=\"".$app_strings["LNK_EDIT"]."\"> &nbsp;<i class=\"cus-pencil\"></i> </a> ";//".$app_strings["LNK_EDIT"]."
+            }
 			if($del_link != '')
 			$links_info .=	" | <a href='javascript:confirmdelete(\"$del_link\")'> <img src=\"themes/bootcss/img/del.gif\" border=0 title=\"".$app_strings["LNK_DELETE"]."\"> </a>";//".."
 			$list_header[] = $links_info;
@@ -1069,8 +1073,11 @@ function getListViewEditLink($module,$entity_id,$relatedlist,$returnset,$result,
 {
 	global $adb;
 	$return_action = "index";
+    if(($module=="Memdays"||$module=="Contacts") && $relatedlist=="relatedlist"){//added by ligangze
+        $edit_link = "index.php?module=$module&action=PopupEditView&record=$entity_id";
+    }else{
 	$edit_link = "index.php?module=$module&action=EditView&record=$entity_id";
-
+    }
 	//This is relatedlist listview
 	if($relatedlist == 'relatedlist')
 	{

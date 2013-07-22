@@ -33,6 +33,7 @@ if($db_update)
 	}else{
 		$sql="update ec_systems set server = '".$server."', server_username = '".$server_username."', server_password = '".$server_password."', smtp_auth='".$smtp_auth."', server_type = '".$server_type."',from_name = '".$from_name."',from_email = '".$from_email."',server_port='".$port."',smownerid='".$current_user->id."',`interval`='".$interval."' where id = ".$id;
 	}
+
 	$adb->query($sql);
 }
 
@@ -73,9 +74,14 @@ if($server_type != 'backup' && $server_type != 'proxy')
 			$error_str = "mail_error=".urlencode($mail_status);
 		}
 	}
-	$action = 'EmailConfig';
+	//$action = 'EmailConfig';
+	//if($error_str != "")
+		//$action = 'EmailConfig&emailconfig_mode=edit';
+
+        $action = 'index';
 	if($error_str != "")
-		$action = 'EmailConfig&emailconfig_mode=edit';
+		$action = 'index&emailconfig_mode=edit';
+
 }
 redirect("index.php?module=Relsettings&parenttab=Settings&action=$action&$error_str");
 ?>

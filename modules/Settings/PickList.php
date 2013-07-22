@@ -50,6 +50,7 @@ $smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("APP", $app_strings);
 $smarty->assign("CMOD", $mod_strings);
 $smarty->assign("UITYPE", $uitype);
+$smarty->assign("SETTYPE","PickList");
 
 if($_REQUEST['directmode'] != 'ajax')
 	$smarty->display("Settings/PickList.tpl");

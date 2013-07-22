@@ -13,5 +13,5 @@ $adb->query($updatesql);
 
 
 
-redirect("index.php?module=Relsettings&parenttab=Settings&action=EditMoreInfo");
+redirect("index.php?module=Relsettings&parenttab=Settings&action=index&relset=EditMoreInfo");
 ?>

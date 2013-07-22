@@ -32,6 +32,8 @@ global $list_max_entries_per_page;
 $total_record_count = 0;
 
 $query_string = trim($_REQUEST['query_string']);
+//var_dump($query_string);
+//exit();
 if(isset($query_string) && $query_string != '')//preg_match("/[\w]/", $_REQUEST['query_string'])) 
 {
 
@@ -99,8 +101,8 @@ if(isset($query_string) && $query_string != '')//preg_match("/[\w]/", $_REQUEST[
 			else			//This is for Global search
 			{
 				$where = getUnifiedWhere($listquery,$module,$search_val);
-				$search_msg = $app_strings['LBL_SEARCH_RESULTS_FOR'];
-				$search_msg .=	"<b>".$search_val."</b>";
+				//$search_msg = $app_strings['LBL_SEARCH_RESULTS_FOR'];
+				$search_msg =	"<b>".$search_val."</b>";
 			}
 
 			if($where != '')
@@ -157,7 +159,7 @@ if(isset($query_string) && $query_string != '')//preg_match("/[\w]/", $_REQUEST[
 
 			$total_record_count = $total_record_count + $noofrows;
 
-			$smarty->assign("SEARCH_CRITERIA","( $noofrows )".$search_msg);
+			$smarty->assign("SEARCH_CRITERIA","( $noofrows )--查找结果:".$search_msg);
 			$smarty->assign("MODULES_LIST", $object_array);
             if(isset($_REQUEST['ajax']) && $_REQUEST['ajax'] != '')
                 $smarty->display("GlobalListViewEntries.tpl");
@@ -171,7 +173,7 @@ if(isset($query_string) && $query_string != '')//preg_match("/[\w]/", $_REQUEST[
     if(!(isset($_REQUEST['ajax']) && $_REQUEST['ajax'] != '')){
 ?>
 	<script>
-document.getElementById("global_search_total_count").innerHTML = " <?php echo $app_strings['LBL_TOTAL_RECORDS_FOUND'] ?><b><?php echo $total_record_count; ?></b>";
+        document.getElementById("global_search_total_count").innerHTML = " <span class='label label-info'>搜索到的记录数:</span><b>&nbsp;&nbsp;<?php echo $total_record_count; ?></b>&nbsp;条";
 	</script>
 <?php
     }
@@ -283,9 +285,9 @@ function getSearchModulesComboList($search_module)
 		 <table border=0 cellspacing=0 cellpadding=0 width=98% align=center>
 		     <tr>
 		        <td colspan="3" id="global_search_total_count" style="padding-left:30px">&nbsp;</td>
-		<td nowrap align="right"><?php echo $app_strings['LBL_SHOW_RESULTS'] ?>&nbsp;
-		                <select id="global_search_module" name="global_search_module" onChange="displayModuleList(this);">
-			<option value="All"><?php echo $app_strings['COMBO_ALL'] ?></option>
+		        <td nowrap align="right">结果显示&nbsp;
+		            <select id="global_search_module" name="global_search_module" onChange="displayModuleList(this);">
+			            <option value="All">所有</option>
 						<?php
 						foreach($object_array as $module => $object_name)
 						{
@@ -295,14 +297,15 @@ function getSearchModulesComboList($search_module)
 							if($search_module == '' && $module == 'All')
 								$selected = 'selected';
 							?>
-							<option value="<?php echo $module; ?>" <?php echo $selected; ?> ><?php echo $app_strings[$module]; ?></option>
-							<?php
+						<option value="<?php echo $module; ?>" <?php echo $selected; ?> ><?php echo $app_strings[$module]; ?></option>
+						<?php
 						}
 						?>
 		     		</select>
 		        </td>
 		     </tr>
 		</table>
+        <div style="margin:8px 15px 5px 15px;padding-top:5px;border-top:2px solid #0088CC;"></div>
 	<?php
 }
 
@@ -317,13 +320,18 @@ function getSearchModulesComboList($search_module)
 	 if(isset($_REQUEST['selectedmodule']) && $_REQUEST['selectedmodule'] != ''){
         $modulenames=array($_REQUEST['selectedmodule']); 
      }else{
-        $sql = 'select distinct ec_field.tabid,name from ec_field inner join ec_tab on ec_tab.tabid=ec_field.tabid where ec_tab.tabid not in (16,29) and ec_tab.tabid in (select distinct tabid from ec_parenttabrel)';
-	    $result = $adb->getList($sql);
-		foreach($result as $module_result)
-		{
-			$modulename = $module_result['name'];
-			$modulenames[]=$modulename;
-		}
+         $modulenames = array(
+			"Accounts"=>"Accounts",
+			"Contacts"=>"Contacts",
+			"Notes"=>"Notes"
+		);
+//        $sql = 'select distinct ec_field.tabid,name from ec_field inner join ec_tab on ec_tab.tabid=ec_field.tabid where ec_tab.tabid not in (16,29) and ec_tab.tabid in (select distinct tabid from ec_parenttabrel)';
+//	    $result = $adb->getList($sql);
+//		foreach($result as $module_result)
+//		{
+//			$modulename = $module_result['name'];
+//			$modulenames[]=$modulename;
+//		}
 	 }
      foreach($modulenames as $modulename)
      {

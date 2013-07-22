@@ -25,5 +25,5 @@ if(!empty($row)){
 	$adb->query($sql);
 }
 
-header("Location: index.php?module=Relsettings&parenttab=Settings&action=SmsAccount");
+header("Location: index.php?module=Relsettings&parenttab=Settings&action=index&relset=SmsAccount");
 ?>

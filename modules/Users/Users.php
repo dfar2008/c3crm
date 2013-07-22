@@ -24,7 +24,7 @@ class Users {
 
 	var $tab_name = Array('ec_users');	
 	var $tab_name_index = Array('ec_users'=>'id');
-	var $column_fields = Array('user_name'=>'','is_admin' =>'','user_password'=>'','confirm_password'=>'',
+	var $column_fields = Array('user_name'=>'user_name','is_admin' =>'is_admin','user_password'=>'','confirm_password'=>'',
 	'last_name' =>'',
 	'status' =>'',
 	'title' =>'',
@@ -445,6 +445,7 @@ class Users {
 		$query = "select is_admin,user_name from ec_users where id={$userid}";
 		$result = $this->db->query($query);
 		$row_num = $this->db->num_rows($result);
+        $i=0;//added by ligangze 2013-08-12
 		if($row_num  > 0){
 			$user_name = $this->db->query_result($result,$i,"user_name");
 			$this->column_fields['user_name'] = $user_name;
@@ -454,8 +455,7 @@ class Users {
 				$this->is_admin = true;
 			}
 		}
-		
-		
+
 		return $this;
 
 	}

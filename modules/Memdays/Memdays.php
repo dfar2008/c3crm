@@ -84,6 +84,7 @@ class Memdays extends CRMEntity {
 			//$this->saveProductDetails(true); update product qty
 			$this->saveProductDetails();
 		}
+
 		$nowyear = date("Y");$nowmonth = date("m");
 		$nowday = date("d");$nowdate = date("Y-m-d");
 		

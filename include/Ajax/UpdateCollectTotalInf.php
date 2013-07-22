@@ -121,6 +121,7 @@ if($viewid != "0")
         {
             $currentpagetotal+=$row[$columnname];
         }
+        $currentpagetotal = number_format($currentpagetotal,2,".",",");
     }
 }
 else
@@ -130,43 +131,43 @@ else
 }
 
 if($collectcolumnhtml){
-?>
- <table border=0 cellspacing=0 cellpadding=0 width=100% class="lvt small" >
+ ?>
+    <table  width="100%" >
      <tr>
-	 <td colspan="3" valign="middle" width=100%>
+	 <td colspan="3" valign="middle" width="100%" bgcolor="#D4E4FF">
 	 <table>
 	     <tr>
-	     <td valign="middle"><img src="themes/images/count.gif" width="15" height="15" border=0></td>
-         <td valign="middle"><span style="font-size:12px;"><b>本次查询汇总结果</b></span></td>
+         <td valign="middle"><img src="themes/images/count.gif" width="25" height="25" border=0><span style="font-size:12px;">&nbsp;<strong>本次查询汇总结果</strong></span></td>
 		 </tr>
 	 </table>
+     </td>
      </tr>
     <tr bgcolor="white">
-        <td align="right" width="30%"><?php echo  $fieldlabel ?>&nbsp;&nbsp;</td>
-        <td align="left" width="35%">本页汇总：<?php echo $currentpagetotal?></td>
-        <td align="left" width="35%">所有汇总：<?php echo $allrecordtotal?></td>
+        <td align="right" width="30%">【<?php echo $fieldlabel; ?>】&nbsp;&nbsp;</td>
+        <td align="center" width="35%">本页汇总:&nbsp;&sum;&nbsp;<?php echo $currentpagetotal; ?></td>
+        <td align="left" width="35%">所有汇总:&nbsp;&sum;&nbsp;<?php echo $allrecordtotal; ?></td>
     </tr>
-
 </table>
 <?php
 }
 if($picklistreporthtml)
 {
 ?>
-<table cellspacing="0" cellpadding="0" border="0" class="lvt small" style="margin-top: 0px;" width="100%">
+<table style="margin-top: 0px;" width="100%">
     <tbody><tr>
-	  <td valign="middle">
+	  <td valign="middle" bgcolor="#D4E4FF">
 	  <table>
 	     <tr>
-	     <td valign="middle"><a onclick="ToggleGroupContent('Gsub2','Gimg2')" href="###"><img id="Gimg2" src="themes/images/collapse.gif"   border=0><b><span style="font-size:12px;">本次查询统计报表</span></b></a></td>
+         <!--<a onclick="ToggleGroupContent('Gsub2','Gimg2')" href="###"><img id="Gimg2" src="themes/images/collapse.gif"   border=0><b><span style="font-size:12px;">本次查询统计报表</span></b></a>-->
+	     <td valign="middle"><img src="themes/images/chart.gif" width="25" height="25" border=0><strong><span style="font-size:12px;">&nbsp;本次查询统计报表</span></strong></td>
 		 </tr>
 	 </table>
 	 </td>
     </tr>
   </tbody>
 </table>
-<div id="Gsub2" style="display:none;">
-<table cellspacing="0" cellpadding="0" border="0" class="lvt small" style="margin-top: 0px;" width="100%">
+<div id="Gsub2" style="display:inline;">
+<table style="margin-top: 0px;" width="100%">
  <tbody>
    <tr bgcolor="white">
       <td valign="top" style="line-height: 26px;">

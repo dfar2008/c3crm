@@ -97,11 +97,11 @@ function validateInventory()
 	if(document.EditView.account_id.value == ''){
 		alert("客户 不能为空");return false;
 	}
-	var issubmit = document.EditView.isSubmit;
-	if(issubmit.value == '1'){
-		issubmit.value = '2';
+	//var issubmit = document.EditView.isSubmit;
+	//if(issubmit.value == '1'){
+	//	issubmit.value = '2';
 		document.EditView.submit();
-	}
+	//}
 }
 
 function FindDuplicate()

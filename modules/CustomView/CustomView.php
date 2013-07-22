@@ -735,15 +735,17 @@ class CustomView extends CRMEntity{
 				{
 					document.CustomView.startdate.readOnly=true
 						document.CustomView.enddate.readOnly=true
-						getObj("jscal_trigger_date_start").style.visibility="hidden"
-						getObj("jscal_trigger_date_end").style.visibility="hidden"
+						//getObj("jscal_trigger_date_start").style.visibility="hidden"
+						//getObj("jscal_trigger_date_end").style.visibility="hidden"
+                        $("#jscal_trigger_date_start").css("visibility","hidden");
+						$("#jscal_trigger_date_end").css("visibility","hidden");
 				}
 				else
 				{
 					document.CustomView.startdate.readOnly=false
 						document.CustomView.enddate.readOnly=false
-						getObj("jscal_trigger_date_start").style.visibility="visible"
-						getObj("jscal_trigger_date_end").style.visibility="visible"
+						$("#jscal_trigger_date_start").css("visibility","visible");
+						$("#jscal_trigger_date_end").css("visibility","visible");
 				}
 				if( type == "today" )
 				{

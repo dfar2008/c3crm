@@ -1,10 +1,10 @@
-<script language="JavaScript" type="text/javascript" src="include/js/search.js"></script>
-<script language="JavaScript" type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
+<!--<script language="JavaScript" type="text/javascript" src="include/js/search.js"></script>-->
+<!--<script language="JavaScript" type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>-->
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 <h3>查找产品</h3>
 </div>
-<div class="modal-body" >
+<div class="modal-body" style="max-height:450px">
 
 <div class="container-fluid" > 
      
@@ -86,4 +86,5 @@
   <div class="pull-right"></div>
   <div class="clear"></div>
 </div>
+
 

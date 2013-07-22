@@ -36,6 +36,7 @@ $smarty->assign("CATEGORY",$category);
 
 $moduletype = $_REQUEST['moduletype'];
 $smarty->assign("type", $moduletype);
+$smarty->assign("SINGLE_MOD","Account");
 
 
 $check_button = Button_Check($module);

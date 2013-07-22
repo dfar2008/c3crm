@@ -1,4 +1,4 @@
-.dynamic-tab-pane-control.tab-pane {
+.dynamic-tab-pane-control.tab-pane{
 	position:	relative;
 	width:		100%;		/* width needed weird IE bug */
 	margin-right:	-2px;	/* to make room for the shadow */

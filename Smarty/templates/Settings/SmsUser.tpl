@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="themes/bootcss/css/Setting.css">
 <div class="container-fluid" style="height:602px;">
 	   <!--Dashboad-->
 	<div class="container-fluid" style="height:602px;">
@@ -9,56 +10,70 @@
 			</div>
 
 			<div class="span10" style="margin-left:10px;">
-				<!--	Setting		-->
-				<div class="row-fluid box">
-					  <div class="padded">
-						<!--	搜索	-->
-						<table class="table table-condensed">
-							<tr>
-								<td>用户名/姓名/手机/Email：
-									<input type="text" value="{$user_name}" name="user_name"  size="18" style="border:1px solid #bababa;" tabindex="13"/>
-									<button type="submit" class="btn btn-small btn-success">
-										<i class="icon-search icon-white"></i>搜索
-									</button>
-								</td>
-							</tr>
-						</table>
-
-						<table class="table table-condensed table-bordered table-hover">
-							<thead>
+				<form action="index.php" method="post" name="settingform" id="settingform">
+					<input type="hidden" name="module" value="Settings">
+					<input type="hidden" name="action">
+					<input type="hidden" name="parenttab" value="Settings">
+					<!--<input type="hidden" name="settype" value="{$SETTYPE}">
+					<input type="hidden" name="settingmode" value="{$SETTINGMODE}">-->
+					<input type="hidden" name="issubmit" value="1">
+							<!--	Setting		-->
+					<div class="row-fluid box" style="height:602px">
+						<div class="tab-header">系统用户</div>
+						  <div class="padded" style="overflow:auto;height:520px;">
+							<!--	搜索	-->
+							<table class="table-condensed" style="margin-bottom:8px;width:100%" >
 								<tr>
-									<th>
-										<input type="checkbox"  name="selectall"   onClick=toggleSelect(this.checked,"selected_id")>
-									</th>
-									{$headerhtml}
+									<td class="pull-left"> 
+										<input class="search-query" type="text" value="{$user_name}" name="user_name"  size="18" style="border:1px solid #bababa;" placeholder="用户名/姓名/手机/Email" tabindex="13"/>
+										<button type="submit" class="btn btn-small btn-success">
+											<i class="icon-search icon-white"></i> 搜索
+										</button>
+									</td>
+									<td class="pull-right">
+										<button type="button" class="btn btn-small btn-primary " onclick="document.location.href='index.php?module=Settings&action=CreateMoreInfo'">
+											<i class="icon-plus icon-white"></i> 新增用户
+										</button>
+									</td>
 								</tr>
-							</thead>
-							<tbody style="text-align: center;">
-								{foreach item=entity key=entity_id from=$LISTENTITY}
-									<tr id="row_{$entity_id}">
-										<td width="2%">
-											<input type="checkbox" NAME="selected_id" value= '{$entity_id}' 
-											onClick=toggleSelectAll(this.name,"selectall")>
-										</td>
-										{foreach item=data from=$entity}
-											<td>{$data}</td>
-										{/foreach}
-									</tr>
-								{foreachelse}
-									<tr id="row_{$entity_id}">
-										<td colspan="{$countheader+1}" align="center">---&nbsp;无&nbsp;---</td>
-									</tr>
-								{/foreach}
-							</tbody>
-						</table>
+							</table>
 
-						<input type="hidden" value="{$order_url}" id="order_url"  name="order_url"/>
-						<input type="hidden" value="{$search_url}" id="search_url"  name="search_url"/>
+							<table class="table table-condensed table-bordered table-hover">
+								<thead>
+									<tr>
+										<th>
+											<input type="checkbox"  name="selectall"   onClick=toggleSelect(this.checked,"selected_id")>
+										</th>
+										{$headerhtml}
+									</tr>
+								</thead>
+								<tbody style="text-align: center;">
+									{foreach item=entity key=entity_id from=$LISTENTITY}
+										<tr id="row_{$entity_id}">
+											<td width="2%">
+												<input type="checkbox" NAME="selected_id" value= '{$entity_id}' 
+												onClick=toggleSelectAll(this.name,"selectall")>
+											</td>
+											{foreach item=data from=$entity}
+												<td>{$data}</td>
+											{/foreach}
+										</tr>
+									{foreachelse}
+										<tr id="row_{$entity_id}">
+											<td colspan="{$countheader+1}" align="center">---&nbsp;无&nbsp;---</td>
+										</tr>
+									{/foreach}
+								</tbody>
+							</table>
+
+							<input type="hidden" value="{$order_url}" id="order_url"  name="order_url"/>
+							<input type="hidden" value="{$search_url}" id="search_url"  name="search_url"/>
+						</div>
 					</div>
-				</div>
-					
-				</div>
-				<!--	/Setting	-->
+						
+					</div>
+					<!--	/Setting	-->
+				</form>
 			</div>
 	</div></div>
 </div>
@@ -66,11 +81,27 @@
 var type = "{$type}";
 {literal}
 function confirmDel(id){
-	if(confirm("确认禁用用户?")){
-		document.location.href="index.php?module=Settings&action=SmsUserDelete&userid="+id;
+	if(confirm("确认删除用户?")){
+		document.location.href="index.php?module=Settings&action=SmsUserDelete&t=del&userid="+id;
 	}else{	
 		return false;
 	}
+}
+function onoffUser(id,type){
+	if(type=="on"){
+		if(confirm("确定启用用户?")){
+			document.location.href="index.php?module=Settings&action=SmsUserDelete&t=on&userid="+id;
+		}else{
+			return false;
+		}
+	}else{
+		if(confirm("确定禁用用户?")){
+			document.location.href="index.php?module=Settings&action=SmsUserDelete&t=off&userid="+id;
+		}else{
+			return false;
+		}
+	}
+	
 }
 function getOrderBy(theorderbystr){
 	getListViewEntries_js_2("Settings",theorderbystr);

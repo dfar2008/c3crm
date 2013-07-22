@@ -13,16 +13,14 @@
 function getLayoutList(customField)
 {ldelim}
 	var modulename = customField.options[customField.options.selectedIndex].value;
-	new Ajax.Request(
-		'index.php',
-		{ldelim}queue: {ldelim}position: 'end', scope: 'command'{rdelim},
-			method: 'post',
-			postBody: 'module=Settings&action=SettingsAjax&file=LayoutList&fld_module='+modulename+'&parenttab=Settings&ajax=true',
-			onComplete: function(response) {ldelim}
-				$("cfList").innerHTML=response.responseText;
-			{rdelim}
+	$.ajax({ldelim}
+		type:"GET",
+		url:'index.php?module=Settings&action=SettingsAjax&file=LayoutList&fld_module='+modulename+'&parenttab=Settings&ajax=true',
+		success: function(msg){ldelim}
+			$("#cfList").html(msg);
 		{rdelim}
-	);	
+	{rdelim});
+	
 {rdelim}
 
 {literal}
@@ -37,18 +35,15 @@ function deleteCustomBlock(blockid, fld_module)
 
 function getFieldLayoutForm(custommodule,fieldid,tabid,fieldlabel, blocklabel,order, blockid, typeofdata)
 {
-        var modulename = custommodule;
-	new Ajax.Request(
-		'index.php',
-		{queue: {position: 'end', scope: 'command'},
-			method: 'post',
-			postBody: 'module=Settings&action=SettingsAjax&file=CreateCustomLayout&fld_module='+custommodule+'&parenttab=Settings&ajax=true&blockid='+blockid+'&tabid='+tabid+'&fieldlabel='+fieldlabel+'&order='+order+'&blocklabel='+blocklabel+'&blockid='+blockid+'&fieldid='+fieldid+'&typeofdata='+typeofdata,
-			onComplete: function(response) {
-				$("createLayout").innerHTML=response.responseText;
-				execJS($('layoutLayer'));
-			}
+     var modulename = custommodule;
+	 $.ajax({
+		type:"GET",
+		url:'index.php?module=Settings&action=SettingsAjax&file=CreateCustomLayout&fld_module='+custommodule+'&parenttab=Settings&ajax=true&blockid='+blockid+'&tabid='+tabid+'&fieldlabel='+fieldlabel+'&order='+order+'&blocklabel='+blocklabel+'&blockid='+blockid+'&fieldid='+fieldid+'&typeofdata='+typeofdata,
+		success:function(msg){
+			$("#createLayout").html(msg);
 		}
-	);
+	 });
+	 $("#createLayout").modal("show");
 
 }
 function makeFieldSelected(oField,fieldid)
@@ -84,80 +79,55 @@ function validate_layout() {
 }
 {/literal}
 </script>
-<div id="createLayout" style="display:block;position:absolute;width:500px;"></div>
+<link rel="stylesheet" type="text/css" href="themes/bootcss/css/Setting.css">
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">
+			<div class="">
+				{include file="Settings/SettingLeft.tpl"}
+			</div>
+		</div>
+
+		<!--content-->
+		<div class="span10" style="margin-left:10px">
+			<div class="row-fluid box">
+				<div class="tab-header">{$MOD.LBL_LAYOUT_EDITOR}</div>
+					<!--<div class="page-header" style="margin-top:-10px">
+						<h4 style="margin-bottom:-8px">
+							<img src="{$IMAGE_PATH}custom.gif" alt="Users" title="Users" border="0" height="48" width="48">{$MOD.LBL_LAYOUT_EDITOR}
+							<small>{$MOD.LBL_LAYOUT_DESCRIPTION}</small>
+						</h4>
+					</div>-->
+				<div class="padded">
+					<div style="margin-top:-8px;margin-bottom:8px">
+						<span class="label label-info">1.{$MOD.LBL_SELECT_CF_TEXT}</span><br>
+						<strong>选择CRM模块</strong>
+						<select name="pick_module" class="importBox" onChange="getLayoutList(this)" style="margin-left:100px">
+										{foreach key=sel_value item=value from=$MODULES}
+										{if $MODULE eq $sel_value}
+													{assign var = "selected_val" value="selected"}
+										{else}
+													{assign var = "selected_val" value=""}
+											{/if}
+											<option value="{$sel_value}" {$selected_val}>{$APP.$value}</option>
+										{/foreach}
+						  </select><br>
+						<span class="label label-info">2.{$MOD.LBL_LAYOUT_EDITOR}:</span>
+					</div>
+
+					<div id="cfList">
+										{include file="Settings/LayoutEntries.tpl"}
+					</div>	
+				</div>
+			</div>
+		</div>
+		<!--content end-->
+		<div class="pull-right">
+			<a href="#top">[<i class="icon-arrow-up"></i>]</a>
+		</div>
+	</div>
+</div>
+
+<div id="createLayout" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:500px;height:238px"></div>
 <br>
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="98%">
-<tbody><tr>
-        <td class="showPanelBg" style="padding: 10px;" valign="top" width="100%">
 
-	<div align=center>
-			{include file='SetMenu.tpl'}
-			<!-- DISPLAY -->
-			{if $MODE neq 'edit'}
-			<b><font color=red>{$DUPLICATE_ERROR} </font></b>
-			{/if}
-			
-				<table class="settingsSelUITopLine" border="0" cellpadding="5" cellspacing="0" width="100%">
-				<tbody><tr>
-					<td rowspan="2" valign="top" width="50"><img src="{$IMAGE_PATH}custom.gif" alt="Users" title="Users" border="0" height="48" width="48"></td>
-					<td class="heading2" valign="bottom"><b><a href="index.php?module=Settings&action=index&parenttab=Settings">{$MOD.LBL_SETTINGS}</a> &gt; {$MOD.LBL_LAYOUT_EDITOR}</b></td>
-				</tr>
-
-				<tr>
-					<td class="small" valign="top">{$MOD.LBL_LAYOUT_DESCRIPTION}</td>
-				</tr>
-				</tbody></table>
-				
-				<br>
-				<table border="0" cellpadding="10" cellspacing="0" width="100%">
-				<tbody><tr>
-				<td>
-
-				<table class="tableHeading" border="0" cellpadding="5" cellspacing="0" width="100%">
-				<tbody><tr>
-				        <td class="small" align="left">
-					{$MOD.LBL_SELECT_CF_TEXT}
-		                	<select name="pick_module" class="importBox" onChange="getLayoutList(this)">
-                		        {foreach key=sel_value item=value from=$MODULES}
-		                        {if $MODULE eq $sel_value}
-                	                       	{assign var = "selected_val" value="selected"}
-		                        {else}
-                        	                {assign var = "selected_val" value=""}
-                                	{/if}
-	                                <option value="{$sel_value}" {$selected_val}>{$APP.$value}</option>
-        		                {/foreach}
-			                </select>
-					<strong>{$MOD.LBL_LAYOUT_EDITOR}</strong>
-					</td>
-					
-					
-					</tr>
-				</tbody>
-				</table>
-				<div id="cfList">
-                                {include file="Settings/LayoutEntries.tpl"}
-                </div>	
-			<table border="0" cellpadding="5" cellspacing="0" width="100%">
-			<tr>
-
-		  	<td class="small" align="right" nowrap="nowrap"><a href="#top">{$MOD.LBL_SCROLL}</a></td>
-			</tr>
-			</table>
-			</td>
-			</tr>
-			</table>
-		<!-- End of Display -->
-		
-		</td>
-        </tr>
-        </table>
-        </td>
-        </tr>
-        </table>
-        </div>
-
-        </td>
-        </tr>
-</tbody>
-</table>
-<br>

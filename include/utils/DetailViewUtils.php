@@ -299,16 +299,13 @@ function getRelatedLists($module,$focus)
 		if(method_exists($focus,$function_name)) {
 
 			if($function_name != "get_generalmodules" && $function_name != "get_child_list" && $function_name != "get_parent_list") {
-
 				$focus_list[$label] = $focus->$function_name($focus->id);
 			} else {
-
 				$focus_list[$label] = $focus->$function_name($focus->id,$related_tabname);
 			}
 		}
 		
 	}
-
 	/*
 	$approvehistory=getApproveHistory($focus->id);
 	if($approvehistory!==false){
@@ -317,6 +314,7 @@ function getRelatedLists($module,$focus)
 	*/
 	
 	$log->debug("Exiting getRelatedLists method ...");
+   
 	return $focus_list;
 }
 

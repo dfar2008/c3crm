@@ -52,37 +52,43 @@ $smarty->assign("APP", $app_strings);
 $smarty->assign("IMP", $import_mod_strings);
 $smarty->assign("MODULE", $_REQUEST['module']);
 
-if (!is_uploaded_file($_FILES['userfile']['tmp_name']) )
-{
-	show_error_import($mod_strings['LBL_IMPORT_MODULE_ERROR_NO_UPLOAD']);
+//added by ligangze 2013-08-09
+$filepath = $_REQUEST['filename'];//临时文件的路径
+$filesize = filesize($filepath);
+if(!isset($filepath)){
+    show_error_import($mod_strings['LBL_IMPORT_MODULE_ERROR_NO_UPLOAD']);
+	exit;
+}else if($filesize > $upload_maxsize){
+    show_error_import( $mod_strings['LBL_IMPORT_MODULE_ERROR_LARGE_FILE'] . " ". $upload_maxsize. " ". $mod_strings['LBL_IMPORT_MODULE_ERROR_LARGE_FILE_END']);
 	exit;
 }
-else if ($_FILES['userfile']['size'] > $upload_maxsize)
-{
-	show_error_import( $mod_strings['LBL_IMPORT_MODULE_ERROR_LARGE_FILE'] . " ". $upload_maxsize. " ". $mod_strings['LBL_IMPORT_MODULE_ERROR_LARGE_FILE_END']);
-	exit;
-}
+
+// noted by ligangze 2013-08-09
+//if (!is_uploaded_file($_FILES['userfile']['tmp_name']) )
+//{
+//	show_error_import($mod_strings['LBL_IMPORT_MODULE_ERROR_NO_UPLOAD']);
+//	exit;
+//}
+//else if ($_FILES['userfile']['size'] > $upload_maxsize)
+//{
+//	show_error_import( $mod_strings['LBL_IMPORT_MODULE_ERROR_LARGE_FILE'] . " ". $upload_maxsize. " ". $mod_strings['LBL_IMPORT_MODULE_ERROR_LARGE_FILE_END']);
+//	exit;
+//}
 if( !is_writable( $import_dir ))
 {
 	show_error_import($mod_strings['LBL_IMPORT_MODULE_NO_DIRECTORY'].$import_dir.$mod_strings['LBL_IMPORT_MODULE_NO_DIRECTORY_END']);
 	exit;
 }
 
-$tmp_file_name = $import_dir. "IMPORT_".$current_user->id;
-move_uploaded_file($_FILES['userfile']['tmp_name'], $tmp_file_name);
+// noted by ligangze 2013-08-09
+//$tmp_file_name = $import_dir. "IMPORT_".$current_user->id;
+//move_uploaded_file($_FILES['userfile']['tmp_name'], $tmp_file_name);
 
-//$s = new SaeStorage();
-//$is_exist = $s->fileExists("upload",$fliename);
-//
-//if (!$is_exist) {
-//	show_error_import("Order List Csv is Not Exist!");
-//	exit;
-//}
 
-// Now parse the file and look for errors
 $ret_value = 0;
 
-$ret_value = parse_import_csv_new($tmp_file_name,$delimiter,$max_lines,1);//excel
+//$ret_value = parse_import_csv_new($filepath,$delimiter,$max_lines,1);//excel
+$ret_value = parse_import_csv($filepath,$delimiter,$max_lines,1);//changed by ligangze 2013-08-09
 
 
 if ($ret_value == -1)
@@ -119,9 +125,13 @@ $_SESSION['import_overwrite'] = 1;
 
 $rows = $ret_value['rows'];
 $count = $ret_value['field_count'];
-$head = array("客户名称","联系人","职位","性别","手机号码","电话","QQ","Email","传真","网站","所属国家","所属省份","所属城市","所属区域","详细地址","客户邮编","备注");
+//$head = array("客户名称","联系人","职位","性别","手机号码","电话","QQ","Email","传真","网站","所属国家","所属省份","所属城市","所属区域","详细地址","客户邮编","备注");
+$head = array("创建人","联系人","负责人","职位","性别","客户状态","vip信息","热度","成交意愿","客户来源","客户类型","下次联系日期","手机号码","电话","QQ","Email","传真","微博","MSN","淘宝旺旺","网站","客户名称","所属国家","所属省份","所属城市","所属区域","详细地址","客户邮编","最近5天发送邮件次数","最近一月发送邮件次数","最近三月发送短信次数","最近三月发送邮件次数","最新发送短信日期","最新发送邮件日期","最新联系时间","联系次数","最新订单日期","订单数量","订单金额","创建时间","修改时间","失效日期","姓名1","电话122","备注");
+
 
 $accfieldarr = $rows[0];
+//var_dump($accfieldarr);
+//exit();
 
 foreach($accfieldarr as $key=>$accfield){
 	if($accfield != $head[$key]){

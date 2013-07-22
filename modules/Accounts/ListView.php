@@ -192,6 +192,7 @@ $start = $_SESSION['lvs'][$currentModule]['start'];
 
 //Retreive the Navigation array
 $navigation_array = getNavigationValues($start, $noofrows, $list_max_entries_per_page);
+//var_dump($navigation_array);
 $start_rec = $navigation_array['start'];
 $end_rec = $navigation_array['end_val'];
 $_SESSION['nav_start']=$start_rec;
@@ -218,7 +219,9 @@ else
 
 $list_result = $adb->limitQuery2($query,$limit_start_rec,$list_max_entries_per_page,$query_order_by,$sorder);
 //echo $query;
+//exit();
 $record_string= $app_strings['LBL_SHOWING']." " .$start_rec." - ".$end_rec." " .$app_strings['LBL_LIST_OF'] ." ".$noofrows;
+
 
 //Retreive the List View Table Header
 if($viewid !='')

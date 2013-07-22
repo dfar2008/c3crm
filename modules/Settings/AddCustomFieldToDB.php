@@ -7,6 +7,7 @@ $fldType= $_REQUEST['fieldType'];
 $parenttab=$_REQUEST['parenttab'];
 $mode=$_REQUEST['mode'];
 
+
 $tabid = getTabid($fldmodule);
 
 if(get_magic_quotes_gpc() == 1)

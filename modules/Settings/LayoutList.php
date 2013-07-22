@@ -44,6 +44,7 @@ if(isset($_REQUEST["duplicate"]) && $_REQUEST["duplicate"] == "yes")
 if($_REQUEST['mode'] !='')
 	$mode = $_REQUEST['mode'];
 $smarty->assign("MODE", $mode);
+$smarty->assign("SETTYPE","LayoutList");
 
 if($_REQUEST['ajax'] != 'true')
 	$smarty->display('Settings/LayoutList.tpl');	
@@ -103,7 +104,7 @@ function getLayoutListEntries($module)
 				}
 				$cf_element['typeofdata'] = $typeofdata;
 				//getCreateCustomBlockForm(customModule,blockid,tabid,label,order)
-				$cf_element['tool']='<img src="'.$image_path.'editfield.gif" border="0" style="cursor:pointer;" onClick="fnvshobj(this,\'createLayout\');getFieldLayoutForm(\''.$module.'\',\''.$row["fieldid"].'\',\''.$tabid.'\',\''.$cf_element['fieldlabel'].'\',\''.$blocklabel.'\',\''.$row["sequence"].'\',\''.$row['block'].'\',\''.$typeofdata.'\')" alt="'.$app_strings['LNK_EDIT'].'" title="'.$app_strings['LNK_EDIT'].'"/>';
+				$cf_element['tool']='<img src="'.$image_path.'editfield.gif" border="0" style="cursor:pointer;" onClick="getFieldLayoutForm(\''.$module.'\',\''.$row["fieldid"].'\',\''.$tabid.'\',\''.$cf_element['fieldlabel'].'\',\''.$blocklabel.'\',\''.$row["sequence"].'\',\''.$row['block'].'\',\''.$typeofdata.'\')" alt="'.$app_strings['LNK_EDIT'].'" title="'.$app_strings['LNK_EDIT'].'"/>';
 
 				$cflist[] = $cf_element;
 				$count++;

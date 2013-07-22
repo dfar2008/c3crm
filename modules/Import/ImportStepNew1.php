@@ -47,7 +47,8 @@ $smarty->assign("CATEGORY", $_REQUEST['parenttab']);
 $import_object_array = Array(
 				"Accounts"=>"ImportAccount",
 				"Products"=>"ImportProduct",
-				"Notes"=>"ImportNote"
+				"Notes"=>"ImportNote"//,
+             //   "Contacts"=>"ImportContacts"
 			    );
 
 if(isset($_REQUEST['module']) && $_REQUEST['module'] != '')
@@ -82,7 +83,7 @@ $smarty->assign("HAS_HEADER_CHECKED"," CHECKED");
 
 //$smarty->assign("OVERWRITE_CHECKED"," CHECKED");
 
-$smarty->assign("MODULE", $_REQUEST['module']);
+$smarty->assign("MODULE", getTabName($module).$_REQUEST['module']);
 $smarty->assign("SOURCE", $_REQUEST['source']);
 
 //we have set this as default. upto 4.2.3 we have Outlook, Act, SF formats. but now CUSTOM is enough to import

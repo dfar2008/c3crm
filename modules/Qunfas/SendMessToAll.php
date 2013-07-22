@@ -39,7 +39,7 @@ foreach($receiveaccountarr as $key=>$receiveaccount){
 	$sendresult[] = array('phone'=>$phone,'name'=>$receive_name);
 }
 if($sendtime && !empty($sendtime)){
-	$result = sendSmsByTime($sendresult,$message,$sendtime);
+	$result = sendSmsByTime($sendresult,$message,$sendtime,$current_user->id);
 	if($result['error'] == 0){
 		SaveSmsLogs($sendresult,$message,1,"SUCCESS");
 		echo "SUCCESS";

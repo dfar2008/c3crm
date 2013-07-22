@@ -1,4 +1,4 @@
-<!doctype html> 
+<!DOCTYPE html >
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
@@ -22,18 +22,21 @@
     <script src="themes/bootcss/js/jquery-latest.js"></script>
     <script src="themes/bootcss/js/bootstrap.min.js"></script>
     <script src="themes/bootcss/js/bootstrap-datepicker.js"></script>
-   
     <script src="themes/bootcss/js/script.js"></script>
     <script src="include/js/general.js"></script>
     <script src="include/js/zh_cn.lang.js"></script>
 
+	<!--<script type="text/javascript" src="themes/images/tabpane.js"></script>-->
+
   </head>
   
   <body>
-    <div class="container-fluid wraper">
-      <div class="row-fluid">
+    <div class="container-fluid wraper ">
+      <div class="row-fluid ">
               <div class="span2" style="padding-top:2px;padding-left:10px;">
+				<a href="http://www.c3crm.com/" target="_blank">
                 <img src="themes/bootcss/img/logonew.png">
+				</a>
               </div>
               <div class="span5">
                 &nbsp;
@@ -43,41 +46,61 @@
                     <ul class="nav" style="height:15px;">
                           <li ><a href="index.php?module=Qunfas&action=index"><i class="cus-phone"></i>手机短信</a></li>
                           <li ><a href="index.php?module=Relsettings&action=index"><i class="cus-cog"></i>&nbsp;个人设置</a></li>
-			  <li ><a href="index.php?module=Settings&action=index"><i class="cus-cog"></i>&nbsp;系统设置</a></li>
-			  <li ><a href="index.php?module=Caches&action=index"><i class="cus-cog"></i>&nbsp;清除缓存</a></li>
+
+						  <!-- changed by ligangze 2013-08-12-->
+						{if $IS_ADMIN === true}		 
+						  <li ><a href="index.php?module=Settings&action=index"><i class="cus-cog"></i>&nbsp;系统设置</a></li>
+						  <li ><a href="index.php?module=Caches&action=index"><i class="cus-cog"></i>&nbsp;清除缓存</a></li>
+						{/if}
                           <li ><a href="Logout.php"><i class="icon-off"></i>&nbsp;退出</a></li>
                         </ul>                            
                   </div>
               </div>
       </div>
     </div>
-        <div class="navbar navbar-inverse " style="position:static;margin-bottom:5px;">
-          <div class="navbar-inner">
-            <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+        <div class="navbar navbar-inverse" style="position:static;margin-bottom:5px">
+          <div class="navbar-inner ">
+            <div class="container  ">
+              <a class="btn btn-navbar " data-toggle="collapse" data-target=".navbar-inverse-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </a>
               <a class="brand" href="#" >&nbsp;&nbsp;&nbsp;</a>
-              <div class="nav-collapse collapse navbar-inverse-collapse">
-                <ul class="nav">
+              <div class="nav-collapse collapse navbar-inverse-collapse ">
+                <ul class="nav ">
                 {foreach key=maintabs item=detail from=$HEADERS} 
           				{if $detail ne $MODULE_NAME}
-          					<li class="dropdown ">
+							{if $detail eq "Contacts"}
+							<li class="dropdown ">
+          						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >联系人</a>
+							</li>
+							{else}
+							<li class="dropdown ">
           						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >{$APP[$detail]}</a>
-						</li>
+							</li>
+							{/if}
+          					
           				{else}
-          					<li class="dropdown active">
+          					{if $detail eq "Contacts"}
+							<li class="dropdown active">
+          						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >联系人</a>
+							</li>
+							{else}
+							<li class="dropdown active">
           						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >{$APP[$detail]}</a>
-						</li>
+							</li>
+							{/if}
           				{/if}	
           			{/foreach}
                 </ul>
                 
-                  <form class="navbar-search pull-right" action="">
-                      <input type="text" class="search-query span2" placeholder="Search">
-                  </form>
+                <form class="navbar-search pull-right" action="index.php" name="UnifiedSearch" method="post">
+					<input type="hidden" name="action" value="UnifiedSearch"/>
+					<input type="hidden" name="module" value="Home"/>
+                    <input type="text" class="search-query span2" placeholder="Search" id="query_string" name="query_string" />
+				</form>
+                  
               </div><!-- /.nav-collapse -->
             </div>
           </div><!-- /navbar-inner -->
@@ -89,3 +112,4 @@
 <div id="SelCustomer_popview" class="layerPopup" style="position: absolute; z-index: 60; "></div>
 <div id="searchallacct" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px;margin-left:-400px;"></div>
  <div id="selectProductRows" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px;margin-left:-400px;"></div>
+

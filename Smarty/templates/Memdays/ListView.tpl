@@ -133,9 +133,12 @@ function alphabetic(module,url,dataid)
                   <i class="icon-plus icon-white"></i>新增</button>
                 <button class="btn btn-small btn-danger" style="margin-top:2px;" onclick="javascript:return massDelete('{$MODULE}');">
                   <i class="icon-trash icon-white"></i>删除</button>
-                <button class="btn btn-small btn-inverse" style="margin-top:2px;" onclick="javascript:location.href='index.php?module=Relsettings&action=index&relset=MemdayConfig&parenttab=Settings'" >
-                  <i class="icon-edit icon-white"></i>设置</button>
-                
+               <!-- <button class="btn btn-small btn-inverse" style="margin-top:2px;" onclick="javascript:location.href='index.php?module=Relsettings&action=index&relset=MemdayConfig&parenttab=Settings'" >
+                  <i class="icon-edit icon-white"></i>设置</button>-->
+				   <button class="btn btn-small " style="margin-top:2px;" onclick="javascript:qunfa_mail(this, 'qunfamail', 'Accounts');return false;">
+                  <i class="icon-envelope"></i>发送邮件</button>
+                 <button class="btn btn-small " style="margin-top:2px;" onclick="javascript:qunfa_sms(this, 'qunfasms', 'Accounts');return false;">
+                  <i class="icon-comment"></i>发送短信</button>
               </div>
                <div class="pull-right">
                   

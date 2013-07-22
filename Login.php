@@ -115,10 +115,10 @@ function logining_load(){
 						}
 					  ?>
 				</fieldset>
-				
+				<!--
 				<div id="remember-me" class="pull-left"><br><br>
 					<A href="register.php">&nbsp;注册</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="sendpwd.php">忘记密码&nbsp;</A>
-				</div>
+				</div>-->
 				
 				<div class="pull-right">
 					<button type="submit" class="btn btn-warning btn-large" onClick="return check()">
@@ -131,10 +131,10 @@ function logining_load(){
 		
 		<div id="login-extra">
 			<p>
-				<a href="training/sales01.html" target="_blank">培训视频</a>&nbsp;&nbsp;
+				<!--<a href="training/sales01.html" target="_blank">培训视频</a>&nbsp;&nbsp;
 				<a href="training/sfa.doc" target="_blank">SFA使用说明</a>&nbsp;&nbsp;
 				<a href="mobile/index.html" target="_blank">手机登录</a>&nbsp;&nbsp;
-				<a href="http://vdisk.weibo.com/s/5SBnr/1337924467" target="_blank">手机客户端下载</a>
+				<a href="http://vdisk.weibo.com/s/5SBnr/1337924467" target="_blank">手机客户端下载</a>-->
 			</p>
 			<!--
 			<p>
@@ -142,8 +142,10 @@ function logining_load(){
 				<a href="<?=$code_url?>"><img src="themes/images/weibo_login.png" title="测试中" alt="测试中" border="0"></a>
 			</p>
 			-->
-			<p>我能用它做什么？让系统自动的帮您跟踪客户，真正的实现销售自动化(SFA)，</p>
-			<p>让您感觉销售是件非常Easy的事情！还不心动吗，赶紧试试吧！</p>
+             <br>
+             <p>Copyright &copy; 2013 <a href="http://www.c3crm.com" target="_blank">上海瑞策软件有限公司</a>, all rights reserved.</p>
+			<!--<p>我能用它做什么？让系统自动的帮您跟踪客户，真正的实现销售自动化(SFA)，</p>
+			<p>让您感觉销售是件非常Easy的事情！还不心动吗，赶紧试试吧！</p>-->
 			<p>E-mail: <a href="javascript:;">sales@c3crm.cn</a></p>
 		</div> <!-- /login-extra -->
 	

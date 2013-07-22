@@ -33,7 +33,7 @@ $viewnamedesc = $oCustomView->getCustomViewByCvid($viewid);
 
 if(isset($_REQUEST['query']) && $_REQUEST['query'] == 'true')
 {
-	list($where, $ustring) = explode("#@@#",getWhereCondition($currentModule));
+	list($where, $ustring) = split("#@@#",getWhereCondition($currentModule));
 }
 elseif(isset($_SESSION['LiveViewSearch'][$currentModule]))
 {
@@ -96,6 +96,7 @@ foreach($picklistinf[0] as $v)
 	$i++;
 }
 $categories = rtrim($categories, ",");
+
 $series = rtrim($series,",");
 $graphtypeopts=$listviewreport->getGraphTypeOpts();
 $collectcolumnopts=$listviewreport->getCollectColumnOpts();

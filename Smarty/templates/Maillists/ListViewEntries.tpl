@@ -24,7 +24,8 @@
                                   4.群发前，请先到客户中创建一个自己的客户，再修改测试分组中会员名，测试发送给自己。<br>
                                   5.带附件的邮件发送，会较慢，请耐心等待，不要重复点击发送。<br>
                                   6.邮件为空的用户,不显示。<br>
-				  7.邮件发送结束后，可点击<a href="index.php?action=index&relset=Maillists&module=Relsettings">群发统计</a>查看发送情况。<br>                                  
+								 7.邮件发送结束后，可点击<a href="index.php?action=Maillists&module=Relsettings&parenttab=settings">群发统计</a>查看发送情况。<br>
+								 8.接收人格式样例：<font color="red">zhangsan@sina.com(张三)</font>
                                   <!-- 7.<b>5天</b>内发送过1次邮件或<b>一月</b>内发送过4次邮件的客户，自动过滤。-->
                                   </p>
                                 </td>

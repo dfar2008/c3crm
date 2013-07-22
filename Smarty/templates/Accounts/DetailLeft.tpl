@@ -25,12 +25,13 @@
                       <li {if $type eq 'Memdays'}class="active"{/if}>
                         <a href="index.php?module=Accounts&action=RelateLists&record={$ID}&moduletype=Memdays&parenttab=Customer" >纪念日</a>
                       </li>
-                      <li {if $type eq 'Sales Order'}class="active"{/if}>
-                        <a href="index.php?module=Accounts&action=RelateLists&record={$ID}&moduletype=Sales Order&parenttab=Customer" >订单明细</a>
-                      </li>
+                    
                       <li {if $type eq 'Products'}class="active"{/if}>
                         <a href="index.php?module=Accounts&action=RelateLists&record={$ID}&moduletype=Products&parenttab=Customer" >已购买产品</a>
-                      </li>                     
+                      </li>   
+					    <li {if $type eq 'Sales Order'}class="active"{/if}>
+                        <a href="index.php?module=Accounts&action=RelateLists&record={$ID}&moduletype=Sales Order&parenttab=Customer" >订单明细</a>
+                      </li>
                     </ul>
                 </div>
               </div>

@@ -1,6 +1,15 @@
- <script language="JavaScript" type="text/javascript" src="include/js/ListView.js"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/ListView.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/search.js"></script>
 <script language="JavaScript" type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
+
+<!--<link href="themes/images/style_cn.css" rel="stylesheet" type="text/css">
+<link href="themes/images/report.css" rel="stylesheet" type="text/css"/>-->
+<!--<script type="text/javascript" src="themes/images/tabpane.js"></script>
+<link href="themes/images/tab.css" rel="stylesheet" type="text/css">
+<script src="include/js/highcharts.js"></script>
+<script src="include/js/exporting.js"></script>-->
+
+
 <script language="javascript">
 function callSearch(searchtype)
 {ldelim} 
@@ -68,7 +77,82 @@ function alphabetic(module,url,dataid)
         {rdelim});
 {rdelim}
 
+{literal}
+function ajaxChangeStatus(statusname){
+	$("#status").css("display","inline");
+	var viewid = $('#viewname').val();
+	var idstring = $('#idlist').val();
+	if(statusname == "status"){
+		CloseLockDiv('changestatus');
+		var url='&leadval='+$('#lead_status').val();
+		var urlstring ="module=Users&action=updateLeadDBStatus&return_module=Leads"+url+"&viewname="+viewid+"&idlist="+idstring;
+	}else if(statusname == 'owner'){
+		$("#changeowner").modal("hide");
+		//CloseLockDiv('changeowner');
+		var url='&user_id='+$('#lead_owner').val();
+	    {/literal}
+	    var urlstring ="module=Users&action=updateLeadDBStatus&return_module={$MODULE}"+url+"&viewname="+viewid+"&idlist="+idstring;
+	    {literal}
+	}
+	$.ajax({
+		url: "index.php",
+		data: urlstring,
+		success:function(rest){
+			$("#status").css("display","none");
+			result = rest.split('&#&#&#');
+			$("#ListViewContents").html(result);
+			result.evalScripts();
+			if(result[1] != '')
+				alert(result[1]);
+		}
+	});
+	
+}
+{/literal}
+
 </script>
+ <div id="showReportInfo" class="modal hide fade" tabindex ="-1" role = "dialog" aria-labelledby="myModalLabel" aria-hidden="true" 
+ style="width:1000px;margin-left:-400px;height:600px"></div>
+
+ <!-- 批量修改负责人-->
+ <div id="changeowner" class="modal hide fade" tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true" style="width:400px;">
+	
+	<div class="modal-header">
+		<button class="close" type="button" aria-hidden="true" data-dismiss="modal">&times;</button>
+		<h3>修改负责人</h3>
+	</div>
+	<form name="change_ownerform_name">
+		<div class="modal-body"></div>
+			<div>
+				<span style="margin-left:10px">转移拥有关系</span>
+				{assign var="seltuserfld" value="lead_owner"}
+				<div class="input-append">
+					<input type="text" class="span2" id="{$seltuserfld}_name"  >
+					<div class="btn-group">
+						<button class="btn btn-small dropdown-toggle" data-toggle="dropdown" onclick="javascript:ShowSeltUser_click('{$seltuserfld}');">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" id="{$seltuserfld}_info_div" >
+						</ul>
+					</div>
+				</div>
+				<input type="hidden" name="{$seltuserfld}" id="{$seltuserfld}" value="{$SMOWNERID}" />
+			</div>
+		</form>
+		<script>
+			setSmownerUserOpts("{$seltuserfld}","{$SMOWNERID}");
+		</script>
+	
+	<div class="modal-footer">
+		<button type="button" name="button" class="btn btn-small btn-success" onClick="ajaxChangeStatus('owner')">
+			更改负责人
+		</button>
+		<button class="btn btn-small" data-dismiss="modal" aria-hidden="true">取消</button>
+	</div>
+	
+ </div>
+ <!-- / 批量修改负责人-->
+
  <div class="container-fluid"> 
         <div style="margin-left:0px;margin-right:10px">
              <div>
@@ -132,8 +216,24 @@ function alphabetic(module,url,dataid)
                   <i class="icon-plus icon-white"></i>新增</button>
                 <button class="btn btn-small btn-danger" style="margin-top:2px;" onclick="javascript:return massDelete('{$MODULE}');">
                   <i class="icon-trash icon-white"></i>删除</button>
-                <button class="btn btn-small btn-inverse" style="margin-top:2px;" onclick="javascript:quick_edit(this, 'quickedit', 'Accounts');return false;" >
-                  <i class="icon-edit icon-white"></i>修改</button>
+
+
+				  <div class="btn-group" style="margin-top:2px;">
+					<a class="btn btn-small btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-edit icon-white"></i> 批量操作
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#" onclick="javascript:quick_edit(this, 'quickedit', 'Accounts');return false;"/>批量修改</a>
+						</li>
+						<li>
+							<a href="#" onclick="javascript:change(this,'changeowner');return false;" >修改负责人</a>
+						</li>
+					</ul>
+				</div>
+                <!--<button class="btn btn-small btn-inverse" style="margin-top:2px;" onclick="javascript:quick_edit(this, 'quickedit', 'Accounts');return false;" >-->
+                  
                 <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="javascript:location.href='index.php?module=Accounts&action=Import&step=1&return_module=Accounts&return_action=index&parenttab=Customer'">
                   <i class="icon-download icon-white"></i>导入</button>
                 <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="return selectedRecords('Accounts','Customer')" >
@@ -153,6 +253,8 @@ function alphabetic(module,url,dataid)
            <div id="ListViewContents" class="small" style="width:100%;position:relative;">
             {include file="Accounts/ListViewEntries.tpl"}
           </div>
+
+			{*include file="ListViewScope.tpl"*}
 
         </div>
       </div>

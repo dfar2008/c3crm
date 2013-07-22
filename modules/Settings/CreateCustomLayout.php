@@ -23,59 +23,54 @@ if($typeofdata == "true") {
 
 $blockArr = getCustomBlocks($_REQUEST['fld_module'],$tabid);
 //print_r($blockArr);
-$output .= '<div id="layoutLayer" style="display:block;" class="layerPopup">
-	<form action="index.php" method="post" name="addtodb" onSubmit="return validate_layout()">
-	  <input type="hidden" name="module" value="Settings">
-	  <input type="hidden" name="fld_module" value="'.$_REQUEST['fld_module'].'">
-	  <input type="hidden" name="parenttab" value="Settings">
-      <input type="hidden" name="action" value="AddCustomLayoutToDB">
-	  <input type="hidden" name="blockid" value="'.$blockid.'">
-	  <input type="hidden" name="fieldid" value="'.$fieldid.'">
-	  <input type="hidden" name="mode" value="'.$mode.'">
-
-	  
-		<table width="100%" border="0" cellpadding="5" cellspacing="0" class="layerHeadingULine">
-			<tr style="cursor:move;">';
-			if($mode == 'edit')
-				$output .= '<td id="layoutLayer_title" width="90%" align="left" class="layerPopupHeading">'.$mod_strings['LBL_EDIT_LAYOUT'].'</td>';
+$output .= ' <div id="layoutLayer" >
+                <form action="index.php" method="post" name="addtodb" onSubmit="return validate_layout()">
+                <input type="hidden" name="module" value="Settings">
+                <input type="hidden" name="fld_module" value="'.$_REQUEST['fld_module'].'">
+                <input type="hidden" name="parenttab" value="Settings">
+                <input type="hidden" name="action" value="AddCustomLayoutToDB">
+                <input type="hidden" name="blockid" value="'.$blockid.'">
+                <input type="hidden" name="fieldid" value="'.$fieldid.'">
+                <input type="hidden" name="mode" value="'.$mode.'">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+                if($mode == 'edit')
+				$output .= '<h3 id="myModalLabel">'.$mod_strings['LBL_EDIT_LAYOUT'].'</h3>';
 			else
-				$output .= '<td id="layoutLayer_title" width="90%" align="left" class="layerPopupHeading">'.$mod_strings['LBL_ADD_LAYOUT'].'</td>';
-				
-			$output .= '<td width="10%" align="right"><a href="javascript:fninvsh(\'layoutLayer\');"><img src="'.$image_path.'close.gif" border="0"  align="absmiddle" /></a></td>
-			</tr></table>';
-			
-			
-			$output .= '<table width="100%" border="0" cellpadding="5" cellspacing="0" class="small"><tr>
-					<td class="dataLabel" nowrap="nowrap" align="right"><b>'.$mod_strings['FIELD_LABEL'].'</b></td>
-					<td align="left"><input type="text" size=20 name="fieldlabel" value="'.$fieldlabel.'" class="txtBox"></td>
-				</tr>
-				<tr>
-					<td width="50%" class="dataLabel" nowrap="nowrap" align="right"><b>'.$mod_strings['LBL_LAYOUT_LABEL'].'</b></td>
-					<td width="50%" align="left"><select name="blockid">'.get_select_options($blockArr, $blockid).'</select></td>
-				</tr>
-				<tr>
-					<td class="dataLabel" nowrap="nowrap" align="right"><b>'.$mod_strings['LBL_MANDATORY'].'</b></td>
-					<td align="left"><input name="fldMandatory" value="1" '.$fieldmandatory.' type="checkbox" class="txtBox"></td>
-				</tr>
-				<tr>
-					<td class="dataLabel" nowrap="nowrap" align="right"><b>'.$mod_strings['LBL_BLOCK_ORDER'].'</b></td>
-					<td align="left"><input type="text" size=20 name="order" value="'.$order.'" class="txtBox"></td>
-				</tr>';
-			
-				$output .= '	
-					</table>
-	<table border=0 cellspacing=0 cellpadding=5 width=100% class="layerPopupTransport">
-			<tr>
-				<td align="center">
-					<input type="submit" name="save" value=" &nbsp; '.$app_strings['LBL_SAVE_BUTTON_LABEL'].' &nbsp; " class="crmButton small save" />&nbsp;
-					<input type="button" name="cancel" value=" '.$app_strings['LBL_CANCEL_BUTTON_LABEL'].' " class="crmButton small cancel" onclick="fninvsh(\'layoutLayer\');" />
-				</td>
-			</tr>
-	</table>
-	<script id="blocklayer_js" language="javascript">
-	Drag.init(document.getElementById("layoutLayer_title"), document.getElementById("layoutLayer"));
-	</script>
-	</form></div>';
+				$output .= '<h3 id="myModalLabel">'.$mod_strings['LBL_ADD_LAYOUT'].'</h3>';
+
+
+
+      $output.='</div>
+                <div class="modal-body">
+                    <table class="table-consdened">
+                          <tr>
+                            <td ><strong>'.$mod_strings['LBL_MANDATORY'].'</strong></td>
+                            <td><input name="fldMandatory" value="1" '.$fieldmandatory.' type="checkbox" ></td>
+                        </tr>
+                        <tr>
+                            <td><strong>'.$mod_strings['FIELD_LABEL'].'</strong></td>
+                            <td><input type="text" size=20 name="fieldlabel" value="'.$fieldlabel.'" ></td>
+                        </tr>
+                        <tr>
+                            <td ><strong>'.$mod_strings['LBL_LAYOUT_LABEL'].'</strong></td>
+                            <td width="50%" align="left"><select name="blockid">'.get_select_options($blockArr, $blockid).'</select></td>
+                        </tr>
+                      
+                        <tr>
+                            <td ><strong>'.$mod_strings['LBL_BLOCK_ORDER'].'</strong></td>
+                            <td><input type="text" size=20 name="order" value="'.$order.'" ></td>
+                        </tr>
+                     </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn pull-left btn-small btn-primary" data-dismiss="modal" aria-hidden="true">
+                    <i class ="icon-arrow-left icon-white"></i> '.$app_strings['LBL_CANCEL_BUTTON_LABEL']
+                    .'</button>
+                    <button class="btn btn-small btn-success pull-right" type="submit"><i class="icon-ok icon-white"></i> '.$app_strings['LBL_SAVE_BUTTON_LABEL'].'</button>
+                </div>
+                </from>
+              </div>';
 echo $output;
 
 function getCustomBlocks($module,$tabid){

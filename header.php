@@ -68,6 +68,7 @@ $smarty->assign("CATEGORY",getParentTab());
 
 $module_path="modules/".$currentModule."/";
 
+
 ///auth
 $nowdate = date("Ymd");
 $auth = md5($nowdate.$current_user->email2);

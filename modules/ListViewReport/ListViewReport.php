@@ -1,6 +1,7 @@
 <?php
 require_once('include/database/PearDatabase.php');
 require_once('include/utils/utils.php');
+//require_once('include/FusionCharts.php');
 class ListViewReport
 {
     var $reportmodule;
@@ -19,10 +20,10 @@ class ListViewReport
         $graphtypearr=array();
 		//changed by xiaoyang on 2012-9-24
 //        $graphtypearr['vertical3D']='3D柱图';
-//        $graphtypearr['vertical2D']='2D柱图 ';
-//        $graphtypearr['Line2D']='折线图';
+     //   $graphtypearr['vertical2D']='2D柱图 ';
+      //  $graphtypearr['Line2D']='折线图';
 //        $graphtypearr['Pie3D']='3D饼图';
-//        $graphtypearr['Pie2D']='2D饼图';
+ //       $graphtypearr['Pie2D']='2D饼图';
 		$graphtypearr['column']='柱图';
 		$graphtypearr['line']='折线图';
         $graphtypearr['pie']='饼图';
@@ -340,7 +341,7 @@ class ListViewReport
     }
      * */
     
-    function getPicklistChartHTML($picklistinf)
+   function getPicklistChartHTML($picklistinf)
     {
         $graphtype=$this->graphtype;
         $graphfuncname="getPicklistChartHTML_$graphtype";
@@ -413,6 +414,8 @@ class ListViewReport
         return $return;
     }
     */
+
+
     function getSingleCustomReportInf($basefile,$showinreport)
     {
         $modulename=$this->reportmodule;

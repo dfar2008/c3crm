@@ -69,6 +69,7 @@ $smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("APP", $app_strings);
 $smarty->assign("CMOD", $mod_strings);
 $smarty->assign("mode", $mode);
+$smarty->assign("SETTYPE","CreateMoreInfo");
 
 $smarty->display("Settings/CreateMoreInfo.tpl");
 ?>

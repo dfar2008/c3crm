@@ -9,6 +9,44 @@
   *
  ********************************************************************************/
 -->*}
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3 id="myModalLabel">{$MOD.LBL_EDIT_PICKLIST} - {$FIELDLABEL}</h3>
+</div>
+<div class="modal-body">
+	<table border=0 celspacing=0 cellpadding=5 width=100% align=center bgcolor=white>
+				<tr>
+					<td colspan="2" align="left" width="40%">
+						{$MOD.LBL_PICKLIST_SAVEINFO}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="left" width="40%">
+						<textarea id="picklist_values" class="detailedViewTextBox" rows="10" align="left">{$ENTRIES}</textarea>
+					</td>
+				</tr>
+					{if $NON_EDITABLE_ENTRIES neq ''}
+				<tr>
+					<td colspan="2" align="left" width="40%"><b><u>{$MOD.LBL_NON_EDITABLE_PICKLIST_ENTRIES} :</u></b><br> {$NON_EDITABLE_ENTRIES} </td>
+				</tr>
+					{/if}
+	</table>
+	
+</div>
+<div class="modal-footer">
+	<div class="pull-left">
+		<button name="cancel" class="btn btn-primary btn-small" type="button" data-dismiss="modal" aria-hidden="true">
+		<i class="icon-arrow-left icon-white"></i> {$APP.LBL_CANCEL_BUTTON_LABEL}</button>
+	</div>
+	<div class="pull-right">
+		{if $NON_EDITABLE_ENTRIES neq ''}
+		<button name="save" class="btn btn-small btn-success" onClick="SavePickList('{$FIELDNAME}','{$MODULE}', {$UITYPE});" type="button"><i class="icon-ok icon-white"></i> {$APP.LBL_SAVE_BUTTON_LABEL}</button>
+		{else}
+		<button name="save" class="btn btn-small btn-success" onClick="return picklist_validate('{$EDITABLE_MODE}','{$FIELDNAME}','{$MODULE}', {$UITYPE});" type="button"><i class="icon-ok icon-white"></i> {$APP.LBL_SAVE_BUTTON_LABEL}</button>
+		{/if}	
+	</div>
+</div>
+<!--
 <div style="position:relative;display: block;" id="orgLay" class="layerPopup">
 	<table border="0" cellpadding="5" cellspacing="0" width="100%" class="layerHeadingULine">
 	<tr style="cursor:move;">
@@ -57,3 +95,4 @@
 	</td></tr>
 	</table>
 </div>
+-->

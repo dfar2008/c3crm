@@ -218,7 +218,9 @@ function patternValidate(fldName,fldLabel,type) {
 	   //DMY
 		//var reg1 = /^\d{1,2}(\-|\/|\.)\d{1,2}\1\d{2}$/ 
 		//var reg2 = /^\d{1,2}(\-|\/|\.)\d{1,2}\1\d{4}$/
-
+		if(userDateFormat===undefined){
+			var userDateFormat="yyyy-mm-dd";
+		}
 		switch (userDateFormat) {
 			case "yyyy-mm-dd" :
 								var re = /^\d{4}(\-|\/|\.)\d{1,2}\1\d{1,2}$/
@@ -258,7 +260,9 @@ function splitDateVal(dateval) {
 	if (dateval.indexOf("-")>=0) datesep="-"
 	else if (dateval.indexOf(".")>=0) datesep="."
 	else if (dateval.indexOf("/")>=0) datesep="/"
-	
+	if(userDateFormat===undefined){
+			var userDateFormat="yyyy-mm-dd";
+		}
 	switch (userDateFormat) {
 		case "yyyy-mm-dd" :
 							dateelements[0]=dateval.substr(dateval.lastIndexOf(datesep)+1,dateval.length) //dd
@@ -1757,7 +1761,8 @@ function fnvshobj(obj,Lay){
     var leftSide = findPosX(obj);
     var topSide = findPosY(obj);
 	alert(tagName);
-    var maxW = tagName.width(); 
+    var maxW = tagName.style.width; 
+	
     var widthM = maxW.substring(0,maxW-2);
     var getVal = eval(leftSide) + eval(widthM);
     if(getVal  > document.body.clientWidth ){
@@ -1765,9 +1770,11 @@ function fnvshobj(obj,Lay){
         tagName.css({"left":leftSide + 34 + 'px'});
     }
     else
-       tagName.css({"left":leftSide + 'px'});
+    tagName.css({"left":leftSide + 'px'});
     tagName.css({"top":topSide + 'px'});
     tagName.css('display','block');
+	//tagName.style.display="block";
+	//tagName.style.visibility="visible";
     tagName.css('visibility','visible'); 
 }
 
@@ -2918,55 +2925,39 @@ function record_export(module,category,exform,idstring)
 		if(exportData[i].checked == true)
 			var exp_type = exportData[i].value;
 	}
-	
-        new Ajax.Request(
-                'index.php',
-                {queue: {position: 'end', scope: 'command'},
-                        method: 'post',
-                        postBody: "module="+module+"&action=ExportAjax&export_record=true&search_type="+sel_type+"&export_data="+exp_type+"&idstring="+idstring,
-                        onComplete: function(response) {
-				  if(response.responseText == 'NOT_SEARCH_WITHSEARCH_ALL')
-					{
-											$('not_search').style.display = 'block';
-						$('not_search').innerHTML="<font color='red'><b>"+alert_arr.LBL_NOTSEARCH_WITHSEARCH_ALL+" "+module+"</b></font>";
-						setTimeout(hideErrorMsg1,6000);
-		
-						exform.submit();
-					}
-				else if(response.responseText == 'NOT_SEARCH_WITHSEARCH_CURRENTPAGE')
-					{
-							$('not_search').style.display = 'block';
-							$('not_search').innerHTML="<font color='red'><b>"+alert_arr.LBL_NOTSEARCH_WITHSEARCH_CURRENTPAGE+" "+module+"</b></font>";
+
+	$.ajax({
+			type:"GET",
+            url: "index.php?module="+module+"&action=ExportAjax&export_record=true&search_type="+sel_type+"&export_data="+exp_type+"&idstring="+idstring,
+            success: function(msg) {
+						if( msg == 'NOT_SEARCH_WITHSEARCH_ALL'){
+							$('#not_search').css("display","block");
+							$('#not_search').html("<font color='red'><b>"+alert_arr.LBL_NOTSEARCH_WITHSEARCH_ALL+" "+module+"</b></font>");
+							setTimeout(hideErrorMsg1,6000);
+							exform.submit();
+						}else if(msg == 'NOT_SEARCH_WITHSEARCH_CURRENTPAGE'){
+							$('#not_search').css("display","block");
+							$('#not_search').html("<font color='red'><b>"+alert_arr.LBL_NOTSEARCH_WITHSEARCH_CURRENTPAGE+" "+module+"</b></font>");
 							setTimeout(hideErrorMsg1,7000);
 
 							exform.submit();
-					}
-				else if(response.responseText == 'NO_DATA_SELECTED')
-				{	
-					$('not_search').style.display = 'block';	
-					$('not_search').innerHTML="<font color='red'><b>"+alert_arr.LBL_NO_DATA_SELECTED+"</b></font>";
-					setTimeout(hideErrorMsg1,3000);
-				}
-				else if(response.responseText == 'SEARCH_WITHOUTSEARCH_ALL')
-                                {
-					if(confirm(alert_arr.LBL_SEARCH_WITHOUTSEARCH_ALL))
-					{
-						exform.submit();
-					}					
-                                }
-				else if(response.responseText == 'SEARCH_WITHOUTSEARCH_CURRENTPAGE')
-                                {
-                                        if(confirm(alert_arr.LBL_SEARCH_WITHOUTSEARCH_CURRENTPAGE))
-                                        {
-                                                exform.submit();
-                                        }
-                                }
-	                        else
-				{
-                                       exform.submit(); 
-				}
-                        }
-                }
+						}else if(msg == 'NO_DATA_SELECTED'){
+							$('#not_search').css("display","block");	
+							$('not_search').html("<font color='red'><b>"+alert_arr.LBL_NO_DATA_SELECTED+"</b></font>");
+							setTimeout(hideErrorMsg1,3000);
+						}else if(msg== 'SEARCH_WITHOUTSEARCH_ALL'){
+							if(confirm(alert_arr.LBL_SEARCH_WITHOUTSEARCH_ALL)){
+								exform.submit();
+							}					
+						}else if(msg == 'SEARCH_WITHOUTSEARCH_CURRENTPAGE'){
+							if(confirm(alert_arr.LBL_SEARCH_WITHOUTSEARCH_CURRENTPAGE)){
+                                 exform.submit();
+							}
+						}else{
+                          exform.submit(); 
+						}
+                 }
+			}
         );
 
 }
@@ -3178,7 +3169,9 @@ function created(form)
 //add for multifields
 function getSelectFieldId(el)
 {
-    var element=$(el);
+	
+    var element=el;
+
     var index = element.selectedIndex;
     if(index >= 0){
         var optel=element.options[index];
@@ -3198,22 +3191,15 @@ function multifieldSelectChange(uitype,multifieldid,module,element)
     else if(uitype=='1023') level=3;
     var valueid=getSelectFieldId(element);
     if(valueid==null) return;
-    $("status").style.display="inline";
-        new Ajax.Request(
-                  'index.php',
-                {queue: {position: 'end', scope: 'command'},
-                    method: 'post',
-                    postBody:"module="+module+"&action="+module+"Ajax&file=UpdateMultiFields&multifieldid="+ multifieldid + "&level=" + level+"&parentfieldid=" + valueid,
-                    onComplete: function(response) {
-                            $("status").style.display="none";
-                            var result = response.responseText;
-                            //alert(result);
-                            result.evalScripts();
-                            //$('cf_577').update('<option  value=\"上海\">上海</option>');
-                    }
-             }
-        );
-
+    $("#status").css("display","inline");
+		$.ajax({
+			type:"get",
+			url:"index.php?module="+module+"&action="+module+"Ajax&file=UpdateMultiFields&multifieldid="+ multifieldid + "&level=" + level+"&parentfieldid=" + valueid,
+			success:function(msg){
+				$("#status").css("display","none");
+				eval(msg);
+			}
+		});
 }
 
 function showhide_dept_userselect(deptId,imgId)
@@ -3279,31 +3265,31 @@ function   fucCheckLength2(strTemp)
 function SendMessToAll(setype){
 	sendmessageinfoobj = document.getElementById('sendmessageinfo');
 	if(typeof sendmessageinfoobj != 'undefined') {
-		var sendmessageinfo = $("sendmessageinfo").value;
+		var sendmessageinfo = $("#sendmessageinfo").val();
 		while( sendmessageinfo.indexOf( "&" ) != -1 ) { 
 			 sendmessageinfo = sendmessageinfo.replace("&",'##'); 
 		}
 		if(sendmessageinfo ==''){
 			alert("短信内容不能为空"); 
-			$("sendmessageinfo").value ='';
-			$("sendmessageinfo").focus();
+			$("#sendmessageinfo").val('');
+			$("#sendmessageinfo").focus();
 			return false;
 		}
 		var contentlen = fucCheckLength2(sendmessageinfo);
 		if(contentlen >65){
 			alert("短信内容不能超过65个字"); 
-			$("sendmessageinfo").focus();
+			$("#sendmessageinfo").focus();
 			return false;
 		}
 		
-		var receiveaccountinfo = $("receiveaccountinfo").value;// document.getElementById('receiveaccountinfo').value; 
+		var receiveaccountinfo = $("#receiveaccountinfo").val();// document.getElementById('receiveaccountinfo').value; 
 		while( receiveaccountinfo.indexOf( "&" ) != -1 ) { 
 			 receiveaccountinfo = receiveaccountinfo.replace("&",'##'); 
 		} 
 		if(receiveaccountinfo ==''){
 			alert("接收人不能为空"); 
-			$("receiveaccountinfo").value ='';
-			$("receiveaccountinfo").focus();
+			$("#receiveaccountinfo").val('');
+			$("#receiveaccountinfo").focus();
 			return false;
 		}  
 		sendtimeobj = document.getElementById('jscal_field_sendtime');
@@ -3316,29 +3302,47 @@ function SendMessToAll(setype){
 			
 			document.getElementById('savebutton').disabled = "disabled";
 			
-			$("status").style.display="inline";
-            new Ajax.Request(
-                    'index.php',
-                    {queue: {position: 'end', scope: 'command'},
-                        method: 'post',
-                        postBody:"module="+setype+"&action="+setype+"Ajax&file=SendMessToAll&message="+sendmessageinfo+"&receiveaccountinfo="+receiveaccountinfo+sendtimeurl,
-                        onComplete: function(response) { 
-                                $("status").style.display="none";
-								result = response.responseText;
-								if(result.indexOf('SUCCESS') != -1){
-									alert("发送任务已添加至发送队列，请耐心等候发送...");
-									window.location.reload();
-								}else if(result.indexOf('YES') != -1){
-									alert("发送任务已成功写入数据库。");
-									window.location.reload();
-								}else{
-									alert("短信发送失败"+result);
-									document.getElementById('savebutton').disabled = "";
-								}
-								
-                        }
-                 }
-            );
+			$("#status").css("display","inline");
+			$.ajax({
+				type:"GET",
+				url:"index.php?module="+setype+"&action="+setype+"Ajax&file=SendMessToAll&message="+sendmessageinfo+"&receiveaccountinfo="+receiveaccountinfo+sendtimeurl,
+				success:function(msg){
+					$("#status").css("display","none");
+					if(msg.indexOf('SUCCESS') != -1){
+						alert("发送任务已添加至发送队列，请耐心等候发送...");
+						window.location.reload();
+					}else if(msg.indexOf('YES') != -1){
+						alert("发送任务已成功写入数据库。");
+						window.location.reload();
+					}else{
+						alert("短信发送失败"+msg);
+						document.getElementById('savebutton').disabled = "";
+					}
+
+				}
+			});
+//            new Ajax.Request(
+//                    'index.php',
+//                    {queue: {position: 'end', scope: 'command'},
+//                        method: 'post',
+//                        postBody:"module="+setype+"&action="+setype+"Ajax&file=SendMessToAll&message="+sendmessageinfo+"&receiveaccountinfo="+receiveaccountinfo+sendtimeurl,
+//                        onComplete: function(response) { 
+//                                $("status").style.display="none";
+//								result = response.responseText;
+//								if(result.indexOf('SUCCESS') != -1){
+//									alert("发送任务已添加至发送队列，请耐心等候发送...");
+//									window.location.reload();
+//								}else if(result.indexOf('YES') != -1){
+//									alert("发送任务已成功写入数据库。");
+//									window.location.reload();
+//								}else{
+//									alert("短信发送失败"+result);
+//									document.getElementById('savebutton').disabled = "";
+//								}
+//								
+//                        }
+//                 }
+//            );
 	}
 	
 }
@@ -3354,6 +3358,8 @@ function SendMailToAll(setype,sjid,ke){
 	}
 	mailcontentobj = document.getElementById('mailcontent');
 	subjectobj = document.getElementById('subject');
+	from_name = document.getElementById('from_name').value;
+	from_email = document.getElementById('from_email').value;
 	if(mailcontentobj && subjectobj){
 		subject = document.getElementById('subject').value;
 		//subject = subject.replace(/\s/ig,'');
@@ -3400,7 +3406,7 @@ function SendMailToAll(setype,sjid,ke){
 	    $.ajax({  
 	       type: "GET",  
 	       //dataType:"Text",   
-	       url:"index.php?module="+setype+"&action="+setype+"Ajax&file=SendMailToAll&subject="+subject+"&mailcontent="+mailcontent+"&receiveaccountinfo="+receiveaccountinfo+"&sjid="+sjid,
+	       url:"index.php?module="+setype+"&action="+setype+"Ajax&file=SendMailToAll&subject="+subject+"&mailcontent="+mailcontent+"&receiveaccountinfo="+receiveaccountinfo+"&sjid="+sjid+"&from_name="+from_name+"&from_email="+from_email,
 	       success: function(msg){   
 	         $("#status").css('display','none');
 	         	if(msg.indexOf('SUCCESS') != -1){
@@ -3412,31 +3418,11 @@ function SendMailToAll(setype,sjid,ke){
 				}
 	       }
 	     });
-
-			// $("status").style.display="inline";
-   //          new Ajax.Request(
-   //                  'index.php',
-   //                  {queue: {position: 'end', scope: 'command'},
-   //                      method: 'post',
-   //                      postBody:"module="+setype+"&action="+setype+"Ajax&file=SendMailToAll&subject="+subject+"&mailcontent="+mailcontent+"&receiveaccountinfo="+receiveaccountinfo+"&sjid="+sjid,
-   //                      onComplete: function(response) {
-   //                              $("status").style.display="none";
-			// 					result = response.responseText;  
-			// 					if(result.indexOf('SUCCESS') != -1){
-			// 						alert("邮件已成功放入发送队列，请耐心等候。");
-			// 						window.location.reload();
-			// 					}else{
-			// 						document.getElementById('savebutton').disabled = "";
-			// 						alert("邮件放入发送队列失败："+result);
-			// 					}
-   //                      }
-   //               }
-   //          );
 	}
+	
 	if(ke ==''){
 		fninvsh('qunfamail');	
 	}
-	
 }   
 
 
@@ -3739,13 +3725,13 @@ function chooseContactFromLink(lastname,fieldname){
 
 function ToggleGroupContent(id,imgId){
     
-	var flag  = $(id).style.display;
+	var flag  = $("#"+id).css("display");
 	if (flag != "none"){ 
-		$(id).hide(); 
-		$(imgId).src="themes/images/expand.gif";  
+		$("#"+id).hide(); 
+		$("#"+imgId).src="themes/images/expand.gif";  
 	}else {
-		$(id).show(); 
-		$(imgId).src="themes/images/collapse.gif";
+		$("#"+id).show(); 
+		$("#"+imgId).src="themes/images/collapse.gif";
 	}
 
 }
@@ -5219,7 +5205,7 @@ calendar end on 2011-12-05
 
 
 
-function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput){ alert(inputFieldID);
+function displayCalendar(inputFieldID,buttonObj,displayTime,timeInput){ //alert(inputFieldID);
 	$('#'+inputFieldID).datepicker();
 }
 
@@ -5236,4 +5222,200 @@ function BrowerAcct(popuptype){
 		   }  
 	}); 
 	$('#searchallacct').modal('show');
+}
+
+//added by ligangze 2013-08-13
+function SearchSmownerUser(objid,sectuserid,obj){
+	var searchtext = obj.value;
+	if($("#"+objid+"_bind_div") && $("#"+objid+"_bind_div").html() != ''){
+		var rest = $("#"+objid+"_bind_div").html();
+		var userObj = eval('('+ rest +')')?eval('('+ rest +')'):JSON.parse(rest);
+		var resulthtml = '';var grouphtml = '';var userhtml = '';var color = '';
+		for(var groupid in userObj){
+			if(groupid > 0){
+				grouphtml = '<div class="smowner-group-div" onclick="displaysmowner_click('+groupid+')"'+
+										'>'+userObj[groupid].groupname.value+'</div>';
+				var userArr = userObj[groupid].user;
+				userhtml = '';
+				for(var userid in userArr){
+					var lastname = userArr[userid].lastname.value;
+					var username = userArr[userid].username.value;
+					var prefix = userArr[userid].prefix.value;
+					color = '';
+					if(sectuserid == userid){
+						color = '#32A636';
+					}
+					if(lastname.indexOf(searchtext) >= 0 || username.indexOf(searchtext) >= 0 || prefix.indexOf(searchtext) >= 0){
+						var groupcss = "smowner-group-"+groupid;
+						userhtml += '<div class="smowner-user-div '+groupcss+'" onmouseover="this.className=\'smowner-user-over '+groupcss+'\';" '+
+								'onmouseout="this.className=\'smowner-user-div '+groupcss+'\'" '+
+								'onclick="setsmownerid_click(\''+objid+'\',\''+userid+'\',\''+lastname+'\',\''+username+'\');"'+
+								'style="color:'+color+'">'+lastname+'</div>';
+					}
+				}
+				if(userhtml && userhtml != ''){
+					resulthtml += grouphtml + userhtml;
+				}
+			}
+		}
+		$("#"+objid+"_info_div").html(resulthtml);
+	}
+}
+
+function ShowSeltUser_click(objid){
+	if($("#"+objid+"_div").css("display") == 'none'){
+		//show(""+objid+"_div");
+		$("#"+objid+"_div").css("display","inline");
+	}else{
+		$("#"+objid+"_div").css("display",'none');
+	}
+}
+
+/**
+ * 初始化负责人弹出层
+ */
+function setSmownerUserOpts(objid,sectuserid){
+	$.ajax({
+		url: "index.php",
+		data: "module=Users&action=UsersAjax&file=setSmownerUserOpts",
+		success:function(rest){
+			var resulthtml = '';
+			if(rest != ''){
+				$("#"+objid+"_bind_div").html(rest);
+				var userObj = eval('('+ rest +')')?eval('('+ rest +')'):JSON.parse(rest);
+				var color = '';
+				var userArr = userObj.user;
+				//alert(userArr);
+				for(var userid in userArr){
+					var lastname = userArr[userid].lastname.value;
+					var username = userArr[userid].username.value;
+					var prefix = userArr[userid].prefix.value;
+					color = '';
+					if(sectuserid == userid){
+						color = '#32A636';
+					}
+					
+					//resulthtml += '<div onclick="setsmownerid_click(\''+objid+'\',\''+userid+'\',\''+lastname+'\',\''+username+'\');" style="color:'+color+'">'+lastname+'</div>';
+					resulthtml +='<li><a onclick="setsmownerid_click(\''+objid+'\',\''+userid+'\',\''+lastname+'\',\''+username+'\')">'+lastname+'</a></li>';
+				}
+			}
+			$("#"+objid+"_info_div").html(resulthtml);
+		},error:function(){
+			alert('Null');
+		}
+	});
+}
+function setsmownerid_click(objid,userid,lastname,username){
+	$("#"+objid+"_name").val(lastname);
+	$("#"+objid+"").val(userid);
+	$("#"+objid+"_div").css("display",'none');
+	//回调
+	if(window.smownerchangebind != undefined) {
+		window.smownerchangebind(objid,userid,lastname,username);
+	}
+}
+
+/***********	查看范围		**********/
+function setViewScopeOpts(modulename,objid,sectuserid){
+	var viewname=$("viewname").value;
+	$.ajax({
+		url: "index.php",
+		data: "module=Users&action=UsersAjax&file=setViewScopeOpts&modulename="+modulename+"",
+		success:function(rest){
+			var resulthtml = '';
+			if(rest != ''){
+				$("#"+objid+"_bind_div").html(rest);
+				var userProj = eval('('+ rest +')')?eval('('+ rest +')'):JSON.parse(rest);
+				var color = '';
+				var scopreObj = userProj.scopre;
+				if(sectuserid == 'all_to_me'){
+					color = '#32A636';
+				}
+				resulthtml += '<div class="smowner-scope-div" onmouseover="this.className=\'smowner-scope-over\';" '+
+									'onmouseout="this.className=\'smowner-scope-div\'" '+
+									'onclick="setViewScopeinfo_click(\''+objid+'\',\'all_to_me\','+
+									'\''+viewname+'\',\''+modulename+'\');"'+
+									'style="color:'+color+'">'+scopreObj.all_to_me.value+'</div>';
+				color = '';
+				if(sectuserid == 'current_user'){
+					color = '#32A636';
+				}
+				resulthtml += '<div class="smowner-scope-div" onmouseover="this.className=\'smowner-scope-over\';" '+
+									'onmouseout="this.className=\'smowner-scope-div\'" '+
+									'onclick="setViewScopeinfo_click(\''+objid+'\',\'current_user\','+
+									'\''+viewname+'\',\''+modulename+'\');"'+
+									'style="color:'+color+'">'+scopreObj.current_user.value+'</div>';
+				color = '';
+				if(sectuserid == 'sub_user'){
+					color = '#32A636';
+				}
+				resulthtml += '<div class="smowner-scope-div" onmouseover="this.className=\'smowner-scope-over\';" '+
+									'onmouseout="this.className=\'smowner-scope-div\'" '+
+									'onclick="setViewScopeinfo_click(\''+objid+'\',\'sub_user\','+
+									'\''+viewname+'\',\''+modulename+'\');"'+
+									'style="color:'+color+'">'+scopreObj.sub_user.value+'</div>';
+				var userObj = userProj.group;
+				for(var groupid in userObj){
+					if(groupid > 0){
+						resulthtml += '<div class="smowner-group-div" onclick="displaysmowner_click('+groupid+')"'+
+										'>'+userObj[groupid].groupname.value+'</div>';
+						var userArr = userObj[groupid].user;
+						for(var userid in userArr){
+							var lastname = userArr[userid].lastname.value;
+							var username = userArr[userid].username.value;
+							var prefix = userArr[userid].prefix.value;
+							color = '';
+							if(sectuserid == userid){
+								color = '#32A636';
+							}
+							var groupcss = "smowner-group-"+groupid;
+							resulthtml += '<div class="smowner-user-div '+groupcss+'" onmouseover="this.className=\'smowner-user-over '+groupcss+'\';" '+
+											'onmouseout="this.className=\'smowner-user-div '+groupcss+'\'" '+
+											'onclick="setViewScopeinfo_click(\''+objid+'\',\''+userid+'\',\''+viewname+'\',\''+modulename+'\');"'+
+											'style="color:'+color+'">'+lastname+'</div>';
+						}
+					}
+				}
+				color = '';
+				if(sectuserid == 'creator'){
+					color = '#32A636';
+				}
+				resulthtml += '<div class="smowner-scope-div" onmouseover="this.className=\'smowner-scope-over\';" '+
+									'onmouseout="this.className=\'smowner-scope-div\'" '+
+									'onclick="setViewScopeinfo_click(\''+objid+'\',\'creator\','+
+									'\''+viewname+'\',\''+modulename+'\');"'+
+									'style="color:'+color+'">'+scopreObj.creator.value+'</div>';
+				color = '';
+				if(sectuserid == 'subcreator'){
+					color = '#32A636';
+				}
+				resulthtml += '<div class="smowner-scope-div" onmouseover="this.className=\'smowner-scope-over\';" '+
+									'onmouseout="this.className=\'smowner-scope-div\'" '+
+									'onclick="setViewScopeinfo_click(\''+objid+'\',\'subcreator\','+
+									'\''+viewname+'\',\''+modulename+'\');"'+
+									'style="color:'+color+'">'+scopreObj.subcreator.value+'</div>';
+				color = '';
+				if(sectuserid == 'share_to_me'){
+					color = '#32A636';
+				}
+				resulthtml += '<div class="smowner-scope-div" onmouseover="this.className=\'smowner-scope-over\';" '+
+									'onmouseout="this.className=\'smowner-scope-div\'" '+
+									'onclick="setViewScopeinfo_click(\''+objid+'\',\'share_to_me\','+
+									'\''+viewname+'\',\''+modulename+'\');"'+
+									'style="color:'+color+'">'+scopreObj.share_to_me.value+'</div>';
+				color = '';
+				if(sectuserid == 'share_of_me'){
+					color = '#32A636';
+				}
+				resulthtml += '<div class="smowner-scope-div" onmouseover="this.className=\'smowner-scope-over\';" '+
+									'onmouseout="this.className=\'smowner-scope-div\'" '+
+									'onclick="setViewScopeinfo_click(\''+objid+'\',\'share_of_me\','+
+									'\''+viewname+'\',\''+modulename+'\');"'+
+									'style="color:'+color+'">'+scopreObj.share_of_me.value+'</div>';
+			}
+			$("#"+objid+"_info_div").html(resulthtml);
+		},error:function(){
+			alert('Null');
+		}
+	});
 }

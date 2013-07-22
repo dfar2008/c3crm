@@ -25,5 +25,11 @@ if(isset($_REQUEST['return_id']) && $_REQUEST['return_id'] != "") $return_id = $
 //code added for returning back to the current view after edit from list view
 if($_REQUEST['return_viewname'] == '') $return_viewname='0';
 if($_REQUEST['return_viewname'] != '')$return_viewname=$_REQUEST['return_viewname'];
-redirect("index.php?action=$return_action&module=$return_module&parenttab=$parenttab&record=$return_id&viewname=$return_viewname");
+
+if($return_action == "CallRelatedList"){
+    $return_action = "RelateLists";
+    redirect("index.php?action=$return_action&module=$return_module&parenttab=$parenttab&record=$return_id&viewname=$return_viewname&moduletype=Contacts");
+}else{
+    redirect("index.php?action=$return_action&module=$return_module&parenttab=$parenttab&record=$return_id&viewname=$return_viewname");
+}
 ?>

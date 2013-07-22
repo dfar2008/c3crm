@@ -93,6 +93,7 @@ $image_path=$theme_path."images/";
 
 $smarty->assign("MOD", return_module_language($current_language,'Settings'));
 $smarty->assign("IMAGE_PATH",$image_path);
+$smarty->assign("SETTYPE", "EditMoreInfo");//added by ligangze
 $smarty->assign("APP", $app_strings);
 $smarty->assign("CMOD", $mod_strings);
 $smarty->assign("mode", $mode);

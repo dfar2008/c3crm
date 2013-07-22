@@ -11,5 +11,7 @@
 	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BORDER-LEFT: #cccccc 1px solid; LINE-HEIGHT: 150%
 }
 .reportTable .thead {
-	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; BACKGROUND: url(images/bar.gif) repeat-x left center; BORDER-LEFT: #cccccc 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #cccccc 1px solid
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold;
+	 BORDER-LEFT: #cccccc 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #cccccc 1px solid
 }
+/*BACKGROUND: url(images/bar.gif) repeat-x left center;*/

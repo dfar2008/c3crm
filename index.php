@@ -232,7 +232,6 @@ if(!$skipHeaders) {
 		include($root_directory.'themes/'.$theme.'/header.php');
 	}
 }
-
 if(!$skipSecurityCheck)
 {
 	require_once($root_directory.'include/utils/UserInfoUtil.php');

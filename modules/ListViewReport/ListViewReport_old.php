@@ -340,6 +340,7 @@ class ListViewReport
     function getPicklistChartHTML($picklistinf)
     {
         $graphtype=$this->graphtype;
+      
         $graphfuncname="getPicklistChartHTML_$graphtype";
         if(method_exists($this, $graphfuncname))
         {

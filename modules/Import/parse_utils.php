@@ -249,6 +249,7 @@ function parse_import_csv_new($file_name,$delimiter,$max_lines,$has_header)
 //	$fh = $s->read( 'upload' , $file_name) ;
     $fh = file_get_contents($file_name);
 	//echo "fh:".$fh."<br>";
+    
 	
 	//$encode = chkCode($fh);
 	
@@ -262,6 +263,8 @@ function parse_import_csv_new($file_name,$delimiter,$max_lines,$has_header)
 	}
 	$fh = iconv_ec("GBK","UTF-8",$fh);
 	//echo "fh2:".$fh."<br>";
+    //phpinfo();
+    //exit();
 
 	$line_arr =  str_getcsv($fh,"\n");
 	$line_count = count($line_arr);// num

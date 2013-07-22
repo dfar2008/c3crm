@@ -268,8 +268,9 @@ function set_return_todo(product_id, product_name) {
 }
 var flag = false;
 
+
 function check_duplicate() {
-	
+
 	flag = formValidate();
 	
 	if(flag) {
@@ -285,28 +286,45 @@ function check_duplicate_ajax()
 	var record = window.document.EditView.record.value;
 	
 	var strstring = "&accountname="+accountname+"&phone="+phone+"&email="+email+"&record="+record;
-	new Ajax.Request(
-                'index.php',
-                {queue: {position: 'end', scope: 'command'},
-                        method: 'post',
-                        postBody: 'module=Accounts&action=AccountsAjax&file=Save&ajax=true&dup_check=true'+strstring,
-                        onComplete: function(response) {
-		                    var result = trim(response.responseText);
-							if(result.indexOf('SUCCESS') > -1) {
-								    //disable save button
-									var buttonsave = $$('.save');
-									var count = buttonsave.length;
-									for(var i=0;i<count;i++){
-										buttonsave[i].disabled = "disabled";
-									}
-									document.EditView.submit();
-							}
-							else {
-										alert(result);
-							}
-						}
-                }
-        );
+
+	$.ajax({
+		type:"GET",
+		url:'index.php?module=Accounts&action=AccountsAjax&file=Save&ajax=true&dup_check=true'+strstring,
+		success : function(msg){
+			if(msg.indexOf('SUCCESS')> -1 ) {
+				var buttonsave = document.getElementsByName("savebutton");
+				buttonsave[0].disabled = "disabled";
+				buttonsave[1].disabled = "disabled";
+
+				document.EditView.submit();
+
+			}else{
+				alert(msg);
+			}
+		}
+	});
+//	new Ajax.Request(
+//                'index.php',
+//                {queue: {position: 'end', scope: 'command'},
+//                        method: 'post',
+//                        postBody: 'module=Accounts&action=AccountsAjax&file=Save&ajax=true&dup_check=true'+strstring,
+//                        onComplete: function(response) {
+//		                    var result = trim(response.responseText);
+//							if(result.indexOf('SUCCESS') > -1) {
+//								    //disable save button
+//									var buttonsave = $$('.save');
+//									var count = buttonsave.length;
+//									for(var i=0;i<count;i++){
+//										buttonsave[i].disabled = "disabled";
+//									}
+//									document.EditView.submit();
+//							}
+//							else {
+//										alert(result);
+//							}
+//						}
+//                }
+//        );
 }
 
 function callCreateAccountDiv()

@@ -10,13 +10,14 @@ $parentfieldid=$_REQUEST["parentfieldid"];
 global $adb;
 $options=getMultiFieldOptions($multifieldid,$level+1,$parentfieldid,2); 
 if(empty($options)) die;
-$resstr="<script>"; 
+$resstr="$(function(){"; 
+//$resstr="<script>"; 
 foreach($options as $eachopt){
     $fieldname=$eachopt[0];
     $optvalue=$eachopt[1];
-    //$resstr.="alert('$optvalue');";
-    $resstr.="$('$fieldname').update('$optvalue');";
+     $resstr.="$('#$fieldname').html('$optvalue');";
 }
-$resstr.="</script>";
+//$resstr.="</script>";
+$resstr .= "});";
 echo $resstr;
 ?>

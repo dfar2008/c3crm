@@ -1,30 +1,64 @@
-function change(obj,divid)
-{
-	var select_options  =  document.getElementsByName('selected_id');
-	var x = select_options.length;
-	var viewid =getviewId();
-	idstring = "";
-
-	xx = 0;
-	for(i = 0; i < x ; i++)
-	{
-		if(select_options[i].checked)
-		{
-			idstring = select_options[i].value +";"+idstring
-				xx++
+function change(obj,divid){
+	var modname = document.basicSearch.module.value;
+	$("#status").css("display","inline");
+	$.ajax({
+		type:"GET",
+		url:"index.php?module=Users&action=UsersAjax&file=CheckUpSmowner&modname="+modname,
+		success:function(msg){
+			$("#status").css("display","none");
+			if(msg=="No"){
+				 alert(alert_arr.CHECK_UPDATE_SMOWNER);return false;
+			}else{
+				var select_options = document.getElementsByName('selected_id');
+				var x = select_options.length;
+				var viewid =getviewId();
+				idstring = "";
+				xx = 0;
+				for(i = 0; i < x ; i++){
+					if(select_options[i].checked){
+						idstring = select_options[i].value +";"+idstring;
+						xx++;
+					}
+				}
+				if (xx != 0){
+					document.getElementById('idlist').value=idstring;
+				}else{
+					alert(alert_arr.SELECT);
+					return false;
+				}
+				//ShowLockDiv(divid);
+				$("#"+divid).modal("show");
+			}
 		}
-	}
-	if (xx != 0)
-	{
-		document.getElementById('idlist').value=idstring;
-	}
-	else
-	{
-		alert(alert_arr.SELECT);
-		return false;
-	}
-	fnvshobj(obj,divid);
+}); 
 }
+//function change(obj,divid)
+//{
+//	var select_options  =  document.getElementsByName('selected_id');
+//	var x = select_options.length;
+//	var viewid =getviewId();
+//	idstring = "";
+//
+//	xx = 0;
+//	for(i = 0; i < x ; i++)
+//	{
+//		if(select_options[i].checked)
+//		{
+//			idstring = select_options[i].value +";"+idstring
+//				xx++
+//		}
+//	}
+//	if (xx != 0)
+//	{
+//		document.getElementById('idlist').value=idstring;
+//	}
+//	else
+//	{
+//		alert(alert_arr.SELECT);
+//		return false;
+//	}
+//	fnvshobj(obj,divid);
+//}
 function getviewId()
 {
 	var viewid ='';
@@ -227,25 +261,42 @@ function getListViewWithPageSize(module,pageElement)
 
 function openListViewReport(openurl,params)
 {
-    window.open(openurl+params,"test","width=800,height=600,resizable=1,scrollbars=1");
+    //window.open(openurl+params,"test","width=800,height=600,resizable=1,scrollbars=1");
+	$.ajax({
+		type:"GET",
+		url:openurl+params,
+		success:function(msg){
+			$("#showReportInfo").html(msg);
+		}
+	});
+	$("#showReportInfo").modal("show");
 
 }
 
 function getColumnCollectInf(module,url)
 {
-     new Ajax.Request(
-        	'index.php',
-                {queue: {position: 'end', scope: 'command'},
-               method: 'post',
-               postBody:"module=Home&action=HomeAjax&file=UpdateCollectTotalInf&ajax=true&relatedmodule="+module+"&"+url,
-			  onComplete: function(response) {
-                        	$("status").style.display="none";
-                                result = response.responseText;
-                                $("collectcolumntable").innerHTML= result;
-                                result.evalScripts();
-                  	}
-                }
-        );
+	$.ajax({
+		type:"GET",
+		url:"index.php?module=Home&action=HomeAjax&file=UpdateCollectTotalInf&ajax=true&relatedmodule="+module+"&"+url,
+		success:function(msg){
+			$("#status").css("display","none");
+			$("#collectcolumntable").html(msg);
+			eval(msg);
+		}
+	});
+//     new Ajax.Request(
+//        	'index.php',
+//                {queue: {position: 'end', scope: 'command'},
+//               method: 'post',
+//               postBody:"module=Home&action=HomeAjax&file=UpdateCollectTotalInf&ajax=true&relatedmodule="+module+"&"+url,
+//			  onComplete: function(response) {
+//                        	$("status").style.display="none";
+//                                result = response.responseText;
+//                                $("collectcolumntable").innerHTML= result;
+//                                result.evalScripts();
+//                  	}
+//                }
+//        );
 }
 // QuickEdit Feature
 function quick_edit_old(obj,divid,module) {

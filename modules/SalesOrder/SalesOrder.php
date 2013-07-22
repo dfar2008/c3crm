@@ -28,18 +28,19 @@ class SalesOrder extends CRMEntity {
 	// This is the list of ec_fields that are in the lists.
 	var $list_fields = Array(
 				'Subject'=>Array('salesorder'=>'subject'),
-				'ordername'=>Array('salesorder'=>'ordername'),
+				//'ordername'=>Array('salesorder'=>'ordername'),
 				//'Account Name'=>Array('account'=>'accountid'),
 				'Order Status'=>Array('salesorder'=>'orderstatus'),
 				'orderdate'=>Array('salesorder'=>'orderdate'),
 				'duedate'=>Array('salesorder'=>'duedate'),
 				'rate'=>Array('salesorder'=>'rate'),
-				'ratetotal'=>Array('salesorder'=>'ratetotal')
+				'ratetotal'=>Array('salesorder'=>'ratetotal'),
+                 '合计'=>Array('salesorder'=>'total')
 				);
 
 	var $list_fields_name = Array(
 				'Subject'=>'subject',
-		        'ordername'=>'ordername',
+		        //'ordername'=>'ordername',
 				//'Account Name'=>'account_id',
 				'Order Status'=>'orderstatus',
 				'orderdate'=>'orderdate',

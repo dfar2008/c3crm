@@ -1,7 +1,16 @@
  <script language="JavaScript" type="text/javascript" src="include/js/ListView.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/search.js"></script>
 <script language="JavaScript" type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
+
+
+<link href="themes/images/report.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="themes/images/tabpane.js"></script>
+<link href="themes/images/tab.css" rel="stylesheet" type="text/css">
+<script src="include/js/highcharts.js"></script>
+<script src="include/js/exporting.js"></script>
+
 <script language="javascript">
+
 function callSearch(searchtype)
 {ldelim} 
         $("#status").css('display','inline');
@@ -69,6 +78,10 @@ function alphabetic(module,url,dataid)
 {rdelim}
 
 </script>
+
+ <div id="showReportInfo" class="modal hide fade" tabindex ="-1" role = "dialog" aria-labelledby="myModalLabel" aria-hidden="true" 
+ style="width:800px;margin-left:-400px;"></div>
+
  <div class="container-fluid"> 
       <div class="row-fluid">
         

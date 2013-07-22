@@ -180,6 +180,7 @@ class Accounts extends CRMEntity {
 
 		$list_result = $adb->getList($query);
 		$num_rows = $adb->num_rows($list_result);
+
  
  		$header = array();
 		$header[] = "主题";
@@ -199,7 +200,8 @@ class Accounts extends CRMEntity {
 				$entries[] = getDisplayDate($row['contact_date']);
 				$entries[] = $row['rating'];
 				$entries[] = msubstr1($row['notecontent'],0,50);
-				$entries[] = '<a href="index.php?module=Notes&action=EditView&record='.$row['notesid'].'&return_module=Accounts&return_action=DetailView&return_id='.$id.'&parenttab=Customer"> &nbsp;编辑 </a>|<a href=\'javascript:confirmdelete("index.php?module=Notes&action=Delete&record='.$row['notesid'].'&return_module=Accounts&return_action=DetailView&return_id='.$id.'&parenttab=Customer&return_viewname=0")\'> 刪除 </a>';
+                $url = 'index.php?module=Notes&action=PopupEditView&record='.$row['notesid'].'&return_module=Accounts&return_action=CallRelatedList&return_id='.$id.'&parenttab=Customer';
+				$entries[] = '<a href="#" onclick="editAccountRelInfo(\''.$url.'\')" title="编辑"> &nbsp;<i class="cus-pencil"></i> </a>|<a href=\'javascript:confirmdelete("index.php?module=Notes&action=Delete&record='.$row['notesid'].'&return_module=Accounts&return_action=CallRelatedList&return_id='.$id.'&parenttab=Customer&return_viewname=0")\'> <img src="themes/bootcss/img/del.gif" border=0 title="删除"></a>';
 				$entries_list[] = $entries;
 				$row_i ++;
 			}
@@ -274,6 +276,7 @@ class Accounts extends CRMEntity {
 		$header[] = "产品名称";
 		$header[] = "购买数量";
 		$header[] = "价格";
+        $header[] = "小计";//added by ligangze 2013-08-12
 		$header[] = "商品URL";
 		if($num_rows && $num_rows > 0){
 			$row_i = 1;
@@ -286,6 +289,7 @@ class Accounts extends CRMEntity {
 				$entries[] =  "<a href='index.php?action=DetailView&module=Products&record=".$row['productid']."' target='_blank'>".$row['productname']."</a>";
 				$entries[] = $row['salesum'];
 				$entries[] = $row['price'];
+                $entries[] = number_format($row['salesum']*$row['price'],"2",".",",");//added by ligangze 2013-08-12
 				$entries[] = "<a href='".$row['detail_url']."' target='_blank'>".$row['detail_url']."</a>";
 				$entries_list[] = $entries;
 				$row_i ++;

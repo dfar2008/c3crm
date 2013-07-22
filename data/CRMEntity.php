@@ -12,6 +12,7 @@ class CRMEntity
 	$insertion_mode = $this->mode;
 	$this->db->println("TRANS saveentity starts $module");
 	$this->db->startTransaction();	
+
 	foreach($this->tab_name as $table_name)
 	{				
 		if($table_name == "ec_crmentity")
@@ -23,6 +24,7 @@ class CRMEntity
 			$this->insertIntoEntityTable($table_name, $module);			
 		}
 	}
+
 	$this->save_module($module);
 
 	$this->db->completeTransaction();
@@ -34,6 +36,7 @@ class CRMEntity
 		if(is_file("modules/$for_module/$for_module.php")) {
 			require_once("modules/$for_module/$for_module.php");
 			$on_focus = new $for_module();
+
 			// Do conditional check && call only for Custom Module at present
 			// TOOD: $on_focus->IsCustomModule is not required if save_related_module function
 			// is used for core modules as well.
@@ -190,6 +193,7 @@ class CRMEntity
 		//echo "value:".$value."<br>";
 		//echo "column:".$column."<br>";
 	    $sql1 = "insert into ".$table_name." (".$this->tab_name_index[$table_name]."".$column.",smcreatorid,createdtime,modifiedtime) values(".$this->id."".$value.",'".$smcreatorid."',".$this->db->formatDate($createdtime).",".$this->db->formatDate($modifiedtime).")";
+
 	    $this->db->query($sql1);
 		if($current_user->id != $ownerid) {
 			global $app_strings;

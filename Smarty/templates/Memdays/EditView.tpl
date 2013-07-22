@@ -1,59 +1,78 @@
-<script type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>
+<!--<script type="text/javascript" src="modules/{$MODULE}/{$SINGLE_MOD}.js"></script>-->
+<script type="text/javascript" src="modules/Memdays/Memday.js"></script>
+{if $RETURN_ACTION eq "RelateLists"}
+<div class="modal-header">
+    <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>新增纪念日</h3>
+</div>
+{/if}
 
-{*<!-- Contents -->*}
-<form name="EditView" method="POST" action="index.php">
-<input type="hidden" name="module" value="{$MODULE}">
-<input type="hidden" name="record" value="{$ID}">
-<input type="hidden" name="mode" value="{$MODE}">
-<input type="hidden" name="action">
-<input type="hidden" name="parenttab" value="{$CATEGORY}">
-<input type="hidden" name="return_module" value="{$RETURN_MODULE}">
-<input type="hidden" name="return_id" value="{$RETURN_ID}">
-<input type="hidden" name="return_action" value="{$RETURN_ACTION}">
-<input type="hidden" name="return_viewname" value="{$RETURN_VIEWNAME}">
+{if $RETURN_ACTION eq "RelateLists"}
+<div class="modal-body">
+{/if}
+	{*<!-- Contents -->*}
+	<form name="EditView" method="POST" action="index.php">
+	<input type="hidden" name="module" value="{$MODULE}">
+	<input type="hidden" name="record" value="{$ID}">
+	<input type="hidden" name="mode" value="{$MODE}">
+	<input type="hidden" name="action">
+	<input type="hidden" name="parenttab" value="{$CATEGORY}">
+	<input type="hidden" name="return_module" value="{$RETURN_MODULE}">
+	<input type="hidden" name="return_id" value="{$RETURN_ID}">
+	<input type="hidden" name="return_action" value="{$RETURN_ACTION}">
+	<input type="hidden" name="return_viewname" value="{$RETURN_VIEWNAME}">
+	<input type="hidden" name="moduletype" value="Memdays">
 
-<!-- center start -->
-     <div class="container-fluid">
-        <div class="row-fluid">
-          
-          <div class="span12" style="margin-left:0px;">
-             <div  class="pull-left" style="margin-bottom:5px;" >
-                  <button class="btn btn-small btn-primary" style="margin-top:2px;" onclick="goback();">
-                    <i class="icon-arrow-left icon-white"></i>取消</button>
-              </div>
-              <div class="pull-right" style="margin-bottom:5px;" >
-                  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';return validateInventory()" name="savebutton">
-                    <i class="icon-ok icon-white"></i> 保存 </button>
-                 
-             </div>
-             <div class="clearfix"></div>
-              <div class="accordion"  style="margin-top:0px;margin-bottom:0px;">
-              	{foreach key=header item=data name=listviewforeach from=$BLOCKS}
-                  <div class="accordion-group">
-                     <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse"  href="#detail_{$smarty.foreach.listviewforeach.iteration}">
-                        {$header}
-                      </a>
-                    </div>
-                    <div id="detail_{$smarty.foreach.listviewforeach.iteration}" class="accordion-body collapse in">
-                      <div class="accordion-inner">
-                          <table class="table table-bordered table-hover table-condensedforev dvtable">
-                           <tbody>
-                            {include file="DisplayFields.tpl"}
-                           </tbody>
-                          </table>
-                     </div>
-                   </div>
-                  </div>
-                  {/foreach}
-                  
-              </div>
-              
-          </div>
-        </div>
-     </div>
-     <!-- center end -->
-</form>
+	<!-- center start -->
+		 <div class="container-fluid">
+			<div class="row-fluid">
+			  
+			  <div class="span12" style="margin-left:0px;">
+				 <div  class="pull-left" style="margin-bottom:5px;" >
+					  <button class="btn btn-small btn-primary" style="margin-top:2px;" onclick="goback();">
+						<i class="icon-arrow-left icon-white"></i>取消</button>
+				  </div>
+				  <div class="pull-right" style="margin-bottom:5px;" >
+					  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';return validateInventory()" name="savebutton">
+						<i class="icon-ok icon-white"></i> 保存 </button>
+					 
+				 </div>
+				 <div class="clearfix"></div>
+					<div class="accordion"  style="margin-top:0px;margin-bottom:0px;">
+					{foreach key=header item=data name=listviewforeach from=$BLOCKS}
+					  <div class="accordion-group">
+						 <div class="accordion-heading">
+						  <a class="accordion-toggle" data-toggle="collapse"  href="#detail_{$smarty.foreach.listviewforeach.iteration}">
+							{$header}
+						  </a>
+						</div>
+						<div id="detail_{$smarty.foreach.listviewforeach.iteration}" class="accordion-body collapse in">
+						  <div class="accordion-inner">
+							  <table class="table table-bordered table-hover table-condensedforev dvtable">
+							   <tbody>
+								{include file="DisplayFields.tpl"}
+							   </tbody>
+							  </table>
+						 </div>
+					   </div>
+					  </div>
+					  {/foreach}
+				  </div>
+				  
+			  </div>
+			</div>
+		 </div>
+		 <!-- center end -->
+	</form>
+{if $RETURN_ACTION eq "RelateLists"}
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-small" data-dismiss="modal">关闭</button>
+</div>
+{/if}
+
+
+
 
 <script>	
         var fieldname = new Array({$VALIDATION_DATA_FIELDNAME})
@@ -63,7 +82,9 @@
 		var currmonth = "{$currmonth}";
 		var currdays = "{$currdays}";
 		{literal}
+		var m = document.EditView.memday940;
 		window.onload = function(){
+		//m.onfocus = function(){
 			setYearOpts(curryear);
 			var calendar = document.EditView.memday1004;
 			calendar.onchange = function(){
@@ -91,6 +112,15 @@
 					setDaysOpts(currdays);
 				}
 			};
+		}
+
+		function changeDate(){
+			setYearOpts(curryear);
+			var calendar = document.EditView.memday1004;
+			calendar.onchange = function(){
+			setMonthOpts(currmonth);
+			document.EditView.memday944.length = 1;
+		}
 		}
 		{/literal}
 </script>

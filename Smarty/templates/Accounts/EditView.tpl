@@ -27,7 +27,7 @@
                     <i class="icon-arrow-left icon-white"></i>取消</button>
               </div>
               <div class="pull-right" style="margin-bottom:5px;" >
-                  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';check_duplicate()" name="savebutton">
+                  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';check_duplicate()" name="savebutton" type="button">
                     <i class="icon-ok icon-white"></i> 保存 </button>
                  
              </div>
@@ -58,7 +58,7 @@
                     <i class="icon-arrow-left icon-white"></i>取消</button>
               </div>
               <div class="pull-right" style="margin-bottom:5px;" >
-                  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';check_duplicate()" name="savebutton">
+                  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';check_duplicate()" name="savebutton"  type="button">
                     <i class="icon-ok icon-white"></i> 保存 </button>
              </div>
              <div class="clearfix"></div>

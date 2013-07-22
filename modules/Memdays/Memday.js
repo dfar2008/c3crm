@@ -536,7 +536,69 @@ function setDaysOpts(days){
 	}
 }
 function getDaysInMonth(year,month){
-	month = parseInt(month,10)+1;
+	month = parseInt(month,10);
 	var temp = new Date(year,month,0);
 	return temp.getDate();
+}
+
+
+//added by ligangze 2013-08-12
+function qunfa_mail(obj,divid,module) {
+	var select_options  =  document.getElementsByName('selected_id');
+	var x = select_options.length;
+	idstring = "";
+
+	xx = 0;
+	for(i = 0; i < x ; i++)
+	{
+		if(select_options[i].checked)
+		{
+			idstring = select_options[i].value +";"+idstring
+			xx++
+		}
+	}
+	if (xx != 0)
+	{
+		document.getElementById('idlist').value=idstring;
+
+		location.href='index.php?module=Maillists&action=ListView&idstring='+idstring+'&modulename='+module;;
+		//qunfa_mail_formload(idstring,module);
+		//fnvshobj(obj, divid);
+	}
+	else
+	{
+		alert(alert_arr.SELECT);
+		return false;
+	}
+
+}
+
+function qunfa_sms(obj,divid,module) {
+	var select_options  =  document.getElementsByName('selected_id');
+	var x = select_options.length;
+	idstring = "";
+
+	xx = 0;
+	for(i = 0; i < x ; i++)
+	{
+		if(select_options[i].checked)
+		{
+			idstring = select_options[i].value +";"+idstring
+			xx++
+		}
+	}
+	if (xx != 0)
+	{
+		document.getElementById('idlist').value=idstring;
+
+		location.href='index.php?module=Qunfas&action=ListView&idstring='+idstring+'&modulename='+module;;;
+		//qunfa_mail_formload(idstring,module);
+		//fnvshobj(obj, divid);
+	}
+	else
+	{
+		alert(alert_arr.SELECT);
+		return false;
+	}
+
 }
