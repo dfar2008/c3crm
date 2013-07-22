@@ -28,11 +28,10 @@ function selectProductRows()
 	$.ajax({  
 		   type: "GET",  
 		   //dataType:"Text",   
-		   url:"index.php?module=Products&action=Popup&popuptype=inventory_prods&select=enable",
+		   url:"index.php?module=Products&action=PopupForSO&html=Popup_picker&popuptype=inventory_prods&select=enable",
 		   success: function(msg){
-			 //alert(msg);
-		   	 //$("#status").prop("display","none");
-		   	 $("#searchallacct").html(msg); 
+		   	 $("#status").prop("display","none");
+		   	 $("#selectProductRows").html(msg); 
 		   }  
 	}); 
 	$('#searchallacct').modal('show');
