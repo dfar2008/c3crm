@@ -76,7 +76,7 @@ window.onload = function() {
 <link rel="stylesheet" type="text/css" href="themes/bootcss/css/Setting.css">
 <div class="container-fluid" style="height:590px;margin-right:10px">
 	<div class="row-fluid box" style="height:500px">
-		<div class="tab-header">导入{if $MODULE=="Contacts"}联系人{else}客户{/if}</div>
+		<div class="tab-header">导入{$APP.$MODULE}</div>
 		<div class="padded" style="overflow:auto;height:500px;">
 			<form enctype="multipart/form-data" name="Import" method="POST" action="index.php">
 			<div class="row-fluid" style="margin-top:30px">
@@ -107,7 +107,7 @@ window.onload = function() {
 					<input type="hidden" name="parenttab" value="{$CATEGORY}">
 					<input type="hidden" name="filename" id="filename" value="">
 					<div class="fieldset flash" style="margin-left:200px;"  >
-						<span class="legend">{if $MODULE=="Contacts"}上传要导入的联系人CSV文件{else}{$MOD.LBL_FILE_ORDERLIST}{/if}(Max:2MB)</span>
+						<span class="legend">上传要导入的{$APP.$MODULE}CSV文件(Max:2MB)</span>
 						<input type="text" id="txtFileName"  disabled="true" style="width:250px;margin-left:5px;"/>
 						<!--<input type="file" name="userfile" id="txtFileName"/>-->
 						<span id="spanButtonPlaceholder1"></span>

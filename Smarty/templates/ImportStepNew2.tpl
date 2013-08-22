@@ -29,17 +29,10 @@
 				</div>
 			</div>
 			<div class="breadcrumb text-center" style="margin-top:200px">
-				{if $MODULE=="Accounts"}
 				<button type="button" name="button"  accessyKey="F"  class="btn btn-small btn-primary"
-				onclick="javascript:location.href='index.php?module=Accounts&action=ListView'" />
-					<i class="icon-arrow-left icon-white"></i> 返回客户
+				onclick="javascript:location.href='index.php?module={$MODULE}&action=ListView'" />
+					<i class="icon-arrow-left icon-white"></i> 返回{$APP.$MODULE}
 				</button>
-				{else}
-					<button type="button" name="button"  accessyKey="F"  class="btn btn-small btn-primary"
-				onclick="javascript:location.href='index.php?module=Contacts&action=ListView'" />
-					<i class="icon-arrow-left icon-white"></i> 返回联系人
-				</button>
-				{/if}
 
 				<button title="{$MOD.LBL_IMPORT_MORE}"  class="btn btn-small btn-primary" type="submit" name="button" onclick="this.form.action.value='Import';this.form.step.value='1' ">
 					<i class="icon-circle-arrow-right icon-white"></i> {$MOD.LBL_IMPORT_MORE}

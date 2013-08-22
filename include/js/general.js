@@ -3295,7 +3295,7 @@ function SendMessToAll(setype){
 		//sendtimeobj = document.getElementById('jscal_field_sendtime');
 		//var sendtime = sendtimeobj.value;
 		var sendtime = $("#jscal_field_sendtime").val();
-		if(sendtime == 'undefined' || sendtime == ''){
+		if(sendtime == 'undefined'|| sendtime == ''){
 			sendtimeurl = '';
 		}else{
 			sendtimeurl = '&sendtime='+sendtime;	

@@ -108,10 +108,12 @@ class Contacts extends CRMEntity {
 				LEFT JOIN ec_users as ua
 					ON ec_contacts.approvedby = ua.id 
 				LEFT JOIN ec_users as ucreator
-					ON ec_contacts.smcreatorid = ucreator.id 
-				LEFT JOIN ec_approvestatus ON ec_contacts.approved = ec_approvestatus.statusid ";
+					ON ec_contacts.smcreatorid = ucreator.id ";
+				//LEFT JOIN ec_approvestatus ON ec_contacts.approved = ec_approvestatus.statusid ";
 		$query .= " left join ec_account ON ec_contacts.accountid=ec_account.accountid  ";
-		$query .= " left join ec_contactdetails ON ec_contacts.contact_id=ec_contactdetails.contactid  ";
+		//$query .= " left join ec_contactdetails ON ec_contacts.contact_id=ec_contactdetails.contactid  ";
+       // var_dump($query);
+       // exit(); 2013-08-22 by ligangze
 		
 		$where_auto = " ec_contacts.deleted = 0 ";
 

@@ -33,7 +33,6 @@ else
 {
 	$category = getParentTab();	
 }	
-
 if(!$_SESSION['lvs'][$currentModule])
 {
 	unset($_SESSION['lvs']);

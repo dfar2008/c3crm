@@ -24,8 +24,8 @@
   $app_list_strings['moduleList']['Maillisttmps'] = '邮件模板';
   $app_list_strings['moduleList']['Relsettings'] = '相关设置';
   $app_list_strings['moduleList']['Memdays'] = '纪念日';
-  $app_strings['Contacts'] = '其他联系人';
-  $app_strings['Contact'] = '其他联系人';
-  $app_list_strings['moduleList']['Contacts'] = '其他联系人';
+  $app_strings['Contacts'] = '联系人';
+  $app_strings['Contact'] = '联系人';
+  $app_list_strings['moduleList']['Contacts'] = '联系人';
 
 ?>

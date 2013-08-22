@@ -3,7 +3,7 @@
 {if $RETURN_ACTION=="CallRelatedList"}
 <div class="modal-header">
 	<button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-	<h3>新增其他联系人</h3>
+	<h3>编辑联系人</h3>
 </div>
 <div class="modal-body" style="max-height:580px">
 {/if}
