@@ -94,13 +94,14 @@ function alphabetic(module,url,dataid)
 
                   </form>
                 </div>
+				<!--
                 <div class="pull-right">
                   <button class="btn btn-small" style="margin-top:2px;"><i class="icon-refresh"></i>刷新</button>
                   <button class="btn btn-small" style="margin-top:2px;"><i class="icon-calendar"></i>日历</button>
                  <button class="btn btn-small" style="margin-top:2px;"><i class="icon-folder-open"></i>收藏</button>
                   <button class="btn btn-small" style="margin-top:2px;"><i class="icon-book"></i>帮助</button>
                   <button class="btn btn-small" style="margin-top:2px;"><i class="icon-home"></i>导航</button>
-                </div> 
+                </div> -->
                 <div class="clear"></div> 
             </div>
             <div id="tablink">
