@@ -3292,9 +3292,10 @@ function SendMessToAll(setype){
 			$("#receiveaccountinfo").focus();
 			return false;
 		}  
-		sendtimeobj = document.getElementById('jscal_field_sendtime');
-		var sendtime = sendtimeobj.value;
-		if(sendtime == ''){
+		//sendtimeobj = document.getElementById('jscal_field_sendtime');
+		//var sendtime = sendtimeobj.value;
+		var sendtime = $("#jscal_field_sendtime").val();
+		if(sendtime == 'undefined' || sendtime == ''){
 			sendtimeurl = '';
 		}else{
 			sendtimeurl = '&sendtime='+sendtime;	
