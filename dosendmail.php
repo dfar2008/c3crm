@@ -24,7 +24,6 @@ $options = array(
 	   'type'      => 'pdo_mysql'
     )
 );
-
 $queue = new Zend_Queue('Db', $options);
 
 //一分钟发送25条
