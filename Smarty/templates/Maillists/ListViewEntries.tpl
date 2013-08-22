@@ -15,18 +15,15 @@
                                 
                                 <tr>
                                 <td>
-                                 <p><br>
-                                    <font style="font-size:14px;margin-left:5px;"><a class="hdrLink" href="index.php?action=Maillists&module=Relsettings&parenttab=settings"><b>>>查看群发统计</b></a></font>
-                                <br>
+                                 <p>
+				  <font color="red">注意：请先根据cron/readme.txt说明设置群发邮件任务计划，云商店会自动设置，每三分钟发一次，每次100封邮件.</font><br>
                                   1.选择分组，添加该分组所有客户至接收人Email。<br>
                            	  2.如果没有你需要的分组，可自行创建新分组。<br>
                                   3.群发前，请先到<b>控制面板</b>-><b>相关设置</b>中设置SMTP服务器。<br>
                                   4.群发前，请先到客户中创建一个自己的客户，再修改测试分组中会员名，测试发送给自己。<br>
-                                  5.带附件的邮件发送，会较慢，请耐心等待，不要重复点击发送。<br>
-                                  6.邮件为空的用户,不显示。<br>
-								 7.邮件发送结束后，可点击<a href="index.php?action=Maillists&module=Relsettings&parenttab=settings">群发统计</a>查看发送情况。<br>
-								 8.接收人格式样例：<font color="red">zhangsan@sina.com(张三)</font>
-                                  <!-- 7.<b>5天</b>内发送过1次邮件或<b>一月</b>内发送过4次邮件的客户，自动过滤。-->
+                                  5.邮件为空的用户,不显示。<br>
+				  6.邮件发送结束后，可点击<a href="index.php?action=Maillists&module=Relsettings">群发统计</a>查看发送情况。<br>
+				  7.如果不能配置cron服务，可点击<a href="dosendmail.php">手工发送</a>。
                                   </p>
                                 </td>
                                 </tr>
