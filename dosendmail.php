@@ -177,7 +177,7 @@ function saveMailLog($sjid,$maillogsid,$receiver,$receiver_email,$subject,$mailc
 	$mailcontent = addslashes($mailcontent);
 	$sendtime = date("Y-m-d H:i:s");
 	$query = "insert into ec_maillogs(id,userid,receiver,receiver_email,subject,mailcontent,flag,mailresult,sendtime,maillistsid) values($maillogsid,'".$userid."','".$receiver."','".$receiver_email."','".$subject."','".$mailcontent."',$flag,'".$result."','".$sendtime."','".$sjid."')";
-	echo $query."<br>";
+	//echo $query."<br>";
 	$adb->query($query);
 	
 	if($successrate == 1 && !empty($sjid)){
