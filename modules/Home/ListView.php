@@ -224,9 +224,9 @@ for($i=0;$i<$adb->num_rows($result);$i++) {
     $metricslist['name'] = $adb->query_result($result,$i,'viewname');
     $metricslist['module'] = $adb->query_result($result,$i,'entitytype');
     $metricslist['count'] = "";
-    if($current_user->is_admin == "on"){//Administrator
+    //if($current_user->is_admin == "on"){//Administrator
          $metriclists[] = $metricslist;
-    }
+    //}
 }
 foreach ($metriclists as $metriclist)
 	{
@@ -234,9 +234,7 @@ foreach ($metriclists as $metriclist)
 		$listquery = getListQuery($modname,'',true);
 		$oCustomView = new CustomView($modname);
 		$metricsql = $oCustomView->getMetricsCvListQuery($metriclist['id'],$listquery,$modname);
-               // var_dump($metricsql."<br>");
 		$metricresult = $adb->query($metricsql);
- 
 		if($metricresult)
 		{
 			$rowcount = $adb->fetch_array($metricresult);

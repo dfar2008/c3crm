@@ -119,7 +119,7 @@ function mandatoryCheck()
                     <td style="background-color:#fff;" width="20%">
                       <input type="text" name='viewName' value="{$VIEWNAME}" />
                     </td> 
-                    <td style="background-color:#fff;">
+                    <td style="background-color:#fff;" width="20%">
                       {if $CHECKED eq 'checked'}
                           <input type="hidden" name="setDefault" value="1" >
                       {else}
@@ -128,6 +128,15 @@ function mandatoryCheck()
                           
                           {$publichtml}
                     </td>
+
+					<td style="background-color:#fff" width="10%">是否为关键视图</td>
+					<td style="background-color:#fff">
+						{if $MCHECKED eq 'checked'}
+						<input type="checkbox" name = "setMetrics" value="1" checked/>
+						{else}
+						<input type="checkbox" name="setMetrics" value="0"/>
+						{/if}
+					</td>
                   </tr>
                 </tbody>  
               </table>
