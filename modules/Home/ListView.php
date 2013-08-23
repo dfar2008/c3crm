@@ -40,18 +40,18 @@ $dashboard_arr['contact']['content'] = $NextContactAccount;
 
 
 //=========================一月内到期纪念日==================================//
-//$onemonthlater = date("m-d",strtotime("1 month"));
-//$query="select * from ec_memdays where  deleted=0 and smownerid='".$current_user->id."' and substr(memday946,-5) between '".date("m-d")."' and '".$onemonthlater."'  order by memday946 asc";  
-//$result = $adb->getList($query);
-//foreach($result as $row){
-//	    $memdaysid = $row['memdaysid'];
-//		$accountname = getAccountName($row['accountid']);
-//		$OneMonthMemday[$memdaysid] = "<img src=\"themes/softed/images/s1.png\" border=0/> &nbsp;&nbsp;<a href=\"index.php?module=Accounts&action=DetailView&record=".$row['accountid']."\" >".$accountname."</a> &nbsp;&nbsp; ".$row['memday938']."&nbsp;&nbsp; ".$row['memday946']." &nbsp;&nbsp;";
-//}
-//$dashboard_arr['memday']['title'] = "一月内到期纪念日";
-//$dashboard_arr['memday']['type'] = "text";
-//$dashboard_arr['memday']['divid'] = "1_month_memday";
-//$dashboard_arr['memday']['content'] = $OneMonthMemday;
+$onemonthlater = date("m-d",strtotime("1 month"));
+$query="select * from ec_memdays where  deleted=0 and smownerid='".$current_user->id."' and substr(memday946,-5) between '".date("m-d")."' and '".$onemonthlater."'  order by memday946 asc";  
+$result = $adb->getList($query);
+foreach($result as $row){
+	    $memdaysid = $row['memdaysid'];
+		$accountname = getAccountName($row['accountid']);
+		$OneMonthMemday[$memdaysid] = "<img src=\"themes/softed/images/s1.png\" border=0/> &nbsp;&nbsp;<a href=\"index.php?module=Accounts&action=DetailView&record=".$row['accountid']."\" >".$accountname."</a> &nbsp;&nbsp; ".$row['memday938']."&nbsp;&nbsp; ".$row['memday946']." &nbsp;&nbsp;";
+}
+$dashboard_arr['memday']['title'] = "一月内到期纪念日";
+$dashboard_arr['memday']['type'] = "text";
+$dashboard_arr['memday']['divid'] = "1_month_memday";
+$dashboard_arr['memday']['content'] = $OneMonthMemday;
 
 
 //=========================最近6个月销售情况=====================================//
@@ -254,39 +254,32 @@ foreach ($metriclists as $metriclist)
 		}
 	}
 
-
-//foreach($metriclists as $metriclist){
-//$keyview_body .=  '<tr><td class="crmTableRow" align="left">&nbsp;<a href="index.php?action=index&module='.$metriclist['module'].'&viewname='.$metriclist['id'].'">'.$metriclist['name'].'</a></td><td class="crmTableRow" align="left">&nbsp;'.$app_strings[$metriclist['module']].'</td><td class="crmTableRow" align="left">&nbsp;'.$rowcount['count'].'</td></tr>';
-//}
-//while($cvrow=$adb->fetch_array($result))
-//{
-  //  var_dump($cvrow);
-//    $metricslist = Array();
-//    $metricslist['id'] = $cvrow['cvid'];
-//    $metricslist['name'] = $cvrow['viewname'];
-//    $metricslist['module'] = $cvrow['entitytype'];
-//    $metricslist['count'] = '';
-//    if($current_user->is_admin == "on"){//Administrator
-//        $metriclists[] = $metricslist;
-//    }elseif(isPermitted($cvrow['entitytype'],"index") == "yes"){//Module Permissions
-//        if($cvrow["setpublic"] == '0'){//Public view
-//            $metriclists[] = $metricslist;
-//        }elseif($cvrow["setpublic"] && !empty($cvrow["setpublic"])){//Role
-//            $setpublicobj = explode(",",$cvrow["setpublic"]);
-//            if($current_user->roleid && in_array($current_user->roleid,$setpublicobj)){
-//                $metriclists[] = $metricslist;
-//            }
-//        }
-//    }	
-//}
-
-
 $dashboard_arr['keyview']['title'] = "关键视图";
 $dashboard_arr['keyview']['type'] = "table";
 $dashboard_arr['keyview']['divid'] = "keyview";
 $dashboard_arr['keyview']['thead'] = array("视图名","模块","数量");
 $dashboard_arr['keyview']['tbody'] = $keyview_body;
 $dashboard_arr['keyview']['content'] = $OneMonthMemday;
+
+//=================================易客CRM新闻=================================//
+
+$crmnews_contents = '';
+$crmnews_contents .= '<table border=0 cellspacing=0 cellpadding=2 width=100%>';
+$ftimeout = 60;
+$fparser = new EC_Feed_Parser();
+$fparser->ec_dofetch('http://www.c3crm.com/blog/?feed=rss2', $ftimeout);
+$items = $fparser->get_items();
+foreach($items as $item) {
+	$crmnews_contents .= '<tr><td align="left"><a href="'.$item->get_link().'" target="_blank">&nbsp;'.$item->get_title().'</a></td></tr>';
+}
+$crmnews_contents .= '</table>';
+
+$dashboard_arr['crmnews']['title'] = "易客CRM新闻";
+$dashboard_arr['crmnews']['type'] = "text";
+$dashboard_arr['crmnews']['divid'] = "crmnews";
+$dashboard_arr['crmnews']['content']= $crmnews_contents;
+
+
 
 
 

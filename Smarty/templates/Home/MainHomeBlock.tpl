@@ -70,7 +70,7 @@
 {/literal}
 </style>
 <div style="width:33.3%;float:left;">
-	<div style="overflow-y:auto;width:97%;overflow-x:hidden;float:left;position:relative;display:block;" class="mydash" id="{$val.divid}_win">
+	<div style="width:97%;float:left;position:relative;display:block;overflow-y:auto;overflow-x:hidden;" class="mydash" id="{$val.divid}_win">
 		<div style="background-color:#fafafa;padding-top:1px">
 			<h4>
 				{$val.title}
