@@ -269,8 +269,11 @@ $ftimeout = 60;
 $fparser = new EC_Feed_Parser();
 $fparser->ec_dofetch('http://www.c3crm.com/blog/?feed=rss2', $ftimeout);
 $items = $fparser->get_items();
+$loop = 1;
 foreach($items as $item) {
 	$crmnews_contents .= '<tr><td align="left"><a href="'.$item->get_link().'" target="_blank">&nbsp;'.$item->get_title().'</a></td></tr>';
+    $loop++;
+    if($loop==10) break;
 }
 $crmnews_contents .= '</table>';
 
