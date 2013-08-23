@@ -26,13 +26,13 @@ $smarty->assign("countheader", count($listview_header));
 $where = '';
 $search_url = '';
 $receiver = $_REQUEST['receiver'];
-if(!empty($receiver)){
+if(isset($receiver)){
 	$where .=" and receiver like '%".$receiver."%'";
 	$search_url .="&receiver=$receiver";
 	$smarty->assign("receiver", $receiver);
 }
 $receiver_phone = $_REQUEST['receiver_phone'];
-if(!empty($receiver_phone)){
+if(isset($receiver_phone)){
 	$where .=" and receiver_phone like '%".$receiver_phone."%'";
 	$search_url .="&receiver_phone=$receiver_phone";
 	$smarty->assign("receiver_phone", $receiver_phone);
@@ -52,18 +52,19 @@ $smarty->assign("flag", $flag);
 
 $flagarr = array("all"=>"全部","yes"=>"是","no"=>"否");
 $smarty->assign("FLAGARR", $flagarr);
-//changed by xiaoyang on 2012-09-17  --start
-//$query = "select * from ec_smslogs where userid = '".$current_user->id."' ";
-if(!is_admin($current_user))
-{
-	$query = "select * from ec_smslogs where userid = '".$current_user->id."' ";
-}
-else
-{
-	$query = "select * from ec_smslogs";
-}
+//changed by ligangze on 2013-08-23  --start
+$query = "select * from ec_smslogs where userid = '".$current_user->id."' ";
+//if(!is_admin($current_user))
+//{
+//	$query = "select * from ec_smslogs where userid = '".$current_user->id."' ";
+//}
+//else
+//{
+//	$query = "select * from ec_smslogs";
+//}
 //--end
-$query .=$where;			
+$query .=$where;	
+//var_dump($query);
 
 $count_result = $adb->query( mkCountQuery( $query));
 $noofrows = $adb->query_result($count_result,0,"count");
@@ -135,5 +136,5 @@ $smarty->assign("search_url", $search_url);
 $smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("APP", $app_strings);
 $smarty->assign("CMOD", $mod_strings);
-$smarty->display("Relsettings/SmsLogs.tpl");
+//$smarty->display("Relsettings/SmsLogs.tpl");
 ?>

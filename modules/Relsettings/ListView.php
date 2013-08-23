@@ -26,9 +26,10 @@ $relsetarray = array(
 			"MemdayConfig"=>$mod_strings['LBL_MEMDAY_SETTING'],
 			"EditPwd"=>$mod_strings['LBL_EDIT_PASSWORD'],
 			"EditMoreInfo"=>$mod_strings['LBL_EDIT_MORE_INFO'],
-			"MailLogs"=>$mod_strings['LBL_MAIL_LOGS'],
+			//"MailLogs"=>$mod_strings['LBL_MAIL_LOGS'],
 			//"Taobaozushou"=>$mod_strings['TAOBAOZUSHOU'],
 			//"SmsAccount"=>$mod_strings['LBL_DUANXINZHANGHAOSHEZHI']
+            "SmsLogs"=>"短信日志"
 	);
 $relsetkeyarr = array_keys($relsetarray);
 if(!empty($relset) && in_array($relset,$relsetkeyarr)){

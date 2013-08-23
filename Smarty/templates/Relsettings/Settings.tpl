@@ -37,6 +37,8 @@
 									{include file='Relsettings/EditMoreInfo.tpl'}
 								{elseif $RELSET == 'MailLogs'}
 									{include file='Relsettings/MailLogs.tpl'}
+								{elseif $RELSET == 'SmsLogs'}
+									{include file='Relsettings/SmsLogs.tpl'}
 								{elseif $RELSET == 'Taobaozushou'}
 									{include file='Relsettings/Taobaozushou.tpl'}
 								{elseif $RELSET == 'SmsAccount'}
