@@ -55,7 +55,7 @@ function logining_load(){
 			<a class="" href="http://www.c3crm.com/" target="_blank"><img src="themes/bootcss/img/logonew.png"></a>
 			<ul class="nav pull-right">
 				<li class="" style="line-height: 30px;">
-					<a href="http://www.c3crm.com/" target="_blank">客户关系管理系统</a>
+					<a href="http://www.c3crm.com/" target="_blank">开源免费开发关系管理系统</a>
 				</li>
 			</ul>
 		</div> <!-- /container -->
@@ -72,7 +72,7 @@ function logining_load(){
 	<form action="Authenticate.php" method="post" name="loginform" id="loginform">
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="user_name">Email</label>
+						<label class="control-label" for="user_name">用户名</label>
 						<div class="controls">
 							<input type="text" class="" id="user_name" name="user_name" value="<?php echo $login_user_name ?>">
 						</div>
@@ -146,7 +146,7 @@ function logining_load(){
              <p>Copyright &copy; 2013 <a href="http://www.c3crm.com" target="_blank">上海瑞策软件有限公司</a>, all rights reserved.</p>
 			<!--<p>我能用它做什么？让系统自动的帮您跟踪客户，真正的实现销售自动化(SFA)，</p>
 			<p>让您感觉销售是件非常Easy的事情！还不心动吗，赶紧试试吧！</p>-->
-			<p>E-mail: <a href="javascript:;">sales@c3crm.cn</a></p>
+			<p>联系电话：400 680 5898 &nbsp;&nbsp;E-mail: <a href="javascript:;">sales@c3crm.cn</a></p>
 		</div> <!-- /login-extra -->
 	
 </div> <!-- /login-wrapper -->

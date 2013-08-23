@@ -53,6 +53,7 @@
 						  <li ><a href="index.php?module=Caches&action=index"><i class="cus-cog"></i>&nbsp;清除缓存</a></li>
 						{/if}
                           <li ><a href="Logout.php"><i class="icon-off"></i>&nbsp;退出</a></li>
+						  <li ><a href="http://www.c3crm.com/bbs/forum.php" target="_blank"><i class="icon-question-sign"></i>&nbsp;帮助</li>
                         </ul>                            
                   </div>
               </div>
@@ -71,26 +72,14 @@
                 <ul class="nav ">
                 {foreach key=maintabs item=detail from=$HEADERS} 
           				{if $detail ne $MODULE_NAME}
-							{if $detail eq "Contacts"}
-							<li class="dropdown ">
-          						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >联系人</a>
-							</li>
-							{else}
+							
 							<li class="dropdown ">
           						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >{$APP[$detail]}</a>
 							</li>
-							{/if}
-          					
           				{else}
-          					{if $detail eq "Contacts"}
-							<li class="dropdown active">
-          						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >联系人</a>
-							</li>
-							{else}
 							<li class="dropdown active">
           						<a href="index.php?module={$detail}&action=index" class="dropdown-toggle" >{$APP[$detail]}</a>
 							</li>
-							{/if}
           				{/if}	
           			{/foreach}
                 </ul>
