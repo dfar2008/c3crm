@@ -10,6 +10,7 @@ if (isset($_FILES["Filedata"]) && is_uploaded_file($_FILES["Filedata"]["tmp_name
 	//上传文件赋值给$upload_file
 	$upload_file=$_FILES["Filedata"];
 	if(move_uploaded_file($upload_file["tmp_name"],$upload_file_name)){
+		$upload_file_name = str_replace("\\","/",$upload_file_name);
 		echo $upload_file_name;
 	}else{
 		echo '';
