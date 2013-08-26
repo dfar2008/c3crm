@@ -55,7 +55,7 @@ function logining_load(){
 			<a class="" href="http://www.c3crm.com/" target="_blank"><img src="themes/bootcss/img/logonew.png"></a>
 			<ul class="nav pull-right">
 				<li class="" style="line-height: 30px;">
-					<a href="http://www.c3crm.com/" target="_blank">开源免费开发关系管理系统</a>
+					<a href="http://www.c3crm.com/" target="_blank">开源免费客户关系管理系统</a>
 				</li>
 			</ul>
 		</div> <!-- /container -->
