@@ -81,7 +81,7 @@ foreach($pieces as $val)
 						<td align=left class="small" style="padding-left:20px">
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装向导将创建易客CRM运行所需要的数据库和表文件。整个过程需要4分钟。点击开始按钮开始安装。
 <br><br>
-<p><span style="color:#555555">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;易客CRM支持Mysql4.1.x,PHP4.3.9，Apache1.3，不支持Mysql4.0.x，也可以运行在Easyphp,xampp/lamp,wamp等PHP集成平台上。</p> 
+<p><span style="color:#555555">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;易客CRM支持Mysql5.x,PHP5.2.x，Apache1.3，不支持Mysql4.0.x，也可以运行在Easyphp,xampp/lamp,wamp等PHP集成平台上。</p> 
 </center>
 </span>
 						

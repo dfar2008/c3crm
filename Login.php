@@ -12,7 +12,7 @@ $default_company_name = "";
 <!-- saved from url=(0050)http://wbpreview.com/previews/WB00U8L84/login.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Dashboard - Bootstrap Admin</title>
+    <title>中国知名开放源代码CRM：易客CRM</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">    
