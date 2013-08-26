@@ -38,7 +38,7 @@ $focus_impacc = new ImportAccount();
 
 $focus = 0;
 $delimiter = ',';
-$max_lines = 3;
+$max_lines = 500;//最大行数
 
 global $theme;
 $theme_path="themes/".$theme."/";
@@ -54,6 +54,9 @@ $smarty->assign("MODULE", $_REQUEST['module']);
 
 //added by ligangze 2013-08-09
 $filepath = $_REQUEST['filename'];//临时文件的路径
+$filepath = str_replace("\\","/",$filepath);
+//var_dump($filepath);
+//exit();
 $filesize = filesize($filepath);
 if(!isset($filepath)){
     show_error_import($mod_strings['LBL_IMPORT_MODULE_ERROR_NO_UPLOAD']);
@@ -127,7 +130,8 @@ $rows = $ret_value['rows'];
 $count = $ret_value['field_count'];
 switch($_REQUEST['module']){
     case 'Accounts':
-        $head = array("客户名称","创建人","联系人","负责人","职位","性别","客户状态","vip信息","热度","成交意愿","客户来源","客户类型","下次联系日期","手机号码","电话","QQ","Email","传真","微博","MSN","淘宝旺旺","网站","所属国家","所属省份","所属城市","所属区域","详细地址","客户邮编","最近5天发送邮件次数","最近一月发送邮件次数","最近三月发送短信次数","最近三月发送邮件次数","最新发送短信日期","最新发送邮件日期","最新联系时间","联系次数","最新订单日期","订单数量","订单金额","创建时间","修改时间","失效日期","姓名1","电话122","备注");
+        //$head = array("客户名称","创建人","联系人","负责人","职位","性别","客户状态","vip信息","热度","成交意愿","客户来源","客户类型","下次联系日期","手机号码","电话","QQ","Email","传真","微博","MSN","淘宝旺旺","网站","所属国家","所属省份","所属城市","所属区域","详细地址","客户邮编","最近5天发送邮件次数","最近一月发送邮件次数","最近三月发送短信次数","最近三月发送邮件次数","最新发送短信日期","最新发送邮件日期","最新联系时间","联系次数","最新订单日期","订单数量","订单金额","创建时间","修改时间","失效日期","姓名1","电话122","备注");
+        $head = array("客户名称","联系人","职位","性别","手机号码","电话","QQ","Email","传真","网站","所属国家","所属省份","所属城市","所属区域","详细地址","客户邮编","备注");
     break;
     case 'Contacts':
         $head = array("姓名","客户","负责人","创建人","性别","职位","手机","Email","电话","传真","QQ","MSN","旺旺","微博","创建时间","修改时间","备注");
@@ -136,7 +140,7 @@ switch($_REQUEST['module']){
 
 
 $accfieldarr = $rows[0];
-//var_dump($accfieldarr);
+//var_dump($rows);//怎么只有两行？
 //exit();
 
 foreach($accfieldarr as $key=>$accfield){

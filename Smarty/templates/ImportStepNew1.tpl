@@ -90,7 +90,11 @@ window.onload = function() {
 							3.导入文件的第一行"标题"请不要删除，添加或更改，以免不能导入。<br><br>
 							4.重复的记录跳过不更新<br><br>
 						</p>
-						<a href="c3crm.csv"><font color=red size="+1"><b>>>下载样例</b></font></a>
+						{if $MODULE=='Accounts'}
+						<a href="c3crm.csv" target="_blank"><font color=red size="+1"><b>>>下载样例</b></font></a>
+						{else}
+						<a href="contacts.csv" target="_blank"><font color=red size="+1"><b>>>下载样例</b></font></a>
+						{/if}
 					</div>
 				</div>
 				<!--tip end-->
