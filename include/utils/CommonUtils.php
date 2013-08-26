@@ -1081,7 +1081,7 @@ function getHeaderArray()
 	$resultant_array = getSqlCacheData($key);
 	if(!$resultant_array) {
 		$resultant_array = Array();
-		$query = 'select name,tablabel,tabid from ec_tab where tabid not in (29,35,36) order by tabsequence';
+		$query = 'select name,tablabel,tabid from ec_tab where tabid not in (29,35,36,37,44) order by tabsequence';
 		$result = $adb->query($query);
 		for($i=0;$i<$adb->num_rows($result);$i++)
 		{
