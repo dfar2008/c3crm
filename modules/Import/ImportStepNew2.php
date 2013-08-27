@@ -3,6 +3,8 @@
 //set_time_limit(0);
 require_once('include/CRMSmarty.php');
 require_once('modules/Import/ImportAccount.php');
+require_once('modules/Import/ImportContact.php');
+require_once('modules/Contacts/Contacts.php');
 require_once('modules/Accounts/Accounts.php');
 require_once('modules/Import/Forms.php');
 require_once('modules/Import/parse_utils.php');
@@ -33,8 +35,14 @@ global $upload_maxsize;
 global $root_directory;
 global $import_dir;
 
-
-$focus_impacc = new ImportAccount();
+switch($_REQUEST['module']){
+    case "Accounts":
+    $focus_impacc = new ImportAccount();
+    break;
+    case "Contacts":
+    $focus_impacc = new ImportContact();
+    break;
+}
 
 $focus = 0;
 $delimiter = ',';
@@ -150,7 +158,10 @@ foreach($accfieldarr as $key=>$accfield){
 	}
 }
 $filed_lable = getColumnField();
+
 $focus_impacc->ClearColumnFields();
+//var_dump($focus_impacc);
+//exit();
 
 $pix1 = $width / $count; 
 $progress1 = 0;
@@ -191,7 +202,8 @@ foreach($rows as $key=>$val){
 			$focus_impacc->column_fields[$field]=$v;
 		}
 	
-		 $eof = $focus_impacc->save("Accounts");
+		 //$eof = $focus_impacc->save("Accounts");
+         $eof = $focus_impacc->save($_REQUEST['module']);
 		 if($eof == 1){
 			$success_account_insert +=1;
 		 }elseif($eof == 2){
@@ -223,8 +235,12 @@ $smarty->display("ImportStepNew2.tpl");
 
 function getColumnField(){
 	global $adb;
-	$mods = return_module_language("zh_cn","Accounts");
-	$query = "SELECT columnname,fieldlabel FROM `ec_field` WHERE tabid=6 ";	
+	//$mods = return_module_language("zh_cn","Accounts");
+    $mods = return_module_language("zh_cn",$_REQUEST['module']);
+//    var_dump($mods);
+//    exit();
+    $tabid = getTabid($_REQUEST['module']);
+	$query = "SELECT columnname,fieldlabel FROM `ec_field` WHERE tabid=$tabid ";
 	$rows = $adb->getList($query);
 	if(count($rows) >0){
 		foreach($rows as $row){
@@ -236,8 +252,10 @@ function getColumnField(){
 			$arr[$fieldlabel] = $columnname;
 		}
 	}
-	
+//	var_dump($arr);
+//    exit();
 	return $arr;
+
 }
 
 

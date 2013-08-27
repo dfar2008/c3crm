@@ -374,7 +374,7 @@ function return_module_language($language, $module)
 	$log->debug("Entering return_module_language() method ...");
 	global $mod_strings, $default_language, $log, $currentModule, $translation_string_prefix;
 
-	if($currentModule == $module && isset($mod_strings) && $mod_strings != null && $module !='Accounts')
+	if($currentModule == $module && isset($mod_strings) && $mod_strings != null && $module !='Accounts'&& $module!='Contacts')
 	{
 		// We should have already loaded the array.  return the current one.
 		$log->debug("Exiting return_module_language method ...");
