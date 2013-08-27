@@ -3650,7 +3650,7 @@ function chooseAccountFromLink(linkel){
     $("input[name=account_id]").val(accountid);
     $('#SelCustomer_popview').hide();
     if($("#contact_id")){
-        updateContactOpts();
+       // updateContactOpts();
     }
 }
 
