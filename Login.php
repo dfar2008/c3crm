@@ -9,10 +9,9 @@ $default_company_name = "";
 
 ?>
 <!DOCTYPE html>
-<!-- saved from url=(0050)http://wbpreview.com/previews/WB00U8L84/login.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>中国知名开放源代码CRM：易客CRM</title>
+    <title>中国知名开放源代码客户关系管理系统：易客CRM</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">    
@@ -55,7 +54,7 @@ function logining_load(){
 			<a class="" href="http://www.c3crm.com/" target="_blank"><img src="themes/bootcss/img/logonew.png"></a>
 			<ul class="nav pull-right">
 				<li class="" style="line-height: 30px;">
-					<a href="http://www.c3crm.com/" target="_blank">开源免费客户关系管理系统</a>
+					<a href="http://www.c3crm.com/" target="_blank">专门针对小型企业开发的开源免费客户关系管理系统：易客CRM</a>
 				</li>
 			</ul>
 		</div> <!-- /container -->
@@ -131,17 +130,9 @@ function logining_load(){
 		
 		<div id="login-extra">
 			<p>
-				<!--<a href="training/sales01.html" target="_blank">培训视频</a>&nbsp;&nbsp;
-				<a href="training/sfa.doc" target="_blank">SFA使用说明</a>&nbsp;&nbsp;
-				<a href="mobile/index.html" target="_blank">手机登录</a>&nbsp;&nbsp;
-				<a href="http://vdisk.weibo.com/s/5SBnr/1337924467" target="_blank">手机客户端下载</a>-->
+
 			</p>
-			<!--
-			<p>
-				或使用合作伙伴的账号登录，还在测试中，请不要点击<br>
-				<a href="<?=$code_url?>"><img src="themes/images/weibo_login.png" title="测试中" alt="测试中" border="0"></a>
-			</p>
-			-->
+			
              <br>
              <p>Copyright &copy; 2013 <a href="http://www.c3crm.com" target="_blank">上海瑞策软件有限公司</a>, all rights reserved.</p>
 			<!--<p>我能用它做什么？让系统自动的帮您跟踪客户，真正的实现销售自动化(SFA)，</p>
