@@ -48,7 +48,7 @@ class ImportContact extends Contacts {
 		global $imported_ids;
         global $current_user;
 
-		$acc_name = trim($this->column_fields['account_id']);
+		$acc_name = trim($this->column_fields['accountid']);
 
 		if ((! isset($acc_name) || $acc_name == '') )
 		{

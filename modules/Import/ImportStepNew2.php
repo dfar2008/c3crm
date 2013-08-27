@@ -142,7 +142,7 @@ switch($_REQUEST['module']){
         $head = array("客户名称","联系人","职位","性别","手机号码","电话","QQ","Email","传真","网站","所属国家","所属省份","所属城市","所属区域","详细地址","客户邮编","备注");
     break;
     case 'Contacts':
-        $head = array("姓名","客户","负责人","创建人","性别","职位","手机","Email","电话","传真","QQ","MSN","旺旺","微博","创建时间","修改时间","备注");
+        $head = array("姓名","客户","性别","职位","手机","Email","电话","传真","QQ","MSN","旺旺","微博","备注");
     break;
 }
 
@@ -201,6 +201,7 @@ foreach($rows as $key=>$val){
 			$field = $filed_lable[$t];
 			$focus_impacc->column_fields[$field]=$v;
 		}
+		$focus_impacc->process_special_fields();
 	
 		 //$eof = $focus_impacc->save("Accounts");
          $eof = $focus_impacc->save($_REQUEST['module']);
