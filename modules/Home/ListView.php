@@ -120,13 +120,15 @@ $dashboard_arr['salesorder']['content'] = "waiting...";
 
     $lastweek = date("Y-m-d",strtotime("-1 week"));
     $lastweek_start = date("Y-m-d",strtotime("-1 week",$monday));
+    $lastweek_end = date("Y-m-d",strtotime("-1 week",$sunday));
    // var_dump($lastweek_start);
     $end   = date("Y-m-d", $sunday);
 
 
 //===================本周新增客户数========================//
 $query  = "select count(*) as daytotal from ec_account where left(createdtime,10)>='".$start."' and deleted=0";
-$lw_query = "select count(*) as lwaccount from ec_account where left(createdtime,10) between '".$lastweek_start."' and '".$lastweek."' and deleted=0";
+$lw_query = "select count(*) as lwaccount from ec_account where left(createdtime,10) between '".$lastweek_start."' and '".$lastweek_end."' and deleted=0";
+
 
 $result =$adb->query($query);
 $lw_result = $adb->query($lw_query);
@@ -137,9 +139,9 @@ if($lw_account==0){
 }elseif($daytotal==0){
     $week_account_percent = "D".($lw_account*100)."%";
 }elseif($daytotal>$lw_account){
-    $week_account_percent = "U".(number_format(($daytotal-$lw_account)/$daytotal,2,'.',',')*100)."%";
+    $week_account_percent = "U".(number_format(($daytotal-$lw_account)/$lw_account,2,'.',',')*100)."%";
 }elseif($daytotal<$lw_account){
-    $week_account_percent = "D".(number_format(($lw_account-$daytotal)/$lw_account,2,'.',',')*100)."%";
+    $week_account_percent = "D".(number_format(($lw_account-$daytotal)/$daytotal,2,'.',',')*100)."%";
 }else{
     $week_account_percent = "U0%";
 }
@@ -147,7 +149,7 @@ if($lw_account==0){
 
 //===================本周订单成交额=========================//
 $query = "select sum(total) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0";
-$lw_query = "select sum(total) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek."'";
+$lw_query = "select sum(total) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek_end."'";
 
 $result = $adb->query($query);
 $month_deal_order = $adb->query_result($result,0,"monthdealorder");
@@ -160,9 +162,9 @@ if($lwdealorder==0){
 }elseif($month_deal_order==0){
     $week_order_percent = "D".($lwdealorder*100)."%";
 }elseif($month_deal_order>$lwdealorder){
-    $week_order_percent = "U".(number_format(($month_deal_order-$lwdealorder)/$month_deal_order,4,'.',',')*100)."%";
+    $week_order_percent = "U".(number_format(($month_deal_order-$lwdealorder)/$lwdealorder,4,'.',',')*100)."%";
 }elseif($month_deal_order<$lwdealorder){
-    $week_order_percent = "D".(number_format(($lwdealorder-$month_deal_order)/$lwdealorder,4,'.',',')*100)."%";
+    $week_order_percent = "D".(number_format(($lwdealorder-$month_deal_order)/$month_deal_order,4,'.',',')*100)."%";
 }else{
     $week_order_percent = "U0%";
 }
@@ -170,7 +172,7 @@ if($lwdealorder==0){
 
 //===================本周订单成交量=========================//
 $query = "select count(*) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0";
-$lw_query = "select count(*) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek."'";
+$lw_query = "select count(*) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek_end."'";
 
 $result = $adb->query($query);
 $month_deal_count_order = $adb->query_result($result,0,"monthdealorder");
@@ -182,9 +184,9 @@ if($lwdealorder==0){
 }elseif($month_deal_count_order==0){
     $week_order_count_percent = "D".($lwdealorder*100)."%";
 }elseif($month_deal_count_order>$lwdealorder){
-    $week_order_count_percent = "U".(number_format(($month_deal_count_order-$lwdealorder)/$month_deal_count_order,4,'.',',')*100)."%";
+    $week_order_count_percent = "U".(number_format(($month_deal_count_order-$lwdealorder)/$lwdealorder,4,'.',',')*100)."%";
 }elseif($month_deal_count_order<$lwdealorder){
-    $week_order_count_percent = "D".(number_format(($lwdealorder-$month_deal_count_order)/$lwdealorder,4,'.',',')*100)."%";
+    $week_order_count_percent = "D".(number_format(($lwdealorder-$month_deal_count_order)/$month_deal_count_order,4,'.',',')*100)."%";
 }else{
     $week_order_count_percent = "U0%";
 }
@@ -192,7 +194,7 @@ if($lwdealorder==0){
 
 //==================本周联系记录数=====================================//
 $query = "select count(*) as weeknotes from ec_notes where left(createdtime,10)>='".$start."' and deleted=0";
-$lw_query = "select count(*) as lwnotes from ec_notes where left(createdtime,10)between '".$lastweek_start."' and '".$lastweek."' and deleted=0";
+$lw_query = "select count(*) as lwnotes from ec_notes where left(createdtime,10)between '".$lastweek_start."' and '".$lastweek_end."' and deleted=0";
 
 $result = $adb->query($query);
 $weeknewnotes = $adb->query_result($result,0,"weeknotes");
@@ -204,9 +206,9 @@ if($lwnewnotes==0){
 }elseif($weeknewnotes==0){
     $week_notes_percent = "D".($lwnewnotes*100)."%";
 }elseif($weeknewnotes>$lwnewnotes){
-    $week_notes_percent = "U".(number_format(($weeknewnotes-$lwnewnotes)/$weeknewnotes,4,'.',',')*100)."%";
+    $week_notes_percent = "U".(number_format(($weeknewnotes-$lwnewnotes)/$lwnewnotes,4,'.',',')*100)."%";
 }elseif($weeknewnotes<$lwnewnotes){
-    $week_notes_percent = "D".(number_format(($lwnewnotes-$weeknewnotes)/$lwnewnotes,4,'.',',')*100)."%";
+    $week_notes_percent = "D".(number_format(($lwnewnotes-$weeknewnotes)/$weeknewnotes,4,'.',',')*100)."%";
 }else{
     $week_notes_percent = "U0%";
 }

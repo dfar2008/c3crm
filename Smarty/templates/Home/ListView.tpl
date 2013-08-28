@@ -167,7 +167,7 @@
 						<h4 class="up">{$DAYTOTAL}</h4>
 						<div class="data">
 							<p>
-								较上周同时段：
+								较上周：
 								<span>
 								{if $ACCOUNTUPDOWN=="U"}
 								<i class="icon-arrow-up"></i>
@@ -185,7 +185,7 @@
 						<h4>{$WEEKNEWNOTES}</h4>
 						<div class="data">
 							<p>
-								较上周同时段：<span>
+								较上周：<span>
 								{if $NOTESUPDOWN=="U"}
 								<i class="icon-arrow-up"></i> 
 								{else}
@@ -200,7 +200,7 @@
 						<h4 class="up">{$ORDERCOUNT}</h4>
 						<div class="data">
 							<p>
-								较上周同时段：
+								较上周：
 								<span>
 								{if $ORDERCOUNTUPDOWN=="D"}
 								<i class="icon-arrow-down"></i>
@@ -217,7 +217,7 @@
 						<h4 class="up">{$MONTHDEALORDER}</h4>
 						<div class="data">
 							<p>
-								较上周同时段：
+								较上周：
 								<span style="display:inline">
 								{if $ORDERUPDOWN=="D"}
 								<i class="icon-arrow-down"></i>
