@@ -218,7 +218,7 @@
 						<div class="data">
 							<p>
 								较上周同时段：
-								<span>
+								<span style="display:inline">
 								{if $ORDERUPDOWN=="D"}
 								<i class="icon-arrow-down"></i>
 								{else}
@@ -324,9 +324,12 @@ ul{
 	color:#666;
 	font-size:12px;
 	line-height:21px;
-	width:160px;
+	width:100%;
 	margin:0 auto;
 	text-align:left;
+}
+.datalist .data p{
+	text-align:center;
 }
 
 </style>

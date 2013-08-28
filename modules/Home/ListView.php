@@ -58,8 +58,8 @@ $dashboard_arr['memday']['content'] = $OneMonthMemday;
 $date_start = date('Y-m-d',mktime(0,0,0,date("m")-5,date("d"),date("Y")));
 $date_end = date('Y-m-d',mktime (0,0,0,date("m"),date("d"),date("Y")));
 
-$where .= " ec_salesorder.duedate >= ".db_convert("'".$date_start."'",'date')." AND ec_salesorder.duedate <= ".db_convert("'".$date_end."'",'date')." ";
-$query = "SELECT ".db_convert('ec_salesorder.duedate','date_format',array("'%Y-%m'"),array("'YYYY-MM'"))." as m, 
+$where .= " ec_salesorder.orderdate >= ".db_convert("'".$date_start."'",'date')." AND ec_salesorder.orderdate <= ".db_convert("'".$date_end."'",'date')." ";
+$query = "SELECT ".db_convert('ec_salesorder.orderdate','date_format',array("'%Y-%m'"),array("'YYYY-MM'"))." as m, 
 			sum(ec_salesorder.total) as total, count(*) as so_count 
 		FROM ec_salesorder 
 			inner join ec_account 
@@ -68,7 +68,7 @@ $query = "SELECT ".db_convert('ec_salesorder.duedate','date_format',array("'%Y-%
 				on ec_users.id = ec_salesorder.smownerid 
 		where ec_salesorder.deleted = 0  ";
 $query .= " AND ".$where;
-$query .= " GROUP BY ".db_convert('ec_salesorder.duedate','date_format',array("'%Y-%m'"),array("'YYYY-MM'"))." ORDER BY m";
+$query .= " GROUP BY ".db_convert('ec_salesorder.orderdate','date_format',array("'%Y-%m'"),array("'YYYY-MM'"))." ORDER BY m";
 $result = $adb->query($query);
 
 $categorys = date("Y-m",strtotime("-5 month")).",".date("Y-m",strtotime("-4 month")).",".date("Y-m",strtotime("-3 month")).
@@ -146,11 +146,12 @@ if($lw_account==0){
 
 
 //===================本周订单成交额=========================//
-$query = "select sum(total) as monthdealorder from ec_salesorder where left(duedate,10) between '".$start."' and '".$end."' and deleted=0";
-$lw_query = "select sum(total) as lwdealorder from ec_salesorder where  deleted=0 and left(duedate,10) between '".$lastweek_start."' and '".$lastweek."'";
+$query = "select sum(total) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0";
+$lw_query = "select sum(total) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek."'";
 
 $result = $adb->query($query);
 $month_deal_order = $adb->query_result($result,0,"monthdealorder");
+if(!$month_deal_order) $month_deal_order=0;
 $lw_result = $adb->query($lw_query);
 $lwdealorder = $adb->query_result($lw_result,0,"lwdealorder");
 
@@ -168,8 +169,8 @@ if($lwdealorder==0){
 
 
 //===================本周订单成交量=========================//
-$query = "select count(*) as monthdealorder from ec_salesorder where left(duedate,10) between '".$start."' and '".$end."' and deleted=0";
-$lw_query = "select count(*) as lwdealorder from ec_salesorder where  deleted=0 and left(duedate,10) between '".$lastweek_start."' and '".$lastweek."'";
+$query = "select count(*) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0";
+$lw_query = "select count(*) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek."'";
 
 $result = $adb->query($query);
 $month_deal_count_order = $adb->query_result($result,0,"monthdealorder");
