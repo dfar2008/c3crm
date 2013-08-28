@@ -229,6 +229,7 @@ $smarty->assign("CRITERIA", $criteria);
 $smarty->assign("FIELDNAMES", $fieldnames);
 $smarty->assign("NAVIGATION", $navigationOutput);
 $smarty->assign("RECORD_COUNTS", $record_string);
+$smarty->assign("ISADMIN",$current_user->is_admin);
 if(isset($_REQUEST['ajax']) && $_REQUEST['ajax'] != '')
 	$smarty->display("Notes/ListViewEntries.tpl");
 else	

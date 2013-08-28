@@ -250,7 +250,7 @@ $smarty->assign("RECORD_COUNTS", $record_string);
 $smarty->assign("RECORD", $_REQUEST['record']);
 
 $_SESSION[$currentModule.'_listquery'] = $query;
-
+$smarty->assign("ISADMIN",$current_user->is_admin);
 $smarty->assign("tabview", $tabview);
 
 

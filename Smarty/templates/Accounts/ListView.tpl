@@ -195,6 +195,7 @@ function ajaxChangeStatus(statusname){
                     <li ><a href="javascript:;" onclick="javascript:getTabView('{$MODULE}','viewname={$id}',this,{$id});">{$viewname}</a></li>
                   {/if}
                  {/foreach}
+				 {if $ISADMIN===true}
                 <li>
                   <a href="index.php?module={$MODULE}&action=CustomView&parenttab={$CATEGORY}" style="padding:2px;">
                     <i class="cus-add"></i></a>
@@ -205,6 +206,7 @@ function ajaxChangeStatus(statusname){
                 <li> 
                   <a href="javascript:deleteView('{$MODULE}','{$CATEGORY}')" style="padding:2px;"><i class="cus-cancel"></i></a>
                 </li>
+				{/if}
               </ul>
           </div>
 

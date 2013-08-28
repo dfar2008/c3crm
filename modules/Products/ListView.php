@@ -201,6 +201,7 @@ $smarty->assign("BUTTONS", $other_text);
 
 $check_button = Button_Check($module);
 $smarty->assign("CHECK", $check_button);
+$smarty->assign("ISADMIN",$current_user->is_admin);
 if(isPermitted('Vendors','index') == 'yes'){
 	$smarty->assign("VENDOR_VIEW", "permitted");
 }

@@ -78,7 +78,7 @@ $smarty->assign("receiveaccountinfo",$receiveaccountinfo);
 //Retreive the List View Table Header
 if($viewid !='')
 $url_string .="&viewname=".$viewid;
-
+$smarty->assign("ISADMIN",$current_user->is_admin);
 
 if(isset($_REQUEST['ajax']) && $_REQUEST['ajax'] != '')
 	$smarty->display("Maillists/ListViewEntries.tpl");

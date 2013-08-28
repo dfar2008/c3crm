@@ -31,7 +31,7 @@ function isPermitted($module,$actionname,$record_id='')
 	global $log;
 	$log->debug("Entering isPermitted() method ...");
 	$permission ="yes";
-	if($module == "Settings" || $module == "Users" || $module == "Caches") {
+	if($module == "Settings" || $module == "Users" || $module == "Caches" || $actionname == "CustomView") {
 		global $current_user;
 		if(!is_admin($current_user)) {
 			$permission ="no";

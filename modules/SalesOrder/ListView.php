@@ -169,6 +169,7 @@ $smarty->assign("RECORD_COUNTS", $record_string);
 $smarty->assign("CUSTOMVIEW_OPTION",$customviewcombo_html);
 $smarty->assign("VIEWID", $viewid);
 $smarty->assign("BUTTONS", $other_text);
+$smarty->assign("ISADMIN",$current_user->is_admin);
 
 
 if(isset($_REQUEST['ajax']) && $_REQUEST['ajax'] != '')

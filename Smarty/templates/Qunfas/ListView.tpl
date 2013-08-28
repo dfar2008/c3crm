@@ -23,6 +23,7 @@
                     <li ><a href="javascript:;" onclick="javascript:getTableViewForFenzu('{$MODULE}','viewname={$id}',this,{$id});">{$viewname}</a></li>
                   {/if}
                  {/foreach}
+				 {if $ISADMIN === true}
                 <li>
                   <a href="index.php?module={$MODULE}&action=Fenzu&parenttab={$CATEGORY}" style="padding:2px;">
                     <i class="cus-add"></i></a>
@@ -33,6 +34,7 @@
                 <li> 
                   <a href="javascript:deleteFenzu('{$MODULE}','{$CATEGORY}')" style="padding:2px;"><i class="cus-cancel"></i></a>
                 </li>
+				{/if}
               </ul>
           </div>
 
