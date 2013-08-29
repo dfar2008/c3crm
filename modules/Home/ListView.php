@@ -23,6 +23,11 @@ if(is_file('modules/Home/key_customview.php'))
 }
 
 $dashboard_arr = array();
+if($current_user->is_admin===true){
+    $isadmin = "";
+}else{
+    $isadmin = " and smownerid='".$current_user->id."'";
+}
 
 //====================================一周内待联系客户===========================//
 $query="select * from ec_account where  deleted=0 and smownerid='".$current_user->id."' and contact_date !='' and contact_date !='0000-00-00'  and contact_date between '".date("Y-m-d")."' and '".date("Y-m-d",strtotime("1 week"))."' order by contact_date asc"; 
@@ -126,8 +131,8 @@ $dashboard_arr['salesorder']['content'] = "waiting...";
 
 
 //===================本周新增客户数========================//
-$query  = "select count(*) as daytotal from ec_account where left(createdtime,10)>='".$start."' and deleted=0";
-$lw_query = "select count(*) as lwaccount from ec_account where left(createdtime,10) between '".$lastweek_start."' and '".$lastweek_end."' and deleted=0";
+$query  = "select count(*) as daytotal from ec_account where left(createdtime,10)>='".$start."' and deleted=0".$isadmin;
+$lw_query = "select count(*) as lwaccount from ec_account where left(createdtime,10) between '".$lastweek_start."' and '".$lastweek_end."' and deleted=0".$isadmin;
 
 
 $result =$adb->query($query);
@@ -148,8 +153,8 @@ if($lw_account==0){
 
 
 //===================本周订单成交额=========================//
-$query = "select sum(total) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0";
-$lw_query = "select sum(total) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek_end."'";
+$query = "select sum(total) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0".$isadmin;
+$lw_query = "select sum(total) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek_end."'".$isadmin;
 
 $result = $adb->query($query);
 $month_deal_order = $adb->query_result($result,0,"monthdealorder");
@@ -171,8 +176,8 @@ if($lwdealorder==0){
 
 
 //===================本周订单成交量=========================//
-$query = "select count(*) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0";
-$lw_query = "select count(*) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek_end."'";
+$query = "select count(*) as monthdealorder from ec_salesorder where left(orderdate,10) between '".$start."' and '".$end."' and deleted=0".$isadmin;
+$lw_query = "select count(*) as lwdealorder from ec_salesorder where  deleted=0 and left(orderdate,10) between '".$lastweek_start."' and '".$lastweek_end."'".$isadmin;
 
 $result = $adb->query($query);
 $month_deal_count_order = $adb->query_result($result,0,"monthdealorder");
@@ -193,8 +198,8 @@ if($lwdealorder==0){
 
 
 //==================本周联系记录数=====================================//
-$query = "select count(*) as weeknotes from ec_notes where left(createdtime,10)>='".$start."' and deleted=0";
-$lw_query = "select count(*) as lwnotes from ec_notes where left(createdtime,10)between '".$lastweek_start."' and '".$lastweek_end."' and deleted=0";
+$query = "select count(*) as weeknotes from ec_notes where left(createdtime,10)>='".$start."' and deleted=0".$isadmin;
+$lw_query = "select count(*) as lwnotes from ec_notes where left(createdtime,10)between '".$lastweek_start."' and '".$lastweek_end."' and deleted=0".$isadmin;
 
 $result = $adb->query($query);
 $weeknewnotes = $adb->query_result($result,0,"weeknotes");
