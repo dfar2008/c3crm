@@ -152,21 +152,16 @@ function mandatoryCheck()
 				{foreach  item=listline from=$CHOOSECOLUMN}
                 <tr>
                   {foreach  item=columndata key=rows from=$listline }
-        
                        <td>
-
                           {if $columndata neq ''}
-                               #{$rows} <select name="column{$rows}" id="column{$rows}" onChange="checkDuplicate(this);">
-									{if $NEWVIEW=='true'}
-									<option selected value="">{$MOD.LBL_NONE}</option>
-									{else}
+                               #{$rows} <select name="column{$rows}" id="row{$rows}" onChange="checkDuplicate(this);">
                                     <option value="">{$MOD.LBL_NONE}</option>
-									{/if}
                                     {foreach item=filteroption key=label from=$columndata}
                                         <optgroup label={$label}>
                                             {foreach item=text from=$filteroption}
 												<option  {$text.selected} value={$text.value}>{$text.text}</option>
                                             {/foreach}
+										</optgroup>
                                     {/foreach}
                                     {$columndata}
                                  </select>
@@ -177,121 +172,6 @@ function mandatoryCheck()
                   {/foreach}
             </tr>
         {/foreach}
-                  <!--<tr >
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column1" id="column1" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                          {foreach item=filteroption key=label from=$CHOOSECOLUMN1}
-                            <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                              {foreach item=text key=hh from=$filteroption}
-                                       <option {$hh} value={$text.value}>{$text.text}</option>
-                              {/foreach}
-                          {/foreach}
-                        {$CHOOSECOLUMN1}
-                      </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column2" id="column2" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN2}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN2}
-                      </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column3" id="column3" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN3}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN3}
-                      </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column4" id="column4" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN4}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN4}
-                      </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column5" id="column5" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN5}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option  {$text.selected}  value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN5}
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column6" id="column6" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN6}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN6}
-                      </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column7" id="column7" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN7}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN7}
-                      </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column8" id="column8" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN8}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN8}
-                      </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      <select name="column9" id="column9" onChange="checkDuplicate();">
-                        <option value="">{$MOD.LBL_NONE}</option>
-                        {foreach item=filteroption key=label from=$CHOOSECOLUMN9}
-                                <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                                {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                {/foreach}
-                        {/foreach}
-                        {$CHOOSECOLUMN9}
-                        </select>
-                    </td>
-                    <td style="background-color:#fff;" width="20%">
-                      &nbsp;
-                    </td>
-                  </tr>-->
                 </tbody>  
               </table>
             </td>
@@ -568,24 +448,25 @@ var k;
 var colOpts;
 var manCheck = new Array({$MANDATORYCHECK});
 {literal}
-if(document.CustomView.record.value == '')
-{
-  for(k=0;k<manCheck.length;k++)
-  {
-      selname = "column"+(k+1);
-      colOpts = document.getElementById(selname).options;
-      for (l=0;l<colOpts.length;l++)
-      {
-        if(colOpts[l].value == manCheck[k])
-        {
-          colOpts[l].selected = true;
-        }
-      }
-  }
-}
+//if(document.CustomView.record.value == '')
+//{
+//  for(k=0;k<manCheck.length;k++)
+//  {
+//      selname = "column"+(k+1);
+//      colOpts = document.getElementById(selname).options;
+//      for (l=0;l<colOpts.length;l++)
+//      {
+//        if(colOpts[l].value == manCheck[k])
+//        {
+//          colOpts[l].selected = true;
+//        }
+//      }
+//  }
+//}
 function checkDuplicate()
 {
-  var cvselect_array = new Array('column1','column2','column3','column4','column5','column6','column7','column8','column9')
+  //var cvselect_array = new Array('column1','column2','column3','column4','column5','column6','column7','column8','column9')
+  var cvselect_array = new Array('row1','row2','row3','row4','row5','row6','row7','row8','row9','row10');
     for(var loop=0;loop < cvselect_array.length-1;loop++)
     { var x = document.getElementById(cvselect_array[loop]);
       //selected_cv_columnvalue = $(cvselect_array[loop]).options[$(cvselect_array[loop]).selectedIndex].value;
@@ -611,6 +492,5 @@ function checkDuplicate()
     }
     return true;
 }
-//checkDuplicate();
 {/literal}
 </script>
