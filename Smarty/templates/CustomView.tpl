@@ -119,17 +119,17 @@ function mandatoryCheck()
                     <td style="background-color:#fff;" width="20%">
                       <input type="text" name='viewName' value="{$VIEWNAME}" />
                     </td> 
-                    <td style="background-color:#fff;" width="20%">
+                    <td style="background-color:#fff;" width="10%">
                       {if $CHECKED eq 'checked'}
                           <input type="hidden" name="setDefault" value="1" >
                       {else}
                          <input type="hidden" name="setDefault" value="0" >
                       {/if}
-                          
-                          {$publichtml}
+                          {*$publichtml*}
+						  是否为关键视图
                     </td>
-
-					<td style="background-color:#fff" width="10%">是否为关键视图</td>
+	
+					<!--<td style="background-color:#fff" width="10%">是否为关键视图</td>-->
 					<td style="background-color:#fff">
 						{if $MCHECKED eq 'checked'}
 						<input type="checkbox" name = "setMetrics" value="1" checked/>
@@ -149,15 +149,43 @@ function mandatoryCheck()
             <td>
               <table class="table table-bordered table-hover table-condensed"> 
                 <tbody>
-                  <tr >
+				{foreach  item=listline from=$CHOOSECOLUMN}
+                <tr>
+                  {foreach  item=columndata key=rows from=$listline }
+        
+                       <td>
+
+                          {if $columndata neq ''}
+                               #{$rows} <select name="column{$rows}" id="column{$rows}" onChange="checkDuplicate(this);">
+									{if $NEWVIEW=='true'}
+									<option selected value="">{$MOD.LBL_NONE}</option>
+									{else}
+                                    <option value="">{$MOD.LBL_NONE}</option>
+									{/if}
+                                    {foreach item=filteroption key=label from=$columndata}
+                                        <optgroup label={$label}>
+                                            {foreach item=text from=$filteroption}
+												<option  {$text.selected} value={$text.value}>{$text.text}</option>
+                                            {/foreach}
+                                    {/foreach}
+                                    {$columndata}
+                                 </select>
+                        {else}
+                        &nbsp;
+                        {/if}
+                      </td>
+                  {/foreach}
+            </tr>
+        {/foreach}
+                  <!--<tr >
                     <td style="background-color:#fff;" width="20%">
                       <select name="column1" id="column1" onChange="checkDuplicate();">
                         <option value="">{$MOD.LBL_NONE}</option>
                           {foreach item=filteroption key=label from=$CHOOSECOLUMN1}
                             <optgroup label="{$label}" class=\"select\" style=\"border:none\">
-                              {foreach item=text from=$filteroption}
-                                       <option {$text.selected} value={$text.value}>{$text.text}</option>
-                                        {/foreach}
+                              {foreach item=text key=hh from=$filteroption}
+                                       <option {$hh} value={$text.value}>{$text.text}</option>
+                              {/foreach}
                           {/foreach}
                         {$CHOOSECOLUMN1}
                       </select>
@@ -204,7 +232,7 @@ function mandatoryCheck()
                         {foreach item=filteroption key=label from=$CHOOSECOLUMN5}
                                 <optgroup label="{$label}" class=\"select\" style=\"border:none\">
                                 {foreach item=text from=$filteroption}
-                                     <option {$text.selected} value={$text.value}>{$text.text}</option>
+                                     <option  {$text.selected}  value={$text.value}>{$text.text}</option>
                                 {/foreach}
                         {/foreach}
                         {$CHOOSECOLUMN5}
@@ -263,7 +291,7 @@ function mandatoryCheck()
                     <td style="background-color:#fff;" width="20%">
                       &nbsp;
                     </td>
-                  </tr>
+                  </tr>-->
                 </tbody>  
               </table>
             </td>
@@ -559,19 +587,22 @@ function checkDuplicate()
 {
   var cvselect_array = new Array('column1','column2','column3','column4','column5','column6','column7','column8','column9')
     for(var loop=0;loop < cvselect_array.length-1;loop++)
-    {
-      selected_cv_columnvalue = $(cvselect_array[loop]).options[$(cvselect_array[loop]).selectedIndex].value;
+    { var x = document.getElementById(cvselect_array[loop]);
+      //selected_cv_columnvalue = $(cvselect_array[loop]).options[$(cvselect_array[loop]).selectedIndex].value;
+	  selected_cv_columnvalue = x.options[x.selectedIndex].value;
       if(selected_cv_columnvalue != '')
       { 
         for(var iloop=0;iloop < cvselect_array.length;iloop++)
         {
           if(iloop == loop)
             iloop++;
-          selected_cv_icolumnvalue = $(cvselect_array[iloop]).options[$(cvselect_array[iloop]).selectedIndex].value;  
+			var xx = document.getElementById(cvselect_array[iloop]);
+         // selected_cv_icolumnvalue = $(cvselect_array[iloop]).options[$(cvselect_array[iloop]).selectedIndex].value; 
+		 selected_cv_icolumnvalue = xx.options[xx.selectedIndex].value;
           if(selected_cv_columnvalue == selected_cv_icolumnvalue)
           {
             alert(alert_arr.FIELD_REPEATED);
-            $(cvselect_array[iloop]).selectedIndex = 0;
+            xx.selectedIndex = 0;
             return false;
           }
 

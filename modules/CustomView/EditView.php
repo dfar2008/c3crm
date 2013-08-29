@@ -57,6 +57,7 @@ if($recordid == "")
 	if(isset($modulecollist))
 	{
 		//$choosecolhtml = getByModule_ColumnsHTML($cv_module,$modulecollist);
+
 		$choosecollectcolhtml=getByModule_ColumnsHTML($cv_module,$modulecollectcollist);
 	}
 
@@ -69,11 +70,29 @@ if($recordid == "")
 
 	//step4
 	$advfilterhtml = getAdvCriteriaHTML();
-	for($i=1;$i<10;$i++)
-	{
-		$choosecolhtml = getByModule_ColumnsHTML($cv_module,$modulecollist,$selectedcolumnslist[$i-1]);
-		$smarty->assign("CHOOSECOLUMN".$i,$choosecolhtml);
-	}
+
+//	for($i=1;$i<10;$i++)
+//	{
+//		$choosecolhtml = getByModule_ColumnsHTML($cv_module,$modulecollist,$selectedcolumnslist[$i-1]);
+//		$smarty->assign("CHOOSECOLUMN".$i,$choosecolhtml);
+//	}
+    $default_list_column=10;
+    $listline=ceil($default_list_column/5);
+	$colnum=$default_list_column%5;
+	$choosecolumnHtml=array();
+	for($i=1;$i<=$listline;$i++){
+		$entries=array();
+		if($colnum==0){
+			for($j=$i*5-4;$j<=$i*5;$j++){
+				$choosecolhtml = getByModule_ColumnsHTML($cv_module,$modulecollist,$selectedcolumnslist[$j-1]);
+				$entries[$j]=$choosecolhtml;
+			}
+		}
+        $choosecolumnHtml[]=$entries;
+    }
+    $smarty->assign("NEWVIEW","true");
+    $smarty->assign("CHOOSECOLUMN",$choosecolumnHtml);
+
 	$smarty->assign("CHOOSECOLLECTCOLUMN",$choosecollectcolhtml);
 	$log->info('CustomView :: Successfully got AdvancedFilter for the module'.$cv_module);
 	for($i=1;$i<6;$i++)
@@ -95,12 +114,12 @@ else
 	$customviewdtls = $oCustomView->getCustomViewByCvid($recordid); 
 	
 	
-	if(!is_admin($current_user)){
-		if($customviewdtls['smownerid'] == 0){
-			echo "<script>alert('公共视图不能修改！');history.go(-1);</script>";
-			die;
-		}
-	}
+//	if(!is_admin($current_user)){
+//		if($customviewdtls['smownerid'] == 0){
+//			echo "<script>alert('公共视图不能修改！');history.go(-1);</script>";
+//			die;
+//		}
+//	}
 	
 	$log->info('CustomView :: Successfully got ViewDetails for the Viewid'.$recordid);
 	$modulecollist = $oCustomView->getModuleColumnsList($cv_module);
@@ -121,11 +140,26 @@ else
 	
 	$choosecollectcolhtml=getByModule_ColumnsHTML($cv_module,$modulecollectcollist,$customviewdtls["collectcolumn"]);
 	$smarty->assign("CHOOSECOLLECTCOLUMN",$choosecollectcolhtml);
-	for($i=1;$i<10;$i++)
-	{
-		$choosecolhtml = getByModule_ColumnsHTML($cv_module,$modulecollist,$selectedcolumnslist[$i-1]);
-		$smarty->assign("CHOOSECOLUMN".$i,$choosecolhtml);
-	}
+//	for($i=1;$i<10;$i++)
+//	{
+//		$choosecolhtml = getByModule_ColumnsHTML($cv_module,$modulecollist,$selectedcolumnslist[$i-1]);
+//		$smarty->assign("CHOOSECOLUMN".$i,$choosecolhtml);
+//	}
+    $default_list_column=10;
+    $listline=ceil($default_list_column/5);
+	$colnum=$default_list_column%5;
+	$choosecolumnHtml=array();
+	for($i=1;$i<=$listline;$i++){
+		$entries=array();
+		if($colnum==0){
+			for($j=$i*5-4;$j<=$i*5;$j++){
+				$choosecolhtml = getByModule_ColumnsHTML($cv_module,$modulecollist,$selectedcolumnslist[$j-1]);
+				$entries[$j]=$choosecolhtml;
+			}
+		}
+        $choosecolumnHtml[]=$entries;
+    }
+    $smarty->assign("CHOOSECOLUMN",$choosecolumnHtml);
 
 	$stdfilterlist = $oCustomView->getStdFilterByCvid($recordid);
 	$log->info('CustomView :: Successfully got Standard Filter for the Viewid'.$recordid);

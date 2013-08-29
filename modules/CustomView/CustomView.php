@@ -207,7 +207,8 @@ class CustomView extends CRMEntity{
 		$public_condition = " 1=1 ";
 		$tabid = getTabid($this->customviewmodule);
 		$ssql = "select ec_customview.cvid,ec_customview.viewname from ec_customview";
-		$ssql .= " where ec_customview.entitytype='".$this->customviewmodule."'  and ".$public_condition." and ec_customview.smownerid in(0,".$current_user->id.") ";
+		//$ssql .= " where ec_customview.entitytype='".$this->customviewmodule."'  and ".$public_condition." and ec_customview.smownerid in(0,".$current_user->id.") ";
+        $ssql .= " where ec_customview.entitytype='".$this->customviewmodule."'  and ".$public_condition;
 		$ssql .= " order by ec_customview.cvid ";
 		$result = $adb->getList($ssql);
 		$CustomViewCombo = array();
