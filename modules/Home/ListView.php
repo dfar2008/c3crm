@@ -62,7 +62,11 @@ $dashboard_arr['memday']['content'] = $OneMonthMemday;
 //=========================最近6个月销售情况=====================================//
 $date_start = date('Y-m-d',mktime(0,0,0,date("m")-5,date("d"),date("Y")));
 $date_end = date('Y-m-d',mktime (0,0,0,date("m"),date("d"),date("Y")));
-
+if($current_user->is_admin===true){
+    $soadmin = "";
+}else{
+    $soadmin = " and ec_salesorder.smownerid='".$current_user->id."'";
+}
 $where .= " ec_salesorder.orderdate >= ".db_convert("'".$date_start."'",'date')." AND ec_salesorder.orderdate <= ".db_convert("'".$date_end."'",'date')." ";
 $query = "SELECT ".db_convert('ec_salesorder.orderdate','date_format',array("'%Y-%m'"),array("'YYYY-MM'"))." as m, 
 			sum(ec_salesorder.total) as total, count(*) as so_count 
@@ -72,7 +76,7 @@ $query = "SELECT ".db_convert('ec_salesorder.orderdate','date_format',array("'%Y
 			left join ec_users 
 				on ec_users.id = ec_salesorder.smownerid 
 		where ec_salesorder.deleted = 0  ";
-$query .= " AND ".$where;
+$query .= " AND ".$where.$soadmin;
 $query .= " GROUP BY ".db_convert('ec_salesorder.orderdate','date_format',array("'%Y-%m'"),array("'YYYY-MM'"))." ORDER BY m";
 $result = $adb->query($query);
 
