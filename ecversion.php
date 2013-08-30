@@ -1,3 +1,3 @@
 <?php
-$ec_current_version = '3.0';
+$ec_current_version = '3.0.1';
 ?>
