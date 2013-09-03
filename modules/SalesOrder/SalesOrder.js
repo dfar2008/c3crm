@@ -63,13 +63,13 @@ function UpdateIDString()
 				}
 				if(!flag) {
 					var repeated = false;
-					var selectedProductsLength = opener.window.document.forms['EditView'].elements.length;
+					var selectedProductsLength = document.forms['EditView'].elements.length;
 					for(var m=0;m<selectedProductsLength;m++) {
-						if(opener.window.document.forms['EditView'].elements[m].name.indexOf('hdnProductId') > -1) {
-							tmpProductID = opener.window.document.forms['EditView'].elements[m].name;
+						if(document.forms['EditView'].elements[m].name.indexOf('hdnProductId') > -1) {
+							tmpProductID = document.forms['EditView'].elements[m].name;
 							tmpProductIndex = tmpProductID.substring(12);
 							
-							if(opener.window.document.forms['EditView'].elements["deleted"+tmpProductIndex].value == 0 && opener.window.document.forms['EditView'].elements[m].value == idvalue) {
+							if(document.forms['EditView'].elements["deleted"+tmpProductIndex].value == 0 && document.forms['EditView'].elements[m].value == idvalue) {
 								alert(alert_arr.PRODUCT_SELECTED);
 								document.selectall.selected_id.checked = false;
 								repeated = true;
