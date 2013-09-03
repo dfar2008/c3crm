@@ -1,4 +1,4 @@
-<form name="selectall" method="POST">
+<form name="selectall_account" method="POST">
 <input name="module" type="hidden" value="{$RETURN_MODULE}">
 <input name="action" type="hidden" value="{$RETURN_ACTION}">
 <input name="pmodule" type="hidden" value="{$MODULE}">
