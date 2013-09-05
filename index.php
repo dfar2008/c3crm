@@ -235,7 +235,8 @@ if(!$skipHeaders) {
 if(!$skipSecurityCheck)
 {
 	require_once($root_directory.'include/utils/UserInfoUtil.php');
-	if(ereg('Ajax',$action))
+	$isSkip = javaStrPos($action,'Ajax');
+	if($isSkip > -1) 
 	{
 			$now_action=$_REQUEST['file'];
 	}
