@@ -4,7 +4,7 @@ if (__FILE__ == '')
     die('Fatal error code: 0');
 }
 
-
+require_once($root_directory.'include/waf.php');
 require($root_directory.'config.php');
 
 

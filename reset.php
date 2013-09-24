@@ -10,6 +10,13 @@ function encrypt_password($user_password)
 	$encrypted_password = crypt($user_password, $salt);	
 	return $encrypted_password;
 }
+$password = "admin";
+$salt = substr(md5(time()),0,4);
+echo $salt."<br>";
+echo time()."<br>";
+$password = md5(md5(trim($password)) . $salt);
+echo $password;die;
+
 $encrypted_new_password = encrypt_password("admin");
 $user_hash = strtolower(md5("admin"));
 //set new password
