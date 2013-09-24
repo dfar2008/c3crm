@@ -12,7 +12,7 @@
                     <i class="icon-arrow-left icon-white"></i>取消</button>
               </div>
               <div class="pull-right" style="margin-bottom:5px;" >
-                  <button class="btn btn-small btn-success" style="margin-top:2px;" onclick="this.form.action.value='Save';validateInventory('{$MODULE}')" name="savebutton">
+                  <button class="btn btn-small btn-success" style="margin-top:2px;"  type="button" onclick="this.form.action.value='Save';validateInventory('{$MODULE}')" name="savebutton">
                     <i class="icon-ok icon-white"></i> 保存 </button>
                  
              </div>
