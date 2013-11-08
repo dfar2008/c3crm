@@ -47,7 +47,7 @@
                                 <tr>
                                 <td >
                                 <p align="center">
-                                <textarea style="line-height: 150%;width: 300px; height: 510px;" cols="35" name="dst" rows="8" id="receiveaccountinfo"  >{$receiveaccountinfo}</textarea>
+                                <textarea style="line-height: 150%;width: 300px; height: 410px;" cols="35" name="dst" rows="8" id="receiveaccountinfo"  >{$receiveaccountinfo}</textarea>
 								 </p>
                                 </td>
                                 </tr>
