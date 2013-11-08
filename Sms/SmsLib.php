@@ -86,8 +86,8 @@ function getBalance($userid='') {
 	if(!is_array($userinfo) || empty($userinfo)){
 		$userinfo = getSingleInfo($userid);
 	}
-	
 	$info = loginSMS($userid); 
+    //var_dump($userinfo);
 	if($info['error'] == 1){
 		return array("error"=>1,"message"=>$info['message']);
 	}
@@ -235,6 +235,28 @@ function getUserSmsLogs($userid,$phone){
 	$method = "sms_getSmslogs";  
 	$result = getCurlResult($parameters,$method); 
 	return $result;
+}
+
+//added by ligangze on 2013-10-23
+function SaveSmsLogs($sendresult,$content,$flag,$result) {
+	global $adb,$current_user;
+	$sendtime = date("Y-m-d H:i:s");
+	foreach($sendresult as $phonenames){
+		$smsobj = array();
+		$smsobj['receiver_phone'] = $phonenames["phone"];
+		$smsobj['receiver'] = $phonenames["name"];
+		$smsobj['sendmsg'] = $content;
+		$smsobj['sendtime'] = $sendtime;
+		$smsobj['flag'] = $flag;
+		$smsobj['result'] = $result;
+		$smsobj['userid'] = $current_user->id;
+		$smskeyobj = array_keys($smsobj);
+		$fieldsql = join(",",$smskeyobj);
+		$valuesql = "'".join("','",$smsobj)."'";
+		$record = $adb->getUniqueID("ec_smslogs");
+		$query = "insert into ec_smslogs(id,{$fieldsql}) values({$record},{$valuesql}) ";
+		$adb->query($query);
+	}
 }
 
 ?>

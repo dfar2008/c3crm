@@ -41,8 +41,13 @@ $from_email = $_REQUEST["from_email"];
 $interval = $_REQUEST["interval"];
 
 $receiveaccountinfo = $_REQUEST["receiveaccountinfo"];
-$receiveaccountinfo =  str_replace("##",'&',$receiveaccountinfo);	
-$receiveaccountarr = explode("\n",$receiveaccountinfo);
+
+
+//$receiveaccountinfo =  str_replace("##",'&',$receiveaccountinfo);	
+//$receiveaccountarr = explode("\n",$receiveaccountinfo);
+$receiveaccountarr = explode("**",$receiveaccountinfo);
+//var_dump($receiveaccountarr);
+//exit;
 
 $receiverinfo = '';
 $cnm = count($receiveaccountarr);
@@ -88,7 +93,7 @@ foreach($sendresult as $rst){
 	$receiver = $rst[1];
 	
 	$message = "sjid=$sjid&maillogsid=$maillogsid&to_email=$to_email&receiver=$receiver&from_name=$from_name&from_email=$from_email&interval=$interval&subject=$subject&mailcontent=$mailcontent&userid=".$current_user_id;
-	$queue->send($message);
+	 $queue->send($message);
 	$totalnum++;
 }
 

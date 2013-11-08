@@ -36,7 +36,9 @@
 								  </tr>
 								{/foreach}
 							</table>
-							<div class="pull-right">{$RECORD_COUNTS}&nbsp;&nbsp;&nbsp;&nbsp;{$NAVIGATION}</div>
+							<div class="pagination pagination-mini pagination-right" style="margin-bottom:5px">
+								{$RECORD_COUNTS}&nbsp;&nbsp;&nbsp;&nbsp;{$NAVIGATION}
+							</div>
 						</div><br><br>
 						<div class="pull-left" style="margin-top:5px">
 							<button title="{$APP.LBL_CANCEL_BUTTON_LABEL}" accessKey="{$APP.LBL_CANCEL_BUTTON_KEY}" class="btn btn-small btn-primary" onclick="location.href='index.php?module=Settings&action=SmsUser'" type="button" name="button"><i class="icon-arrow-left icon-white"></i> 返回</button>
@@ -60,9 +62,10 @@
 <script>
 function getListViewEntries_js(module,url)
 {	
-	$("status").style.display="inline";
-	if($('search_url').value!='')
-		urlstring = $('search_url').value;
+	$("#status").css("display","inline");
+
+	if($('#search_url').val()!='')
+		urlstring = $('#search_url').val();
 	else
 		urlstring = '';
 	location.href="index.php?module=Settings&action=SmsUserLogs&"+url+urlstring;

@@ -38,10 +38,10 @@
                 <img src="themes/bootcss/img/logonew.png">
 				</a>
               </div>
-              <div class="span5">
+             <div class="span2">
                 &nbsp;
               </div>
-              <div class="span5" style="padding-top:10px;">
+              <div class="span8" style="padding-top:10px;">
                   <div class="pull-right navbar topbar" style="margin-bottom:5px;">
                     <ul class="nav" style="height:15px;">
                           <li ><a href="index.php?module=Qunfas&action=index"><i class="cus-phone"></i>手机短信</a></li>
@@ -53,7 +53,8 @@
 						  <li ><a href="index.php?module=Caches&action=index"><i class="cus-cog"></i>&nbsp;清除缓存</a></li>
 						{/if}
                           <li ><a href="Logout.php"><i class="icon-off"></i>&nbsp;退出</a></li>
-						  <li ><a href="http://www.c3crm.com/bbs/forum.php" target="_blank"><i class="icon-question-sign"></i>&nbsp;帮助</li>
+						  <li ><a href="http://www.c3crm.com/bbs/forum.php" target="_blank"><i class="icon-question-sign"></i>&nbsp;帮助</a></li>
+						  <li ><a href="http://www.c3crm.com/cpjs/" target="_blank"><i class="icon-circle-arrow-up"></i>&nbsp;升级到企业版</a></li>
                         </ul>                            
                   </div>
               </div>

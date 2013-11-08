@@ -31,7 +31,7 @@ window.onload = function() {
 		file_size_limit : "2048",	// 2MB
 		file_types : "*.csv",
 		file_types_description : "All Files",
-		file_upload_limit : 1,
+		file_upload_limit : 2,
 		file_queue_limit : 0,
 
 		// Event Handler Settings (all my handlers are in the Handler.js file)

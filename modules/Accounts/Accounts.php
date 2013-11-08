@@ -194,7 +194,9 @@ class Accounts extends CRMEntity {
 			$row_i = 1;
 			foreach($list_result as $row){
 				$entries = Array();
-				$entries[] = $row['title'];
+                //changed by ligangze on 2013-09-29
+				$entries[] = '<a href="index.php?module=Notes&action=DetailView&record='.$row['notesid'].'&parenttab=Customer">'
+                            .$row['title'].'</a>';
 				$entries[] = $row['notetype'];
 				$entries[] = $row['modifiedtime'];
 				$entries[] = getDisplayDate($row['contact_date']);

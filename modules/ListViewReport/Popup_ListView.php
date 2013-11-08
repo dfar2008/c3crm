@@ -77,6 +77,7 @@ else
 
 $picklistinf=$listviewreport->getPicklistGroupInf($list_query);
 $reportData=$listviewreport->getPicklistDataHTML($picklistinf);
+
 //changed by xiaoyang on 2012-9-24
 //$return=$listviewreport->getPicklistChartHTML($picklistinf);
 $categories = "";

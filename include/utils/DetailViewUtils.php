@@ -295,7 +295,6 @@ function getRelatedLists($module,$focus)
 		$related_tabname = $adb->query_result($result,$i,"related_tabname"); 
 		$function_name = $adb->query_result($result,$i,"name");  
 		$label = $adb->query_result($result,$i,"label");
- 
 		if(method_exists($focus,$function_name)) {
 
 			if($function_name != "get_generalmodules" && $function_name != "get_child_list" && $function_name != "get_parent_list") {

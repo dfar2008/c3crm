@@ -311,6 +311,7 @@ function getListViewEntries($focus, $module,$list_result,$navigation_array,$rela
 
 	}
 	$log->debug("Exiting getListViewEntries method ...");
+   // var_dump($list_block);exit;
 	return $list_block;
 
 }
@@ -487,6 +488,8 @@ function getValue($uitype, $list_result,$fieldname,$focus,$module,$entity_id,$li
 		$temp_val = $adb->query_result($list_result,$list_result_count,$fieldname);
 		if($temp_val != '') {
 			$value = getAccountName($temp_val);
+            //if($module=="Notes")  //added by ligangze on 2013-09-30
+            $value = '<a href="index.php?action=DetailView&module=Accounts&record='.$temp_val.'&parenttab=Customer" target="_blank">'.$value.'</a>';
 		} else {
 			$value='';
 		}

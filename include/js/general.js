@@ -3389,7 +3389,9 @@ function SendMailToAll(setype,sjid,ke){
 			return false;
 		}
 		receiveaccountinfo = document.getElementById('receiveaccountinfo').value;  
-		//receiveaccountinfo = receiveaccountinfo.replace(/\s/ig,'');
+		receiveaccountinfo = receiveaccountinfo.replace(/\s/ig,'**');
+
+		//alert(receiveaccountinfo);
 		
 		while( receiveaccountinfo.indexOf( "&" ) != -1 ) {
 			 receiveaccountinfo = receiveaccountinfo.replace("&",'##'); 

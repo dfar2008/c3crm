@@ -54,10 +54,10 @@
 		<div id="container"></div>
 
 		<script type="text/javascript">
-		
-		$(function () {ldelim}
 		var chart;
-		$(document).ready(function() {ldelim}
+		$(function () {ldelim}
+		
+		//$(document).ready(function() {ldelim}
 			var colors = Highcharts.getOptions().colors,
 				categories = [{$CATEGORIES}],
 				name = '{$FIELDNAME}',
@@ -99,6 +99,7 @@
 					{rdelim}
 				{rdelim},
 				tooltip: {ldelim}
+					crosshairs: true,
 					formatter: function() {ldelim}
 						var s;
 						if (type == 'pie') {ldelim}// the pie chart
@@ -117,7 +118,7 @@
 					data: data
 			   {rdelim}]
 			{rdelim});
-	   {rdelim});  
+	  // {rdelim});  
 	{rdelim});
 
 	</script>
