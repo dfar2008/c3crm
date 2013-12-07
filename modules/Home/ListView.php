@@ -8,19 +8,21 @@ global $app_strings,$mod_strings,$list_max_entries_per_page;
 
 global $currentModule,$image_path,$theme;
 $smarty = new CRMSmarty();
-if(is_file('modules/Home/c3crm_news.php'))
-{
-	require('modules/Home/c3crm_news.php');
-	$c3crm_news = $html_contents;
-	$smarty->assign("C3CRM_NEWS", $c3crm_news);
-}
+//if(is_file('modules/Home/c3crm_news.php'))
+//{
+	//require('modules/Home/c3crm_news.php');
+	//$c3crm_news = $html_contents;
+	//$smarty->assign("C3CRM_NEWS", $c3crm_news);
+//}
 
-if(is_file('modules/Home/key_customview.php'))
-{
-	require('modules/Home/key_customview.php');
-	$key_customview = $html_contents;
-	$smarty->assign("KEY_CUSTOMVIEW", $key_customview);
-}
+//noted by ligangze on 2013/11/27
+//if(is_file('modules/Home/key_customview.php'))
+//{
+//
+//	require('modules/Home/key_customview.php');
+//	$key_customview = $html_contents;
+//	$smarty->assign("KEY_CUSTOMVIEW", $key_customview);
+//}
 
 $dashboard_arr = array();
 if($current_user->is_admin===true){
@@ -28,14 +30,15 @@ if($current_user->is_admin===true){
 }else{
     $isadmin = " and smownerid='".$current_user->id."'";
 }
-
 //====================================一周内待联系客户===========================//
 $query="select * from ec_account where  deleted=0 and smownerid='".$current_user->id."' and contact_date !='' and contact_date !='0000-00-00'  and contact_date between '".date("Y-m-d")."' and '".date("Y-m-d",strtotime("1 week"))."' order by contact_date asc"; 
+
 $result = $adb->getList($query);
 foreach($result as $row){
 	    $accountid = $row['accountid'];
 		$NextContactAccount[$accountid] = "<img src=\"themes/softed/images/s1.png\" border=0/> &nbsp;&nbsp;<a href=\"index.php?module=Accounts&action=DetailView&record=".$row['accountid']."\" >".$row['accountname']."</a> &nbsp;&nbsp; ".$row['contact_date']." &nbsp;&nbsp;<a href=\"index.php?module=Notes&action=EditView&&return_module=Accounts&return_action=ListView&return_id=".$row['accountid']."\" >新增联系记录</a>";
 }
+
 $dashboard_arr['contact']['title'] = "7天内待联系客户(下次联系日期)";
 $dashboard_arr['contact']['type'] = "text";
 $dashboard_arr['contact']['divid'] = "7_day_contact";
@@ -84,7 +87,6 @@ $categorys = date("Y-m",strtotime("-5 month")).",".date("Y-m",strtotime("-4 mont
 ",".date("Y-m",strtotime("-2 month")).",".date("Y-m",strtotime("-1 month")).",".date("Y-m",strtotime("now"));
 $datearr = explode(",",$categorys);
 
-
 //订单金额 and 订单数量
 $j=0;
 $series = "";
@@ -114,6 +116,7 @@ $dashboard_arr['salesorder']['content'] = "waiting...";
 
 
 
+
     $week = date("W");
     $year = date("Y");
     $timestamp = mktime(1,0,0,1,1,$year);
@@ -135,8 +138,8 @@ $dashboard_arr['salesorder']['content'] = "waiting...";
 
 
 //===================本周新增客户数========================//
-$query  = "select count(*) as daytotal from ec_account where left(createdtime,10)>='".$start."' and deleted=0".$isadmin;
-$lw_query = "select count(*) as lwaccount from ec_account where left(createdtime,10) between '".$lastweek_start."' and '".$lastweek_end."' and deleted=0".$isadmin;
+$query  = "SELECT COUNT(*) AS daytotal FROM ec_account WHERE LEFT(createdtime,10)>='".$start."' AND deleted=0".$isadmin;
+$lw_query = "SELECT COUNT(*) AS lwaccount FROM ec_account where LEFT(createdtime,10) BETWEEN '".$lastweek_start."' AND '".$lastweek_end."' AND deleted=0".$isadmin;
 
 
 $result =$adb->query($query);
@@ -232,37 +235,31 @@ require_once('modules/CustomView/ListViewTop.php');
 $metriclists = Array();
 $metricslist = Array();
 for($i=0;$i<$adb->num_rows($result);$i++) {
-    $metricslist['id'] = $adb->query_result($result,$i,'cvid');
-    $metricslist['name'] = $adb->query_result($result,$i,'viewname');
-    $metricslist['module'] = $adb->query_result($result,$i,'entitytype');
-    $metricslist['count'] = "";
-    //if($current_user->is_admin == "on"){//Administrator
-         $metriclists[] = $metricslist;
-    //}
-}
-foreach ($metriclists as $metriclist)
-	{
-		$modname = $metriclist['module'];
-		$listquery = getListQuery($modname,'',true);
-		$oCustomView = new CustomView($modname);
-		$metricsql = $oCustomView->getMetricsCvListQuery($metriclist['id'],$listquery,$modname);
+	$metr_id = $adb->query_result($result,$i,'cvid');
+    $metr_name = $adb->query_result($result,$i,'viewname');
+    $metr_module = $adb->query_result($result,$i,'entitytype');
+    $metr_count = "";
+
+	$listquery = getListQuery($metr_module,'',true);
+	$oCustomView = new CustomView($metr_module);
+	$metricsql = $oCustomView->getMetricsCvListQuery($metr_id,$listquery,$metr_module);
+	$log->info("metricsql:".$metricsql);
+	if(isset($metricsql) && !empty($metricsql)){
 		$metricresult = $adb->query($metricsql);
-		if($metricresult)
-		{
-			$rowcount = $adb->fetch_array($metricresult);
-          
-			if(isset($rowcount))
-			{
-				$keyview_body .=  '<tr>
-                <td>
-                &nbsp;<a href="index.php?action=index&module='.$metriclist['module'].'&viewname='.$metriclist['id'].'">'.$metriclist['name'].'</a>
-                </td>
-                <td align="left">&nbsp;'.$app_strings[$metriclist['module']].'</td>
-                <td align="left">&nbsp;'.$rowcount['count'].'</td>
-                </tr>';
-			}
+	}
+	if($metricresult){
+		$rowcount = $adb->fetch_array($metricresult);
+		if(isset($rowcount)){
+			$keyview_body .=  '<tr>
+			<td>
+			&nbsp;<a href="index.php?action=index&module='.$metr_module.'&viewname='.$metr_id.'">'.$metr_name.'</a>
+			</td>
+			<td align="left">&nbsp;'.$app_strings[$metr_module].'</td>
+			<td align="left">&nbsp;'.$rowcount['count'].'</td>
+			</tr>';
 		}
 	}
+}
 
 $dashboard_arr['keyview']['title'] = "关键视图";
 $dashboard_arr['keyview']['type'] = "table";
@@ -276,6 +273,7 @@ $dashboard_arr['keyview']['content'] = $OneMonthMemday;
 $crmnews_contents = '';
 $crmnews_contents .= '<table border=0 cellspacing=0 cellpadding=2 width=100%>';
 $ftimeout = 60;
+require('modules/Home/c3crm_news.php');
 $fparser = new EC_Feed_Parser();
 $fparser->ec_dofetch('http://www.c3crm.com/blog/?feed=rss2', $ftimeout);
 $items = $fparser->get_items();
