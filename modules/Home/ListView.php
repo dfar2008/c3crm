@@ -270,29 +270,12 @@ $dashboard_arr['keyview']['content'] = $OneMonthMemday;
 
 //=================================易客CRM新闻=================================//
 
-$crmnews_contents = '';
-$crmnews_contents .= '<table border=0 cellspacing=0 cellpadding=2 width=100%>';
-$ftimeout = 60;
 require('modules/Home/c3crm_news.php');
-$fparser = new EC_Feed_Parser();
-$fparser->ec_dofetch('http://www.c3crm.com/blog/?feed=rss2', $ftimeout);
-$items = $fparser->get_items();
-$loop = 1;
-foreach($items as $item) {
-	$crmnews_contents .= '<tr><td align="left"><a href="'.$item->get_link().'" target="_blank">&nbsp;'.$item->get_title().'</a></td></tr>';
-    $loop++;
-    if($loop==10) break;
-}
-$crmnews_contents .= '</table>';
 
 $dashboard_arr['crmnews']['title'] = "易客CRM新闻";
 $dashboard_arr['crmnews']['type'] = "text";
 $dashboard_arr['crmnews']['divid'] = "crmnews";
-$dashboard_arr['crmnews']['content']= $crmnews_contents;
-
-
-
-
+$dashboard_arr['crmnews']['content']= $html_contents;
 
 
 $theme_path="themes/".$theme."/";
